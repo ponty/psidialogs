@@ -32,12 +32,12 @@ class Backend():
         return tkMessageBox.showwarning(message=args.message, title=args.title)
 ## for cog indent
     
-    def askOkCancel(self, args):
+    def ask_ok_cancel(self, args):
         """generated function"""
         return tkMessageBox.askokcancel(message=args.message, title=args.title)
 ## for cog indent
     
-    def askYesNo(self, args):
+    def ask_yes_no(self, args):
         """generated function"""
         return tkMessageBox.askyesno(message=args.message, title=args.title)
 ## for cog indent

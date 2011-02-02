@@ -17,7 +17,7 @@ def buttonbox(message='Shall I continue?', title='', choices=['Button1', 'Button
 	The buttons are defined by the members of the choices list.
 	Return the text of the button that the user selected.
 	"""
-    return common_api.buttonChoice(message=message, title=title, choices=choices)
+    return common_api.button_choice(message=message, title=title, choices=choices)
 def filesavebox(msg=None, title=None, argInitialFile=None):
     """Original doc: A file to get the name of a file to save.
 	Returns the name of a file, or None if user chose to cancel.
@@ -25,7 +25,7 @@ def filesavebox(msg=None, title=None, argInitialFile=None):
 	if argInitialFile contains a valid filename, the dialog will
 	be positioned at that file when it appears.
 	"""
-    return common_api.askFileForSave(message=msg, title=title, default=argInitialFile)
+    return common_api.ask_file(message=msg, title=title, default=argInitialFile, save=True)
 def diropenbox(msg=None, title=None, argInitialDir=None):
     """Original doc: A dialog to get a directory name.
 	Note that the msg argument, if specified, is ignored.
@@ -36,7 +36,7 @@ def diropenbox(msg=None, title=None, argInitialDir=None):
 	and that directory exists, then the
 	dialog box will start with that directory.
 	"""
-    return common_api.askFolder(message=msg, title=title, default=argInitialDir)
+    return common_api.ask_folder(message=msg, title=title, default=argInitialDir)
 def ynbox(message='Shall I continue?', title=''):
     """Original doc: Display a message box with choices of Yes and No.
 	The default is "Yes".
@@ -50,7 +50,7 @@ def ynbox(message='Shall I continue?', title=''):
 		if ynbox(): pass # continue
 		else: sys.exit(0)  # exit the program
 	"""
-    return common_api.askYesNo(message=message, title=title)
+    return common_api.ask_yes_no(message=message, title=title)
 def choicebox(message='Pick something.', title='', choices=['program logic error - no choices specified']):
     """Original doc: Present the user with a list of choices.
 	return the choice that he selects.
@@ -67,20 +67,21 @@ def multchoicebox(message='Pick as many items as you like.', title='', choices=[
 	if the user doesn't choose anything from the list, return the empty list.
 	return None if he cancelled selection.
 	"""
-    return common_api.multiChoice(message=message, title=title, choices=choices)
+    return common_api.multi_choice(message=message, title=title, choices=choices)
 def enterbox(message='Enter something.', title='', argDefaultText=''):
     """Original doc: Show a box in which a user can enter some text.
 	You may optionally specify some default text, which will appear in the
 	enterbox when it is displayed.
 	Returns the text that the user entered, or None if he cancels the operation.
 	"""
-    return common_api.askString(message=message, title=title, default=argDefaultText)
+    return common_api.ask_string(message=message, title=title, default=argDefaultText)
 def passwordbox(message='Enter your password.', title='', argDefaultPassword=''):
     """Original doc: Show a box in which a user can enter a password.
 	The text is masked with asterisks, so the password is not displayed.
 	Returns the text that the user entered, or None if he cancels the operation.
 		"""
-    return common_api.askPassword(message=message, title=title, default=argDefaultPassword)
+    raise NotImplementedError()
+
 def fileopenbox(msg=None, title=None, argInitialFile=None):
     """Original doc: A dialog to get a file name.
 	Returns the name of a file, or None if user chose to cancel.
@@ -88,7 +89,7 @@ def fileopenbox(msg=None, title=None, argInitialFile=None):
 	if argInitialFile contains a valid filename, the dialog will
 	be positioned at that file when it appears.
 	"""
-    return common_api.askFileForOpen(message=msg, title=title, default=argInitialFile)
+    return common_api.ask_file(message=msg, title=title, default=argInitialFile)
 def integerbox(message='Enter something.', title='', argDefault=None, argLowerBound=0, argUpperBound=99):
     """Original doc: Show a box in which a user can enter an integer.
 	In addition to arguments for message and title, this function accepts

@@ -15,7 +15,7 @@ def askstring(title, prompt, **kw):
 
     Return value is a string
     """
-    return common_api.askString(title=title, message=prompt)
+    return common_api.ask_string(title=title, message=prompt)
 def askfloat(title, prompt, **kw):
     """Original doc: get a float from the user
 

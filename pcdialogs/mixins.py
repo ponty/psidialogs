@@ -1,7 +1,7 @@
 from itertools import count
 
 class AllMixin:
-    def multiChoice(self, args):
+    def multi_choice(self, args):
         r = self.choice(args)
         if r:
             r = [r]
@@ -9,17 +9,15 @@ class AllMixin:
             r = None
         return r
         
-    def askFilesForOpen(self, args):
-        r = self.askFileForOpen(args)
+    def ask_files(self, args):
+        args = args.copy()
+        args.save=False
+        r = self.ask_file(args)
         if r:
             r = [r]
         else:
             r = None
         return r
-        
-    def askPassword(self, args):
-        return self.askString(args)
-
         
     def text(self, args):
         args = args.copy()
@@ -35,7 +33,7 @@ class AllMixin:
         args.min = None
         args.max = None
 ##        self.text(args)
-        i = self.askString(args)
+        i = self.ask_string(args)
         if not i:
             return None
         i = int(i)
@@ -50,19 +48,13 @@ class AllMixin:
     def warning(self, args):
         return self.message(args)
 
-    def askFileForOpen(self, args):
-        return self.askString(args)
+    def ask_file(self, args):
+        return self.ask_string(args)
 
-    def askFileForSave(self, args):
-        return self.askString(args)
-        
-    def askDate(self, args):
-        return self.askString(args)
+    def ask_folder(self, args):
+        return self.ask_string(args)
 
-    def askFolder(self, args):
-        return self.askString(args)
-
-    def buttonChoice(self, args):
+    def button_choice(self, args):
         result = self.choice(args)
         if result is None:
             result = args.choices[0]
@@ -70,12 +62,12 @@ class AllMixin:
 
     def _yesno(self, args, choices):
         args.choices = choices
-        result = self.buttonChoice(args)
+        result = self.button_choice(args)
         return result != choices[1]
         
-    def askOkCancel(self, args):
+    def ask_ok_cancel(self, args):
         return self._yesno(args, ['OK', 'Cancel'])
 
-    def askYesNo(self, args):
+    def ask_yes_no(self, args):
         return self._yesno(args, ['Yes', 'No'])
 

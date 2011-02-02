@@ -10,7 +10,7 @@ class Backend():
         dialog.run()
         dialog.destroy()
         
-    def askString(self, args):
+    def ask_string(self, args):
         parent = None
         title = args.title
         message = args.message

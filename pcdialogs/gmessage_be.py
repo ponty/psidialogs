@@ -19,16 +19,16 @@ class Backend():
         options['-buttons'] = buttons
         options['-default'] = buttons.split(',')[not bool(args.default)]
         return self._call(args, options, useReturnCode=1)
-    def askOkCancel(self, args):
+    def ask_ok_cancel(self, args):
         return bool(self._question('GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0', args))
-    def askYesNo(self, args):
+    def ask_yes_no(self, args):
         return bool(self._question('GTK_STOCK_YES:1,GTK_STOCK_NO:0', args))
-    def buttonChoice(self, args):
+    def button_choice(self, args):
         buttons = ','.join( [ '_%s:%d' % (x,i) for x,i in zip(args.choices, count()) ])
         result = self._question(buttons, args)
         return args.choices[result]
         
-    def askString(self, args):
+    def ask_string(self, args):
         options = {}
 ##        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
 ##        options['-default'] = 'GTK_STOCK_OK'

@@ -3,129 +3,193 @@ Screenshots
 
 ..  [[[cog
 ..  import pcdialogs
-..  backends='easygui wxlibdialogs tk'.split()
-..  functions='message warning error'.split()
+..  backends='easygui wxlibdialogs'.split()
+..  functions=pcdialogs.function_names
 ..  for f in functions:
 ..    cog.outl('')
-..    cog.outl('---------')
+..    cog.outl('------------------------')
 ..    cog.outl(f)
-..    cog.outl('---------')
+..    cog.outl('------------------------')
 ..    cog.outl('')
 ..    for b in backends:
 ..      cog.outl('')
-..      cog.outl(b)
-..      cog.outl('---------')
-..      cog.outl('')
+..      #cog.outl(b)
+..      #cog.outl('------------------------')
+..      #cog.outl('')
 ..      cog.outl('.. program-screenshot:: python -m pcdialogs.demo.demo -b %s -f %s'  % (b,f))
-..      cog.outl('      :prompt:')
-..      cog.outl('      :stdout:')
-..      cog.outl('      :stderr:')
+..      #cog.outl('      :prompt:')
+..      #cog.outl('      :stdout:')
+..      #cog.outl('      :stderr:')
 ..      cog.outl('      :wait: 1')
 ..      cog.outl('')
 ..  ]]]
 
----------
+------------------------
 message
----------
+------------------------
 
-
-easygui
----------
 
 .. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f message
-      :prompt:
-      :stdout:
-      :stderr:
       :wait: 1
 
-
-wxlibdialogs
----------
 
 .. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f message
-      :prompt:
-      :stdout:
-      :stderr:
       :wait: 1
 
 
-tk
----------
+------------------------
+ask_string
+------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f message
-      :prompt:
-      :stdout:
-      :stderr:
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_string
       :wait: 1
 
 
----------
-warning
----------
-
-
-easygui
----------
-
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f warning
-      :prompt:
-      :stdout:
-      :stderr:
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_string
       :wait: 1
 
 
-wxlibdialogs
----------
+------------------------
+ask_file
+------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f warning
-      :prompt:
-      :stdout:
-      :stderr:
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_file
       :wait: 1
 
 
-tk
----------
-
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f warning
-      :prompt:
-      :stdout:
-      :stderr:
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_file
       :wait: 1
 
 
----------
+------------------------
+ask_folder
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_folder
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_folder
+      :wait: 1
+
+
+------------------------
+choice
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f choice
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f choice
+      :wait: 1
+
+
+------------------------
+multi_choice
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f multi_choice
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f multi_choice
+      :wait: 1
+
+
+------------------------
+text
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f text
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f text
+      :wait: 1
+
+
+------------------------
 error
----------
+------------------------
 
-
-easygui
----------
 
 .. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f error
-      :prompt:
-      :stdout:
-      :stderr:
       :wait: 1
 
-
-wxlibdialogs
----------
 
 .. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f error
-      :prompt:
-      :stdout:
-      :stderr:
       :wait: 1
 
 
-tk
----------
+------------------------
+warning
+------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f error
-      :prompt:
-      :stdout:
-      :stderr:
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f warning
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f warning
+      :wait: 1
+
+
+------------------------
+ask_files
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_files
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_files
+      :wait: 1
+
+
+------------------------
+ask_ok_cancel
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_ok_cancel
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_ok_cancel
+      :wait: 1
+
+
+------------------------
+ask_yes_no
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_yes_no
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_yes_no
+      :wait: 1
+
+
+------------------------
+button_choice
+------------------------
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f button_choice
+      :wait: 1
+
+
+.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f button_choice
       :wait: 1
 
 ..  [[[end]]]

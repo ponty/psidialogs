@@ -13,7 +13,7 @@ class Backend():
 ##]]]
 ## for cog indent
     
-    def askString(self, args):
+    def ask_string(self, args):
         """generated function"""
         return tkSimpleDialog.askstring(prompt=args.message, title=args.title)
 ## for cog indent

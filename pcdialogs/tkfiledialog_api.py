@@ -33,26 +33,20 @@ def asksaveasfile(mode = "w", **options):
         return open(filename, mode)
     return None
 
-
-##[[[cog
-##   import apigen
-##   apigen.generateApi('tkfiledialog', 'tkFileDialog')
-##]]]
 def askopenfilenames(**options):
     """Original doc: Ask for multiple filenames to open
 
     Returns a list of filenames or empty list if
     cancel button selected
     """
-    return common_api.askFilesForOpen()
+    return common_api.ask_files()
 def askopenfilename(**options):
     """Original doc: Ask for a filename to open"""
-    return common_api.askFileForOpen()
+    return common_api.ask_file(save=False)
 def askdirectory(**options):
     """Original doc: Ask for a directory, and return the file name"""
-    return common_api.askFolder()
+    return common_api.ask_folder()
 def asksaveasfilename(**options):
     """Original doc: Ask for a filename to save as"""
-    return common_api.askFileForSave()
-##[[[end]]] 
+    return common_api.ask_file(save=True)
 

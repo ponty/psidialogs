@@ -9,36 +9,33 @@ class Backend():
     def error(self, args):
         reply = QtGui.QMessageBox.critical(None, args.title,   args.message)
         
-    def askOkCancel(self, args):
+    def ask_ok_cancel(self, args):
         reply = QtGui.QMessageBox.question(None, args.title,   args.message, QtGui.QMessageBox.Ok, QtGui.QMessageBox.Cancel)
         return (reply == QtGui.QMessageBox.Ok)
     
-    def askYesNo(self, args):
+    def ask_yes_no(self, args):
         reply = QtGui.QMessageBox.question(None, args.title,   args.message, QtGui.QMessageBox.Yes, QtGui.QMessageBox.No)
         return (reply == QtGui.QMessageBox.Yes)
         
-    def askFolder(self, args):
+    def ask_folder(self, args):
         result= QtGui.QFileDialog.getExistingDirectory(None, args.title,)
         if result:
             return str(result)
         
-    def askFileForSave(self, args):
-        result= QtGui.QFileDialog.getSaveFileName(None, args.title,)
+    def ask_file(self, args):
+        if args.save:
+            result= QtGui.QFileDialog.getSaveFileName(None, args.title,)
+        else:
+            result= QtGui.QFileDialog.getOpenFileName(None, args.title,)
         if result:
             return str(result)
-        
 
-    def askFileForOpen(self, args):
-        result= QtGui.QFileDialog.getOpenFileName(None, args.title,)
-        if result:
-            return str(result)
-        
-    def askFilesForOpen(self, args):
+    def ask_files(self, args):
         result = QtGui.QFileDialog.getOpenFileNames(None, args.title,)
         if result:
             return [ str(x) for x in result ]
         
-    def askString(self, args):
+    def ask_string(self, args):
         (result, ok) =  QtGui.QInputDialog.getText(None, args.title,  args.message, )
         if ok:
             return str(result)

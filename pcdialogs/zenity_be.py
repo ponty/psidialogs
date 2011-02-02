@@ -1,18 +1,32 @@
-from wrapcli import call
+from pcdialogs.proc import Process
 import tempfile
 class Backend():
-    def _call(self, args, options, useReturnCode=False, extraargs= []):
+    def _call(self, args, options, useReturnCode=False, extraargs=[]):
         if args.title:
             options["--title"] = args.title
-        result = call('zenity', extraargs, options, useReturnCode=useReturnCode)
-        if result == '' :
+        def dict2list(d):
+            ls=[]
+            for k,v in d.items():
+                if k:
+                    ls+=[k]
+                if v:
+                    ls+=[v]
+            return ls
+        #print ['zenity']  , dict2list(options) , extraargs
+        cmd = ['zenity']  + dict2list(options) + extraargs
+        p = Process()
+        result = p.call(cmd)
+        if useReturnCode:
+            return result
+        result = p.stdout.strip()
+        if not result:
             result = None
         return result
         
     def _message(self, args, kw):
         options = {}
-        options["--%s"  % kw] =  None
-        options["--text" ] =  args.message
+        options["--%s" % kw] = None
+        options["--text" ] = args.message
         return self._call(args, options)
 
     def text(self, args):
@@ -20,8 +34,8 @@ class Backend():
         f = tempfile.NamedTemporaryFile()
         f.write(args.text)
         f.flush()
-        options["--text-info"] =  None
-        options["--filename" ] =  f.name
+        options["--text-info"] = None
+        options["--filename" ] = f.name
         result = self._call(args, options)
         f.close()
         return result
@@ -37,30 +51,27 @@ class Backend():
     
     def _entry(self, args, pw):
         options = {}
-        options["--entry" ] =  None
-        options["--text" ] =  args.message
+        options["--entry" ] = None
+        options["--text" ] = args.message
         if pw:
-            options["--hide-text" ] =  None
+            options["--hide-text" ] = None
         if args.default:
-            options["--entry-text" ] =  args.default 
+            options["--entry-text" ] = args.default 
         return self._call(args, options)
         
-    def askString(self, args):
+    def ask_string(self, args):
         return self._entry(args, pw=0)
         
-    def askPassword(self, args):
-        return self._entry(args, pw=1)
-
     def _file(self, args, multi):
         options = {}
         separator = '|'
-        options["--file-selection" ] =  None
-        options["--text" ] =  args.message
+        options["--file-selection" ] = None
+        options["--text" ] = args.message
         if multi:
-            options["--multiple" ] =  None
-            options["--separator" ] =  separator
+            options["--multiple" ] = None
+            options["--separator" ] = separator
         if args.default:
-            options["--filename" ] =  args.default 
+            options["--filename" ] = args.default 
         result = self._call(args, options)
         if result and multi:
             result = result.split(separator)
@@ -69,49 +80,42 @@ class Backend():
     def _choice(self, args, multi):
         options = {}
         separator = '|'
-        options["--list" ] =  None
-        options["--text" ] =  args.message
+        options["--list" ] = None
+        options["--text" ] = args.message
         if multi:
-            options["--multiple" ] =  None
-            options["--checklist" ] =  None
-            options["--separator" ] =  separator
+            options["--multiple" ] = None
+            options["--checklist" ] = None
+            options["--separator" ] = separator
 
             extraargs = ["--column" , 'Select', "--column" , 'Item']
             for x in args.choices:
-                extraargs  += ['FALSE', x] 
+                extraargs += ['FALSE', x] 
         else:
-            extraargs =  ["--column" , 'Item'] + args.choices
+            extraargs = ["--column" , 'Item'] + args.choices
         result = self._call(args, options, extraargs=extraargs)
         if result and multi:
             result = result.split(separator)
         return result
         
 
-    def askFileForOpen(self, args):
+    def ask_file(self, args):
         return self._file(args, multi=0)
     
-    def askFileForSave(self, args):
-        return self._file(args, multi=0)
         
-    def askFilesForOpen(self, args):
+    def ask_files(self, args):
         return self._file(args, multi=1)
 
-    def askOkCancel(self, args):
+    def ask_ok_cancel(self, args):
         options = {}
-        options["--question" ] =  None
-        options["--text" ] =  args.message
+        options["--question" ] = None
+        options["--text" ] = args.message
         result = self._call(args, options, useReturnCode=1)
         result = not result
         return result
-        
-    def askDate(self, args):
-        options = {}
-        options["--calendar" ] =  None
-        return self._call(args, options)
 
     def choice(self, args):
         return self._choice(args, multi=0)
         
-    def multiChoice(self, args):
+    def multi_choice(self, args):
         return self._choice(args, multi=1)
 

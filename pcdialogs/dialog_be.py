@@ -1,9 +1,9 @@
 import dialog , operator
 from functools import partial                
 from myfunctools import changeArg, changeReturnValue
-from decorator import decorator
+#from decorator import decorator
 
-@decorator
+#@decorator
 def wrapper(f, self, args):
     MAX_LINES = 4
     MAX_LINE_LENGTH = 100
@@ -15,6 +15,7 @@ def wrapper(f, self, args):
     return f(self, args)
     
 class Backend():
+    ubuntu_package='python-dialog'
     def __init__(self):
         self.dlg =dialog.Dialog()
         
@@ -32,80 +33,43 @@ class Backend():
         self.dlg.inputbox = handleReturn(self.dlg.inputbox)
         self.dlg.passwordbox = handleReturn(self.dlg.passwordbox)
 
-##[[[cog
-##   import apigen
-##   apigen.generateBackend('dialog', 'self.dlg', 'wrapper')
-##]]]
-## for cog indent
-    
     @wrapper
     def message(self, args):
         """generated function"""
         return self.dlg.msgbox(text=args.message, title=args.title)
-## for cog indent
     
     @wrapper
-    def askString(self, args):
+    def ask_string(self, args):
         """generated function"""
         return self.dlg.inputbox(init=args.default, text=args.message, title=args.title)
-## for cog indent
     
     @wrapper
-    def askPassword(self, args):
-        """generated function"""
-        return self.dlg.passwordbox(init=args.default, text=args.message, title=args.title)
-## for cog indent
-    
-    @wrapper
-    def askFileForOpen(self, args):
+    def ask_file(self, args):
         """generated function"""
         return self.dlg.fselect(filepath=args.default, title=args.title)
-## for cog indent
     
     @wrapper
-    def askFileForSave(self, args):
-        """generated function"""
-        return self.dlg.fselect(filepath=args.default, title=args.title)
-## for cog indent
-    
-    @wrapper
-    def askFolder(self, args):
+    def ask_folder(self, args):
         """generated function"""
         return self.dlg.fselect(filepath=args.default, title=args.ok)
-## for cog indent
     
     @wrapper
     def choice(self, args):
         """generated function"""
         return self.dlg.menu(text=args.message, title=args.title, choices=args.choices)
-## for cog indent
     
     @wrapper
-    def multiChoice(self, args):
+    def multi_choice(self, args):
         """generated function"""
         return self.dlg.checklist(text=args.message, title=args.title, choices=args.choices)
-## for cog indent
     
     @wrapper
     def text(self, args):
         """generated function"""
         return self.dlg.scrollbox(text=args.text, title=args.title)
-## for cog indent
     
     @wrapper
-    def askYesNo(self, args):
+    def ask_yes_no(self, args):
         """generated function"""
         return self.dlg.yesno(text=args.message, title=args.title)
-## for cog indent
-    
-    @wrapper
-    def startProgress(self, args):
-        """generated function"""
-        return self.dlg.gauge_start(text=args.message, percent=args.percentage, title=args.title)
-    
-    @wrapper
-    def stopProgress(self, args):
-        """generated function"""
-        return self.dlg.gauge_stop()
-##[[[end]]] 
 

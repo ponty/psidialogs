@@ -7,7 +7,7 @@ AskYesNoCancel(question, default) -- display a question and Yes, No and Cancel b
 GetArgv(optionlist, commandlist) -- fill a sys.argv-like list using a dialog
 AskFileForOpen(...) -- Ask the user for an existing file
 AskFileForSave(...) -- Ask the user for an output file
-AskFolder(...) -- Ask the user to select a folder
+ask_folder(...) -- Ask the user to select a folder
 bar = Progress(label, maxvalue) -- Display a progress bar
 bar.set(value) -- Set value
 bar.inc( *amount ) -- increment value by amount (default=1)
@@ -20,7 +20,7 @@ Based upon STDWIN dialogs with the same names and functions.
 
 
 __all__ = ['Message', 'AskString', 'AskPassword', 'AskYesNoCancel',
-    'GetArgv', 'AskFileForOpen', 'AskFileForSave', 'AskFolder',
+    'GetArgv', 'AskFileForOpen', 'AskFileForSave', 'ask_folder',
     'ProgressBar']
 
 
@@ -264,7 +264,7 @@ def AskFileForSave(
 
 
 
-def AskFolder(
+def ask_folder(
         message=None,
         # From here on the order is not documented
         version=None,
