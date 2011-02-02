@@ -1,7 +1,6 @@
 import pcdialogs 
 from pcdialogs import cli4func
 import logging
-__version__='0.1'
 
 def testdata():
     f = open(__file__)
@@ -47,8 +46,6 @@ def selectbackend(backend=None, title='', **kwargs):
             selectfunc(title, **kwargs)
         
 def demo(backend=None, function=None, title=''):
-##    if debug:
-##        logging.basicConfig(level=logging.DEBUG)
     selectbackend(backend=backend, function=function, title=title)    
     
-cli4func.main(demo, debug=1)
+cli4func.main(demo)
