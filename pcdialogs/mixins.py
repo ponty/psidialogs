@@ -30,9 +30,8 @@ class AllMixin:
         lines = [ '[%s] %s' % x  for x in zip(count(), args.choices) ]
         args.message += '\n' + '\n'.join(lines) 
         args.message += '\nSelect:'
-        args.min = None
-        args.max = None
 ##        self.text(args)
+        args.default=str(args.default)
         i = self.ask_string(args)
         if not i:
             return None

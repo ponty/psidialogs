@@ -6,7 +6,7 @@ import cdialogs,cli4func
 
 def main(backend = ''):
     if not backend:
-        backend = cdialogs.choice(cdialogs.allbackends(), 'Select backend!')
+        backend = cdialogs.choice(cdialogs.all_backends(), 'Select backend!')
     cdialogs.setbackend( backend ) 
     _test()
     

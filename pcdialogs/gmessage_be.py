@@ -1,12 +1,28 @@
-from wrapcli import call
 from itertools import count
+from pcdialogs.proc import Process
 
 class Backend():
     def _call(self, args, options, useReturnCode=0):
         if args.title:
             options["-name"] = args.title
         options['-center'] = None
-        return call('gmessage', [args.message], options, useReturnCode=useReturnCode)
+        def dict2list(d):
+            ls = []
+            for k, v in d.items():
+                if k:
+                    ls += [k]
+                if v:
+                    ls += [v]
+            return ls
+        cmd = ['gmessage'] + [args.message] + dict2list(options) 
+        p = Process()
+        result = p.call(cmd)
+        if useReturnCode:
+            return result
+        result = p.stdout.strip()
+        if not result:
+            result = None
+        return result
         
     def message(self, args):
         options = {}
@@ -24,7 +40,7 @@ class Backend():
     def ask_yes_no(self, args):
         return bool(self._question('GTK_STOCK_YES:1,GTK_STOCK_NO:0', args))
     def button_choice(self, args):
-        buttons = ','.join( [ '_%s:%d' % (x,i) for x,i in zip(args.choices, count()) ])
+        buttons = ','.join([ '_%s:%d' % (x, i) for x, i in zip(args.choices, count()) ])
         result = self._question(buttons, args)
         return args.choices[result]
         
@@ -33,9 +49,9 @@ class Backend():
 ##        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
 ##        options['-default'] = 'GTK_STOCK_OK'
         if args.default:
-            options["-entrytext" ] =  args.default 
+            options["-entrytext" ] = args.default 
         else:
-            options["-entry" ] =  None
+            options["-entry" ] = None
         return self._call(args, options)
         
 

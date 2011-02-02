@@ -23,7 +23,7 @@ class Backend():
         return easygui.choicebox(msg=args.message, title=args.title, choices=args.choices)
     
     def multi_choice(self, args):    
-        return easygui.multchoicebox(message=args.message, title=args.title, choices=args.choices)
+        return easygui.multchoicebox(msg=args.message, title=args.title, choices=args.choices)
     
     def text(self, args):        
         return easygui.textbox(text=args.text, msg=args.message, title=args.title)

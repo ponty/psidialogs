@@ -11,7 +11,7 @@ _BACKEND = 'easygui'
 BACKEND_POSTFIX = '_be'
 BACKEND_PATTERN = '*' + BACKEND_POSTFIX
 
-def allbackends():
+def all_backends():
     backends = modules(path(__file__).parent, pattern=BACKEND_PATTERN)
     backends = [x[:-3] for x in backends]
     return backends

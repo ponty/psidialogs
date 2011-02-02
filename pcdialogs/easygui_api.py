@@ -107,7 +107,7 @@ def integerbox(message='Enter something.', title='', argDefault=None, argLowerBo
 
 	If the user cancels the operation, the default value is returned.
 	"""
-    return common_api.askInteger(message=message, title=title, default=argDefault, min=argLowerBound, max=argUpperBound)
+    return common_api.ask_string(message=message, title=title, default=str(argDefault))
 ##[[[end]]] 
 
 # copy from easygui.py

@@ -3,7 +3,7 @@ from cdialogs.wx_api import *
 import cdialogs
 import wx
 
-cdialogs.setbackend( cdialogs.choice(cdialogs.allbackends(), 'Select backend!') )
+cdialogs.setbackend( cdialogs.choice(cdialogs.all_backends(), 'Select backend!') )
 
 if __name__ == '__main__':
     """
