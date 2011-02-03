@@ -1,27 +1,32 @@
 Screenshots
 ==================================
 
+
 ..  [[[cog
 ..  import pcdialogs
 ..  backends=pcdialogs.all_backends()
-..  functions=pcdialogs.function_names
+..  functions=pcdialogs.FUNCTION_NAMES
 ..  for f in functions:
-..    if 'file' in f:
+..    if 'file' in f or 'folder' in f:
 ..         continue
 ..    cog.outl('')
+..    cog.outl('.. _%s:' % f)
+..    cog.outl('')
 ..    cog.outl('------------------------')
-..    cog.outl(f)
+..    cog.outl(f+'()')
 ..    cog.outl('------------------------')
+..    cog.outl('')
+..    cog.outl(':func:`API<pcdialogs.%s>`' % f)
 ..    cog.outl('')
 ..    for b in backends:
 ..      cog.outl('')
-..      cog.outl(b)
+..      cog.outl(b.backend)
 ..      cog.outl('------------------------')
 ..      cog.outl('')
-..      cmd = 'python -m pcdialogs.demo.demo -b %s -f %s'  % (b,f)
-..      if b in ['clipy','dialog']:
-..         cmd='xterm -e "%s ; read"' % cmd
-..      cog.outl('.. program-screenshot:: ' + cmd )
+..      cmd = 'python -m pcdialogs.demo.demo -b %s -f %s'  % (b.name,f)
+..      if hasattr(b,'console') and b.console:
+..         cmd='xterm -e "%s"' % cmd
+..      #cog.outl('.. program-screenshot:: ' + cmd )
 ..      #cog.outl('      :scale: 70 %')
 ..      cog.outl('      :prompt:')
 ..      #cog.outl('      :stdout:')
@@ -30,849 +35,722 @@ Screenshots
 ..      cog.outl('')
 ..  ]]]
 
-------------------------
-message
-------------------------
+.. _ask_ok_cancel:
 
-
-gtk
 ------------------------
-
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f message
-      :prompt:
-      :wait: 1
-
-
-wxlibdialogs
+ask_ok_cancel()
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f message
-      :prompt:
-      :wait: 1
+:func:`API<pcdialogs.ask_ok_cancel>`
 
 
-tk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f message
       :prompt:
       :wait: 1
 
 
-qt
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f message
       :prompt:
       :wait: 1
 
 
-dialog
+console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f message ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+gMessage
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f message ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+TkInter
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f message
       :prompt:
       :wait: 1
 
 
-easygui
+Python Dialog
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f message
       :prompt:
       :wait: 1
 
 
-zenity
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f message
       :prompt:
       :wait: 1
-
-
-------------------------
-ask_string
-------------------------
 
 
-gtk
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f ask_string
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_string
       :prompt:
       :wait: 1
-
-
-tk
-------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f ask_string
-      :prompt:
-      :wait: 1
 
+.. _ask_string:
 
-qt
 ------------------------
-
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f ask_string
-      :prompt:
-      :wait: 1
-
-
-dialog
+ask_string()
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f ask_string ; read"
-      :prompt:
-      :wait: 1
+:func:`API<pcdialogs.ask_string>`
 
 
-clipy
+Zenity
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f ask_string ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f ask_string
       :prompt:
       :wait: 1
 
 
-easygui
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_string
       :prompt:
       :wait: 1
 
 
-zenity
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f ask_string
       :prompt:
       :wait: 1
-
-
-------------------------
-ask_folder
-------------------------
 
 
-gtk
+TkInter
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f ask_folder
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+Python Dialog
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_folder
       :prompt:
       :wait: 1
 
 
-tk
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f ask_folder
       :prompt:
       :wait: 1
 
 
-qt
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f ask_folder
       :prompt:
       :wait: 1
 
 
-dialog
+PyGTK
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f ask_folder ; read"
       :prompt:
       :wait: 1
-
-
-clipy
-------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f ask_folder ; read"
-      :prompt:
-      :wait: 1
 
+.. _ask_yes_no:
 
-gmessage
 ------------------------
-
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f ask_folder
-      :prompt:
-      :wait: 1
-
-
-easygui
+ask_yes_no()
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_folder
-      :prompt:
-      :wait: 1
+:func:`API<pcdialogs.ask_yes_no>`
 
 
-zenity
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f ask_folder
       :prompt:
       :wait: 1
-
-
-------------------------
-choice
-------------------------
 
 
-gtk
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f choice
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f choice
       :prompt:
       :wait: 1
 
 
-tk
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f choice
       :prompt:
       :wait: 1
 
 
-qt
+TkInter
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f choice
       :prompt:
       :wait: 1
 
 
-dialog
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f choice ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+wxPython
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f choice ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f choice
       :prompt:
       :wait: 1
 
 
-easygui
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f choice
       :prompt:
       :wait: 1
-
-
-zenity
-------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f choice
-      :prompt:
-      :wait: 1
 
+.. _button_choice:
 
 ------------------------
-multi_choice
+button_choice()
 ------------------------
+
+:func:`API<pcdialogs.button_choice>`
 
 
-gtk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f multi_choice
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f multi_choice
       :prompt:
       :wait: 1
 
 
-tk
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f multi_choice
       :prompt:
       :wait: 1
 
 
-qt
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f multi_choice
       :prompt:
       :wait: 1
 
 
-dialog
+TkInter
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f multi_choice ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f multi_choice ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f multi_choice
       :prompt:
       :wait: 1
 
 
-easygui
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f multi_choice
       :prompt:
       :wait: 1
 
 
-zenity
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f multi_choice
       :prompt:
       :wait: 1
 
 
+.. _choice:
+
 ------------------------
-text
+choice()
 ------------------------
+
+:func:`API<pcdialogs.choice>`
 
 
-gtk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f text
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f text
       :prompt:
       :wait: 1
 
 
-tk
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f text
       :prompt:
       :wait: 1
 
 
-qt
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f text
       :prompt:
       :wait: 1
 
 
-dialog
+TkInter
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f text ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f text ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f text
       :prompt:
       :wait: 1
 
 
-easygui
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f text
       :prompt:
       :wait: 1
 
 
-zenity
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f text
       :prompt:
       :wait: 1
 
 
+.. _error:
+
 ------------------------
-error
+error()
 ------------------------
+
+:func:`API<pcdialogs.error>`
 
 
-gtk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f error
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f error
       :prompt:
       :wait: 1
 
 
-tk
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f error
       :prompt:
       :wait: 1
 
 
-qt
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f error
       :prompt:
       :wait: 1
 
 
-dialog
+TkInter
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f error ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f error ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f error
       :prompt:
       :wait: 1
 
 
-easygui
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f error
       :prompt:
       :wait: 1
 
 
-zenity
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f error
       :prompt:
       :wait: 1
 
 
+.. _message:
+
 ------------------------
-warning
+message()
 ------------------------
+
+:func:`API<pcdialogs.message>`
 
 
-gtk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f warning
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f warning
       :prompt:
       :wait: 1
 
 
-tk
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f warning
       :prompt:
       :wait: 1
 
 
-qt
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f warning
       :prompt:
       :wait: 1
 
 
-dialog
+TkInter
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f warning ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f warning ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f warning
       :prompt:
       :wait: 1
 
 
-easygui
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f warning
       :prompt:
       :wait: 1
 
 
-zenity
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f warning
       :prompt:
       :wait: 1
 
 
+.. _multi_choice:
+
 ------------------------
-ask_ok_cancel
+multi_choice()
 ------------------------
+
+:func:`API<pcdialogs.multi_choice>`
 
 
-gtk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f ask_ok_cancel
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_ok_cancel
       :prompt:
       :wait: 1
 
 
-tk
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f ask_ok_cancel
       :prompt:
       :wait: 1
 
 
-qt
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f ask_ok_cancel
       :prompt:
       :wait: 1
 
 
-dialog
+TkInter
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f ask_ok_cancel ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f ask_ok_cancel ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f ask_ok_cancel
       :prompt:
       :wait: 1
 
 
-easygui
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_ok_cancel
       :prompt:
       :wait: 1
 
 
-zenity
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f ask_ok_cancel
       :prompt:
       :wait: 1
 
 
+.. _text:
+
 ------------------------
-ask_yes_no
+text()
 ------------------------
+
+:func:`API<pcdialogs.text>`
 
 
-gtk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f ask_yes_no
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f ask_yes_no
       :prompt:
       :wait: 1
 
 
-tk
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f ask_yes_no
       :prompt:
       :wait: 1
 
 
-qt
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f ask_yes_no
       :prompt:
       :wait: 1
 
 
-dialog
+TkInter
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f ask_yes_no ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f ask_yes_no ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f ask_yes_no
       :prompt:
       :wait: 1
 
 
-easygui
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f ask_yes_no
       :prompt:
       :wait: 1
 
 
-zenity
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f ask_yes_no
       :prompt:
       :wait: 1
 
 
+.. _warning:
+
 ------------------------
-button_choice
+warning()
 ------------------------
+
+:func:`API<pcdialogs.warning>`
 
 
-gtk
+Zenity
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gtk -f button_choice
       :prompt:
       :wait: 1
 
 
-wxlibdialogs
+EasyGui
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b wxlibdialogs -f button_choice
       :prompt:
       :wait: 1
 
 
-tk
+console
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b tk -f button_choice
       :prompt:
       :wait: 1
 
 
-qt
+gMessage
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b qt -f button_choice
       :prompt:
       :wait: 1
 
 
-dialog
+TkInter
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b dialog -f button_choice ; read"
       :prompt:
       :wait: 1
 
 
-clipy
+Python Dialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m pcdialogs.demo.demo -b clipy -f button_choice ; read"
       :prompt:
       :wait: 1
 
 
-gmessage
+wxPython
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b gmessage -f button_choice
       :prompt:
       :wait: 1
 
 
-easygui
+PyQt
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b easygui -f button_choice
       :prompt:
       :wait: 1
 
 
-zenity
+PyGTK
 ------------------------
 
-.. program-screenshot:: python -m pcdialogs.demo.demo -b zenity -f button_choice
       :prompt:
       :wait: 1
 

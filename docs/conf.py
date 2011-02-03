@@ -21,8 +21,11 @@ import sphinx
 import sys
 from path import path
 
-sys.path.append(path('..').abspath())
-#import abandi
+#sys.path.append(path(__name__).abspath())
+proot=(path(__file__).dirname().dirname() ).abspath()
+#proot=(path('..')).abspath()
+sys.path.append(proot)
+import pcdialogs
 #version = abandi.__version__
 #import logging
 #logging.basicConfig(level=logging.DEBUG)
@@ -33,6 +36,8 @@ extensions = [
      'sphinx.ext.autodoc',
      'sphinxcontrib.programoutput',
      'sphinxcontrib.programscreenshot',
+     'sphinx.ext.graphviz',
+     'sphinx.ext.autosummary',
     ]
 intersphinx_mapping = {'http://docs.python.org/': None}
 

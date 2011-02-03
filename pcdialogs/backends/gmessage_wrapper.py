@@ -1,7 +1,30 @@
 from itertools import count
+from pcdialogs.extract_version import extract_version
 from pcdialogs.proc import Process
+from yapsy.IPlugin import IPlugin
 
-class Backend():
+BACKEND_VERSION = None
+
+def check():
+    global BACKEND_VERSION
+    p = Process()
+    ret = p.call(['gmessage', '--version'])
+    BACKEND_VERSION = extract_version(p.stdout.replace('-', ''))
+    return (ret == 0)
+
+if not check():
+    raise Exception('gmessage not found!')
+
+class Backend(IPlugin):
+    backend = 'gMessage'
+    backend_version = BACKEND_VERSION
+
+    def __init__(self):
+        pass
+        
+    def activate(self):
+        pass
+        
     def _call(self, args, options, useReturnCode=0):
         if args.title:
             options["-name"] = args.title

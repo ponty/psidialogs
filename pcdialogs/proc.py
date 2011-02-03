@@ -1,13 +1,15 @@
 import logging
 import subprocess
 
-log=logging.getLogger(__name__)
+#log=logging.getLogger(__name__)
+log=logging
 class Process():
     '''subprocess wrapper'''
     def call(self, cmd):
         '''start command and wait until it ends'''
         self.cmd = cmd
         log.debug('starting command: %s' % str(cmd))
+        log.debug('concatenated command: %s' % ' '.join(cmd))
         self.process = subprocess.Popen(cmd,
                                         stdout=subprocess.PIPE,
                                         stderr=subprocess.PIPE,

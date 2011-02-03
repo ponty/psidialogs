@@ -23,7 +23,7 @@ class AllMixin:
         args = args.copy()
         args.message = args.message + '\n' + args.text 
         args.text = None
-        return self.message(args)
+        self.message(args)
         
     def choice(self, args):
         args = args.copy()
@@ -42,10 +42,10 @@ class AllMixin:
             return None
 
     def error(self, args):
-        return self.warning(args)
+        self.warning(args)
 
     def warning(self, args):
-        return self.message(args)
+        self.message(args)
 
     def ask_file(self, args):
         return self.ask_string(args)
@@ -55,8 +55,8 @@ class AllMixin:
 
     def button_choice(self, args):
         result = self.choice(args)
-        if result is None:
-            result = args.choices[0]
+        #if result is None:
+        #    result = args.choices[0]
         return result
 
     def _yesno(self, args, choices):

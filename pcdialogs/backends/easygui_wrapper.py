@@ -1,11 +1,12 @@
 import easygui
+from yapsy.IPlugin import IPlugin
 
-class Backend():        
-    def version(self):
-        return str(easygui.egversion)
-        
+class Backend(IPlugin):        
+    backend='EasyGui'
+    backend_version=easygui.egversion
+    
     def message(self, args):        
-        return easygui.msgbox(msg=args.message, ok_button=args.ok, title=args.title)
+        easygui.msgbox(msg=args.message, ok_button=args.ok, title=args.title)
     
     def ask_string(self, args):        
         return easygui.enterbox(default=args.default, msg=args.message, title=args.title)
@@ -26,10 +27,11 @@ class Backend():
         return easygui.multchoicebox(msg=args.message, title=args.title, choices=args.choices)
     
     def text(self, args):        
-        return easygui.textbox(text=args.text, msg=args.message, title=args.title)
+        easygui.textbox(text=args.text, msg=args.message, title=args.title)
     
     def ask_yes_no(self, args):       
-        return easygui.ynbox(msg=args.message, title=args.title)
+        x= easygui.ynbox(msg=args.message, title=args.title)
+        return bool(x)
     
     def button_choice(self, args):
         return easygui.buttonbox(msg=args.message, title=args.title, choices=args.choices)

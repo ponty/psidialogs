@@ -1,30 +1,26 @@
 from attribdict import attribdict
-from dottedimport import dottedimport
 from mixins import AllMixin
 from path import path
-from submodules import modules
+from pcdialogs.plugin_loader import get_plugin, get_all_plugins
 import logging
 
-_BACKEND = 'easygui'
+_BACKEND = None
 
-
-BACKEND_POSTFIX = '_be'
-BACKEND_PATTERN = '*' + BACKEND_POSTFIX
 
 def all_backends():
-    backends = modules(path(__file__).parent, pattern=BACKEND_PATTERN)
-    backends = [x[:-3] for x in backends]
-    return backends
+    return get_all_plugins()
 
 def get_backend():
-    return _BACKEND
+    return _BACKEND.name
 
-def set_backend(bname):
+def set_backend(backend_preference=['easygui'], force_backend=None):
     global _BACKEND
-    _BACKEND=bname
+    _BACKEND = get_plugin(backend_preference=backend_preference, force_backend=force_backend)
     
 def _get_backend():
-    return dottedimport('pcdialogs' + '.' + _BACKEND + BACKEND_POSTFIX)
+    if not _BACKEND:
+        set_backend()
+    return _BACKEND
 
 def opendialog(funcname, argdict):
     for (k, v) in argdict.items():
@@ -34,14 +30,12 @@ def opendialog(funcname, argdict):
     logging.debug(funcname)
     logging.debug(argdict)
     d = attribdict(argdict)
-    class Backend(_get_backend().Backend, AllMixin):
-        pass
-    f = eval('Backend().%s' % funcname)
-
-    def func(args):
-        return f(args)
-    
-    return func(d)
-
-def version(funcname, argdict):
-    return _getbackend().Backend.version()
+    b = _get_backend()
+    f = b.__class__.__dict__.get(funcname)
+    if not f:
+        class Backend(b.__class__, AllMixin):
+            pass
+        b = Backend()
+        f = AllMixin.__dict__.get(funcname)
+   
+    return f(b,d)

@@ -1,6 +1,27 @@
+from pcdialogs.extract_version import extract_version
 from pcdialogs.proc import Process
+from yapsy.IPlugin import IPlugin
 import tempfile
-class Backend():
+
+BACKEND_VERSION = None
+
+def check():
+    global BACKEND_VERSION
+    p = Process()
+    ret = p.call(['zenity', '--version'])
+    BACKEND_VERSION = extract_version(p.stdout)
+    return (ret == 0)
+
+if not check():
+    raise Exception('zenity not found!')
+
+class Backend(IPlugin):
+    backend='Zenity'
+    backend_version = BACKEND_VERSION
+    
+    def __init__(self):
+        pass
+    
     def _call(self, args, options, useReturnCode=False, extraargs=[]):
         if args.title:
             options["--title"] = args.title
@@ -105,13 +126,21 @@ class Backend():
     def ask_files(self, args):
         return self._file(args, multi=1)
 
-    def ask_ok_cancel(self, args):
+    def _ask_question(self, args, ok, cancel):
         options = {}
         options["--question" ] = None
         options["--text" ] = args.message
+        options["--ok-label" ] = ok
+        options["--cancel-label" ] = cancel
         result = self._call(args, options, useReturnCode=1)
         result = not result
         return result
+    
+    def ask_ok_cancel(self, args):
+        return self._ask_question(args, ok='OK', cancel='Cancel')
+        
+    def ask_yes_no(self, args):
+        return self._ask_question(args, ok='Yes', cancel='No')
 
     def choice(self, args):
         return self._choice(args, multi=0)

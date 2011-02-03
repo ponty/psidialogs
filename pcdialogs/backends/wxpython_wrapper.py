@@ -1,9 +1,13 @@
-import wx.lib.dialogs 
+from yapsy.IPlugin import IPlugin
+import wx.lib.dialogs
 #import wx
 
 _app = wx.App()
             
-class Backend():
+class Backend(IPlugin):
+    backend='wxPython'
+    backend_version=wx.__version__
+    
     def message(self, args):        
         wx.lib.dialogs.messageDialog(message=args.message, title=args.title, aStyle = wx.OK | wx.CENTRE)
     

@@ -1,13 +1,13 @@
 """
 """
 
-from cdialogs.easygui_api import *
-import cdialogs,cli4func
+from pcdialogs.easygui_api import *
+import pcdialogs,pcdialogs.cli4func
 
 def main(backend = ''):
     if not backend:
-        backend = cdialogs.choice(cdialogs.all_backends(), 'Select backend!')
-    cdialogs.setbackend( backend ) 
+        backend = pcdialogs.choice(pcdialogs.all_backends(), 'Select backend!')
+    pcdialogs.set_backend( force_backend=backend ) 
     _test()
     
 TkVersion=''
