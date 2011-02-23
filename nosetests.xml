@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="nosetests" tests="77" errors="1" failures="1" skip="0"><testcase classname="test_dialogs" name="test_dialogs.test_zenity_ask_file" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_ask_folder" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_ask_ok_cancel" time="8" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_ask_string" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_ask_yes_no" time="8" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_error" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_message" time="4"><failure type="exceptions.AssertionError">Traceback (most recent call last):
+  File &quot;/usr/lib/python2.6/unittest.py&quot;, line 279, in run
+    testMethod()
+  File &quot;/usr/lib/pymodules/python2.6/nose/case.py&quot;, line 183, in runTest
+    self.test(*self.arg)
+  File &quot;&lt;string&gt;&quot;, line 32, in test_zenity_message
+  File &quot;/home/titi/aha/workspace/psidialogs/ws/psidialogs/src/tests/test_dialogs.py&quot;, line 44, in check
+    check_buttons(cmd, expect)
+  File &quot;/home/titi/aha/workspace/psidialogs/ws/psidialogs/src/tests/test_dialogs.py&quot;, line 16, in check_buttons
+    buttons = discover_buttons()
+  File &quot;/home/titi/pythonpath/discogui/buttons.py&quot;, line 28, in discover_buttons
+    tab_ls = tab_rectangles()
+  File &quot;/home/titi/pythonpath/discogui/taborder.py&quot;, line 67, in tab_rectangles
+    assert boxes[0] == ls[-1]
+AssertionError: 
+-------------------- &gt;&gt; begin captured logging &lt;&lt; --------------------
+easyprocess: DEBUG: command: [&#39;Xephyr&#39;, &#39;-br&#39;, &#39;-screen&#39;, &#39;1024x768x24&#39;, &#39;:1&#39;] (Xephyr -br -screen 1024x768x24 :1)
+easyprocess: DEBUG: process was started (pid=372)
+pyvirtualdisplay.abstractdisplay: DEBUG: DISPLAY=:1
+easyprocess: DEBUG: command: [&#39;python&#39;, &#39;-m&#39;, &#39;psidialogs.examples.opendialog&#39;, &#39;zenity&#39;, &#39;message&#39;, &#39;-m&#39;, &#39;hi&#39;] (python -m psidialogs.examples.opendialog zenity message -m hi)
+easyprocess: DEBUG: process was started (pid=375)
+pyvirtualdisplay.smartdisplay: DEBUG: sleeping 0.3 secs
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_gBXI6y.png&#39;] (scrot /tmp/screenshot_scrot_gBXI6y.png)
+easyprocess: DEBUG: process was started (pid=379)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+easyprocess: DEBUG: stopping process (pid=375 cmd=&quot;[&#39;python&#39;, &#39;-m&#39;, &#39;psidialogs.examples.opendialog&#39;, &#39;zenity&#39;, &#39;message&#39;, &#39;-m&#39;, &#39;hi&#39;]&quot;)
+easyprocess: DEBUG: process is active -&gt; sending SIGTERM
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=-15
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+easyprocess: DEBUG: command: [&#39;python&#39;, &#39;-m&#39;, &#39;psidialogs.examples.opendialog&#39;, &#39;zenity&#39;, &#39;message&#39;, &#39;-m&#39;, &#39;hi&#39;] (python -m psidialogs.examples.opendialog zenity message -m hi)
+easyprocess: DEBUG: process was started (pid=380)
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_Lj89Bb.png&#39;] (scrot /tmp/screenshot_scrot_Lj89Bb.png)
+easyprocess: DEBUG: process was started (pid=386)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_9pWrfB.png&#39;] (scrot /tmp/screenshot_scrot_9pWrfB.png)
+easyprocess: DEBUG: process was started (pid=389)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/44_img_orig.png
+easyprocess: DEBUG: command: [&#39;xdotool&#39;, &#39;key&#39;, &#39;Tab&#39;] (xdotool key Tab)
+easyprocess: DEBUG: process was started (pid=390)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_JecIJu.png&#39;] (scrot /tmp/screenshot_scrot_JecIJu.png)
+easyprocess: DEBUG: process was started (pid=391)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/45_im1.png
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/46_im2.png
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/47_img_diff.png
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/48_img_diff_filtered.png
+discogui.taborder: DEBUG: split pos found:347
+easyprocess: DEBUG: command: [&#39;xdotool&#39;, &#39;key&#39;, &#39;Tab&#39;] (xdotool key Tab)
+easyprocess: DEBUG: process was started (pid=402)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_qsLzlY.png&#39;] (scrot /tmp/screenshot_scrot_qsLzlY.png)
+easyprocess: DEBUG: process was started (pid=403)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/49_im1.png
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/50_im2.png
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/51_img_diff.png
+discogui.imglog: DEBUG: image was saved:/tmp/img_log/img_debug_NrUTM_/52_img_diff_filtered.png
+discogui.taborder: DEBUG: split pos found:339
+easyprocess: DEBUG: stopping process (pid=380 cmd=&quot;[&#39;python&#39;, &#39;-m&#39;, &#39;psidialogs.examples.opendialog&#39;, &#39;zenity&#39;, &#39;message&#39;, &#39;-m&#39;, &#39;hi&#39;]&quot;)
+easyprocess: DEBUG: process is active -&gt; sending SIGTERM
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=-15
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+--------------------- &gt;&gt; end captured logging &lt;&lt; ---------------------
+</failure></testcase><testcase classname="test_dialogs" name="test_dialogs.test_zenity_multi_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_text" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_zenity_warning" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_ask_file" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_ask_folder" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_ask_ok_cancel" time="11"><error type="pyvirtualdisplay.smartdisplay.DisplayError">Traceback (most recent call last):
+  File &quot;/usr/lib/python2.6/unittest.py&quot;, line 279, in run
+    testMethod()
+  File &quot;/usr/lib/pymodules/python2.6/nose/case.py&quot;, line 183, in runTest
+    self.test(*self.arg)
+  File &quot;&lt;string&gt;&quot;, line 56, in test_easygui_ask_ok_cancel
+  File &quot;/home/titi/aha/workspace/psidialogs/ws/psidialogs/src/tests/test_dialogs.py&quot;, line 35, in check
+    check_open(cmd)
+  File &quot;/home/titi/aha/workspace/psidialogs/ws/psidialogs/src/tests/test_dialogs.py&quot;, line 30, in check_open
+    EasyProcess(cmd).wrap(screen.waitgrab)()
+  File &quot;/home/titi/pythonpath/easyprocess/__init__.py&quot;, line 314, in wrapped
+    x = callable()
+  File &quot;/home/titi/pythonpath/pyvirtualdisplay/smartdisplay.py&quot;, line 62, in waitgrab
+    raise DisplayError(msg)
+DisplayError: Timeout! elapsed time:10.3 timeout:10 
+-------------------- &gt;&gt; begin captured stdout &lt;&lt; ---------------------
+wrap error, Process(cmd=[&#39;python&#39;, &#39;-m&#39;, &#39;psidialogs.examples.opendialog&#39;, &#39;easygui&#39;, &#39;ask_ok_cancel&#39;, &#39;-m&#39;, &#39;hi&#39;](python -m psidialogs.examples.opendialog easygui ask_ok_cancel -m hi) returncode=None stderr=&quot;None&quot;))
+
+--------------------- &gt;&gt; end captured stdout &lt;&lt; ----------------------
+-------------------- &gt;&gt; begin captured logging &lt;&lt; --------------------
+easyprocess: DEBUG: command: [&#39;Xephyr&#39;, &#39;-br&#39;, &#39;-screen&#39;, &#39;1024x768x24&#39;, &#39;:1&#39;] (Xephyr -br -screen 1024x768x24 :1)
+easyprocess: DEBUG: process was started (pid=435)
+pyvirtualdisplay.abstractdisplay: DEBUG: DISPLAY=:1
+easyprocess: DEBUG: command: [&#39;python&#39;, &#39;-m&#39;, &#39;psidialogs.examples.opendialog&#39;, &#39;easygui&#39;, &#39;ask_ok_cancel&#39;, &#39;-m&#39;, &#39;hi&#39;] (python -m psidialogs.examples.opendialog easygui ask_ok_cancel -m hi)
+easyprocess: DEBUG: process was started (pid=437)
+pyvirtualdisplay.smartdisplay: DEBUG: sleeping 0.3 secs
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_NQHlwm.png&#39;] (scrot /tmp/screenshot_scrot_NQHlwm.png)
+easyprocess: DEBUG: process was started (pid=442)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+pyvirtualdisplay.smartdisplay: DEBUG: screenshot is empty, next try..
+pyvirtualdisplay.smartdisplay: DEBUG: sleeping 1 secs
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_xOXaCj.png&#39;] (scrot /tmp/screenshot_scrot_xOXaCj.png)
+easyprocess: DEBUG: process was started (pid=449)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+pyvirtualdisplay.smartdisplay: DEBUG: screenshot is empty, next try..
+pyvirtualdisplay.smartdisplay: DEBUG: sleeping 2 secs
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_TIJGeh.png&#39;] (scrot /tmp/screenshot_scrot_TIJGeh.png)
+easyprocess: DEBUG: process was started (pid=484)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+pyvirtualdisplay.smartdisplay: DEBUG: screenshot is empty, next try..
+pyvirtualdisplay.smartdisplay: DEBUG: sleeping 3 secs
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_TmWSrf.png&#39;] (scrot /tmp/screenshot_scrot_TmWSrf.png)
+easyprocess: DEBUG: process was started (pid=517)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+pyvirtualdisplay.smartdisplay: DEBUG: screenshot is empty, next try..
+pyvirtualdisplay.smartdisplay: DEBUG: sleeping 4 secs
+easyprocess: DEBUG: command: [&#39;scrot&#39;, &#39;/tmp/screenshot_scrot_5rsJ62.png&#39;] (scrot /tmp/screenshot_scrot_5rsJ62.png)
+easyprocess: DEBUG: process was started (pid=533)
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=0
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=
+easyprocess: DEBUG: stopping process (pid=437 cmd=&quot;[&#39;python&#39;, &#39;-m&#39;, &#39;psidialogs.examples.opendialog&#39;, &#39;easygui&#39;, &#39;ask_ok_cancel&#39;, &#39;-m&#39;, &#39;hi&#39;]&quot;)
+easyprocess: DEBUG: process was already stopped
+easyprocess: DEBUG: process has ended
+easyprocess: DEBUG: return code=255
+easyprocess: DEBUG: stdout=
+easyprocess: DEBUG: stderr=Traceback (most recent call last):
+  File &quot;/usr/lib/python2.6/runpy.py&quot;, line 122, in _run_module_as_main
+    &quot;__main__&quot;, fname, loader, pkg_name)
+  File &quot;/usr/lib/python2.6/runpy.py&quot;, line 34, in _run_code
+    exec code in run_globals
+  File &quot;/home/titi/aha/workspace/psidialogs/ws/psidialogs/src/psidialogs/examples/opendialog.py&quot;, line 41, in &lt;module&gt;
+    cli4func.main(open)
+  File &quot;psidialogs/cli4func.py&quot;, line 96, in main
+    func(**(args.__dict__))
+  File &quot;/home/titi/aha/workspace/psidialogs/ws/psidialogs/src/psidialogs/examples/opendialog.py&quot;, line 35, in open
+    exec &#39;result = psidialogs.%s(**args)&#39; % (func)
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;psidialogs/__init__.py&quot;, line 176, in ask_ok_cancel
+    return backend_api.opendialog(&quot;ask_ok_cancel&quot; , dict(message=message, default=default, title=title))
+  File &quot;psidialogs/backend_api.py&quot;, line 23, in opendialog
+    return f(b,d)
+TypeError: &#39;NoneType&#39; object is not callable
+--------------------- &gt;&gt; end captured logging &lt;&lt; ---------------------
+</error></testcase><testcase classname="test_dialogs" name="test_dialogs.test_easygui_ask_string" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_ask_yes_no" time="6" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_error" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_message" time="21" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_multi_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_text" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_easygui_warning" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_ask_file" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_ask_folder" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_ask_ok_cancel" time="8" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_ask_string" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_ask_yes_no" time="8" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_error" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_message" time="5" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_multi_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_text" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_gmessage_warning" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_ask_file" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_ask_folder" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_ask_ok_cancel" time="7" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_ask_string" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_ask_yes_no" time="6" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_error" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_message" time="7" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_multi_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_text" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_tkinter_warning" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_ask_file" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_ask_folder" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_ask_ok_cancel" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_ask_string" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_ask_yes_no" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_choice" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_error" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_message" time="6" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_multi_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_text" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_wxpython_warning" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_ask_file" time="4" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_ask_folder" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_ask_ok_cancel" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_ask_string" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_ask_yes_no" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_error" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_message" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_multi_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_text" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pyqt_warning" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_ask_file" time="1" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_ask_folder" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_ask_ok_cancel" time="7" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_ask_string" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_ask_yes_no" time="7" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_error" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_message" time="6" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_multi_choice" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_text" time="0" /><testcase classname="test_dialogs" name="test_dialogs.test_pygtk_warning" time="0" /></testsuite>

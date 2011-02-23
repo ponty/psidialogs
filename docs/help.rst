@@ -2,13 +2,13 @@ command line help
 ==================================
 
 ..  [[[cog
-..  import pcdialogs
+..  import psidialogs
 ..  ls='demo'.split()
 ..  for x in ls:
 ..      cog.outl('')
 ..      cog.outl('%s\n---------' % x)
 ..      cog.outl('')
-..      cog.outl('.. program-output:: python -m pcdialogs.demo.%s --help'  % x)
+..      cog.outl('.. program-output:: python -m psidialogs.examples.%s --help'  % x)
 ..      cog.outl('      :prompt:')
 ..      cog.outl('')
 ..  ]]]
@@ -16,7 +16,7 @@ command line help
 demo
 ---------
 
-.. program-output:: python -m pcdialogs.demo.demo --help
+.. program-output:: python -m psidialogs.examples.demo --help
       :prompt:
 
 ..  [[[end]]]

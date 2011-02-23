@@ -1,52 +1,65 @@
-======
-abandi
-======
+psidialogs (Python Simple Dialogs) is a common API 
+for different standard dialogs like:
+ * message
+ * warning
+ * ask_string
+ * ...
+ 
+Backends:
+ * PyGTK
+ * Zenity
+ * easygui
+ * gMessage
+ * PyQt
+ * TkInter
+ * wxPython
+ * ...
+ 
+source: https://github.com/ponty/psidialogs
 
-Console-based abandonware game installer and runner.
-No GUI.
-Games are downloaded over internet.
-
-source: https://github.com/ponty/abandi
-
-documentation: http://ponty.github.com/abandi
+documentation: http://ponty.github.com/psidialogs
 
 Basic usage
 ------------
-The selected game will be downloaded,
-unpacked and started by an emulator.
 
-if you know the id::
+    >>> from psidialogs import message
+    >>> message('Hello!')
 
-    $ python -m abandi.run --auto-install gb64 3021
-
-if you have an up-to-date database::
-
-    $ python -m abandi.srun --auto-install --name galaga
-
-
-.. note::
-
-   It is only a wrapper,so you have to install unpackers (7zip, unrar,..)
-   and emulators (dosbox, scummvm, stella, vice,..)
 
 Installation
-------------
+============
 
-The easiest way to get abandi is if you have setuptools_ installed::
+General
+--------
 
-    easy_install https://github.com/ponty/abandi/zipball/master
+ * install setuptools_ or pip_
+ * install the program:
 
-or if you have pip_ installed::
+if you have setuptools_ installed::
 
-    pip install https://github.com/ponty/abandi/zipball/master
+    # as root
+    easy_install psidialogs
 
-Uninstall::
-	
-	# as root
-    pip uninstall abandi
+if you have pip_ installed::
+
+    # as root
+    pip install psidialogs
+
+Ubuntu
+----------
+::
+
+    sudo apt-get install python-setuptools
+    sudo easy_install psidialogs
+
+Uninstall
+----------
+::
+
+
+    # as root
+    pip uninstall psidialogs
     
-    # database, games
-    rm -r ~/.abandi
 
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _pip: http://pip.openplans.org/

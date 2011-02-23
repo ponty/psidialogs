@@ -1,32 +1,23 @@
 # -*- coding: utf-8 -*-
 
-import os
-
-from pkg_resources import parse_version
-import pkginfo
-
-def _egg_info(path_to_egg='../'):
-    path_to_egg = os.path.join(
-        os.path.dirname(__file__), path_to_egg)
-    egg_info = pkginfo.Develop(path_to_egg)
-    release = egg_info.version
-    parsed_version = parse_version(release)
-    version = '%s.%s' % tuple([int(x) for x in parsed_version[0:2]])
-    return egg_info.name, egg_info.author, version, release
-
-project, author, version, release = _egg_info()
+project='psidialogs' 
+author='ponty'
 copyright = '2011, ponty'
+PACKAGE = 'psidialogs'
 
 import sphinx
 import sys
 from path import path
 
-#sys.path.append(path(__name__).abspath())
-proot=(path(__file__).dirname().dirname() ).abspath()
-#proot=(path('..')).abspath()
-sys.path.append(proot)
-import pcdialogs
-#version = abandi.__version__
+__version__ = None
+py = path('..') / PACKAGE / '__init__.py'
+for line in open(py).readlines():
+    if '__version__' in line:
+        exec line
+        break
+assert __version__    
+release = __version__
+
 #import logging
 #logging.basicConfig(level=logging.DEBUG)
 
@@ -37,7 +28,7 @@ extensions = [
      'sphinxcontrib.programoutput',
      'sphinxcontrib.programscreenshot',
      'sphinx.ext.graphviz',
-     'sphinx.ext.autosummary',
+     #'sphinx.ext.autosummary',
     ]
 intersphinx_mapping = {'http://docs.python.org/': None}
 

@@ -3,8 +3,8 @@ API
 
 ..  [[[cog
 ..  cog.outl('' )
-..  import pcdialogs
-..  functions=pcdialogs.FUNCTION_NAMES
+..  import psidialogs
+..  functions=psidialogs.FUNCTION_NAMES
 ..  for f in functions:
 ..      cog.outl('' )
 ..      cog.outl(f + '()' )
@@ -12,7 +12,7 @@ API
 ..      cog.outl('' )
 ..      cog.outl('..' ) # extra comment, otherwise side TOC is bad
 ..      cog.outl('' )
-..      cog.outl('.. automodule:: pcdialogs' )
+..      cog.outl('.. automodule:: psidialogs' )
 ..      cog.outl('        :members: ' + f )
 ..      cog.outl('' )
 ..  cog.outl('' )
@@ -24,17 +24,8 @@ ask_file()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: ask_file
-
-
-ask_files()
-------------------
-
-..
-
-.. automodule:: pcdialogs
-        :members: ask_files
 
 
 ask_folder()
@@ -42,7 +33,7 @@ ask_folder()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: ask_folder
 
 
@@ -51,7 +42,7 @@ ask_ok_cancel()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: ask_ok_cancel
 
 
@@ -60,7 +51,7 @@ ask_string()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: ask_string
 
 
@@ -69,7 +60,7 @@ ask_yes_no()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: ask_yes_no
 
 
@@ -78,7 +69,7 @@ button_choice()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: button_choice
 
 
@@ -87,7 +78,7 @@ choice()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: choice
 
 
@@ -96,7 +87,7 @@ error()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: error
 
 
@@ -105,7 +96,7 @@ message()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: message
 
 
@@ -114,7 +105,7 @@ multi_choice()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: multi_choice
 
 
@@ -123,7 +114,7 @@ text()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: text
 
 
@@ -132,7 +123,7 @@ warning()
 
 ..
 
-.. automodule:: pcdialogs
+.. automodule:: psidialogs
         :members: warning
 
 

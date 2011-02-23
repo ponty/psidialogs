@@ -1,4 +1,4 @@
-Structure
+Hierarchy
 ==================================
 
 .. graphviz::
@@ -9,7 +9,7 @@ Structure
 	fontsize=8;
 	
 	subgraph cluster_0 {
-		label = "pcdialogs";
+		label = "psidialogs";
 		style=filled;
 		fillcolor=lightgrey;
 		subgraph cluster_1 {
@@ -17,22 +17,22 @@ Structure
 			style=filled;
 			fillcolor=white;
 
-			pcdialogs;
+			psidialogs;
 		}
 		subgraph cluster_2 {
 			style=filled;
 			fillcolor=white;
 			label = "wrappers";
 
-			pcdialogs -> console_wrapper;
-			pcdialogs -> easygui_wrapper;
-			pcdialogs -> gmessage_wrapper;
-			pcdialogs -> pygtk_wrapper;
-			pcdialogs -> pyqt_wrapper;
-			pcdialogs -> pythondialog_wrapper;
-			pcdialogs -> tkinter_wrapper;
-			pcdialogs -> wxpython_wrapper;
-			pcdialogs -> zenity_wrapper;
+			psidialogs -> console_wrapper;
+			psidialogs -> easygui_wrapper;
+			psidialogs -> gmessage_wrapper;
+			psidialogs -> pygtk_wrapper;
+			psidialogs -> pyqt_wrapper;
+			psidialogs -> pythondialog_wrapper;
+			psidialogs -> tkinter_wrapper;
+			psidialogs -> wxpython_wrapper;
+			psidialogs -> zenity_wrapper;
 		}
 	}
 	console_wrapper -> Console;
@@ -52,7 +52,7 @@ Structure
 	wxWidgets -> "Palm OS";
 	wxWidgets -> X11;
 	
-	application -> pcdialogs;
+	application -> psidialogs;
 	
 
 	}

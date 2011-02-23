@@ -1,22 +1,17 @@
-.. include:: ../README.rst
-
-Based on easygui (http://easygui.sourceforge.net/): tk backend
-
-common dialogs
-
-Not all backends support all parameters.
+psidialogs (Python Simple Dialogs) is a common API 
+for different standard dialogs
 
 Contents:
 
 .. toctree::
     :maxdepth: 2
 
-    depe
+    readme
     struct
     api
+    screen
     help
     related
-    screen
     changes
 
 Indices and tables
