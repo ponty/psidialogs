@@ -1,20 +1,20 @@
-psidialogs (Python Simple Dialogs) is a common API 
+psidialogs (Python Simple Dialogs) is a common API
 for different standard dialogs like:
- * message
- * warning
- * ask_string
- * ...
- 
+* message
+* warning
+* ask_string
+* ...
+
 Backends:
- * PyGTK
- * Zenity
- * easygui
- * gMessage
- * PyQt
- * TkInter
- * wxPython
- * ...
- 
+* PyGTK
+* Zenity
+* easygui
+* gMessage
+* PyQt
+* TkInter
+* wxPython
+* ...
+
 source: https://github.com/ponty/psidialogs
 
 documentation: http://ponty.github.com/psidialogs
@@ -59,7 +59,7 @@ Uninstall
 
     # as root
     pip uninstall psidialogs
-    
+
 
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _pip: http://pip.openplans.org/

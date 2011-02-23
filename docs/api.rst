@@ -64,15 +64,6 @@ ask_yes_no()
         :members: ask_yes_no
 
 
-button_choice()
-------------------
-
-..
-
-.. automodule:: psidialogs
-        :members: button_choice
-
-
 choice()
 ------------------
 
