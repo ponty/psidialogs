@@ -12,7 +12,6 @@ Contents:
     screen
     help
     related
-    changes
 
 Indices and tables
 ==================
