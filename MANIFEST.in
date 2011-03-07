@@ -9,5 +9,5 @@ include bootstrap.py
 recursive-include docs *
 prune docs/_build
 
-recursive-include psidialogs/plugins *.ini
+recursive-include psidialogs/plugins *.conf
 
