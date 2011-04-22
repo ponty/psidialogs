@@ -1,4 +1,4 @@
-from psidialogs import cli4func
+from entrypoint2 import entrypoint
 from psidialogs.backendloader import BackendLoader
 import inspect
 import logging
@@ -77,9 +77,9 @@ def selectbackend(backend=None, title='', **kwargs):
               
             #psidialogs.set_backend(force_backend=d[b])  
             selectfunc(title, **kwargs)
-        
+
+@entrypoint        
 def demo(backend=None, function=None, title=''):
     print os.isatty(sys.stdout.fileno())
     selectbackend(backend=backend, function=function, title=title)    
     
-cli4func.main(demo)

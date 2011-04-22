@@ -1,4 +1,4 @@
-from psidialogs import cli4func
+from entrypoint2 import entrypoint
 from psidialogs.backendloader import BackendLoader
 import inspect
 import logging
@@ -7,6 +7,7 @@ import psidialogs
 log = logging.getLogger(__name__)
 
 
+@entrypoint        
 def open(backend, func, title='', message='', choices='', text=''):
     BackendLoader().force(backend) 
 
@@ -38,4 +39,3 @@ def open(backend, func, title='', message='', choices='', text=''):
         
         
     
-cli4func.main(open)

@@ -244,4 +244,3 @@
 #
 ###if __name__ == '__main__':
 ###    _test()
-#cli4func.main(main, 1)
