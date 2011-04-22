@@ -16,9 +16,14 @@ Backends:
  - wxPython
  - ...
 
+
 source: https://github.com/ponty/psidialogs
 
 documentation: http://ponty.github.com/psidialogs
+
+Some dialogs are too simple, because a common basic
+implementation is used where implementation is missing.
+
 
 Basic usage
 ------------

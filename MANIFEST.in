@@ -1,13 +1,10 @@
-include *.txt
-include *.rst
-include setup.py
-include setup.cfg
+grant docs
+include LICENSE*
 include pavement.py
 include paver-minilib.zip
-include bootstrap.py
-
-recursive-include docs *
+include TODO*
+include CHANGES*
+include README*
+include setup.py
+recursive-include psidialogs *.conf
 prune docs/_build
-
-recursive-include psidialogs/plugins *.conf
-
