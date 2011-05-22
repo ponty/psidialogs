@@ -1,5 +1,7 @@
-psidialogs (Python Simple Dialogs) is a common API 
-for different standard dialogs
+**psidialogs**
+
+:Date: |today|
+:PDF: `psidialogs.pdf <psidialogs.pdf>`_
 
 Contents:
 
@@ -12,6 +14,7 @@ Contents:
     screen
     help
     related
+    dev
 
 Indices and tables
 ==================

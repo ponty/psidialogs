@@ -89,18 +89,34 @@ options(
 
 if ALL_TASKS_LOADED:
     
-    options.paved.clean.patterns += ['*.pickle', '*.doctree', '*.gz' , 'nosetests.xml', 'sloccount.sc']
+    options.paved.clean.patterns += ['*.pickle',
+                                     '*.doctree',
+                                     '*.gz' ,
+                                     'nosetests.xml',
+                                     'sloccount.sc',
+                                     '*.pdf', '*.tex',
+                                     '*.png',
+                                     ]
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
     options.paved.dist.manifest.recursive_include.add('psidialogs *.conf')
     
     
     @task
-    @needs('sloccount', 'cog', 'html', 'sdist', 'nose')
-    def hudson():
+    @needs('sloccount', 'cog', 'html', 'pdf', 'sdist', 'nose')
+    def alltest():
+        'all tasks to check'
         pass
     
     @task
     @needs('sphinxcontrib.paverutils.html')
     def html():
         pass
+
+    @task
+    @needs('sphinxcontrib.paverutils.pdf')
+    def pdf():
+        fpdf = path('docs') / '_build' / 'latex' / NAME + '.pdf'
+        d = path('docs') / '_build' / 'html'
+        d.makedirs()
+        fpdf.copy(d)
