@@ -6,10 +6,10 @@ Backends and functions can be selected from list or as command line parameter
 .. program-screenshot:: python -m psidialogs.examples.demo
       :prompt:
 
-.. program-screenshot:: python -m psidialogs.examples.demo --backend wxpython
+.. program-screenshot:: python -m psidialogs.examples.demo --backend zenity
       :prompt:
 
-.. program-screenshot:: python -m psidialogs.examples.demo --backend wxpython --function message
+.. program-screenshot:: python -m psidialogs.examples.demo --backend zenity --function message
       :prompt:
 
 
