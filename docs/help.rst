@@ -1,23 +1,22 @@
-command line help
+Demo
 ==================================
 
-..  [[[cog
-..  import psidialogs
-..  ls='demo'.split()
-..  for x in ls:
-..      cog.outl('')
-..      cog.outl('%s\n---------' % x)
-..      cog.outl('')
-..      cog.outl('.. program-output:: python -m psidialogs.examples.%s --help'  % x)
-..      cog.outl('      :prompt:')
-..      cog.outl('')
-..  ]]]
+Backends and functions can be selected from list or as command line parameter
 
-demo
----------
+.. program-screenshot:: python -m psidialogs.examples.demo
+      :prompt:
+
+.. program-screenshot:: python -m psidialogs.examples.demo --backend wxpython
+      :prompt:
+
+.. program-screenshot:: python -m psidialogs.examples.demo --backend wxpython --function message
+      :prompt:
+
+
+command line help
+---------------------------
 
 .. program-output:: python -m psidialogs.examples.demo --help
       :prompt:
 
-..  [[[end]]]
 
