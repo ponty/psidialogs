@@ -2,12 +2,13 @@ from itertools import count
 
 class AllMixin:
     def multi_choice(self, args):
-        r = self.choice(args)
-        if r:
-            r = [r]
-        else:
-            r = None
-        return r
+        s = self._choice(args)
+        if not s:
+            return None
+        try:
+            return [args.choices[int(x)] for x in s.split(',')]
+        except Exception:
+            pass
         
     def text(self, args):
         args = args.copy()
@@ -15,7 +16,7 @@ class AllMixin:
         args.text = None
         self.message(args)
         
-    def choice(self, args):
+    def _choice(self, args):
         args = args.copy()
         lines = [ '[%s] %s' % x  for x in zip(count(), args.choices) ]
         args.message += '\n' + '\n'.join(lines) 
@@ -23,6 +24,10 @@ class AllMixin:
 ##        self.text(args)
         args.default=str(args.default)
         i = self.ask_string(args)
+        return i
+    
+    def choice(self, args):
+        i = self._choice(args)
         if not i:
             return None
         i = int(i)
