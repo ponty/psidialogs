@@ -110,21 +110,6 @@ def ask_folder(message='Select folder.', default='', title=''):
     """
     return backend_api.opendialog("ask_folder" , dict(message=message, default=default, title=title))
 
-#def button_choice(choices=[], message='Select a button.', default=None, title=''):
-#    """
-#    Display a set of buttons.
-#    The buttons are defined by the members of the choices list.
-#    Return the text of the button that the user selected.
-#
-#    :ref:`screenshots<button_choice>`
-#
-#    :param choices: a list of the choices to be displayed
-#    :param message: message to be displayed.
-#    :param title: window title
-#    :rtype: None or string
-#    """
-#    return backend_api.opendialog("button_choice" , dict(choices=choices, message=message, default=default, title=title))
-
 def choice(choices=[], message='Pick something.', default=None, title=''):
     """
     Present the user with a list of choices.
