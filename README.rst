@@ -1,10 +1,10 @@
 psidialogs (Python Simple Dialogs) is a common API
-for different standard dialogs like:
+for different standard dialogs like message, ask_string,..
 
- - message
- - warning
- - ask_string
- - ...
+Links:
+ * home: https://github.com/ponty/psidialogs
+ * documentation: http://ponty.github.com/psidialogs
+
 
 Backends:
  - PyGTK
@@ -18,9 +18,6 @@ Backends:
  - console
  - EasyDialogs
  
-Links:
- * home: https://github.com/ponty/psidialogs
- * documentation: http://ponty.github.com/psidialogs
 
 Some dialogs are too simple, because a common basic
 implementation is used where implementation is missing.
