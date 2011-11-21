@@ -16,7 +16,8 @@ Backends:
  - wxPython
  - PythonDialog
  - console
-
+ - EasyDialogs
+ 
 Links:
  * home: https://github.com/ponty/psidialogs
  * documentation: http://ponty.github.com/psidialogs
