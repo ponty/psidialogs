@@ -26,13 +26,14 @@ Hierarchy
 
 			psidialogs -> console_wrapper;
 			psidialogs -> easygui_wrapper;
+            psidialogs -> easydialogs_wrapper;
 			psidialogs -> gmessage_wrapper;
 			psidialogs -> pygtk_wrapper;
 			psidialogs -> pyqt_wrapper;
 			psidialogs -> pythondialog_wrapper;
 			psidialogs -> tkinter_wrapper;
 			psidialogs -> wxpython_wrapper;
-			psidialogs -> zenity_wrapper;
+            psidialogs -> zenity_wrapper;
 		}
 	}
 	console_wrapper -> Console;
@@ -54,6 +55,8 @@ Hierarchy
 	
 	application -> psidialogs;
 	
-
+    easydialogs_wrapper -> EasyDialogs -> MacOS;
+    easydialogs_wrapper -> "easydialogs-gtk" -> PyGTK;
+    easydialogs_wrapper -> "EasyDialogs for Windows" -> Windows;
 	}
    

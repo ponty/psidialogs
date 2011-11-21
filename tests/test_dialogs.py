@@ -16,7 +16,8 @@ def check_buttons(cmd, expect):
         buttons = discover_buttons()
     finally:
         process.stop()
-    eq_(len(buttons), len(expect), msg='dialog does not have expected buttons')
+    eq_(len(buttons), len(expect), 
+        msg='dialog does not have expected buttons %s!=%s' % (buttons,expect))
     
     mouse = PyMouse()
     for v, b in zip(expect, buttons):
@@ -38,6 +39,10 @@ def check(backend, func):
         return
     if backend == 'wxpython' and func != 'message':  # wrong button taborder
         return
+    if backend == 'easydialogs':
+        if func in ['ask_ok_cancel','ask_yes_no']: 
+            # can not hide button in easydialogs-gtk   
+            return
     
     if func == 'message':
         expect = [None]
