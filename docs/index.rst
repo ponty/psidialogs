@@ -13,7 +13,6 @@ Contents:
     api
     screen
     help
-    related
     dev
 
 Indices and tables
