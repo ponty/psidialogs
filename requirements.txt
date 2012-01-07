@@ -1,0 +1,7 @@
+setuptools
+yapsy
+path.py
+argparse
+EasyProcess
+entrypoint2
+
