@@ -1,7 +1,7 @@
 from psidialogs import backend_api
 import logging
 
-__version__='0.0.4'
+__version__='0.0.5'
 log = logging.getLogger(__name__)
 log.debug('version=' + __version__)
 
@@ -84,7 +84,7 @@ def ask_file(message='Select file for open.', default='', title='', save=False):
     save=False -> file for loading
     save=True -> file for saving
     
-    Returns the file path that the user entered, or None if he cancels the operation.
+    Return the file path that the user entered, or None if he cancels the operation.
 
     :param message: message to be displayed.
     :param save: bool 0 -> load , 1 -> save
