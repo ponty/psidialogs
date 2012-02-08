@@ -36,15 +36,8 @@ Installation
 General
 --------
 
- * install setuptools_ or pip_
- * install the program:
-
-if you have setuptools_ installed::
-
-    # as root
-    easy_install psidialogs
-
-if you have pip_ installed::
+ * install pip_
+ * install the program::
 
     # as root
     pip install psidialogs
@@ -53,8 +46,8 @@ Ubuntu
 ----------
 ::
 
-    sudo apt-get install python-setuptools
-    sudo easy_install psidialogs
+    sudo apt-get install python-pip
+    sudo pip install psidialogs
 
 Uninstall
 ----------
