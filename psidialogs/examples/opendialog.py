@@ -8,7 +8,7 @@ log = logging.getLogger(__name__)
 
 
 @entrypoint        
-def open(backend, func, title='', message='', choices='', text=''):
+def opendialog(backend, func, title='', message='', choices='', text=''):
     BackendLoader().force(backend) 
 
     args=dict(
@@ -29,7 +29,6 @@ def open(backend, func, title='', message='', choices='', text=''):
             f = x
     assert f
     argnames, varargs, varkw, defaults = inspect.getargspec(f)
-    #argnames = psidialogs.argnames(func)
 
     args = dict([(k, v) for (k, v) in args.items() if k in argnames])
     result = None
