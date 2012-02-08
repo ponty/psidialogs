@@ -3,32 +3,34 @@ from discogui.mouse import PyMouse
 from easyprocess import EasyProcess
 from nose.tools import with_setup, eq_
 from psidialogs.backendloader import BackendLoader
-from pyvirtualdisplay.display import Display
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 import psidialogs
 
-
+VISIBLE=0
 screen = None
+TIMEOUT=30
 
 def check_buttons(cmd, expect):
-    process = EasyProcess(cmd).start().sleep(1)
-    try:
+    with EasyProcess(cmd):
+#        time.sleep(1)
+        screen.waitgrab(timeout=TIMEOUT)
         buttons = discover_buttons()
-    finally:
-        process.stop()
+
     eq_(len(buttons), len(expect), 
         msg='dialog does not have expected buttons %s!=%s' % (buttons,expect))
     
     mouse = PyMouse()
+    print 'buttons:',buttons
     for v, b in zip(expect, buttons):
         process = EasyProcess(cmd).start().sleep(1)
         mouse.click(*b.center)
         process.wait()
-        eq_(process.stdout, str(v), msg='dialog does not return expected value')
+        eq_(process.stdout, str(v)) #dialog does not return expected value
 
 def check_open(cmd):
     # exception if nothing is displayed
-    EasyProcess(cmd).wrap(screen.waitgrab)()
+    with EasyProcess(cmd):
+        screen.waitgrab(timeout=TIMEOUT)
     
 
 def check(backend, func):
@@ -43,6 +45,12 @@ def check(backend, func):
         if func in ['ask_ok_cancel','ask_yes_no']: 
             # can not hide button in easydialogs-gtk   
             return
+    if backend == 'zenity':
+        if func in ['ask_ok_cancel','ask_yes_no']: 
+            # tab is not working in xvfb and xephyr   
+            return
+    if backend == 'gmessage':  # active editbox
+        return
     
     if func == 'message':
         expect = [None]
@@ -57,7 +65,7 @@ def check(backend, func):
 def setup_func():
     "set up test fixtures"
     global screen
-    screen = SmartDisplay(visible=0)
+    screen = SmartDisplay(visible=VISIBLE)
     screen.start()
 
 def teardown_func():
