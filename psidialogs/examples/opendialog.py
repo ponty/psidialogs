@@ -33,7 +33,7 @@ def opendialog(backend, func, title='', message='', choices='', text=''):
     args = dict([(k, v) for (k, v) in args.items() if k in argnames])
     result = None
     exec 'result = psidialogs.%s(**args)' % (func)
-    log.debug('result:' + str(result))
+    log.debug('result:' + unicode(result))
     print result
         
         

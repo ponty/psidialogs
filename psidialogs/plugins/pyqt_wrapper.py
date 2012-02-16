@@ -42,7 +42,7 @@ class Backend(IPlugin):
         self.init_qt()
         result = QtGui.QFileDialog.getExistingDirectory(None, args.title,)
         if result:
-            return str(result)
+            return unicode(result)
         
     def ask_file(self, args):
         self.init_qt()
@@ -51,16 +51,16 @@ class Backend(IPlugin):
         else:
             result = QtGui.QFileDialog.getOpenFileName(None, args.title,)
         if result:
-            return str(result)
+            return unicode(result)
 
     def ask_string(self, args):
         self.init_qt()
         (result, ok) = QtGui.QInputDialog.getText(None, args.title, args.message,)
         if ok:
-            return str(result)
+            return unicode(result)
         
     def choice(self, args):
         self.init_qt()
         (result, ok) = QtGui.QInputDialog.getItem(None, args.title, args.message, args.choices,)
         if ok:
-            return str(result)
+            return unicode(result)
