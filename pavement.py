@@ -98,7 +98,7 @@ if ALL_TASKS_LOADED:
     
     @task
     @needs(
-           'clean',
+#           'clean',
            'sloccount', 
            'cog', 
            'html', 
