@@ -1,7 +1,7 @@
 Demo
 ==================================
 
-Backends and functions can be selected from list or as command line parameter
+back-ends and functions can be selected from list or as command line parameter
 
 .. program-screenshot:: python -m psidialogs.examples.demo
       :prompt:
