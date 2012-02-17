@@ -8,14 +8,15 @@ import sys
 
 log = logging.getLogger(__name__)
 
-def testdata():
+def testdata(title):
     f = open(__file__)
     text = f.read()
     f.close()
     return dict(
-        message="This is a message! (%s)" % BackendLoader().selected().name,
-        choices=["One", "Two", "Three"],
-        text='%s' % text,
+        message=u"This is a message! (%s) \u20ac" % BackendLoader().selected().name,
+        choices=[u"1 \u20ac", "Two", "Three"],
+        text=u'\u20ac\n%s' % text,
+        title = title if title else u'title \u20ac',
         )
 
 def dialog(func, title='', **kwargs):
@@ -31,17 +32,15 @@ def dialog(func, title='', **kwargs):
     assert f
     argnames, varargs, varkw, defaults = inspect.getargspec(f)
     #argnames = psidialogs.argnames(func)
-    args = testdata()
-    if title:
-        args['title'] = title
+    args = testdata(title)
     args = dict([(k, v) for (k, v) in args.items() if k in argnames])
     result=None
     exec 'result = psidialogs.%s(**args)' % (func)
     #result = psidialogs.__dict__[func](**args)
     #print 'result: ' , result
-    log.debug('result:'+unicode(result))
+#    log.debug(u'result:'+unicode(result))
     if result is not None:
-        psidialogs.text('Return value="%s"' % result)
+        psidialogs.text('Return value=%s (%r)' % (result,result) )
         
 def selectfunc(title='', function=None, **kwargs):
     if function:

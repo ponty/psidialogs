@@ -1,4 +1,4 @@
-from psidialogs.unicodeutil import uniencode, unidecode
+from psidialogs.unicodeutil import ansi_dialog
 from yapsy.IPlugin import IPlugin
 
 class Backend(IPlugin):
@@ -6,18 +6,19 @@ class Backend(IPlugin):
     backend = 'console'
     #backend_version
     
+    @ansi_dialog
     def message(self, args):
         msg = args.message + '[ENTER]'
-        msg = uniencode(msg)
         raw_input(msg)
         
+    @ansi_dialog
     def ask_string(self, args):
-        answer = raw_input(uniencode(args.message))
-        return unidecode(answer)
+        answer = raw_input(args.message)
+        return answer
     
+    @ansi_dialog
     def ask_yes_no(self, args):
         msg = args.message
-        msg = uniencode(msg)
         msg += ' [Yes/No] '
         answers_yes = 'yes y'.split()
         answers_no = 'no n'.split()
@@ -25,7 +26,6 @@ class Backend(IPlugin):
         s = ''
         while 1:
             s = raw_input(msg)
-            s = unidecode(s)
             s = s.lower().strip()
             if s in answers:
                 break

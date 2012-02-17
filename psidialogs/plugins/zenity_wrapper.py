@@ -1,4 +1,5 @@
 from easyprocess import EasyProcess
+from psidialogs.unicodeutil import uniencode
 from yapsy.IPlugin import IPlugin
 import tempfile
 
@@ -41,7 +42,7 @@ class Backend(IPlugin):
     def text(self, args):
         options = {}
         f = tempfile.NamedTemporaryFile()
-        f.write(args.text)
+        f.write(uniencode(args.text))
         f.flush()
         options["--text-info"] = None
         options["--filename" ] = f.name
