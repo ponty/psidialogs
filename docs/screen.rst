@@ -26,7 +26,7 @@ Screenshots
 ..      cog.outl('')
 ..      cmd = 'python -m psidialogs.examples.demo -b %s -f %s'  % (b,f)
 ..      if BackendLoader().is_console(b):
-..         cmd='xterm -e "%s"' % cmd
+..         cmd='gnome-terminal -e "%s"' % cmd
 ..      cog.outl('.. program-screenshot:: ' + cmd )
 ..      #cog.outl('      :scale: 70 %')
 ..      cog.outl('      :prompt:')
@@ -49,7 +49,7 @@ ask_ok_cancel()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f ask_ok_cancel"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f ask_ok_cancel"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -103,7 +103,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f ask_ok_cancel"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f ask_ok_cancel"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -148,7 +148,7 @@ ask_string()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f ask_string"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f ask_string"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -202,7 +202,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f ask_string"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f ask_string"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -247,7 +247,7 @@ ask_yes_no()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f ask_yes_no"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f ask_yes_no"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -301,7 +301,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f ask_yes_no"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f ask_yes_no"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -346,7 +346,7 @@ choice()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f choice"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f choice"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -400,7 +400,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f choice"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f choice"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -445,7 +445,7 @@ error()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f error"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f error"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -499,7 +499,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f error"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f error"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -544,7 +544,7 @@ message()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f message"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f message"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -598,7 +598,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f message"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f message"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -643,7 +643,7 @@ multi_choice()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f multi_choice"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f multi_choice"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -697,7 +697,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f multi_choice"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f multi_choice"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -742,7 +742,7 @@ text()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f text"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f text"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -796,7 +796,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f text"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f text"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -841,7 +841,7 @@ warning()
 console
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b console -f warning"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b console -f warning"
       :prompt:
       :wait: 1
       :timeout: 30
@@ -895,7 +895,7 @@ pyqt
 pythondialog
 ------------------------
 
-.. program-screenshot:: xterm -e "python -m psidialogs.examples.demo -b pythondialog -f warning"
+.. program-screenshot:: gnome-terminal -e "python -m psidialogs.examples.demo -b pythondialog -f warning"
       :prompt:
       :wait: 1
       :timeout: 30
