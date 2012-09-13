@@ -72,7 +72,7 @@ class Backend(IPlugin):
     def ask_string(self, args):
         return self._entry(args, pw=0)
         
-    def _file(self, args, multi):
+    def _file(self, args, multi, folder):
         options = {}
         separator = '|'
         options["--file-selection" ] = None
@@ -89,7 +89,7 @@ class Backend(IPlugin):
             result = result.split(separator)
         return result
         
-    def _choice(self, args, multi, folder):
+    def _choice(self, args, multi):
         options = {}
         separator = '|'
         options["--list" ] = None
