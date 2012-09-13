@@ -80,6 +80,8 @@ class Backend(IPlugin):
         if multi:
             options["--multiple" ] = None
             options["--separator" ] = separator
+        if folder:
+            options["--directory"] = None
         if args.default:
             options["--filename" ] = args.default 
         result = self._call(args, options)
@@ -87,7 +89,7 @@ class Backend(IPlugin):
             result = result.split(separator)
         return result
         
-    def _choice(self, args, multi):
+    def _choice(self, args, multi, folder):
         options = {}
         separator = '|'
         options["--list" ] = None
@@ -109,8 +111,12 @@ class Backend(IPlugin):
         
 
     def ask_file(self, args):
-        return self._file(args, multi=0)
-    
+        return self._file(args, multi=0, folder=0)
+
+    def ask_folder(self, args):
+        return self._file(args, multi=0, folder=1)
+
+
     def _ask_question(self, args, ok, cancel):
         options = {}
         options["--question" ] = None
