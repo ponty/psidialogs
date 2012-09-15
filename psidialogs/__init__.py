@@ -70,8 +70,6 @@ def ask_string(message='Enter something.', default='', title=''):
     :param message: message to be displayed.
     :param title: window title
     :param default: entry-box default string
-    :param ok: label of the ok button
-    :param cancel: label of the cancel button
     :rtype: None or string
     """
     return backend_api.opendialog("ask_string" , dict(message=message, default=default, title=title))
@@ -104,8 +102,6 @@ def ask_folder(message='Select folder.', default='', title=''):
     :param message: message to be displayed.
     :param title: window title
     :param default: default folder path
-    :param ok: label of the ok button
-    :param cancel: label of the cancel button
     :rtype: None or string
     """
     return backend_api.opendialog("ask_folder" , dict(message=message, default=default, title=title))
