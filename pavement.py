@@ -45,7 +45,6 @@ options.paved.clean.patterns += ['*.pickle',
 
 options.paved.dist.manifest.include.remove('distribute_setup.py')
 options.paved.dist.manifest.include.remove('paver-minilib.zip')
-options.paved.dist.manifest.recursive_include.add('psidialogs *.conf')
 options.paved.dist.manifest.include.add('requirements.txt')
 
 
@@ -57,7 +56,8 @@ options.paved.dist.manifest.include.add('requirements.txt')
        'html', 
        'pdf', 
        'sdist', 
-       'nose',   'tox',
+       'nose',   
+       'tox',
        )
 def alltest():
     'all tasks to check'

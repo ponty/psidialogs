@@ -54,6 +54,16 @@ Ubuntu
 
     sudo apt-get install python-pip
     sudo pip install psidialogs
+    # optional back-ends
+    sudo apt-get install python-gtk2
+    sudo apt-get install python-tk
+    sudo apt-get install python-qt4
+    sudo apt-get install python-dialog
+    sudo apt-get install zenity
+    sudo apt-get install gxmessage
+    sudo apt-get install python-easygui
+    sudo pip install --no-deps easydialogs-gtk
+
 
 Uninstall
 ----------

@@ -8,6 +8,7 @@ import sys
 
 log = logging.getLogger(__name__)
 
+
 def testdata(title):
     f = open(__file__)
     text = f.read()

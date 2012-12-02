@@ -1,24 +1,22 @@
 from easyprocess import EasyProcess
-from itertools import count
-from yapsy.IPlugin import IPlugin
+from psidialogs.iplugin import IPlugin
 
-
-EasyProcess('gmessage --version').check()
 
 class Backend(IPlugin):
     backend = 'gMessage'
-    #backend_version = BACKEND_VERSION
+    name = 'gmessage'
 
     def __init__(self):
-        pass
-        
+        EasyProcess('gmessage --version').check()
+
     def activate(self):
         pass
-        
+
     def _call(self, args, options, useReturnCode=0):
         if args.title:
             options["-name"] = args.title
         options['-center'] = None
+
         def dict2list(d):
             ls = []
             for k, v in d.items():
@@ -27,7 +25,7 @@ class Backend(IPlugin):
                 if v:
                     ls += [v]
             return ls
-        cmd = ['gmessage'] + [args.message] + dict2list(options) 
+        cmd = ['gmessage'] + [args.message] + dict2list(options)
         p = EasyProcess(cmd).call()
         if useReturnCode:
             return p.return_code
@@ -35,13 +33,13 @@ class Backend(IPlugin):
         if not result:
             result = None
         return result
-        
+
     def message(self, args):
         options = {}
         options['-buttons'] = 'GTK_STOCK_OK:0'
         options['-default'] = 'GTK_STOCK_OK'
         return self._call(args, options)
-        
+
     def _question(self, buttons, args):
         options = {}
         options['-buttons'] = buttons
@@ -55,15 +53,15 @@ class Backend(IPlugin):
 #        buttons = ','.join([ '_%s:%d' % (x, i) for x, i in zip(args.choices, count()) ])
 #        result = self._question(buttons, args)
 #        return args.choices[result]
-        
+
     def ask_string(self, args):
         options = {}
-##        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
-##        options['-default'] = 'GTK_STOCK_OK'
+# #        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
+# #        options['-default'] = 'GTK_STOCK_OK'
         if args.default:
-            options["-entrytext" ] = args.default 
+            options["-entrytext" ] = args.default
         else:
             options["-entry" ] = None
         return self._call(args, options)
-        
+
 
