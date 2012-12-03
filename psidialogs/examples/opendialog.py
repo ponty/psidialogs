@@ -7,17 +7,17 @@ import psidialogs
 log = logging.getLogger(__name__)
 
 
-@entrypoint        
+@entrypoint
 def opendialog(backend, func, title='', message='', choices='', text=''):
-    BackendLoader().force(backend) 
+    BackendLoader().force(backend)
 
-    args=dict(
-              title=title,
-              message=message,
-              choices=choices.split(','),
-              text=text,
-              )
-    
+    args = dict(
+        title=title,
+        message=message,
+        choices=choices.split(','),
+        text=text,
+    )
+
     funcs = psidialogs.FUNCTIONS
     log.debug('functions found:')
     log.debug(funcs)
@@ -35,6 +35,3 @@ def opendialog(backend, func, title='', message='', choices='', text=''):
     exec 'result = psidialogs.%s(**args)' % (func)
     log.debug('result:' + unicode(result))
     print result
-        
-        
-    

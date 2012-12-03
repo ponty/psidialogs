@@ -4,7 +4,7 @@ from psidialogs.iplugin import IPlugin
 
 class Backend(IPlugin):
     backend = 'EasyGui'
-    name ='easygui'
+    name = 'easygui'
 
     def __init__(self):
         import easygui
@@ -42,7 +42,8 @@ class Backend(IPlugin):
 
     @ansi_dialog
     def text(self, args):
-        self.easygui.textbox(text=args.text, msg=args.message, title=args.title)
+        self.easygui.textbox(
+            text=args.text, msg=args.message, title=args.title)
 
     @ansi_dialog
     def ask_yes_no(self, args):
@@ -51,11 +52,10 @@ class Backend(IPlugin):
 
     @ansi_dialog
     def ask_ok_cancel(self, args):
-        x = self.easygui.ynbox(msg=args.message, title=args.title, choices=("OK", "Cancel"))
+        x = self.easygui.ynbox(
+            msg=args.message, title=args.title, choices=("OK", "Cancel"))
         return bool(x)
 
 #    def button_choice(self, args):
-#        return easygui.buttonbox(msg=args.message, title=args.title, choices=args.choices)
-
-
-
+# return easygui.buttonbox(msg=args.message, title=args.title,
+# choices=args.choices)

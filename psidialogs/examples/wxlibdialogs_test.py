@@ -1,16 +1,16 @@
 #
-#import psidialogs
-#import wx
+# import psidialogs
+# import wx
 #
-#psidialogs.set_backend( psidialogs.choice(psidialogs.all_backend_names(), 'Select backend!') )
+# psidialogs.set_backend( psidialogs.choice(psidialogs.all_backend_names(), 'Select backend!') )
 #
-#if __name__ == '__main__':
+# if __name__ == '__main__':
 #    """
 #    copy from wx.lib.dialogs
-#    """    
+#    """
 #    #import os
 #    #print os.getpid()
-#    
+#
 #    class MyApp(wx.App):
 #
 #        def OnInit(self):
@@ -74,7 +74,7 @@
 #            elif sel == 'messageDialog':
 #                result = messageDialog(None, 'Hello from Python and wxPython!',
 #                          'A Message Box', wx.OK | wx.ICON_INFORMATION)
-##wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION)
+# wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION)
 #                #result = messageDialog(None, 'message', 'title')
 #            elif sel == 'multipleChoiceDialog':
 #                result = multipleChoiceDialog(None, "message", "title", ['one', 'two', 'three'])
@@ -106,4 +106,3 @@
 #    app = MyApp(True)
 #    app.MainLoop()
 #
-

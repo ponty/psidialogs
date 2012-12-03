@@ -1,22 +1,22 @@
 #"""
 #"""
 #
-#from psidialogs.easygui_api import *
-#import psidialogs
+# from psidialogs.easygui_api import *
+# import psidialogs
 #
-#def main(backend = ''):
+# def main(backend = ''):
 #    if not backend:
 #        backend = psidialogs.choice(psidialogs.all_backends(), 'Select backend!')
-#    psidialogs.set_backend( force_backend=backend ) 
+#    psidialogs.set_backend( force_backend=backend )
 #    _test()
-#    
-#TkVersion=''
-#EasyGuiRevisionInfo = ''
-# 
-#def _test():
+#
+# TkVersion=''
+# EasyGuiRevisionInfo = ''
+#
+# def _test():
 #    """
 #    copy from easygui.py
-#    """    
+#    """
 #    # simple way to clear the console
 #    print "\n" * 100
 #    # START DEMONSTRATION DATA ===================================================
@@ -29,7 +29,7 @@
 #    # ============================= define a code snippet =========================
 #    code_snippet = ("dafsdfa dasflkj pp[oadsij asdfp;ij asdfpjkop asdfpok asdfpok asdfpok"*3) +"\n"+\
 #"""# here is some dummy Python code
-#for someItem in myListOfStuff:
+# for someItem in myListOfStuff:
 #    do something(someItem)
 #    do something()
 #    do something()
@@ -242,5 +242,5 @@
 #            return
 #
 #
-###if __name__ == '__main__':
+# if __name__ == '__main__':
 ###    _test()

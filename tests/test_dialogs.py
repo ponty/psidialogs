@@ -28,11 +28,13 @@ def check_buttons(cmd, expect):
                 mouse.click(*b.center)
                 process.wait(timeout=10)
                 assert not process.timeout_happened
-                eq_(process.stdout, str(v))  # dialog does not return expected value
+                eq_(process.stdout, str(v))
+                    # dialog does not return expected value
 
 
 def check_open(backend, func):
-    cmd = 'python -m psidialogs.examples.demo -b {backend} -f {func}'.format(backend=backend, func=func)
+    cmd = 'python -m psidialogs.examples.demo -b {backend} -f {func}'.format(
+        backend=backend, func=func)
     # exception if nothing is displayed
     with SmartDisplay(visible=VISIBLE) as disp:
         with EasyProcess(cmd):
@@ -47,7 +49,7 @@ def check(backend, func):
     if backend == 'wxpython' and func != 'message':  # wrong button taborder
         return
     if backend == 'easydialogs':
-        if func in ['ask_ok_cancel','ask_yes_no']:
+        if func in ['ask_ok_cancel', 'ask_yes_no']:
             # can not hide button in easydialogs-gtk
             return
     if backend == 'zenity':
@@ -77,5 +79,3 @@ def test_{backend}_{safefunc}():
     check("{backend}","{func}")
 '''.format(backend=x, func=f, safefunc=f.replace('error', 'err').replace('warning', 'warn'))
 exec s
-
-

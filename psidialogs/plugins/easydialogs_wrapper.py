@@ -1,9 +1,10 @@
 from psidialogs.unicodeutil import ansi_dialog
 from psidialogs.iplugin import IPlugin
 
+
 class Backend(IPlugin):
     backend = 'EasyDialogs'
-    name ='easydialogs'
+    name = 'easydialogs'
 
     def __init__(self):
         import EasyDialogs
@@ -19,24 +20,28 @@ class Backend(IPlugin):
 
     @ansi_dialog
     def ask_ok_cancel(self, args):
-        x = self.EasyDialogs.AskYesNoCancel(question=args.message, default=args.default, yes='OK', no='')
+        x = self.EasyDialogs.AskYesNoCancel(
+            question=args.message, default=args.default, yes='OK', no='')
         return x == 1
 
     @ansi_dialog
     def ask_yes_no(self, args):
-        x = self.EasyDialogs.AskYesNoCancel(question=args.message, default=args.default, cancel='')
+        x = self.EasyDialogs.AskYesNoCancel(
+            question=args.message, default=args.default, cancel='')
         return x == 1
 
     @ansi_dialog
     def ask_file(self, args):
         if args.save:
-            x = self.EasyDialogs.AskFileForSave(message=args.message, defaultLocation=args.default)
+            x = self.EasyDialogs.AskFileForSave(
+                message=args.message, defaultLocation=args.default)
         else:
-            x = self.EasyDialogs.AskFileForOpen(message=args.message, defaultLocation=args.default)
+            x = self.EasyDialogs.AskFileForOpen(
+                message=args.message, defaultLocation=args.default)
         return x
 
     @ansi_dialog
     def ask_folder(self, args):
-        x = self.EasyDialogs.AskFolder(message=args.message, defaultLocation=args.default)
+        x = self.EasyDialogs.AskFolder(
+            message=args.message, defaultLocation=args.default)
         return x
-

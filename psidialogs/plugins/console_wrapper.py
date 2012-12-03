@@ -5,7 +5,7 @@ from psidialogs.iplugin import IPlugin
 class Backend(IPlugin):
     console = True
     backend = 'console'
-    name ='console'
+    name = 'console'
 
     @ansi_dialog
     def message(self, args):

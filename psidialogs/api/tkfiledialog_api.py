@@ -1,6 +1,7 @@
 import psidialogs
 
-def askopenfile(mode = "r", **options):
+
+def askopenfile(mode="r", **options):
     "Ask for a filename to open, and returned the opened file"
 
     filename = askopenfilename(**options)
@@ -8,7 +9,8 @@ def askopenfile(mode = "r", **options):
         return open(filename, mode)
     return None
 
-def askopenfiles(mode = "r", **options):
+
+def askopenfiles(mode="r", **options):
     """Ask for multiple filenames and return the open file
     objects
 
@@ -18,20 +20,21 @@ def askopenfiles(mode = "r", **options):
 
     files = askopenfilenames(**options)
     if files:
-        ofiles=[]
+        ofiles = []
         for filename in files:
             ofiles.append(open(filename, mode))
-        files=ofiles
+        files = ofiles
     return files
 
 
-def asksaveasfile(mode = "w", **options):
+def asksaveasfile(mode="w", **options):
     "Ask for a filename to save as, and returned the opened file"
 
     filename = asksaveasfilename(**options)
     if filename:
         return open(filename, mode)
     return None
+
 
 def askopenfilenames(**options):
     """Original doc: Ask for multiple filenames to open
@@ -41,15 +44,17 @@ def askopenfilenames(**options):
     """
     raise NotImplementedError()
 
+
 def askopenfilename(**options):
     """Original doc: Ask for a filename to open"""
     return psidialogs.ask_file(save=False)
+
 
 def askdirectory(**options):
     """Original doc: Ask for a directory, and return the file name"""
     return psidialogs.ask_folder()
 
+
 def asksaveasfilename(**options):
     """Original doc: Ask for a filename to save as"""
     return psidialogs.ask_file(save=True)
-

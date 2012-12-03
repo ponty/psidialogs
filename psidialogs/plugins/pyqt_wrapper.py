@@ -7,7 +7,7 @@ _app = None
 
 class Backend(IPlugin):
     backend = 'PyQt'
-    name ='pyqt'
+    name = 'pyqt'
 
     def __init__(self):
         from PyQt4 import QtGui
@@ -68,12 +68,14 @@ class Backend(IPlugin):
 
     def ask_string(self, args):
         self.init_qt()
-        (result, ok) = self.QtGui.QInputDialog.getText(None, args.title, args.message,)
+        (result, ok) = self.QtGui.QInputDialog.getText(
+            None, args.title, args.message,)
         if ok:
             return unicode(result)
 
     def choice(self, args):
         self.init_qt()
-        (result, ok) = self.QtGui.QInputDialog.getItem(None, args.title, args.message, args.choices,)
+        (result, ok) = self.QtGui.QInputDialog.getItem(
+            None, args.title, args.message, args.choices,)
         if ok:
             return unicode(result)

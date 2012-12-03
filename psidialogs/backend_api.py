@@ -19,5 +19,5 @@ def opendialog(funcname, argdict):
             pass
         b = Backend()
         f = AllMixin.__dict__.get(funcname)
-   
-    return f(b,d)
+
+    return f(b, d)

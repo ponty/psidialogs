@@ -1,4 +1,6 @@
 from UserDict import DictMixin
+
+
 class attribdict(DictMixin):
     """
     >>> x = attribdict(a=1,b=2)
@@ -16,10 +18,11 @@ class attribdict(DictMixin):
     4
     """
     def __init__(self, *args, **kwargs):
-        self.__dict__ = ( dict(*args, **kwargs) )
+        self.__dict__ = (dict(*args, **kwargs))
 
     def __getitem__(self, key):
-        return self.__dict__ [key]
+        return self.__dict__[key]
+
     def keys(self):
         return self.__dict__ .keys()
 

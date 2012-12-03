@@ -45,8 +45,10 @@ class Backend(IPlugin):
         options['-buttons'] = buttons
         options['-default'] = buttons.split(',')[not bool(args.default)]
         return self._call(args, options, useReturnCode=1)
+
     def ask_ok_cancel(self, args):
         return bool(self._question('GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0', args))
+
     def ask_yes_no(self, args):
         return bool(self._question('GTK_STOCK_YES:1,GTK_STOCK_NO:0', args))
 #    def button_choice(self, args):
@@ -59,9 +61,7 @@ class Backend(IPlugin):
 # #        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
 # #        options['-default'] = 'GTK_STOCK_OK'
         if args.default:
-            options["-entrytext" ] = args.default
+            options["-entrytext"] = args.default
         else:
-            options["-entry" ] = None
+            options["-entry"] = None
         return self._call(args, options)
-
-

@@ -13,7 +13,7 @@ class Test(TestCase):
         BackendLoader().set_preference(['pygtk', 'zenity'])
         eq_(BackendLoader().selected().name, 'pygtk')
 
-        BackendLoader().set_preference(['pygtk','zenity', 'pygtk'])
+        BackendLoader().set_preference(['pygtk', 'zenity', 'pygtk'])
         eq_(BackendLoader().selected().name, 'pygtk')
 
         BackendLoader().set_preference(['pygtk'])
@@ -22,23 +22,14 @@ class Test(TestCase):
         BackendLoader().set_preference(['zenity', 'pygtk'])
         eq_(BackendLoader().selected().name, 'zenity')
 
-        BackendLoader().set_preference(['zenity','pygtk', 'zenity'])
+        BackendLoader().set_preference(['zenity', 'pygtk', 'zenity'])
         eq_(BackendLoader().selected().name, 'zenity')
 
         BackendLoader().set_preference(['zenity'])
         eq_(BackendLoader().selected().name, 'zenity')
-        
+
     def test_force(self):
         for name in ['zenity', 'pygtk']:
             BackendLoader().force(name)
             eq_(BackendLoader().selected().name, name)
             BackendLoader().force(None)
-        
-       
-        
-        
-        
-        
-        
-        
-        

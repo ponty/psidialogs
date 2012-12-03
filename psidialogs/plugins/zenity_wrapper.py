@@ -36,7 +36,7 @@ class Backend(IPlugin):
     def _message(self, args, kw):
         options = {}
         options["--%s" % kw] = None
-        options["--text" ] = args.message
+        options["--text"] = args.message
         return self._call(args, options)
 
     def text(self, args):
@@ -45,7 +45,7 @@ class Backend(IPlugin):
         f.write(uniencode(args.text))
         f.flush()
         options["--text-info"] = None
-        options["--filename" ] = f.name
+        options["--filename"] = f.name
         result = self._call(args, options)
         f.close()
         return result
@@ -61,12 +61,12 @@ class Backend(IPlugin):
 
     def _entry(self, args, pw):
         options = {}
-        options["--entry" ] = None
-        options["--text" ] = args.message
+        options["--entry"] = None
+        options["--text"] = args.message
         if pw:
-            options["--hide-text" ] = None
+            options["--hide-text"] = None
         if args.default:
-            options["--entry-text" ] = args.default
+            options["--entry-text"] = args.default
         return self._call(args, options)
 
     def ask_string(self, args):
@@ -75,15 +75,15 @@ class Backend(IPlugin):
     def _file(self, args, multi, folder):
         options = {}
         separator = '|'
-        options["--file-selection" ] = None
-        options["--text" ] = args.message
+        options["--file-selection"] = None
+        options["--text"] = args.message
         if multi:
-            options["--multiple" ] = None
-            options["--separator" ] = separator
+            options["--multiple"] = None
+            options["--separator"] = separator
         if folder:
             options["--directory"] = None
         if args.default:
-            options["--filename" ] = args.default
+            options["--filename"] = args.default
         result = self._call(args, options)
         if result and multi:
             result = result.split(separator)
@@ -92,23 +92,22 @@ class Backend(IPlugin):
     def _choice(self, args, multi):
         options = {}
         separator = '|'
-        options["--list" ] = None
-        options["--text" ] = args.message
+        options["--list"] = None
+        options["--text"] = args.message
         if multi:
-            options["--multiple" ] = None
-            options["--checklist" ] = None
-            options["--separator" ] = separator
+            options["--multiple"] = None
+            options["--checklist"] = None
+            options["--separator"] = separator
 
-            extraargs = ["--column" , 'Select', "--column" , 'Item']
+            extraargs = ["--column", 'Select', "--column", 'Item']
             for x in args.choices:
                 extraargs += ['FALSE', x]
         else:
-            extraargs = ["--column" , 'Item'] + args.choices
+            extraargs = ["--column", 'Item'] + args.choices
         result = self._call(args, options, extraargs=extraargs)
         if result and multi:
             result = result.split(separator)
         return result
-
 
     def ask_file(self, args):
         return self._file(args, multi=0, folder=0)
@@ -116,13 +115,12 @@ class Backend(IPlugin):
     def ask_folder(self, args):
         return self._file(args, multi=0, folder=1)
 
-
     def _ask_question(self, args, ok, cancel):
         options = {}
-        options["--question" ] = None
-        options["--text" ] = args.message
-        options["--ok-label" ] = ok
-        options["--cancel-label" ] = cancel
+        options["--question"] = None
+        options["--text"] = args.message
+        options["--ok-label"] = ok
+        options["--cancel-label"] = cancel
         result = self._call(args, options, useReturnCode=1)
         result = not result
         return result
@@ -138,4 +136,3 @@ class Backend(IPlugin):
 
     def multi_choice(self, args):
         return self._choice(args, multi=1)
-

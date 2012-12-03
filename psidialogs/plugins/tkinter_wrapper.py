@@ -66,4 +66,3 @@ class Backend(IPlugin):
         if not x:
             x = None
         return x
-
