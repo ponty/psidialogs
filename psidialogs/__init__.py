@@ -21,7 +21,7 @@ def message(message, title=''):
 
 def error(message='Error!', title=''):
     """
-    Display a warning message
+    Display an error message
 
     :ref:`screenshots<error>`
 
@@ -34,7 +34,7 @@ def error(message='Error!', title=''):
 
 def warning(message='Warning!', title=''):
     """
-    Display an error message
+    Display a warning message
 
     :ref:`screenshots<warning>`
 
