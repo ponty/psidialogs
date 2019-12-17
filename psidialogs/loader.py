@@ -41,6 +41,7 @@ class PluginLoader(object):
     def get_valid_plugin_by_name(self, name):
         if name not in self.plugins:
             ls = filter(lambda x: x.name == name, IPlugin.__subclasses__())
+            ls = list(ls)
             if len(ls):
                 try:
                     plugin = ls[0]()
