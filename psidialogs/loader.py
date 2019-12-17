@@ -44,7 +44,8 @@ class PluginLoader(object):
             if len(ls):
                 try:
                     plugin = ls[0]()
-                except Exception:
+                except Exception as e:
+                    log.debug('%s exception: %s', ls[0].name, e)
                     plugin = None
             else:
                 plugin = None
