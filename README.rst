@@ -3,7 +3,10 @@ for different standard dialogs like message, ask_string,..
 
 Links:
  * home: https://github.com/ponty/psidialogs
- * documentation: http://ponty.github.com/psidialogs
+ * documentation: http://psidialogs.readthedocs.org
+ * PYPI: https://pypi.python.org/pypi/psidialogs
+
+|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Code Health| |Documentation|
 
 Features:
  - unicode support
@@ -30,7 +33,7 @@ implementation is used where implementation is missing.
 
 
 Basic usage
-------------
+-----------
 
     >>> from psidialogs import message
     >>> message('Hello!')
@@ -40,7 +43,7 @@ Installation
 ============
 
 General
---------
+-------
 
  * install pip_
  * install the program::
@@ -66,7 +69,7 @@ Ubuntu
 
 
 Uninstall
-----------
+---------
 ::
 
 
@@ -74,7 +77,7 @@ Uninstall
     pip uninstall psidialogs
 
 similar projects
--------------------
+----------------
 
 * `anygui <http://anygui.sourceforge.net/>`_: multiple back-ends
 * `easygui <http://easygui.sourceforge.net/>`_: tk back-end
@@ -90,3 +93,17 @@ similar projects
 .. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _pip: http://pip.openplans.org/
 
+.. |Travis| image:: http://img.shields.io/travis/ponty/psidialogs.svg
+   :target: https://travis-ci.org/ponty/psidialogs/
+.. |Coveralls| image:: http://img.shields.io/coveralls/ponty/psidialogs/master.svg
+   :target: https://coveralls.io/r/ponty/psidialogs/
+.. |Latest Version| image:: https://img.shields.io/pypi/v/psidialogs.svg
+   :target: https://pypi.python.org/pypi/psidialogs/
+.. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/psidialogs.svg
+   :target: https://pypi.python.org/pypi/psidialogs/
+.. |License| image:: https://img.shields.io/pypi/l/psidialogs.svg
+   :target: https://pypi.python.org/pypi/psidialogs/
+.. |Code Health| image:: https://landscape.io/github/ponty/psidialogs/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/ponty/psidialogs/master
+.. |Documentation| image:: https://readthedocs.org/projects/psidialogs/badge/?version=latest
+   :target: https://readthedocs.org/projects/psidialogs/?badge=latest
