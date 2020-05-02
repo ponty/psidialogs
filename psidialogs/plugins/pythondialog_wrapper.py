@@ -7,9 +7,11 @@ MAX_LINE_LENGTH = 100
 
 
 class Backend(IPlugin):
-    backend = 'Python Dialog'
+    '''
     ubuntu_package = 'python-dialog'
     url = 'http://pythondialog.sourceforge.net/'
+    '''
+    backend = 'Python Dialog'
     console = True
     name = 'pythondialog'
 
