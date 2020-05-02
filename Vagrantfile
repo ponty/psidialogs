@@ -79,10 +79,12 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python3-distutils
 
 # tools
-  sudo apt-get install -y mc python-pip xvfb x11-utils
+  sudo apt-get install -y mc xvfb x11-utils
+
+  sudo apt-get install -y python-pip
+  sudo apt-get install -y python3-pip
 
 # project dependencies
-  sudo pip install --no-deps easydialogs-gtk
   sudo apt-get install -y zenity
   sudo apt-get install -y gxmessage
   
@@ -112,6 +114,9 @@ Vagrant.configure(2) do |config|
 
   sudo apt-get install -y python-easygui
   sudo apt-get install -y python3-easygui
+
+  sudo pip install --no-deps easydialogs-gtk
+  sudo pip3 install --no-deps easydialogs-gtk
 
 # test dependencies
 #  sudo apt-get install -y x11-utils #   for: xmessage
