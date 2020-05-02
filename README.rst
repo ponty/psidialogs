@@ -54,7 +54,7 @@ similar projects:
 
 
 
-.. |Travis| image:: http://img.shields.io/travis/ponty/psidialogs.svg
+.. |Travis| image:: https://travis-ci.org/ponty/psidialogs.svg?branch=master
    :target: https://travis-ci.org/ponty/psidialogs/
 .. |Latest Version| image:: https://img.shields.io/pypi/v/psidialogs.svg
    :target: https://pypi.python.org/pypi/psidialogs/

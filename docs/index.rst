@@ -1,24 +1,14 @@
-**psidialogs**
+==========
+psidialogs
+==========
 
-:Date: |today|
-:PDF: `psidialogs.pdf <psidialogs.pdf>`_
 
-Contents:
+About
+=====
 
-.. toctree::
-    :maxdepth: 2
 
-    readme
-    struct
-    api
-    screen
-    help
-    dev
+.. include:: ../README.rst
 
-Indices and tables
-==================
+.. include:: hierarchy.rst
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+.. include:: api.rst
