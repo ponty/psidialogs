@@ -7,8 +7,19 @@ from setuptools import setup
 
 
 NAME = "psidialogs"
+
+# get __version__
+__version__ = None
+exec(open(os.path.join(NAME, "about.py")).read())
+VERSION = __version__
+
 URL = "https://github.com/ponty/psidialogs"
 DESCRIPTION = "python simple dialogs"
+LONG_DESCRIPTION = """psidialogs (Python Simple Dialogs) is a common API
++for different standard dialogs like message, ask_string.
+
+Documentation: https://github.com/ponty/psidialogs/tree/"""
+LONG_DESCRIPTION += VERSION
 PACKAGES = [
     "psidialogs",
     "psidialogs.plugins",
@@ -16,10 +27,6 @@ PACKAGES = [
     "psidialogs.examples",
 ]
 
-# get __version__
-__version__ = None
-exec(open(os.path.join(NAME, "about.py")).read())
-VERSION = __version__
 
 # extra = {}
 # if sys.version_info >= (3,):
