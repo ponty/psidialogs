@@ -48,14 +48,14 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
 ]
 
-install_requires = open("requirements.txt").read().split("\n")
+install_requires = ["path.py", "argparse", "EasyProcess", "entrypoint2"]
 
 # compatible with distutils of python 2.3+ or later
 setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
-    long_description=open("README.rst", "r").read(),
+    long_description=LONG_DESCRIPTION,
     classifiers=classifiers,
     keywords="GUI common dialog",
     author="ponty",
