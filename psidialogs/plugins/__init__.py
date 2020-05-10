@@ -1,10 +1,10 @@
-import console_wrapper
-import easydialogs_wrapper
-import easygui_wrapper
-import gmessage_wrapper
-import pygtk_wrapper
-import pyqt_wrapper
-import pythondialog_wrapper
-import tkinter_wrapper
-import wxpython_wrapper
-import zenity_wrapper
+from psidialogs.plugins import console_wrapper
+from psidialogs.plugins import easydialogs_wrapper
+from psidialogs.plugins import easygui_wrapper
+from psidialogs.plugins import gmessage_wrapper
+from psidialogs.plugins import pygtk_wrapper
+from psidialogs.plugins import pyqt_wrapper
+from psidialogs.plugins import pythondialog_wrapper
+from psidialogs.plugins import tkinter_wrapper
+from psidialogs.plugins import wxpython_wrapper
+from psidialogs.plugins import zenity_wrapper

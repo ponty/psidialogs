@@ -1,9 +1,9 @@
 from psidialogs import backend_api
+from psidialogs.about import __version__
 import logging
 
-__version__ = '0.1.0'
 log = logging.getLogger(__name__)
-log.debug('version=' + __version__)
+log.debug('version=%s', __version__)
 
 
 def message(message, title=''):

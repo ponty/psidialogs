@@ -3,12 +3,11 @@ for different standard dialogs like message, ask_string,..
 
 Links:
  * home: https://github.com/ponty/psidialogs
- * documentation: http://ponty.github.com/psidialogs
+ * documentation: http://psidialogs.readthedocs.org
+ * PYPI: https://pypi.python.org/pypi/psidialogs
 
-Features:
- - unicode support
- - cross-platform, development on linux
-  
+|Travis| |Latest Version| |Supported Python versions| |License| |Documentation|
+
 back-ends:
  - PyGTK
  - Zenity
@@ -20,41 +19,19 @@ back-ends:
  - PythonDialog
  - console
  - EasyDialogs
- 
-Known problems:
- - Python 3 is not supported
- - tested only on Linux and Windows
 
-Some dialogs are too simple, because a common basic
-implementation is used where implementation is missing.
-
-
-Basic usage
-------------
+Basic usage::
 
     >>> from psidialogs import message
     >>> message('Hello!')
 
 
-Installation
-============
+Installation::
 
-General
---------
-
- * install pip_
- * install the program::
-
-    # as root
     pip install psidialogs
 
-Ubuntu
-----------
-::
+Install all back-ends on Ubuntu::
 
-    sudo apt-get install python-pip
-    sudo pip install psidialogs
-    # optional back-ends
     sudo apt-get install python-gtk2
     sudo apt-get install python-tk
     sudo apt-get install python-qt4
@@ -62,20 +39,9 @@ Ubuntu
     sudo apt-get install zenity
     sudo apt-get install gxmessage
     sudo apt-get install python-easygui
-    sudo pip install --no-deps easydialogs-gtk
+    pip install --no-deps easydialogs-gtk
 
-
-Uninstall
-----------
-::
-
-
-    # as root
-    pip uninstall psidialogs
-
-similar projects
--------------------
-
+similar projects:
 * `anygui <http://anygui.sourceforge.net/>`_: multiple back-ends
 * `easygui <http://easygui.sourceforge.net/>`_: tk back-end
 * `PyZenity <http://pypi.python.org/pypi/PyZenity>`_: Zenity back-end
@@ -87,6 +53,14 @@ similar projects
 * `EasyDialogs for Windows <http://pypi.python.org/pypi/EasyDialogs%20for%20Windows>`_: EasyDialogs API, Windows back-end
 
 
-.. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
-.. _pip: http://pip.openplans.org/
 
+.. |Travis| image:: https://travis-ci.org/ponty/psidialogs.svg?branch=master
+   :target: https://travis-ci.org/ponty/psidialogs/
+.. |Latest Version| image:: https://img.shields.io/pypi/v/psidialogs.svg
+   :target: https://pypi.python.org/pypi/psidialogs/
+.. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/psidialogs.svg
+   :target: https://pypi.python.org/pypi/psidialogs/
+.. |License| image:: https://img.shields.io/pypi/l/psidialogs.svg
+   :target: https://pypi.python.org/pypi/psidialogs/
+.. |Documentation| image:: https://readthedocs.org/projects/psidialogs/badge/?version=latest
+   :target: https://readthedocs.org/projects/psidialogs/?badge=latest
