@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
     # Customize the amount of memory on the VM:
-    vb.memory = "512"
+    vb.memory = "1024"
   end
   #
   # View the documentation for the provider you are using for more
@@ -122,10 +122,11 @@ Vagrant.configure(2) do |config|
 # test dependencies
 #  sudo apt-get install -y x11-utils #   for: xmessage
 #  sudo apt-get install -y x11-apps  #   for: xlogo
-  sudo pip install -r /vagrant/requirements-test.txt
-  
+#  sudo pip install -r /vagrant/requirements-test.txt
+sudo pip3 install tox
+
 # doc dependencies
-  sudo pip install -r /vagrant/requirements-doc.txt
+#  sudo pip install -r /vagrant/requirements-doc.txt
   
   "
       config.vm.provision "shell", inline: $script
