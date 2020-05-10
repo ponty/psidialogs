@@ -28,11 +28,11 @@ def showerror(title=None, message=None, **options):
 
 def askretrycancel(title=None, message=None, **options):
     """Original doc: Ask if operation should be retried; return true if the answer is yes"""
-    return psidialogs.ask_ok_cancel(title=title, message=message, ok='Retry')
+    return psidialogs.ask_ok_cancel(title=title, message=message, ok="Retry")
 
 
 def askquestion(title=None, message=None, **options):
     if askyesno(title=title, message=message):
-        return 'yes'
+        return "yes"
     else:
-        return 'no'
+        return "no"

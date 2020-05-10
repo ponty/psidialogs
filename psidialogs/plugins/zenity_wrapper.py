@@ -5,11 +5,11 @@ import tempfile
 
 
 class Backend(IPlugin):
-    backend = 'Zenity'
-    name = 'zenity'
+    backend = "Zenity"
+    name = "zenity"
 
     def __init__(self):
-        EasyProcess('zenity --version').check()
+        EasyProcess("zenity --version").check()
 
     def _call(self, args, options, useReturnCode=False, extraargs=[]):
         if args.title:
@@ -23,8 +23,9 @@ class Backend(IPlugin):
                 if v:
                     ls += [v]
             return ls
+
         # print ['zenity']  , dict2list(options) , extraargs
-        cmd = ['zenity'] + dict2list(options) + extraargs
+        cmd = ["zenity"] + dict2list(options) + extraargs
         p = EasyProcess(cmd).call()
         if useReturnCode:
             return p.return_code
@@ -51,13 +52,13 @@ class Backend(IPlugin):
         return result
 
     def message(self, args):
-        return self._message(args, 'info')
+        return self._message(args, "info")
 
     def warning(self, args):
-        return self._message(args, 'warning')
+        return self._message(args, "warning")
 
     def error(self, args):
-        return self._message(args, 'error')
+        return self._message(args, "error")
 
     def _entry(self, args, pw):
         options = {}
@@ -74,7 +75,7 @@ class Backend(IPlugin):
 
     def _file(self, args, multi, folder):
         options = {}
-        separator = '|'
+        separator = "|"
         options["--file-selection"] = None
         options["--text"] = args.message
         if multi:
@@ -91,7 +92,7 @@ class Backend(IPlugin):
 
     def _choice(self, args, multi):
         options = {}
-        separator = '|'
+        separator = "|"
         options["--list"] = None
         options["--text"] = args.message
         if multi:
@@ -99,11 +100,11 @@ class Backend(IPlugin):
             options["--checklist"] = None
             options["--separator"] = separator
 
-            extraargs = ["--column", 'Select', "--column", 'Item']
+            extraargs = ["--column", "Select", "--column", "Item"]
             for x in args.choices:
-                extraargs += ['FALSE', x]
+                extraargs += ["FALSE", x]
         else:
-            extraargs = ["--column", 'Item'] + args.choices
+            extraargs = ["--column", "Item"] + args.choices
         result = self._call(args, options, extraargs=extraargs)
         if result and multi:
             result = result.split(separator)
@@ -126,10 +127,10 @@ class Backend(IPlugin):
         return result
 
     def ask_ok_cancel(self, args):
-        return self._ask_question(args, ok='OK', cancel='Cancel')
+        return self._ask_question(args, ok="OK", cancel="Cancel")
 
     def ask_yes_no(self, args):
-        return self._ask_question(args, ok='Yes', cancel='No')
+        return self._ask_question(args, ok="Yes", cancel="No")
 
     def choice(self, args):
         return self._choice(args, multi=0)

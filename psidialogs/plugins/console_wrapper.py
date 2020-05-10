@@ -4,12 +4,12 @@ from psidialogs.iplugin import IPlugin
 
 class Backend(IPlugin):
     console = True
-    backend = 'console'
-    name = 'console'
+    backend = "console"
+    name = "console"
 
     @ansi_dialog
     def message(self, args):
-        msg = args.message + '[ENTER]'
+        msg = args.message + "[ENTER]"
         raw_input(msg)
 
     @ansi_dialog
@@ -20,11 +20,11 @@ class Backend(IPlugin):
     @ansi_dialog
     def ask_yes_no(self, args):
         msg = args.message
-        msg += ' [Yes/No] '
-        answers_yes = 'yes y'.split()
-        answers_no = 'no n'.split()
+        msg += " [Yes/No] "
+        answers_yes = "yes y".split()
+        answers_no = "no n".split()
         answers = answers_yes + answers_no
-        s = ''
+        s = ""
         while 1:
             s = raw_input(msg)
             s = s.lower().strip()
@@ -39,9 +39,9 @@ class Backend(IPlugin):
         return self.ask_yes_no(args)
 
     def warning(self, args):
-        args.message = '[WARNING] ' + args.message
+        args.message = "[WARNING] " + args.message
         return self.message(args)
 
     def error(self, args):
-        args.message = '[ERROR] ' + args.message
+        args.message = "[ERROR] " + args.message
         return self.message(args)

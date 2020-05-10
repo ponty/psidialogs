@@ -2,7 +2,7 @@ from loader import PluginLoader
 from singl import singleton
 
 
-default_preference = '''
+default_preference = """
 easygui
 zenity
 wxpython
@@ -12,7 +12,7 @@ pygtk
 pyqt
 pythondialog
 console
-'''.strip().splitlines()
+""".strip().splitlines()
 
 
 @singleton
@@ -21,4 +21,4 @@ class BackendLoader(PluginLoader):
         PluginLoader.__init__(self, default_preference)
 
     def is_console(self, name):
-        return name in ['console', 'pythondialog']
+        return name in ["console", "pythondialog"]

@@ -26,7 +26,7 @@ class PluginLoader(object):
         self.preference = x
 
     def force(self, name):
-        log.debug('forcing:' + str(name))
+        log.debug("forcing:" + str(name))
         self.changed = True
         self._force_backend = name
 
@@ -46,7 +46,7 @@ class PluginLoader(object):
                 try:
                     plugin = ls[0]()
                 except Exception as e:
-                    log.debug('%s exception: %s', ls[0].name, e)
+                    log.debug("%s exception: %s", ls[0].name, e)
                     plugin = None
             else:
                 plugin = None
@@ -64,18 +64,20 @@ class PluginLoader(object):
             if self.is_forced:
                 b = self.get_valid_plugin_by_name(self._force_backend)
                 if not b:
-                    raise PluginLoaderError('Forced backend not found, or cannot be loaded:' + self._force_backend)
+                    raise PluginLoaderError(
+                        "Forced backend not found, or cannot be loaded:"
+                        + self._force_backend
+                    )
             else:
-                biglist = self.preference + \
-                    self.default_preference + self.all_names
+                biglist = self.preference + self.default_preference + self.all_names
                 b = self.get_valid_plugin_by_list(biglist)
                 if not b:
                     self.raise_exc()
             self.changed = False
             self._backend = b
-            log.debug('selecting plugin:' + self._backend.name)
+            log.debug("selecting plugin:" + self._backend.name)
         return self._backend
 
     def raise_exc(self):
-        message = 'Install at least one backend!'
+        message = "Install at least one backend!"
         raise PluginLoaderError(message)

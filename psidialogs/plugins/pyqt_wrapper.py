@@ -1,4 +1,3 @@
-
 from psidialogs.iplugin import IPlugin
 
 
@@ -6,15 +5,16 @@ _app = None
 
 
 class Backend(IPlugin):
-    backend = 'PyQt'
-    name = 'pyqt'
+    backend = "PyQt"
+    name = "pyqt"
 
     def __init__(self):
         from PyQt4 import QtGui
+
         self.QtGui = QtGui
 
     def backend_version(self):
-        return 'not implemented'
+        return "not implemented"
 
     def init_qt(self):
         global _app
@@ -35,21 +35,25 @@ class Backend(IPlugin):
 
     def ask_ok_cancel(self, args):
         self.init_qt()
-        reply = self.QtGui.QMessageBox.question(None,
-                                                args.title,
-                                                args.message,
-                                                self.QtGui.QMessageBox.Ok,
-                                                self.QtGui.QMessageBox.Cancel)
-        return (reply == self.QtGui.QMessageBox.Ok)
+        reply = self.QtGui.QMessageBox.question(
+            None,
+            args.title,
+            args.message,
+            self.QtGui.QMessageBox.Ok,
+            self.QtGui.QMessageBox.Cancel,
+        )
+        return reply == self.QtGui.QMessageBox.Ok
 
     def ask_yes_no(self, args):
         self.init_qt()
-        reply = self.QtGui.QMessageBox.question(None,
-                                                args.title,
-                                                args.message,
-                                                self.QtGui.QMessageBox.Yes,
-                                                self.QtGui.QMessageBox.No)
-        return (reply == self.QtGui.QMessageBox.Yes)
+        reply = self.QtGui.QMessageBox.question(
+            None,
+            args.title,
+            args.message,
+            self.QtGui.QMessageBox.Yes,
+            self.QtGui.QMessageBox.No,
+        )
+        return reply == self.QtGui.QMessageBox.Yes
 
     def ask_folder(self, args):
         self.init_qt()
@@ -68,14 +72,14 @@ class Backend(IPlugin):
 
     def ask_string(self, args):
         self.init_qt()
-        (result, ok) = self.QtGui.QInputDialog.getText(
-            None, args.title, args.message,)
+        (result, ok) = self.QtGui.QInputDialog.getText(None, args.title, args.message,)
         if ok:
             return unicode(result)
 
     def choice(self, args):
         self.init_qt()
         (result, ok) = self.QtGui.QInputDialog.getItem(
-            None, args.title, args.message, args.choices,)
+            None, args.title, args.message, args.choices,
+        )
         if ok:
             return unicode(result)

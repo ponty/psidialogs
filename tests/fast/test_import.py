@@ -3,4 +3,4 @@ from psidialogs.examples import demo
 
 
 def test():
-    print 'OK'
+    print "OK"

@@ -2,9 +2,9 @@ from psidialogs.iplugin import IPlugin
 
 
 class Backend(IPlugin):
-    backend = 'TkInter'
+    backend = "TkInter"
     root = None
-    name = 'tkinter'
+    name = "tkinter"
 
     def __init__(self):
         from Tkinter import Tk
@@ -12,6 +12,7 @@ class Backend(IPlugin):
         import tkFileDialog
         import tkMessageBox
         import tkSimpleDialog
+
         self.Tk = Tk
         self.Tkinter = Tkinter
         self.tkFileDialog = tkFileDialog

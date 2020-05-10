@@ -2,21 +2,25 @@ from psidialogs.iplugin import IPlugin
 
 
 class Backend(IPlugin):
-    backend = 'PyGTK'
-    name = 'pygtk'
+    backend = "PyGTK"
+    name = "pygtk"
 
     def __init__(self):
         import gtk
+
         self.gtk = gtk
 
     def backend_version(self):
         return self.gtk.ver
 
     def _message(self, args, typ):
-        dialog = self.gtk.MessageDialog(None,
-                                        self.gtk.DIALOG_MODAL | self.gtk.DIALOG_DESTROY_WITH_PARENT,
-                                        typ, self.gtk.BUTTONS_OK,
-                                        args.message)
+        dialog = self.gtk.MessageDialog(
+            None,
+            self.gtk.DIALOG_MODAL | self.gtk.DIALOG_DESTROY_WITH_PARENT,
+            typ,
+            self.gtk.BUTTONS_OK,
+            args.message,
+        )
         dialog.set_title(args.title)
         dialog.run()
         dialog.destroy()
@@ -27,11 +31,19 @@ class Backend(IPlugin):
         message = args.message
         default = args.default
         if yesno:
-            buttons = (self.gtk.STOCK_YES, self.gtk.RESPONSE_OK,
-                       self.gtk.STOCK_NO, self.gtk.RESPONSE_CANCEL)
+            buttons = (
+                self.gtk.STOCK_YES,
+                self.gtk.RESPONSE_OK,
+                self.gtk.STOCK_NO,
+                self.gtk.RESPONSE_CANCEL,
+            )
         else:
-            buttons = (self.gtk.STOCK_OK, self.gtk.RESPONSE_OK,
-                       self.gtk.STOCK_CANCEL, self.gtk.RESPONSE_CANCEL)
+            buttons = (
+                self.gtk.STOCK_OK,
+                self.gtk.RESPONSE_OK,
+                self.gtk.STOCK_CANCEL,
+                self.gtk.RESPONSE_CANCEL,
+            )
         dlg = self.gtk.Dialog(title=title, parent=parent, buttons=buttons)
         dlg.set_default_response(self.gtk.RESPONSE_OK)
 

@@ -1,5 +1,5 @@
-#"""
-#"""
+# """
+# """
 #
 # from psidialogs.easygui_api import *
 # import psidialogs
@@ -28,7 +28,7 @@
 #
 #    # ============================= define a code snippet =========================
 #    code_snippet = ("dafsdfa dasflkj pp[oadsij asdfp;ij asdfpjkop asdfpok asdfpok asdfpok"*3) +"\n"+\
-#"""# here is some dummy Python code
+# """# here is some dummy Python code
 # for someItem in myListOfStuff:
 #    do something(someItem)
 #    do something()
@@ -36,13 +36,13 @@
 #    if somethingElse(someItem):
 #        doSomethingEvenMoreInteresting()
 #
-#"""*16
+# """*16
 #    #======================== end of code snippet ==============================
 #
 #    #================================= some text ===========================
 #    text_snippet = ((\
-#"""It was the best of times, and it was the worst of times.  The rich ate cake, and the poor had cake recommended to them, but wished only for enough cash to buy bread.  The time was ripe for revolution! """ \
-#*5)+"\n\n")*10
+# """It was the best of times, and it was the worst of times.  The rich ate cake, and the poor had cake recommended to them, but wished only for enough cash to buy bread.  The time was ripe for revolution! """ \
+# *5)+"\n\n")*10
 #
 #    #===========================end of text ================================
 #

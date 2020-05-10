@@ -1,5 +1,3 @@
-
-
 def singleton(cls):
     instances = {}
 
@@ -7,4 +5,5 @@ def singleton(cls):
         if cls not in instances:
             instances[cls] = cls()
         return instances[cls]
+
     return getinstance

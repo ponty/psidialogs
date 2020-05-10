@@ -17,14 +17,15 @@ class attribdict(DictMixin):
     >>> x.d
     4
     """
+
     def __init__(self, *args, **kwargs):
-        self.__dict__ = (dict(*args, **kwargs))
+        self.__dict__ = dict(*args, **kwargs)
 
     def __getitem__(self, key):
         return self.__dict__[key]
 
     def keys(self):
-        return self.__dict__ .keys()
+        return self.__dict__.keys()
 
     def copy(self):
         if self.__class__ is attribdict:

@@ -1,7 +1,25 @@
 import psidialogs
 
 
-def AskFileForSave(message=None, savedFileName=None, version=None, defaultLocation=None, dialogOptionFlags=None, location=None, clientName=None, windowTitle=None, actionButtonLabel=None, cancelButtonLabel=None, preferenceKey=None, popupExtension=None, eventProc=None, fileType=None, fileCreator=None, wanted=None, multiple=None):
+def AskFileForSave(
+    message=None,
+    savedFileName=None,
+    version=None,
+    defaultLocation=None,
+    dialogOptionFlags=None,
+    location=None,
+    clientName=None,
+    windowTitle=None,
+    actionButtonLabel=None,
+    cancelButtonLabel=None,
+    preferenceKey=None,
+    popupExtension=None,
+    eventProc=None,
+    fileType=None,
+    fileCreator=None,
+    wanted=None,
+    multiple=None,
+):
     """Original doc: Display a dialog asking the user for a filename to save to.
 
     wanted is the return type wanted: FSSpec, FSRef, unicode or string (default)
@@ -9,7 +27,25 @@ def AskFileForSave(message=None, savedFileName=None, version=None, defaultLocati
     return psidialogs.ask_file(message=message, save=True)
 
 
-def AskFileForOpen(message=None, typeList=None, version=None, defaultLocation=None, dialogOptionFlags=None, location=None, clientName=None, windowTitle=None, actionButtonLabel=None, cancelButtonLabel=None, preferenceKey=None, popupExtension=None, eventProc=None, previewProc=None, filterProc=None, wanted=None, multiple=None):
+def AskFileForOpen(
+    message=None,
+    typeList=None,
+    version=None,
+    defaultLocation=None,
+    dialogOptionFlags=None,
+    location=None,
+    clientName=None,
+    windowTitle=None,
+    actionButtonLabel=None,
+    cancelButtonLabel=None,
+    preferenceKey=None,
+    popupExtension=None,
+    eventProc=None,
+    previewProc=None,
+    filterProc=None,
+    wanted=None,
+    multiple=None,
+):
     """Original doc: Display a dialog asking the user for a file to open.
 
     wanted is the return type wanted: FSSpec, FSRef, unicode or string (default)
@@ -17,7 +53,7 @@ def AskFileForOpen(message=None, typeList=None, version=None, defaultLocation=No
     return psidialogs.ask_file(message=message)
 
 
-def AskPassword(prompt, default='', id=264, ok=None, cancel=None):
+def AskPassword(prompt, default="", id=264, ok=None, cancel=None):
     """Original doc: Display a PROMPT string and a text entry field with a DEFAULT string.
     The string is displayed as bullets only.
 
@@ -33,15 +69,36 @@ def AskPassword(prompt, default='', id=264, ok=None, cancel=None):
     raise NotImplementedError()
 
 
-def ask_folder(message=None, version=None, defaultLocation=None, dialogOptionFlags=None, location=None, clientName=None, windowTitle=None, actionButtonLabel=None, cancelButtonLabel=None, preferenceKey=None, popupExtension=None, eventProc=None, filterProc=None, wanted=None, multiple=None):
+def ask_folder(
+    message=None,
+    version=None,
+    defaultLocation=None,
+    dialogOptionFlags=None,
+    location=None,
+    clientName=None,
+    windowTitle=None,
+    actionButtonLabel=None,
+    cancelButtonLabel=None,
+    preferenceKey=None,
+    popupExtension=None,
+    eventProc=None,
+    filterProc=None,
+    wanted=None,
+    multiple=None,
+):
     """Original doc: Display a dialog asking the user for select a folder.
 
     wanted is the return type wanted: FSSpec, FSRef, unicode or string (default)
     the other arguments can be looked up in Apple's Navigation Services documentation"""
-    return psidialogs.ask_folder(message=message, title=windowTitle, ok=actionButtonLabel, cancel=cancelButtonLabel)
+    return psidialogs.ask_folder(
+        message=message,
+        title=windowTitle,
+        ok=actionButtonLabel,
+        cancel=cancelButtonLabel,
+    )
 
 
-def AskString(prompt, default='', id=261, ok=None, cancel=None):
+def AskString(prompt, default="", id=261, ok=None, cancel=None):
     """Original doc: Display a PROMPT string and a text entry field with a DEFAULT string.
 
     Return the contents of the text entry field when the user clicks the

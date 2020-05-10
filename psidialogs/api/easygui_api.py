@@ -1,7 +1,7 @@
 import psidialogs
 
 
-def textbox(message='', title='', text='', codebox=0):
+def textbox(message="", title="", text="", codebox=0):
     """Original doc: Display some text in a proportional font with line wrapping at word breaks.
         This function is suitable for displaying general written text.
 
@@ -11,12 +11,16 @@ def textbox(message='', title='', text='', codebox=0):
     return psidialogs.text(message=message, title=title, text=text)
 
 
-def buttonbox(message='Shall I continue?', title='', choices=['Button1', 'Button2', 'Button3']):
+def buttonbox(
+    message="Shall I continue?", title="", choices=["Button1", "Button2", "Button3"]
+):
     """Original doc: Display a message, a title, and a set of buttons.
         The buttons are defined by the members of the choices list.
         Return the text of the button that the user selected.
         """
     raise NotImplementedError()
+
+
 # return psidialogs.button_choice(message=message, title=title,
 # choices=choices)
 
@@ -28,7 +32,9 @@ def filesavebox(msg=None, title=None, argInitialFile=None):
         if argInitialFile contains a valid filename, the dialog will
         be positioned at that file when it appears.
         """
-    return psidialogs.ask_file(message=msg, title=title, default=argInitialFile, save=True)
+    return psidialogs.ask_file(
+        message=msg, title=title, default=argInitialFile, save=True
+    )
 
 
 def diropenbox(msg=None, title=None, argInitialDir=None):
@@ -44,7 +50,7 @@ def diropenbox(msg=None, title=None, argInitialDir=None):
     return psidialogs.ask_folder(message=msg, title=title, default=argInitialDir)
 
 
-def ynbox(message='Shall I continue?', title=''):
+def ynbox(message="Shall I continue?", title=""):
     """Original doc: Display a message box with choices of Yes and No.
         The default is "Yes".
         Returns returns 1 if "Yes" is chosen, or if
@@ -60,7 +66,11 @@ def ynbox(message='Shall I continue?', title=''):
     return psidialogs.ask_yes_no(message=message, title=title)
 
 
-def choicebox(message='Pick something.', title='', choices=['program logic error - no choices specified']):
+def choicebox(
+    message="Pick something.",
+    title="",
+    choices=["program logic error - no choices specified"],
+):
     """Original doc: Present the user with a list of choices.
         return the choice that he selects.
         return None if he cancels the selection selection.
@@ -68,13 +78,17 @@ def choicebox(message='Pick something.', title='', choices=['program logic error
     return psidialogs.choice(message=message, title=title, choices=choices)
 
 
-def msgbox(message='Shall I continue?', title='', buttonMessage='OK'):
+def msgbox(message="Shall I continue?", title="", buttonMessage="OK"):
     """Original doc: Display a messagebox
         """
     return psidialogs.message(message=message, title=title, ok=buttonMessage)
 
 
-def multchoicebox(message='Pick as many items as you like.', title='', choices=['program logic error - no choices specified']):
+def multchoicebox(
+    message="Pick as many items as you like.",
+    title="",
+    choices=["program logic error - no choices specified"],
+):
     """Original doc: Present the user with a list of choices.
         allow him to select multiple items and return them in a list.
         if the user doesn't choose anything from the list, return the empty list.
@@ -83,7 +97,7 @@ def multchoicebox(message='Pick as many items as you like.', title='', choices=[
     return psidialogs.multi_choice(message=message, title=title, choices=choices)
 
 
-def enterbox(message='Enter something.', title='', argDefaultText=''):
+def enterbox(message="Enter something.", title="", argDefaultText=""):
     """Original doc: Show a box in which a user can enter some text.
         You may optionally specify some default text, which will appear in the
         enterbox when it is displayed.
@@ -92,7 +106,7 @@ def enterbox(message='Enter something.', title='', argDefaultText=''):
     return psidialogs.ask_string(message=message, title=title, default=argDefaultText)
 
 
-def passwordbox(message='Enter your password.', title='', argDefaultPassword=''):
+def passwordbox(message="Enter your password.", title="", argDefaultPassword=""):
     """Original doc: Show a box in which a user can enter a password.
         The text is masked with asterisks, so the password is not displayed.
         Returns the text that the user entered, or None if he cancels the operation.
@@ -110,7 +124,13 @@ def fileopenbox(msg=None, title=None, argInitialFile=None):
     return psidialogs.ask_file(message=msg, title=title, default=argInitialFile)
 
 
-def integerbox(message='Enter something.', title='', argDefault=None, argLowerBound=0, argUpperBound=99):
+def integerbox(
+    message="Enter something.",
+    title="",
+    argDefault=None,
+    argLowerBound=0,
+    argUpperBound=99,
+):
     """Original doc: Show a box in which a user can enter an integer.
         In addition to arguments for message and title, this function accepts
         integer arguments for default_value, lowerbound, and upperbound.
@@ -128,6 +148,8 @@ def integerbox(message='Enter something.', title='', argDefault=None, argLowerBo
         If the user cancels the operation, the default value is returned.
         """
     return psidialogs.ask_string(message=message, title=title, default=str(argDefault))
+
+
 ##[[[end]]]
 
 # copy from easygui.py
@@ -144,6 +166,7 @@ def codebox(message="", title="", text=""):
     displayed in the textbox.
     """
     textbox(message, title, text, codebox=1)
+
 
 # copy from easygui.py
 
@@ -168,6 +191,7 @@ def ccbox(message="Shall I continue?", title=""):
         title = ""
     return boolbox(message, title, choices)
 
+
 # copy from easygui.py
 
 
@@ -191,6 +215,7 @@ def boolbox(message="Shall I continue?", title="", choices=["Yes", "No"]):
         return 1
     else:
         return 0
+
 
 # copy from easygui.py
 
