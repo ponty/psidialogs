@@ -2,11 +2,9 @@ from setuptools import setup
 import os.path
 import sys
 
-if os.environ.get("distutils_issue8876_workaround_enabled", False):
-    # sdist_hack: Remove reference to os.link to disable using hardlinks when
-    #             building setup.py's sdist target.  This is done because
-    #             VirtualBox VMs shared filesystems don't support hardlinks.
-    del os.link
+
+from setuptools import setup
+
 
 NAME = "psidialogs"
 URL = "https://github.com/ponty/psidialogs"
