@@ -1,5 +1,5 @@
-from loader import PluginLoader
-from singl import singleton
+from psidialogs.loader import PluginLoader
+from psidialogs.singl import singleton
 
 
 default_preference = """

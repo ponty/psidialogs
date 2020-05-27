@@ -1,6 +1,6 @@
 from psidialogs.iplugin import IPlugin
 import logging
-import plugins
+import psidialogs.plugins
 
 log = logging.getLogger(__name__)
 

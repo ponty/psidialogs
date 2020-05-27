@@ -1,5 +1,5 @@
-from attribdict import attribdict
-from mixins import AllMixin
+from psidialogs.attribdict import attribdict
+from psidialogs.mixins import AllMixin
 from psidialogs.backendloader import BackendLoader
 import logging
 
