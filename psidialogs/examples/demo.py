@@ -14,10 +14,10 @@ def testdata(title):
     text = f.read()
     f.close()
     return dict(
-        message=u"This is a m\u20acssage! (%s)" % BackendLoader().selected().name,
+        message=u"This is a message! (%s) \u20ac" % BackendLoader().selected().name,
         choices=[u"1 \u20ac", "Two", "Three"],
         text=u"\u20ac\n%s" % text,
-        title=title if title else u"titl\u20ac",
+        title=title if title else u"title \u20ac",
     )
 
 
