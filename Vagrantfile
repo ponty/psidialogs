@@ -79,7 +79,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python3-distutils
 
 # tools
-  sudo apt-get install -y mc xvfb x11-utils
+  sudo apt-get install -y mc xvfb x11-utils scrot
 
   sudo apt-get install -y python-pip
   sudo apt-get install -y python3-pip
@@ -94,7 +94,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python3-gi
   sudo apt-get install -y gir1.2-gtk-3.0
     
-  sudo apt-get install -y python-wxgtk4.0
+  sudo apt-get install -y python-wxgtk3.0
   sudo apt-get install -y python3-wxgtk4.0
 
   sudo apt-get install -y python-qt4
@@ -115,17 +115,16 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python-easygui
   sudo apt-get install -y python3-easygui
 
-  sudo pip install --no-deps easydialogs-gtk
-  sudo pip3 install --no-deps easydialogs-gtk
+  sudo python  -m pip install --no-deps easydialogs-gtk
+  sudo python3 -m pip install --no-deps easydialogs-gtk
 
 # test dependencies
 #  sudo apt-get install -y x11-utils #   for: xmessage
 #  sudo apt-get install -y x11-apps  #   for: xlogo
 #  sudo pip install -r /vagrant/requirements-test.txt
-sudo pip3 install tox
+sudo python -m pip install tox
 
 # doc dependencies
-#  sudo pip install -r /vagrant/requirements-doc.txt
   
   "
       config.vm.provision "shell", inline: $script
