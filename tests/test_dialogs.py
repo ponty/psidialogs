@@ -21,7 +21,7 @@ def check_buttons(cmd, expect):
             # msg="dialog does not have expected buttons %s!=%s" % (buttons, expect),
 
             mouse = PyMouse()
-            print "buttons:", buttons
+            print("buttons: %s" % buttons)
             for v, b in zip(expect, buttons):
                 process = EasyProcess(cmd).start().sleep(1)
                 mouse.click(*b.center)

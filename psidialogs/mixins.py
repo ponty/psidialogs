@@ -23,7 +23,7 @@ class AllMixin:
         args["message"] += "\n" + "\n".join(lines)
         args["message"] += "\nSelect:"
         ##        self.text(args)
-        args["default"] = unicode(args["default"])
+        args["default"] = "%s" % args["default"]
         i = self.ask_string(args)
         return i
 

@@ -27,6 +27,7 @@ def opendialog(backend, func, title="", message="", choices="", text=""):
 
     args = dict([(k, v) for (k, v) in args.items() if k in argnames])
     result = None
-    exec "result = psidialogs.%s(**args)" % (func)
-    log.debug("result:" + unicode(result))
-    print result
+    # exec "result = psidialogs.%s(**args)" % (func)
+    result = psidialogs.__dict__[func](**args)
+    log.debug("result:%s", result)
+    print(result)

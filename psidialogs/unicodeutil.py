@@ -1,12 +1,34 @@
+import sys
+
+PY3 = sys.version_info[0] >= 3
+
+# def uniencode(s):
+#     if isinstance(s, unicode):
+#         s = s.encode("utf-8")
+#     return s
+
+
+# def unidecode(s):
+#     if isinstance(s, str):
+#         s = s.decode("utf-8")
+#     return s
+
+
 def uniencode(s):
-    if isinstance(s, unicode):
-        s = s.encode("utf-8")
+    if PY3:
+        s=s.encode()
+    else:
+        if isinstance(s, unicode):
+            s = s.encode("utf-8")
     return s
 
 
 def unidecode(s):
-    if isinstance(s, str):
-        s = s.decode("utf-8")
+    if PY3:
+        s = s.decode("utf-8", "ignore")
+    else:
+        if isinstance(s, str):
+            s = s.decode("utf-8", "ignore")
     return s
 
 

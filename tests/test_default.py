@@ -3,7 +3,7 @@ from pyvirtualdisplay.smartdisplay import SmartDisplay
 import psidialogs
 
 VISIBLE = 0
-TIMEOUT = 30
+TIMEOUT = 5
 
 
 def check_open(func):

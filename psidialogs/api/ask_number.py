@@ -4,7 +4,7 @@ from psidialogs import ask_string, warning
 def ask_float(message="Enter float.", default=0, ok="OK", cancel="Cancel", title=""):
     while 1:
         s = ask_string(
-            message=message, default=unicode(default), ok=ok, cancel=cancel, title=title
+            message=message, default="%s" % default, ok=ok, cancel=cancel, title=title
         )
         if not s:
             return
@@ -18,7 +18,7 @@ def ask_float(message="Enter float.", default=0, ok="OK", cancel="Cancel", title
 def ask_int(message="Enter float.", default=0, ok="OK", cancel="Cancel", title=""):
     while 1:
         s = ask_string(
-            message=message, default=unicode(default), ok=ok, cancel=cancel, title=title
+            message=message, default="%s" % default, ok=ok, cancel=cancel, title=title
         )
         if not s:
             return
