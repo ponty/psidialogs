@@ -77,16 +77,41 @@ def check(backend, func):
         check_buttons(cmd, expect)
 
 
-s = ""
-for x in BackendLoader().all_names:
-    for f in psidialogs.FUNCTION_NAMES:
-        if not BackendLoader().is_console(x):
-            s += """
-def test_{backend}_{safefunc}():
-    check("{backend}","{func}")
-""".format(
-                backend=x,
-                func=f,
-                safefunc=f.replace("error", "err").replace("warning", "warn"),
-            )
-exec s
+def check_backend(backend):
+    if not BackendLoader().is_console(backend):
+        for func in psidialogs.FUNCTION_NAMES:
+            check(backend, func)
+
+# TODO: test backends
+# def test_easydialogs():
+#     check_backend("easydialogs")
+
+
+# def test_easygui():
+#     check_backend("easygui")
+
+
+def test_gmessage():
+    check_backend("gmessage")
+
+
+# def test_pygtk():
+#     check_backend("pygtk")
+
+
+# def test_pyqt():
+#     check_backend("pyqt")
+
+
+# def test_tkinter():
+#     check_backend("tkinter")
+
+
+# def test_wxpython():
+#     check_backend("wxpython")
+
+
+def test_zenity():
+    check_backend("zenity")
+
+
