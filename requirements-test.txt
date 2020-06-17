@@ -1,3 +1,7 @@
 pytest
 pyvirtualdisplay
-entrypoint2
+discogui
+easyprocess
+pillow
+six
+#http://easygui.sourceforge.net/download/version_0.95/easygui_version_0.95.zip
