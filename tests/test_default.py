@@ -31,11 +31,11 @@ def test_ask_folder():
 
 
 def test_choice():
-    check_open("""choice(message='hi')""")
+    check_open("""choice(message='hi',choices=['a','b'])""")
 
 
 def test_multi_choice():
-    check_open("""multi_choice(message='hi')""")
+    check_open("""multi_choice(message='hi',choices=['a','b'])""")
 
 
 def test_text():
