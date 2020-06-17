@@ -7,7 +7,7 @@ class Backend(IPlugin):
     name = "gmessage"
 
     def __init__(self):
-        assert EasyProcess("gmessage --version").call().return_code == 0
+        assert EasyProcess(["gmessage", "--version"]).call().return_code == 0
 
     def activate(self):
         pass

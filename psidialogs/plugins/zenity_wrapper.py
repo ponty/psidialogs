@@ -9,7 +9,7 @@ class Backend(IPlugin):
     name = "zenity"
 
     def __init__(self):
-        assert EasyProcess("zenity --version").call().return_code == 0
+        assert EasyProcess(["zenity", "--version"]).call().return_code == 0
 
     def _call(self, args, options, useReturnCode=False, extraargs=[]):
         if args["title"]:

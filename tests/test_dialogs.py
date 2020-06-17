@@ -3,7 +3,7 @@ from discogui.mouse import PyMouse
 from easyprocess import EasyProcess
 from psidialogs.backendloader import BackendLoader
 from pyvirtualdisplay.smartdisplay import SmartDisplay
-import psidialogs
+import psidialogs, sys
 
 VISIBLE = 0
 TIMEOUT = 30
@@ -32,9 +32,7 @@ def check_buttons(cmd, expect):
 
 
 def check_open(backend, func):
-    cmd = "python -m psidialogs.examples.demo -b {backend} -f {func}".format(
-        backend=backend, func=func
-    )
+    cmd = [sys.executable, "-m", "psidialogs.examples.demo", "-b", backend, "-f", func]
     # exception if nothing is displayed
     with SmartDisplay(visible=VISIBLE) as disp:
         with EasyProcess(cmd):
@@ -59,9 +57,15 @@ def check(backend, func):
     if backend == "gmessage":  # active editbox
         return
 
-    cmd = "python -m psidialogs.examples.opendialog {backend} {func} -m hi".format(
-        backend=backend, func=func
-    )
+    cmd = [
+        sys.executable,
+        "-m",
+        "psidialogs.examples.opendialog",
+        backend,
+        func,
+        "-m",
+        "hi",
+    ]
     if func == "message":
         expect = [None]
         check_buttons(cmd, expect)

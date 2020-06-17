@@ -1,13 +1,13 @@
 from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
-import psidialogs
+import psidialogs, sys
 
 VISIBLE = 0
 TIMEOUT = 5
 
 
 def check_open(func):
-    cmd = '''python -c "import psidialogs;psidialogs.{func}"'''.format(func=func)
+    cmd = [sys.executable, "-c", "import psidialogs;psidialogs.{func}".format(func=func)]
     # exception if nothing is displayed
     with SmartDisplay(visible=VISIBLE) as disp:
         with EasyProcess(cmd):
