@@ -16,7 +16,7 @@ PY3 = sys.version_info[0] >= 3
 
 def uniencode(s):
     if PY3:
-        s=s.encode()
+        s = s.encode()
     else:
         if isinstance(s, unicode):
             s = s.encode("utf-8")
@@ -35,7 +35,7 @@ def unidecode(s):
 def ansi_dialog(func):
     def wrapper(self, args):
         if "choices" in args:
-            args["choices"] = map(uniencode, args["choices"])
+            args["choices"] = list(map(uniencode, args["choices"]))
         if "message" in args:
             args["message"] = uniencode(args["message"])
         if "title" in args:
@@ -46,7 +46,7 @@ def ansi_dialog(func):
         if isinstance(result, str):
             result = unidecode(result)
         if isinstance(result, list):
-            result = map(unidecode, result)
+            result = list(map(unidecode, result))
         return result
 
     return wrapper
