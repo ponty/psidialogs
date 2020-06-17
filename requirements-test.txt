@@ -1,5 +1,4 @@
-tox
-nose
+pytest
 coverage
 pyvirtualdisplay
 entrypoint2

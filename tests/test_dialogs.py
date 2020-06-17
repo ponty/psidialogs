@@ -1,7 +1,6 @@
 from discogui.buttons import discover_buttons
 from discogui.mouse import PyMouse
 from easyprocess import EasyProcess
-from nose.tools import with_setup, eq_
 from psidialogs.backendloader import BackendLoader
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 import psidialogs
@@ -18,11 +17,8 @@ def check_buttons(cmd, expect):
 
             buttons = discover_buttons()
 
-            eq_(
-                len(buttons),
-                len(expect),
-                msg="dialog does not have expected buttons %s!=%s" % (buttons, expect),
-            )
+            assert len(buttons) == len(expect)
+            # msg="dialog does not have expected buttons %s!=%s" % (buttons, expect),
 
             mouse = PyMouse()
             print "buttons:", buttons
@@ -31,7 +27,7 @@ def check_buttons(cmd, expect):
                 mouse.click(*b.center)
                 process.wait(timeout=10)
                 assert not process.timeout_happened
-                eq_(process.stdout, str(v))
+                assert process.stdout == str(v)
                 # dialog does not return expected value
 
 
@@ -82,6 +78,7 @@ def check_backend(backend):
         for func in psidialogs.FUNCTION_NAMES:
             check(backend, func)
 
+
 # TODO: test backends
 # def test_easydialogs():
 #     check_backend("easydialogs")
@@ -113,5 +110,3 @@ def test_gmessage():
 
 def test_zenity():
     check_backend("zenity")
-
-

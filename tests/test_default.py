@@ -1,5 +1,4 @@
 from easyprocess import EasyProcess
-from nose.tools import with_setup, eq_
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 import psidialogs
 

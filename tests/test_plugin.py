@@ -1,4 +1,3 @@
-from nose.tools import eq_
 from psidialogs.backendloader import BackendLoader
 from unittest import TestCase
 from pyvirtualdisplay.display import Display
@@ -30,11 +29,11 @@ class Test(TestCase):
             # eq_(BackendLoader().selected().name, "zenity")
 
             BackendLoader().set_preference(["zenity"])
-            eq_(BackendLoader().selected().name, "zenity")
+            assert BackendLoader().selected().name == "zenity"
 
     def test_force(self):
         with Display(visible=0, size=(800, 600)) as vd:
             for name in ["zenity"]:
                 BackendLoader().force(name)
-                eq_(BackendLoader().selected().name, name)
+                assert BackendLoader().selected().name == name
                 BackendLoader().force(None)

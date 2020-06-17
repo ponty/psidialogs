@@ -29,7 +29,7 @@ Basic usage:
 Installation:
 
 ```console
-$ pip install psidialogs
+$ python3 -m pip install psidialogs
 ```
 
 Install all back-ends on Ubuntu:
