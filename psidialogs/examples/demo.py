@@ -37,8 +37,8 @@ def dialog(func, title="", **kwargs):
     args = testdata(title)
     args = dict([(k, v) for (k, v) in args.items() if k in argnames])
     result = None
-    exec "result = psidialogs.%s(**args)" % (func)
-    # result = psidialogs.__dict__[func](**args)
+    # exec "result = psidialogs.%s(**args)" % (func)
+    result = psidialogs.__dict__[func](**args)
     # print 'result: ' , result
     #    log.debug(u'result:'+unicode(result))
     if result is not None:
@@ -73,7 +73,7 @@ def selectbackend(backend=None, title="", **kwargs):
             BackendLoader().force(b)
             try:
                 BackendLoader().selected()
-            except Exception, detail:
+            except Exception as detail:
                 BackendLoader().force(None)
                 psidialogs.text("Exception:\n" + unicode(detail))
                 continue
@@ -84,5 +84,5 @@ def selectbackend(backend=None, title="", **kwargs):
 
 @entrypoint
 def demo(backend=None, function=None, title=""):
-    print os.isatty(sys.stdout.fileno())
+    print(os.isatty(sys.stdout.fileno()))
     selectbackend(backend=backend, function=function, title=title)
