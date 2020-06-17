@@ -23,22 +23,22 @@ class Backend(IPlugin):
 
     def message(self, args):
         self.init_qt()
-        self.QtGui.QMessageBox.information(None, args.title, args.message)
+        self.QtGui.QMessageBox.information(None, args["title"], args["message"])
 
     def warning(self, args):
         self.init_qt()
-        self.QtGui.QMessageBox.warning(None, args.title, args.message)
+        self.QtGui.QMessageBox.warning(None, args["title"], args["message"])
 
     def error(self, args):
         self.init_qt()
-        self.QtGui.QMessageBox.critical(None, args.title, args.message)
+        self.QtGui.QMessageBox.critical(None, args["title"], args["message"])
 
     def ask_ok_cancel(self, args):
         self.init_qt()
         reply = self.QtGui.QMessageBox.question(
             None,
-            args.title,
-            args.message,
+            args["title"],
+            args["message"],
             self.QtGui.QMessageBox.Ok,
             self.QtGui.QMessageBox.Cancel,
         )
@@ -48,8 +48,8 @@ class Backend(IPlugin):
         self.init_qt()
         reply = self.QtGui.QMessageBox.question(
             None,
-            args.title,
-            args.message,
+            args["title"],
+            args["message"],
             self.QtGui.QMessageBox.Yes,
             self.QtGui.QMessageBox.No,
         )
@@ -57,29 +57,31 @@ class Backend(IPlugin):
 
     def ask_folder(self, args):
         self.init_qt()
-        result = self.QtGui.QFileDialog.getExistingDirectory(None, args.title,)
+        result = self.QtGui.QFileDialog.getExistingDirectory(None, args["title"],)
         if result:
             return unicode(result)
 
     def ask_file(self, args):
         self.init_qt()
-        if args.save:
-            result = self.QtGui.QFileDialog.getSaveFileName(None, args.title,)
+        if args["save"]:
+            result = self.QtGui.QFileDialog.getSaveFileName(None, args["title"],)
         else:
-            result = self.QtGui.QFileDialog.getOpenFileName(None, args.title,)
+            result = self.QtGui.QFileDialog.getOpenFileName(None, args["title"],)
         if result:
             return unicode(result)
 
     def ask_string(self, args):
         self.init_qt()
-        (result, ok) = self.QtGui.QInputDialog.getText(None, args.title, args.message,)
+        (result, ok) = self.QtGui.QInputDialog.getText(
+            None, args["title"], args["message"],
+        )
         if ok:
             return unicode(result)
 
     def choice(self, args):
         self.init_qt()
         (result, ok) = self.QtGui.QInputDialog.getItem(
-            None, args.title, args.message, args.choices,
+            None, args["title"], args["message"], args["choices"],
         )
         if ok:
             return unicode(result)

@@ -13,8 +13,8 @@ class Backend(IPlugin):
         pass
 
     def _call(self, args, options, useReturnCode=0):
-        if args.title:
-            options["-name"] = args.title
+        if args["title"]:
+            options["-name"] = args["title"]
         options["-center"] = None
 
         def dict2list(d):
@@ -26,7 +26,7 @@ class Backend(IPlugin):
                     ls += [v]
             return ls
 
-        cmd = ["gmessage"] + [args.message] + dict2list(options)
+        cmd = ["gmessage"] + [args["message"]] + dict2list(options)
         p = EasyProcess(cmd).call()
         if useReturnCode:
             return p.return_code
@@ -44,7 +44,7 @@ class Backend(IPlugin):
     def _question(self, buttons, args):
         options = {}
         options["-buttons"] = buttons
-        options["-default"] = buttons.split(",")[not bool(args.default)]
+        options["-default"] = buttons.split(",")[not bool(args["default"])]
         return self._call(args, options, useReturnCode=1)
 
     def ask_ok_cancel(self, args):
@@ -54,16 +54,16 @@ class Backend(IPlugin):
         return bool(self._question("GTK_STOCK_YES:1,GTK_STOCK_NO:0", args))
 
     #    def button_choice(self, args):
-    #        buttons = ','.join([ '_%s:%d' % (x, i) for x, i in zip(args.choices, count()) ])
+    #        buttons = ','.join([ '_%s:%d' % (x, i) for x, i in zip(args['choices'], count()) ])
     #        result = self._question(buttons, args)
-    #        return args.choices[result]
+    #        return args['choices'][result]
 
     def ask_string(self, args):
         options = {}
         # #        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
         # #        options['-default'] = 'GTK_STOCK_OK'
-        if args.default:
-            options["-entrytext"] = args.default
+        if args["default"]:
+            options["-entrytext"] = args["default"]
         else:
             options["-entry"] = None
         return self._call(args, options)

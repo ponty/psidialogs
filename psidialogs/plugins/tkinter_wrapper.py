@@ -29,31 +29,35 @@ class Backend(IPlugin):
 
     def ask_string(self, args):
         self.tk_init()
-        return self.tkSimpleDialog.askstring(prompt=args.message, title=args.title)
+        return self.tkSimpleDialog.askstring(
+            prompt=args["message"], title=args["title"]
+        )
 
     def message(self, args):
         self.tk_init()
-        self.tkMessageBox.showinfo(message=args.message, title=args.title)
+        self.tkMessageBox.showinfo(message=args["message"], title=args["title"])
 
     def error(self, args):
         self.tk_init()
-        self.tkMessageBox.showerror(message=args.message, title=args.title)
+        self.tkMessageBox.showerror(message=args["message"], title=args["title"])
 
     def warning(self, args):
         self.tk_init()
-        self.tkMessageBox.showwarning(message=args.message, title=args.title)
+        self.tkMessageBox.showwarning(message=args["message"], title=args["title"])
 
     def ask_ok_cancel(self, args):
         self.tk_init()
-        return self.tkMessageBox.askokcancel(message=args.message, title=args.title)
+        return self.tkMessageBox.askokcancel(
+            message=args["message"], title=args["title"]
+        )
 
     def ask_yes_no(self, args):
         self.tk_init()
-        return self.tkMessageBox.askyesno(message=args.message, title=args.title)
+        return self.tkMessageBox.askyesno(message=args["message"], title=args["title"])
 
     def ask_file(self, args):
         self.tk_init()
-        if args.save:
+        if args["save"]:
             x = self.tkFileDialog.asksaveasfilename()
         else:
             x = self.tkFileDialog.askopenfilename()

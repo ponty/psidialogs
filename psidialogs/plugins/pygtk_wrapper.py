@@ -19,17 +19,17 @@ class Backend(IPlugin):
             self.gtk.DIALOG_MODAL | self.gtk.DIALOG_DESTROY_WITH_PARENT,
             typ,
             self.gtk.BUTTONS_OK,
-            args.message,
+            args["message"],
         )
-        dialog.set_title(args.title)
+        dialog.set_title(args["title"])
         dialog.run()
         dialog.destroy()
 
     def _dlg(self, args, show_entry, yesno=False):
         parent = None
-        title = args.title
-        message = args.message
-        default = args.default
+        title = args["title"]
+        message = args["message"]
+        default = args["default"]
         if yesno:
             buttons = (
                 self.gtk.STOCK_YES,

@@ -1,4 +1,3 @@
-from psidialogs.attribdict import attribdict
 from psidialogs.mixins import AllMixin
 from psidialogs.backendloader import BackendLoader
 import logging
@@ -11,7 +10,6 @@ def opendialog(funcname, argdict):
 
     logging.debug(funcname)
     logging.debug(argdict)
-    d = attribdict(argdict)
     b = BackendLoader().selected()
     f = b.__class__.__dict__.get(funcname)
     if not f:
@@ -22,4 +20,4 @@ def opendialog(funcname, argdict):
         b = Backend()
         f = AllMixin.__dict__.get(funcname)
 
-    return f(b, d)
+    return f(b, argdict)

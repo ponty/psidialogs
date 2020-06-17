@@ -12,8 +12,8 @@ class Backend(IPlugin):
         assert EasyProcess("zenity --version").call().return_code == 0
 
     def _call(self, args, options, useReturnCode=False, extraargs=[]):
-        if args.title:
-            options["--title"] = args.title
+        if args["title"]:
+            options["--title"] = args["title"]
 
         def dict2list(d):
             ls = []
@@ -37,13 +37,13 @@ class Backend(IPlugin):
     def _message(self, args, kw):
         options = {}
         options["--%s" % kw] = None
-        options["--text"] = args.message
+        options["--text"] = args["message"]
         return self._call(args, options)
 
     def text(self, args):
         options = {}
         f = tempfile.NamedTemporaryFile()
-        f.write(uniencode(args.text))
+        f.write(uniencode(args["text"]))
         f.flush()
         options["--text-info"] = None
         options["--filename"] = f.name
@@ -63,11 +63,11 @@ class Backend(IPlugin):
     def _entry(self, args, pw):
         options = {}
         options["--entry"] = None
-        options["--text"] = args.message
+        options["--text"] = args["message"]
         if pw:
             options["--hide-text"] = None
-        if args.default:
-            options["--entry-text"] = args.default
+        if args["default"]:
+            options["--entry-text"] = args["default"]
         return self._call(args, options)
 
     def ask_string(self, args):
@@ -77,14 +77,14 @@ class Backend(IPlugin):
         options = {}
         separator = "|"
         options["--file-selection"] = None
-        options["--text"] = args.message
+        options["--text"] = args["message"]
         if multi:
             options["--multiple"] = None
             options["--separator"] = separator
         if folder:
             options["--directory"] = None
-        if args.default:
-            options["--filename"] = args.default
+        if args["default"]:
+            options["--filename"] = args["default"]
         result = self._call(args, options)
         if result and multi:
             result = result.split(separator)
@@ -94,17 +94,17 @@ class Backend(IPlugin):
         options = {}
         separator = "|"
         options["--list"] = None
-        options["--text"] = args.message
+        options["--text"] = args["message"]
         if multi:
             options["--multiple"] = None
             options["--checklist"] = None
             options["--separator"] = separator
 
             extraargs = ["--column", "Select", "--column", "Item"]
-            for x in args.choices:
+            for x in args["choices"]:
                 extraargs += ["FALSE", x]
         else:
-            extraargs = ["--column", "Item"] + args.choices
+            extraargs = ["--column", "Item"] + args["choices"]
         result = self._call(args, options, extraargs=extraargs)
         if result and multi:
             result = result.split(separator)
@@ -119,7 +119,7 @@ class Backend(IPlugin):
     def _ask_question(self, args, ok, cancel):
         options = {}
         options["--question"] = None
-        options["--text"] = args.message
+        options["--text"] = args["message"]
         options["--ok-label"] = ok
         options["--cancel-label"] = cancel
         result = self._call(args, options, useReturnCode=1)

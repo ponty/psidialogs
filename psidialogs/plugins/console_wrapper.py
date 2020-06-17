@@ -9,17 +9,17 @@ class Backend(IPlugin):
 
     @ansi_dialog
     def message(self, args):
-        msg = args.message + "[ENTER]"
+        msg = args["message"] + "[ENTER]"
         raw_input(msg)
 
     @ansi_dialog
     def ask_string(self, args):
-        answer = raw_input(args.message)
+        answer = raw_input(args["message"])
         return answer
 
     @ansi_dialog
     def ask_yes_no(self, args):
-        msg = args.message
+        msg = args["message"]
         msg += " [Yes/No] "
         answers_yes = "yes y".split()
         answers_no = "no n".split()
@@ -39,9 +39,9 @@ class Backend(IPlugin):
         return self.ask_yes_no(args)
 
     def warning(self, args):
-        args.message = "[WARNING] " + args.message
+        args["message"] = "[WARNING] " + args["message"]
         return self.message(args)
 
     def error(self, args):
-        args.message = "[ERROR] " + args.message
+        args["message"] = "[ERROR] " + args["message"]
         return self.message(args)

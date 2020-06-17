@@ -7,23 +7,23 @@ class AllMixin:
         if not s:
             return None
         try:
-            return [args.choices[int(x)] for x in s.split(",")]
+            return [args["choices"][int(x)] for x in s.split(",")]
         except Exception:
             pass
 
     def text(self, args):
         args = args.copy()
-        args.message = args.message + "\n" + args.text
-        args.text = None
+        args["message"] = args["message"] + "\n" + args["text"]
+        args["text"] = None
         self.message(args)
 
     def _choice(self, args):
         args = args.copy()
-        lines = ["[%s] %s" % x for x in zip(count(), args.choices)]
-        args.message += "\n" + "\n".join(lines)
-        args.message += "\nSelect:"
+        lines = ["[%s] %s" % x for x in zip(count(), args["choices"])]
+        args["message"] += "\n" + "\n".join(lines)
+        args["message"] += "\nSelect:"
         ##        self.text(args)
-        args.default = unicode(args.default)
+        args["default"] = unicode(args["default"])
         i = self.ask_string(args)
         return i
 
@@ -32,8 +32,8 @@ class AllMixin:
         if not i:
             return None
         i = int(i)
-        if i >= 0 and i < len(args.choices):
-            return args.choices[i]
+        if i >= 0 and i < len(args["choices"]):
+            return args["choices"][i]
         else:
             return None
 
