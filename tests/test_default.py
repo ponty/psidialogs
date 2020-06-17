@@ -7,7 +7,7 @@ TIMEOUT = 5
 
 
 def check_open(func):
-    cmd = [sys.executable, "-c", "import psidialogs;psidialogs.{func}".format(func=func)]
+    cmd = [sys.executable, "-c", "import psidialogs,logging;logging.basicConfig(level=logging.DEBUG);psidialogs.{func}".format(func=func)]
     # exception if nothing is displayed
     with SmartDisplay(visible=VISIBLE) as disp:
         with EasyProcess(cmd):
