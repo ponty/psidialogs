@@ -133,6 +133,12 @@ def choice(choices=[], message="Pick something.", default=None, title=""):
     :param default: default string of choice
     :rtype: None or string
     """
+    if len(choices)==0:
+        log.warning('choices=[] returning None')
+        return None
+    if len(choices)==1:
+        log.warning('choices has one element only')
+        return choices[0]
     return backend_api.opendialog(
         "choice", dict(choices=choices, message=message, default=default, title=title)
     )
@@ -155,6 +161,9 @@ def multi_choice(
     :param default: default list of strings
     :rtype: None or list of strings
     """
+    if len(choices)==0:
+        log.warning('choices=[] returning None')
+        return None
     return backend_api.opendialog(
         "multi_choice",
         dict(choices=choices, message=message, default=default, title=title),
