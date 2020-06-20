@@ -46,10 +46,6 @@ def check(backend, func):
         return
     if backend == "wxpython" and func != "message":  # wrong button taborder
         return
-    if backend == "easydialogs":
-        if func in ["ask_ok_cancel", "ask_yes_no"]:
-            # can not hide button in easydialogs-gtk
-            return
     if backend == "zenity":
         if func in ["ask_ok_cancel", "ask_yes_no"]:
             # tab is not working in xvfb and xephyr
@@ -84,9 +80,6 @@ def check_backend(backend):
 
 
 # TODO: test backends
-# def test_easydialogs():
-#     check_backend("easydialogs")
-
 
 # def test_easygui():
 #     check_backend("easygui")

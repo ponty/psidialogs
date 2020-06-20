@@ -21,7 +21,6 @@ subgraph cluster_0 {
 
 		psidialogs -> console_wrapper;
 		psidialogs -> easygui_wrapper;
-		psidialogs -> easydialogs_wrapper;
 		psidialogs -> gmessage_wrapper;
 		psidialogs -> pygtk_wrapper;
 		psidialogs -> pyqt_wrapper;
@@ -49,8 +48,4 @@ wxWidgets -> "Palm OS";
 wxWidgets -> X11;
 
 application -> psidialogs;
-
-easydialogs_wrapper -> EasyDialogs -> MacOS;
-easydialogs_wrapper -> "easydialogs-gtk" -> PyGTK;
-easydialogs_wrapper -> "EasyDialogs for Windows" -> Windows;
 }

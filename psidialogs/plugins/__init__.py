@@ -1,5 +1,4 @@
 from psidialogs.plugins import console_wrapper
-from psidialogs.plugins import easydialogs_wrapper
 from psidialogs.plugins import easygui_wrapper
 from psidialogs.plugins import gmessage_wrapper
 from psidialogs.plugins import pygtk_wrapper

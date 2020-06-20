@@ -55,15 +55,6 @@ console
       :timeout: 30
 
 
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f ask_ok_cancel
-      :prompt:
-      :wait: 1
-      :timeout: 30
-
-
 easygui
 ------------------------
 
@@ -153,14 +144,6 @@ console
       :wait: 1
       :timeout: 30
 
-
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f ask_string
-      :prompt:
-      :wait: 1
-      :timeout: 30
 
 
 easygui
@@ -253,14 +236,6 @@ console
       :timeout: 30
 
 
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f ask_yes_no
-      :prompt:
-      :wait: 1
-      :timeout: 30
-
 
 easygui
 ------------------------
@@ -351,14 +326,6 @@ console
       :wait: 1
       :timeout: 30
 
-
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f choice
-      :prompt:
-      :wait: 1
-      :timeout: 30
 
 
 easygui
@@ -451,14 +418,6 @@ console
       :timeout: 30
 
 
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f error
-      :prompt:
-      :wait: 1
-      :timeout: 30
-
 
 easygui
 ------------------------
@@ -549,14 +508,6 @@ console
       :wait: 1
       :timeout: 30
 
-
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f message
-      :prompt:
-      :wait: 1
-      :timeout: 30
 
 
 easygui
@@ -649,14 +600,6 @@ console
       :timeout: 30
 
 
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f multi_choice
-      :prompt:
-      :wait: 1
-      :timeout: 30
-
 
 easygui
 ------------------------
@@ -748,14 +691,6 @@ console
       :timeout: 30
 
 
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f text
-      :prompt:
-      :wait: 1
-      :timeout: 30
-
 
 easygui
 ------------------------
@@ -846,14 +781,6 @@ console
       :wait: 1
       :timeout: 30
 
-
-easydialogs
-------------------------
-
-.. program-screenshot:: python -m psidialogs.examples.demo -b easydialogs -f warning
-      :prompt:
-      :wait: 1
-      :timeout: 30
 
 
 easygui

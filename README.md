@@ -17,7 +17,6 @@ back-ends:
  - wxPython
  - PythonDialog
  - console
- - EasyDialogs
 
 Basic usage:
 ```pycon
@@ -42,7 +41,6 @@ $ sudo apt-get install python-dialog
 $ sudo apt-get install zenity
 $ sudo apt-get install gxmessage
 $ sudo apt-get install python-easygui
-$ python3 -m pip install --no-deps easydialogs-gtk
 ```
 
 similar projects:
@@ -52,6 +50,3 @@ similar projects:
 * [vsgui](http://pypi.python.org/pypi/vsgui): Zenity back-end
 * [dlg](http://pypi.python.org/pypi/dlg): dialog/Xdialog/gdialog  back-end
 * [python-dialog](http://pypi.python.org/pypi/pythondialog): dialog/Xdialog/gdialog  back-end
-* [easydialogs-gtk](http://pypi.python.org/pypi/easydialogs-gtk): EasyDialogs API, PyGTK back-end
-* [EasyDialogs](http://docs.python.org/library/easydialogs.html): EasyDialogs API, Mac back-end
-* [EasyDialogs for Windows](http://pypi.python.org/pypi/EasyDialogs%20for%20Windows): EasyDialogs API, Windows back-end
