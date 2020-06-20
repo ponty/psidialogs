@@ -78,7 +78,7 @@ class Backend(IPlugin):
             )
         else:
             result = self.wx.lib.dialogs.openFileDialog(
-                filename=args["default"], title=args["title"], style=self.wx.OPEN
+                filename=args["default"], title=args["title"], style=self.wx.FD_OPEN
             )
         if result and result.accepted:
             if len(result.paths):
