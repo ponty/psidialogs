@@ -1,4 +1,5 @@
 from psidialogs.iplugin import IPlugin
+from psidialogs.util import py2
 
 
 class Backend(IPlugin):
@@ -7,17 +8,22 @@ class Backend(IPlugin):
     name = "tkinter"
 
     def __init__(self):
-        from Tkinter import Tk
-        import Tkinter
-        import tkFileDialog
-        import tkMessageBox
-        import tkSimpleDialog
+        if py2():
+            from Tkinter import Tk
+            import Tkinter as tkinter
+            import tkFileDialog as filedialog
+            import tkMessageBox as messagebox
+            import tkSimpleDialog as simpledialog
+        else:
+            from tkinter import Tk
+            import tkinter
+            from tkinter import messagebox, filedialog,simpledialog
 
         self.Tk = Tk
-        self.Tkinter = Tkinter
-        self.tkFileDialog = tkFileDialog
-        self.tkMessageBox = tkMessageBox
-        self.tkSimpleDialog = tkSimpleDialog
+        self.Tkinter = tkinter
+        self.tkFileDialog = filedialog
+        self.tkMessageBox = messagebox
+        self.tkSimpleDialog = simpledialog
 
     def backend_version(self):
         return str(self.Tkinter.TkVersion)
