@@ -225,4 +225,4 @@ FUNCTIONS = [
     #           button_choice,
 ]
 
-FUNCTION_NAMES = sorted(map(lambda x: x.__name__, FUNCTIONS))
+FUNCTION_NAMES = list(map(lambda x: x.__name__, FUNCTIONS))

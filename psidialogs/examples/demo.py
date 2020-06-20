@@ -49,7 +49,7 @@ def selectfunc(title="", function=None, **kwargs):
     else:
         while 1:
             funcs = psidialogs.FUNCTION_NAMES
-            funcs.sort()
+            # funcs.sort()
             func = psidialogs.choice(funcs, "Select function!", title=title)
             if not func:
                 break
