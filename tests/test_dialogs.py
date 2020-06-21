@@ -111,19 +111,5 @@ def check_backend(backend):
             check(backend, func)
 
 
-# TODO: test backends
-
-
-
-
-# def test_pygtk():
-#     check_backend("pygtk")
-
-
-# def test_pyqt():
-#     check_backend("pyqt")
-
-
-
 
 
