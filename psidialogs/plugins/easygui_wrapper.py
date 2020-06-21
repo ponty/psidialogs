@@ -1,4 +1,4 @@
-from psidialogs.unicodeutil import ansi_dialog
+from psidialogs.unicodeutil import ansi_dialog_eg as ansi_dialog
 from psidialogs.iplugin import IPlugin
 
 

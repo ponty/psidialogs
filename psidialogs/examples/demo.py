@@ -10,9 +10,11 @@ log = logging.getLogger(__name__)
 
 
 def testdata(title):
-    f = open(__file__)
-    text = f.read()
-    f.close()
+    # f = open(__file__)
+    # text = f.read()
+    # f.close()
+    text = 'long text'
+
     return dict(
         message=u"This is a message! (%s) \u20ac" % BackendLoader().selected().name,
         choices=[u"1 \u20ac", "Two", "Three"],
