@@ -115,6 +115,9 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python-easygui
   sudo apt-get install -y python3-easygui
 
+  #sudo apt-get install -y python3-pyside2 # no python3-pyside2 before disco (19.04)
+  sudo pip3 install pyside2 --no-cache-dir
+
 # test dependencies
 #  sudo apt-get install -y x11-utils #   for: xmessage
 #  sudo apt-get install -y x11-apps  #   for: xlogo

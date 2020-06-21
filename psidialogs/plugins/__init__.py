@@ -3,6 +3,8 @@ from psidialogs.plugins import easygui_wrapper
 from psidialogs.plugins import gmessage_wrapper
 from psidialogs.plugins import pygtk_wrapper
 from psidialogs.plugins import pyqt_wrapper
+from psidialogs.plugins import pyqt5_wrapper
+from psidialogs.plugins import pyside2_wrapper
 from psidialogs.plugins import pythondialog_wrapper
 from psidialogs.plugins import tkinter_wrapper
 from psidialogs.plugins import wxpython_wrapper
