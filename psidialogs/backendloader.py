@@ -8,8 +8,6 @@ zenity
 wxpython
 gmessage
 tkinter
-pygtk
-pyqt
 pythondialog
 console
 """.strip().splitlines()

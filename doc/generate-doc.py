@@ -66,9 +66,6 @@ def main():
                     logging.info("saving %s", png)
                     img.save(png)
         for b in sorted(BackendLoader().all_names):
-            # if not BackendLoader().is_console(b):
-            if b in ["pygtk"]:  # TODO
-                continue
             for func in psidialogs.FUNCTION_NAMES:
                 cmd = [
                     "python3",

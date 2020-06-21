@@ -5,7 +5,7 @@ _app = None
 
 
 class Backend(IPlugin):
-    backend = "PyQt"
+    backend = "PyQt5"
     name = "pyqt5"
 
     def __init__(self):

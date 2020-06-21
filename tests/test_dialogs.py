@@ -74,8 +74,6 @@ def check(backend, func):
     check_open(backend, func)
     return # TODO
 
-    if backend == "pyqt":  # test not working, buttons are not active
-        return
     if backend == "wxpython" and func != "message":  # wrong button taborder
         return
     if backend == "zenity":
