@@ -45,19 +45,19 @@ def warning(message="Warning!", title=""):
     return backend_api.opendialog("warning", dict(message=message, title=title))
 
 
-def text(text, message="", title=""):
-    """
-    This function is suitable for displaying general text, which can be longer
-    than in :func:`message`
+# def text(text, message="", title=""):
+#     """
+#     This function is suitable for displaying general text, which can be longer
+#     than in :func:`message`
 
-    :ref:`screenshots<text>`
+#     :ref:`screenshots<text>`
 
-    :param text: (long) text to be displayed
-    :param message: (short) message to be displayed.
-    :param title: window title
-    :rtype: None
-    """
-    return backend_api.opendialog("text", dict(text=text, message=message, title=title))
+#     :param text: (long) text to be displayed
+#     :param message: (short) message to be displayed.
+#     :param title: window title
+#     :rtype: None
+#     """
+#     return backend_api.opendialog("text", dict(text=text, message=message, title=title))
 
 
 def ask_string(message="Enter something.", default="", title=""):
@@ -224,8 +224,6 @@ FUNCTIONS = [
 
     choice,
     multi_choice,
-
-    text,
 ]
 
 FUNCTION_NAMES = list(map(lambda x: x.__name__, FUNCTIONS))

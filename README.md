@@ -1,6 +1,6 @@
 psidialogs (Python Simple Dialogs) is a wrapper
 for different standard dialogs: 
- message, warning, error, text, ask_ok_cancel, ask_yes_no, ask_string, 
+ message, warning, error, ask_ok_cancel, ask_yes_no, ask_string, 
  ask_file, ask_folder, choice, multi_choice.
 
 
@@ -118,19 +118,19 @@ Screenshots are created on Ubuntu 18.04 server with Xvfb.
 | pythondialog | ![](/doc/gen/pythondialog_ask_ok_cancel.png) | ![](/doc/gen/pythondialog_ask_yes_no.png) | ![](/doc/gen/pythondialog_ask_string.png) |
 |      console | ![](/doc/gen/console_ask_ok_cancel.png)      | ![](/doc/gen/console_ask_yes_no.png)      | ![](/doc/gen/console_ask_string.png)      |
 
-## ask_file(), ask_folder(), text()
+## ask_file(), ask_folder()
 
-|      backend | ask_file                                | ask_folder                                | text                                |
-| -----------: | --------------------------------------- | ----------------------------------------- | ----------------------------------- |
-|       zenity | ![](/doc/gen/zenity_ask_file.png)       | ![](/doc/gen/zenity_ask_folder.png)       | ![](/doc/gen/zenity_text.png)       |
-|     gmessage | ![](/doc/gen/gmessage_ask_file.png)     | ![](/doc/gen/gmessage_ask_folder.png)     | ![](/doc/gen/gmessage_text.png)     |
-|     wxpython | ![](/doc/gen/wxpython_ask_file.png)     | ![](/doc/gen/wxpython_ask_folder.png)     | ![](/doc/gen/wxpython_text.png)     |
-|      tkinter | ![](/doc/gen/tkinter_ask_file.png)      | ![](/doc/gen/tkinter_ask_folder.png)      | ![](/doc/gen/tkinter_text.png)      |
-|      easygui | ![](/doc/gen/easygui_ask_file.png)      | ![](/doc/gen/easygui_ask_folder.png)      | ![](/doc/gen/easygui_text.png)      |
-|        pyqt5 | ![](/doc/gen/pyqt5_ask_file.png)        | ![](/doc/gen/pyqt5_ask_folder.png)        | ![](/doc/gen/pyqt5_text.png)        |
-|      pyside2 | ![](/doc/gen/pyside2_ask_file.png)      | ![](/doc/gen/pyside2_ask_folder.png)      | ![](/doc/gen/pyside2_text.png)      |
-| pythondialog | ![](/doc/gen/pythondialog_ask_file.png) | ![](/doc/gen/pythondialog_ask_folder.png) | ![](/doc/gen/pythondialog_text.png) |
-|      console | ![](/doc/gen/console_ask_file.png)      | ![](/doc/gen/console_ask_folder.png)      | ![](/doc/gen/console_text.png)      |
+|      backend | ask_file                                | ask_folder                                | 
+| -----------: | --------------------------------------- | ----------------------------------------- |
+|       zenity | ![](/doc/gen/zenity_ask_file.png)       | ![](/doc/gen/zenity_ask_folder.png)       |
+|     gmessage | ![](/doc/gen/gmessage_ask_file.png)     | ![](/doc/gen/gmessage_ask_folder.png)     |
+|     wxpython | ![](/doc/gen/wxpython_ask_file.png)     | ![](/doc/gen/wxpython_ask_folder.png)     |
+|      tkinter | ![](/doc/gen/tkinter_ask_file.png)      | ![](/doc/gen/tkinter_ask_folder.png)      |
+|      easygui | ![](/doc/gen/easygui_ask_file.png)      | ![](/doc/gen/easygui_ask_folder.png)      |
+|        pyqt5 | ![](/doc/gen/pyqt5_ask_file.png)        | ![](/doc/gen/pyqt5_ask_folder.png)        |
+|      pyside2 | ![](/doc/gen/pyside2_ask_file.png)      | ![](/doc/gen/pyside2_ask_folder.png)      |
+| pythondialog | ![](/doc/gen/pythondialog_ask_file.png) | ![](/doc/gen/pythondialog_ask_folder.png) |
+|      console | ![](/doc/gen/console_ask_file.png)      | ![](/doc/gen/console_ask_folder.png)      |
 
 ## choice(), multi_choice()
 
