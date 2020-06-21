@@ -1,5 +1,13 @@
-from psidialogs.unicodeutil import ansi_dialog
+from psidialogs.unicodeutil import ansi_dialog_eg as ansi_dialog
 from psidialogs.iplugin import IPlugin
+from psidialogs.util import py2
+
+
+def text_input(msg):
+    if py2():
+        return raw_input(msg)
+    else:
+        return input(msg)
 
 
 class Backend(IPlugin):
@@ -10,11 +18,11 @@ class Backend(IPlugin):
     @ansi_dialog
     def message(self, args):
         msg = args["message"] + "[ENTER]"
-        raw_input(msg)
+        text_input(msg)
 
     @ansi_dialog
     def ask_string(self, args):
-        answer = raw_input(args["message"])
+        answer = text_input(args["message"])
         return answer
 
     @ansi_dialog
@@ -26,7 +34,7 @@ class Backend(IPlugin):
         answers = answers_yes + answers_no
         s = ""
         while 1:
-            s = raw_input(msg)
+            s = text_input(msg)
             s = s.lower().strip()
             if s in answers:
                 break

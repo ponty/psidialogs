@@ -1,4 +1,4 @@
-from psidialogs.unicodeutil import ansi_dialog
+from psidialogs.unicodeutil import ansi_dialog_eg as ansi_dialog
 from psidialogs.iplugin import IPlugin
 
 
@@ -33,27 +33,27 @@ class Backend(IPlugin):
         (i, s) = self.dlg.inputbox(
             init=args["default"], text=args["message"], title=args["title"]
         )
-        return s if i == 0 else None
+        return s if i == "ok" else None
 
     @ansi_dialog
     def ask_file(self, args):
         (i, s) = self.dlg.fselect(
             filepath=args["default"], title=args["title"], height=8, width=60
         )
-        return s if i == 0 else None
+        return s if i == "ok" else None
 
     def ask_folder(self, args):
         return self.ask_file(args)
 
     @ansi_dialog
     def choice(self, args):
-        if not len(args.get("choices", [])):
-            args["choices"] = [""]
+        # if not len(args.get("choices", [])):
+        #     args["choices"] = [""]
         choices = [(x, "") for x in args["choices"]]
         (i, s) = self.dlg.menu(
             text=args["message"], title=args["title"], choices=choices
         )
-        return s if i == 0 else None
+        return s if i == "ok" else None
 
     @ansi_dialog
     def multi_choice(self, args):
@@ -61,7 +61,7 @@ class Backend(IPlugin):
         (i, s) = self.dlg.checklist(
             text=args["message"], title=args["title"], choices=choices
         )
-        return s if i == 0 else None
+        return s if i == "ok" else None
 
     @ansi_dialog
     def text(self, args):
@@ -71,14 +71,15 @@ class Backend(IPlugin):
 
     @ansi_dialog
     def ask_yes_no(self, args):
-        return not self.dlg.yesno(text=args["message"], title=args["title"])
+        x = self.dlg.yesno(text=args["message"], title=args["title"],)
+        return x == "ok"
 
     @ansi_dialog
     def ask_ok_cancel(self, args):
-        # TODO: set button labels
-        return not self.dlg.yesno(
+        x = self.dlg.yesno(
             text=args["message"],
             title=args["title"],
-            # ok_label='OK',
-            # cancel='Cancel',
+            yes_label="OK",
+            no_label="Cancel",
         )
+        return x == "ok"
