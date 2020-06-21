@@ -1,0 +1,9 @@
+$ python3 -m psidialogs.examples.demo --help
+usage: demo.py [-h] [-b BACKEND] [-f FUNCTION] [-t TITLE] [--debug]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -b BACKEND, --backend BACKEND
+  -f FUNCTION, --function FUNCTION
+  -t TITLE, --title TITLE
+  --debug               set logging level to DEBUG

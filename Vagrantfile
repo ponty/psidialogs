@@ -88,7 +88,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y zenity
   sudo apt-get install -y gxmessage
   
-  sudo apt-get install -y python-gtk2
+  # sudo apt-get install -y python-gtk2
 
   sudo apt-get install -y python-gi
   sudo apt-get install -y python3-gi
@@ -97,14 +97,14 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python-wxgtk3.0
   sudo apt-get install -y python3-wxgtk4.0
 
-  sudo apt-get install -y python-qt4
-  sudo apt-get install -y python3-pyqt4
+  # sudo apt-get install -y python-qt4
+  # sudo apt-get install -y python3-pyqt4
   
   sudo apt-get install -y python-pyqt5
   sudo apt-get install -y python3-pyqt5
   
-  sudo apt-get install -y python-pyside
-  sudo apt-get install -y python3-pyside
+  # sudo apt-get install -y python-pyside
+  # sudo apt-get install -y python3-pyside
 
   sudo apt-get install -y python-tk
   sudo apt-get install -y python3-tk
@@ -125,6 +125,8 @@ Vagrant.configure(2) do |config|
 sudo python -m pip install tox
 
 # doc dependencies
+  sudo apt-get install -y npm xterm
+  sudo npm install -g npx
   
   "
       config.vm.provision "shell", inline: $script

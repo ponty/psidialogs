@@ -24,6 +24,8 @@ subgraph cluster_0 {
 		psidialogs -> gmessage_wrapper;
 		psidialogs -> pygtk_wrapper;
 		psidialogs -> pyqt_wrapper;
+		psidialogs -> pyqt5_wrapper;
+		psidialogs -> pyside2_wrapper;
 		psidialogs -> pythondialog_wrapper;
 		psidialogs -> tkinter_wrapper;
 		psidialogs -> wxpython_wrapper;
@@ -33,7 +35,9 @@ subgraph cluster_0 {
 console_wrapper -> Console;
 easygui_wrapper -> easygui -> TkInter -> Tk;
 gmessage_wrapper -> gMessage -> "GTK+";
-pyqt_wrapper -> PyQt -> Qt;
+pyqt_wrapper -> PyQt -> Qt4;
+pyqt5_wrapper -> PyQt5 -> Qt5;
+pyside2_wrapper -> PySide2 -> Qt5;
 pythondialog_wrapper -> "Python Dialog" -> Xdialog -> X11;
 "Python Dialog"  -> dialog -> Ncurses;
 tkinter_wrapper -> TkInter;

@@ -9,14 +9,15 @@ import sys
 log = logging.getLogger(__name__)
 
 
-def testdata(title):
+def testdata(title, func):
     # f = open(__file__)
     # text = f.read()
     # f.close()
-    text = 'long text'
+    text = "long text"
 
     return dict(
-        message=u"This is a message! (%s) \u20ac" % BackendLoader().selected().name,
+        message=u"This is the 'message'! (%s,%s) \u20ac"
+        % (BackendLoader().selected().name, func),
         choices=[u"1 \u20ac", "Two", "Three"],
         text=u"\u20ac\n%s" % text,
         title=title if title else u"title \u20ac",
@@ -36,7 +37,7 @@ def dialog(func, title="", **kwargs):
     assert f
     argnames, varargs, varkw, defaults = inspect.getargspec(f)
     # argnames = psidialogs.argnames(func)
-    args = testdata(title)
+    args = testdata(title, func)
     args = dict([(k, v) for (k, v) in args.items() if k in argnames])
     result = None
     # exec "result = psidialogs.%s(**args)" % (func)
@@ -84,5 +85,5 @@ def selectbackend(backend=None, title="", **kwargs):
 
 @entrypoint
 def demo(backend=None, function=None, title=""):
-    print(os.isatty(sys.stdout.fileno()))
+    # print(os.isatty(sys.stdout.fileno()))
     selectbackend(backend=backend, function=function, title=title)

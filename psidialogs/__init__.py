@@ -212,17 +212,20 @@ def ask_yes_no(message="", default=0, title=""):
 
 FUNCTIONS = [
     message,
-    ask_string,
-    ask_file,
-    ask_folder,
-    choice,
-    multi_choice,
-    text,
-    error,
     warning,
+    error,
+
     ask_ok_cancel,
     ask_yes_no,
-    #           button_choice,
+    ask_string,
+
+    ask_file,
+    ask_folder,
+
+    choice,
+    multi_choice,
+
+    text,
 ]
 
 FUNCTION_NAMES = list(map(lambda x: x.__name__, FUNCTIONS))
