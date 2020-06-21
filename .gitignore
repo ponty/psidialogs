@@ -19,7 +19,6 @@ pip-log.txt
 */_build/latex/*
 
 *.class
-*.png
 .version
 nosetests.xml
 
