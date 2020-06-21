@@ -2,6 +2,8 @@ import logging
 import os, psidialogs
 from time import sleep
 from PIL import Image, ImageChops
+import os
+import glob
 
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
@@ -37,17 +39,28 @@ def autocrop(im, bgcolor):
     return None  # no contents
 
 
+def empty_dir(dir):
+    files = glob.glob(os.path.join(dir, "*"))
+    for f in files:
+        os.remove(f)
+
+
 @entrypoint
 def main():
+    gendir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen")
+    logging.info("gendir: %s", gendir)
+    empty_dir(gendir)
     logging.info("commands: %s", commands)
     pls = []
     try:
-        os.chdir("gen")
+        cwd = os.getcwd()
+        os.chdir("/etc")
         for cmd, grab, bg in commands:
             with SmartDisplay() as disp:
                 logging.info("======== cmd: %s", cmd)
                 fname_base = cmd.replace(" ", "_")
                 fname = fname_base + ".txt"
+                fname = os.path.join(gendir, fname)
                 # logging.info("cmd: %s", cmd)
                 print("file name: %s" % fname)
                 with open(fname, "w") as f:
@@ -61,6 +74,7 @@ def main():
                     pls += [p]
                 if grab:
                     png = fname_base + ".png"
+                    png = os.path.join(gendir, png)
                     sleep(1)
                     img = disp.waitgrab(timeout=9)
                     logging.info("saving %s", png)
@@ -84,6 +98,7 @@ def main():
                     logging.info("======== cmd: %s", cmd)
                     with EasyProcess(cmd):
                         png = b + "_" + func + ".png"
+                        png = os.path.join(gendir, png)
                         sleep(0.1)
                         img = disp.waitgrab(timeout=9)
                         logging.info("saving %s", png)
@@ -95,7 +110,7 @@ def main():
                         img.save(png)
 
     finally:
-        os.chdir("..")
+        os.chdir(cwd)
         for p in pls:
             p.stop()
     embedme = EasyProcess(["npx", "embedme", "../README.md"])
