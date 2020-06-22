@@ -1,5 +1,7 @@
-from test_dialogs import check_backend
+from test_dialogs import check
+import pytest, psidialogs
 
+@pytest.mark.parametrize("func", psidialogs.FUNCTION_NAMES)
+def test_gmessage(func):
+    check("gmessage", func)
 
-def test_gmessage():
-    check_backend("gmessage")

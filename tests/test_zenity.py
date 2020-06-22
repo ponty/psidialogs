@@ -1,5 +1,8 @@
-from test_dialogs import check_backend
+from test_dialogs import check
+import pytest, psidialogs
 
 
-def test_zenity():
-    check_backend("zenity")
+@pytest.mark.parametrize("func", psidialogs.FUNCTION_NAMES)
+def test_zenity(func):
+    check("zenity", func)
+
