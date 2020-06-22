@@ -131,7 +131,7 @@ sudo python -m pip install tox
   "
       config.vm.provision "shell", inline: $script
           
-       
+      config.ssh.extra_args = ["-t", "cd /vagrant; bash --login"]       
 end
      
 
