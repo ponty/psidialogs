@@ -13,13 +13,13 @@ def testdata(title, func):
     # f = open(__file__)
     # text = f.read()
     # f.close()
-    text = "long text"
+    # text = "long text"
 
     return dict(
         message=u"This is the 'message'! (%s,%s) \u20ac"
         % (BackendLoader().selected().name, func),
         choices=[u"1 \u20ac", "Two", "Three"],
-        text=u"\u20ac\n%s" % text,
+        # text=u"\u20ac\n%s" % text,
         title=title if title else u"title \u20ac",
     )
 
@@ -43,7 +43,7 @@ def dialog(func, title="", **kwargs):
     # exec "result = psidialogs.%s(**args)" % (func)
     result = psidialogs.__dict__[func](**args)
     if result is not None:
-        psidialogs.text("Return value=%s (%r)" % (result, result))
+        psidialogs.message("Return value=%s (%r)" % (result, result))
 
 
 def selectfunc(title="", function=None, **kwargs):
@@ -76,7 +76,7 @@ def selectbackend(backend=None, title="", **kwargs):
                 BackendLoader().selected()
             except Exception as detail:
                 BackendLoader().force(None)
-                psidialogs.text("Exception:\n%s" % detail)
+                psidialogs.message("Exception:\n%s" % detail)
                 continue
 
             # psidialogs.set_backend(force_backend=d[b])

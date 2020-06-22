@@ -38,8 +38,8 @@ def test_multi_choice():
     check_open("""multi_choice(message='hi',choices=['a','b'])""")
 
 
-def test_text():
-    check_open("""text(text='hi')""")
+# def test_text():
+#     check_open("""text(text='hi')""")
 
 
 def test_error():
