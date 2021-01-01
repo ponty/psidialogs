@@ -67,14 +67,14 @@ def _choice(obj, args):
     return i
 
 
-def multi_choice(obj, args):
-    s = _choice(obj, args)
-    if not s:
-        return None
-    try:
-        return [args["choices"][int(x)] for x in s.split(",")]
-    except Exception:
-        pass
+# def multi_choice(obj, args):
+#     s = _choice(obj, args)
+#     if not s:
+#         return None
+#     try:
+#         return [args["choices"][int(x)] for x in s.split(",")]
+#     except Exception:
+#         pass
 
 
 def choice(obj, args):

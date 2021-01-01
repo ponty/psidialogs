@@ -48,10 +48,10 @@ class EasyguiWrapper(IPlugin):
             msg=args["message"], title=args["title"], choices=args["choices"]
         )
 
-    def multi_choice(self, args):
-        return self.easygui.multchoicebox(
-            msg=args["message"], title=args["title"], choices=args["choices"]
-        )
+    # def multi_choice(self, args):
+    #     return self.easygui.multchoicebox(
+    #         msg=args["message"], title=args["title"], choices=args["choices"]
+    #     )
 
     # def text(self, args):
     #     self.easygui.textbox(

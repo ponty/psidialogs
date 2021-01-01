@@ -73,5 +73,5 @@ class TkinterWrapper(IPlugin):
     def choice(self, args):
         return mixins.choice(self, args)
 
-    def multi_choice(self, args):
-        return mixins.multi_choice(self, args)
+    # def multi_choice(self, args):
+    #     return mixins.multi_choice(self, args)

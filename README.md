@@ -1,7 +1,7 @@
 psidialogs (Python Simple Dialogs) is a wrapper
 for different standard dialogs: 
  message, warning, error, ask_ok_cancel, ask_yes_no, ask_string, 
- ask_file, ask_folder, choice, multi_choice.
+ ask_file, ask_folder, choice.
 
 
 Links:
@@ -132,17 +132,17 @@ Screenshots are created on Ubuntu 18.04 server with Xvfb.
 | pythondialog | ![](/doc/gen/pythondialog_ask_file.png) | ![](/doc/gen/pythondialog_ask_folder.png) |
 |      console | ![](/doc/gen/console_ask_file.png)      | ![](/doc/gen/console_ask_folder.png)      |
 
-## choice(), multi_choice()
+## choice()
 
-|      backend | choice                                | multi_choice                                |
-| -----------: | ------------------------------------- | ------------------------------------------- |
-|       zenity | ![](/doc/gen/zenity_choice.png)       | ![](/doc/gen/zenity_multi_choice.png)       |
-|     gmessage | ![](/doc/gen/gmessage_choice.png)     | ![](/doc/gen/gmessage_multi_choice.png)     |
-|     wxpython | ![](/doc/gen/wxpython_choice.png)     | ![](/doc/gen/wxpython_multi_choice.png)     |
-|      tkinter | ![](/doc/gen/tkinter_choice.png)      | ![](/doc/gen/tkinter_multi_choice.png)      |
-|      easygui | ![](/doc/gen/easygui_choice.png)      | ![](/doc/gen/easygui_multi_choice.png)      |
-|        pyqt5 | ![](/doc/gen/pyqt5_choice.png)        | ![](/doc/gen/pyqt5_multi_choice.png)        |
-|      pyside2 | ![](/doc/gen/pyside2_choice.png)      | ![](/doc/gen/pyside2_multi_choice.png)      |
-| pythondialog | ![](/doc/gen/pythondialog_choice.png) | ![](/doc/gen/pythondialog_multi_choice.png) |
-|      console | ![](/doc/gen/console_choice.png)      | ![](/doc/gen/console_multi_choice.png)      |
+|      backend | choice                                |                              |
+| -----------: | ------------------------------------- | 
+|       zenity | ![](/doc/gen/zenity_choice.png)       |
+|     gmessage | ![](/doc/gen/gmessage_choice.png)     |
+|     wxpython | ![](/doc/gen/wxpython_choice.png)     |
+|      tkinter | ![](/doc/gen/tkinter_choice.png)      |
+|      easygui | ![](/doc/gen/easygui_choice.png)      |
+|        pyqt5 | ![](/doc/gen/pyqt5_choice.png)        |
+|      pyside2 | ![](/doc/gen/pyside2_choice.png)      |
+| pythondialog | ![](/doc/gen/pythondialog_choice.png) |
+|      console | ![](/doc/gen/console_choice.png)      |
 

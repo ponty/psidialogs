@@ -126,28 +126,28 @@ def choice(choices=[], message="Pick something.", title="", backend=None):
     )
 
 
-def multi_choice(
-    choices=[], message="Pick as many items as you like.", title="", backend=None,
-):
-    """
-    Present the user with a list of choices.
-    allow him to select multiple items and return them in a list.
-    if the user doesn't choose anything from the list, return the empty list.
-    return None if he cancelled selection.
+# def multi_choice(
+#     choices=[], message="Pick as many items as you like.", title="", backend=None,
+# ):
+#     """
+#     Present the user with a list of choices.
+#     allow him to select multiple items and return them in a list.
+#     if the user doesn't choose anything from the list, return the empty list.
+#     return None if he cancelled selection.
 
-    :ref:`screenshots<multi_choice>`
+#     :ref:`screenshots<multi_choice>`
 
-    :param choices: a list of the choices to be displayed
-    :param message: message to be displayed.
-    :param title: window title
-    :rtype: None or list of strings
-    """
-    if len(choices) == 0:
-        log.warning("choices=[] returning None")
-        return None
-    return opendialog(
-        "multi_choice", dict(choices=choices, message=message, title=title), backend,
-    )
+#     :param choices: a list of the choices to be displayed
+#     :param message: message to be displayed.
+#     :param title: window title
+#     :rtype: None or list of strings
+#     """
+#     if len(choices) == 0:
+#         log.warning("choices=[] returning None")
+#         return None
+#     return opendialog(
+#         "multi_choice", dict(choices=choices, message=message, title=title), backend,
+#     )
 
 
 def ask_ok_cancel(message="", title="", backend=None):
@@ -194,7 +194,7 @@ FUNCTIONS = [
     ask_file,
     ask_folder,
     choice,
-    multi_choice,
+    # multi_choice,
 ]
 
 FUNCTION_NAMES = list(map(lambda x: x.__name__, FUNCTIONS))

@@ -134,5 +134,5 @@ class ZenityWrapper(IPlugin):
     def choice(self, args):
         return self._choice(args, multi=0)
 
-    def multi_choice(self, args):
-        return self._choice(args, multi=1)
+    # def multi_choice(self, args):
+    #     return self._choice(args, multi=1)

@@ -76,8 +76,8 @@ def func_dispatch(obj, funcname, argdict):
         return obj.ask_folder(argdict)
     elif funcname == "choice":
         return obj.choice(argdict)
-    elif funcname == "multi_choice":
-        return obj.multi_choice(argdict)
+    # elif funcname == "multi_choice":
+    #     return obj.multi_choice(argdict)
 
 
 def auto(funcname, argdict, childprocess):
