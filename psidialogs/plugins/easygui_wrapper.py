@@ -45,10 +45,10 @@ class EasyguiWrapper(IPlugin):
             msg=args["message"], title=args["title"], choices=args["choices"]
         )
 
-    def text(self, args):
-        self.easygui.textbox(
-            text=args["text"], msg=args["message"], title=args["title"]
-        )
+    # def text(self, args):
+    #     self.easygui.textbox(
+    #         text=args["text"], msg=args["message"], title=args["title"]
+    #     )
 
     def ask_yes_no(self, args):
         x = self.easygui.ynbox(msg=args["message"], title=args["title"])

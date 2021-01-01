@@ -110,8 +110,8 @@ class WxPythonWrapper(IPlugin):
         if result and result.accepted:
             return list(result.selection)
 
-    def text(self, args):
-        self.init()
-        self.wx.lib.dialogs.scrolledMessageDialog(
-            message=args["text"], title=args["title"]
-        )
+    # def text(self, args):
+    #     self.init()
+    #     self.wx.lib.dialogs.scrolledMessageDialog(
+    #         message=args["text"], title=args["title"]
+    #     )

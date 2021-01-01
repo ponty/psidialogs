@@ -42,16 +42,16 @@ class ZenityWrapper(IPlugin):
         options["--text"] = args["message"]
         return self._call(args, options)
 
-    def text(self, args):
-        options = {}
-        f = tempfile.NamedTemporaryFile()
-        f.write(uniencode(args["text"]))
-        f.flush()
-        options["--text-info"] = None
-        options["--filename"] = f.name
-        result = self._call(args, options)
-        f.close()
-        return result
+    # def text(self, args):
+    #     options = {}
+    #     f = tempfile.NamedTemporaryFile()
+    #     f.write(uniencode(args["text"]))
+    #     f.flush()
+    #     options["--text-info"] = None
+    #     options["--filename"] = f.name
+    #     result = self._call(args, options)
+    #     f.close()
+    #     return result
 
     def message(self, args):
         return self._message(args, "info")

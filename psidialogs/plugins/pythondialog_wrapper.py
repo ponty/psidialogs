@@ -54,10 +54,10 @@ class PythonDialogWrapper(IPlugin):
         )
         return s if i == "ok" else None
 
-    def text(self, args):
-        # args['message'] = ''.join([x[:MAX_LINE_LENGTH] for x, _ in
-        # zip(args['message'].splitlines(1) , range(MAX_LINES)) ])
-        self.dlg.scrollbox(text=args["text"], title=args["title"])
+    # def text(self, args):
+    #     # args['message'] = ''.join([x[:MAX_LINE_LENGTH] for x, _ in
+    #     # zip(args['message'].splitlines(1) , range(MAX_LINES)) ])
+    #     self.dlg.scrollbox(text=args["text"], title=args["title"])
 
     def ask_yes_no(self, args):
         x = self.dlg.yesno(text=args["message"], title=args["title"],)
