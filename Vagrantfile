@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/focal64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -48,7 +48,13 @@ Vagrant.configure(2) do |config|
   #   vb.gui = true
   #
     # Customize the amount of memory on the VM:
-    vb.memory = "1024"
+    vb.memory = "2048"
+
+    vb.name = "psidialogs_2004"
+
+    # 	https://bugs.launchpad.net/cloud-images/+bug/1829625
+    vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+    vb.customize ["modifyvm", :id, "--uartmode1", "file", "./ttyS0.log"]
   end
   #
   # View the documentation for the provider you are using for more
@@ -79,51 +85,33 @@ Vagrant.configure(2) do |config|
   
 # tools
   sudo apt-get install -y mc xvfb x11-utils scrot
-
-  sudo apt-get install -y python-pip
   sudo apt-get install -y python3-pip
 
 # project dependencies
   sudo apt-get install -y zenity
   sudo apt-get install -y gxmessage
   
-  # sudo apt-get install -y python-gtk2
-
   sudo apt-get install -y python-gi
   sudo apt-get install -y python3-gi
   sudo apt-get install -y gir1.2-gtk-3.0
     
-  sudo apt-get install -y python-wxgtk3.0
   sudo apt-get install -y python3-wxgtk4.0
-
-  # sudo apt-get install -y python-qt4
   # sudo apt-get install -y python3-pyqt4
-  
-  sudo apt-get install -y python-pyqt5
   sudo apt-get install -y python3-pyqt5
-  
-  # sudo apt-get install -y python-pyside
   # sudo apt-get install -y python3-pyside
-
-  sudo apt-get install -y python-tk
   sudo apt-get install -y python3-tk
-
-  sudo apt-get install -y python-dialog
   sudo apt-get install -y python3-dialog
-
-  sudo apt-get install -y python-easygui
   sudo apt-get install -y python3-easygui
-  sudo pip2 install -U easygui
   sudo pip3 install -U easygui
 
-  #sudo apt-get install -y python3-pyside2 # no python3-pyside2 before disco (19.04)
-  sudo pip3 install pyside2 --no-cache-dir
+  # no python3-pyside2 before disco (19.04)
+  sudo apt-get install -y python3-pyside2 
+  #sudo pip3 install pyside2 --no-cache-dir
 
 # test dependencies
 #  sudo apt-get install -y x11-utils #   for: xmessage
 #  sudo apt-get install -y x11-apps  #   for: xlogo
-#  sudo pip install -r /vagrant/requirements-test.txt
-sudo python -m pip install tox
+sudo python3 -m pip install tox
 
 # doc dependencies
   sudo apt-get install -y npm xterm
