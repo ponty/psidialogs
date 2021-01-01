@@ -1,5 +1,4 @@
 from psidialogs.iplugin import IPlugin
-from psidialogs.unicodeutil import ansi_dialog_eg as ansi_dialog
 
 
 class ConsoleWrapper(IPlugin):
@@ -7,17 +6,14 @@ class ConsoleWrapper(IPlugin):
     backend = "console"
     name = "console"
 
-    @ansi_dialog
     def message(self, args):
         msg = args["message"] + "[ENTER]"
         input(msg)
 
-    @ansi_dialog
     def ask_string(self, args):
         answer = input(args["message"])
         return answer
 
-    @ansi_dialog
     def ask_yes_no(self, args):
         msg = args["message"]
         msg += " [Yes/No] "
