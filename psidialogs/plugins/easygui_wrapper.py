@@ -23,18 +23,18 @@ class EasyguiWrapper(IPlugin):
         )
 
     def ask_file(self, args):
-        if args["save"]:
-            return self.easygui.filesavebox(
-                # default=args["default"],
-                msg=args["message"],
-                title=args["title"],
-            )
-        else:
-            return self.easygui.fileopenbox(
-                # default=args["default"],
-                msg=args["message"],
-                title=args["title"],
-            )
+        # if args["save"]:
+        #     return self.easygui.filesavebox(
+        #         # default=args["default"],
+        #         msg=args["message"],
+        #         title=args["title"],
+        #     )
+        # else:
+        return self.easygui.fileopenbox(
+            # default=args["default"],
+            msg=args["message"],
+            title=args["title"],
+        )
 
     def ask_folder(self, args):
         return self.easygui.diropenbox(

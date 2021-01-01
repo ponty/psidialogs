@@ -73,17 +73,17 @@ class WxPythonWrapper(IPlugin):
 
     def ask_file(self, args):
         self.init()
-        if args["save"]:
-            result = self.wx.lib.dialogs.saveFileDialog(
-                # filename=args["default"],
-                title=args["title"],
-            )
-        else:
-            result = self.wx.lib.dialogs.openFileDialog(
-                # filename=args["default"],
-                title=args["title"],
-                style=self.wx.FD_OPEN,
-            )
+        # if args["save"]:
+        #     result = self.wx.lib.dialogs.saveFileDialog(
+        #         # filename=args["default"],
+        #         title=args["title"],
+        #     )
+        # else:
+        result = self.wx.lib.dialogs.openFileDialog(
+            # filename=args["default"],
+            title=args["title"],
+            style=self.wx.FD_OPEN,
+        )
         if result and result.accepted:
             if len(result.paths):
                 return result.paths[0]

@@ -55,10 +55,10 @@ class TkinterWrapper(IPlugin):
 
     def ask_file(self, args):
         self.tk_init()
-        if args["save"]:
-            x = self.tkFileDialog.asksaveasfilename()
-        else:
-            x = self.tkFileDialog.askopenfilename()
+        # if args["save"]:
+        #     x = self.tkFileDialog.asksaveasfilename()
+        # else:
+        x = self.tkFileDialog.askopenfilename()
         if not x:
             x = None
         return x

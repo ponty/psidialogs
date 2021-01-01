@@ -63,10 +63,10 @@ class PyQt5Wrapper(IPlugin):
 
     def ask_file(self, args):
         self.init_qt()
-        if args["save"]:
-            result = self.QtWidgets.QFileDialog.getSaveFileName(None, args["title"],)
-        else:
-            result = self.QtWidgets.QFileDialog.getOpenFileName(None, args["title"],)
+        # if args["save"]:
+        #     result = self.QtWidgets.QFileDialog.getSaveFileName(None, args["title"],)
+        # else:
+        result = self.QtWidgets.QFileDialog.getOpenFileName(None, args["title"],)
         if result:
             return "%s" % result[0]
 

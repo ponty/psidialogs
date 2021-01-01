@@ -77,23 +77,17 @@ def ask_string(message="Enter something.", title="", backend=None):
     return opendialog("ask_string", dict(message=message, title=title), backend)
 
 
-def ask_file(message="Select file for open.", title="", save=False, backend=None):
+def ask_file(message="Select file for open.", title="", backend=None):
     """
     A dialog to get a file name.
-
-    save=False -> file for loading
-    save=True -> file for saving
 
     Return the file path that the user entered, or None if he cancels the operation.
 
     :param message: message to be displayed.
-    :param save: bool 0 -> load , 1 -> save
     :param title: window title
     :rtype: None or string
     """
-    return opendialog(
-        "ask_file", dict(message=message, title=title, save=save), backend,
-    )
+    return opendialog("ask_file", dict(message=message, title=title), backend,)
 
 
 def ask_folder(message="Select folder.", title="", backend=None):
@@ -223,9 +217,7 @@ def backend_version(backend):
     return childprocess_backend_version(backend)
 
 
-def dialog(funcname, choices=[], message="", title="", backend=None, save=False):
+def dialog(funcname, choices=[], message="", title="", backend=None):
     return opendialog(
-        funcname,
-        dict(choices=choices, message=message, title=title, save=save),
-        backend,
+        funcname, dict(choices=choices, message=message, title=title), backend,
     )
