@@ -1,5 +1,4 @@
 from psidialogs.iplugin import IPlugin
-from psidialogs.util import py2
 
 
 class TkinterWrapper(IPlugin):
@@ -8,16 +7,9 @@ class TkinterWrapper(IPlugin):
     name = "tkinter"
 
     def __init__(self):
-        if py2():
-            from Tkinter import Tk
-            import Tkinter as tkinter
-            import tkFileDialog as filedialog
-            import tkMessageBox as messagebox
-            import tkSimpleDialog as simpledialog
-        else:
-            from tkinter import Tk
-            import tkinter
-            from tkinter import messagebox, filedialog, simpledialog
+        from tkinter import Tk
+        import tkinter
+        from tkinter import messagebox, filedialog, simpledialog
 
         self.Tk = Tk
         self.Tkinter = tkinter

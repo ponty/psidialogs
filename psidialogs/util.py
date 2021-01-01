@@ -3,14 +3,6 @@ import sys
 from easyprocess import EasyProcess
 
 
-def py2():
-    return sys.version_info[0] == 2
-
-
-def py3():
-    return sys.version_info[0] == 3
-
-
 def py_minor():
     return sys.version_info[1]
 
@@ -42,22 +34,14 @@ def check_import(module):
     #     ok = True
     # except ImportError:
     #     pass
-    if py2():
-        import imp
 
-        try:
-            imp.find_module(module)
-            found = True
-        except ImportError:
-            found = False
-    else:
-        import importlib
+    import importlib
 
-        try:
-            spam_spec = importlib.util.find_spec(module)
-        except ModuleNotFoundError:
-            return False
-        found = spam_spec is not None
+    try:
+        spam_spec = importlib.util.find_spec(module)
+    except ModuleNotFoundError:
+        return False
+    found = spam_spec is not None
     return found
 
 
