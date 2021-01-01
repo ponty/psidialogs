@@ -10,6 +10,7 @@ from entrypoint2 import entrypoint
 from psidialogs.backendloader import BackendLoader
 
 from pyvirtualdisplay.smartdisplay import SmartDisplay
+from discogui.imgutil import grab_no_blink, img_eq
 
 # (cmd,grab,background)
 commands = [
@@ -49,12 +50,13 @@ def empty_dir(dir):
 def main():
     gendir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen")
     logging.info("gendir: %s", gendir)
+    os.makedirs(gendir, exist_ok=True)
     empty_dir(gendir)
     logging.info("commands: %s", commands)
     pls = []
     try:
         cwd = os.getcwd()
-        os.chdir("/etc")
+        os.chdir("/bin")
         for cmd, grab, bg in commands:
             with SmartDisplay() as disp:
                 logging.info("======== cmd: %s", cmd)
@@ -100,7 +102,8 @@ def main():
                         png = b + "_" + func + ".png"
                         png = os.path.join(gendir, png)
                         sleep(0.1)
-                        img = disp.waitgrab(timeout=9)
+                        disp.waitgrab(timeout=9)
+                        img = grab_no_blink()
                         logging.info("saving %s", png)
                         if b == "console":
                             img = autocrop(img, (255, 255, 255))

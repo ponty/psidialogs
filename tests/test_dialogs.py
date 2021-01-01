@@ -13,19 +13,21 @@ TIMEOUT = 15
 
 
 def check_buttons(cmd, expect):
+    expect = list(expect)
     with SmartDisplay(visible=VISIBLE) as disp:
         with EasyProcess(cmd) as proc:
-            def imgcheck(im):
-                log.info(im)
-                im = disp.autocrop(im)
-                log.info(im)
-                if not proc.is_alive():
-                    raise ValueError('Process crashed.')
-                if im:
-                    return True
-                
+            # def imgcheck(im):
+            #     log.info(im)
+            #     im = disp.autocrop(im)
+            #     log.info(im)
+            #     if not proc.is_alive():
+            #         raise ValueError('Process crashed.')
+            #     if im:
+            #         return True
+
             # wait for displaying the window
-            disp.waitgrab(timeout=TIMEOUT, autocrop=False,cb_imgcheck=imgcheck)
+            disp.waitgrab(timeout=TIMEOUT)
+            # disp.waitgrab(timeout=TIMEOUT, autocrop=False,cb_imgcheck=imgcheck)
 
             buttons = discover_buttons()
 
@@ -35,12 +37,14 @@ def check_buttons(cmd, expect):
             mouse = PyMouse()
             print("buttons: %s" % buttons)
             for v, b in zip(expect, buttons):
-                process = EasyProcess(cmd).start().sleep(1)
-                mouse.click(*b.center)
-                process.wait(timeout=10)
-                assert not process.timeout_happened
-                assert process.stdout == str(v)
-                # dialog does not return expected value
+                # process = EasyProcess(cmd).start().sleep(1)
+                with EasyProcess(cmd) as process:
+                    process.sleep(1)
+                    mouse.click(*b.center)
+                    process.wait(timeout=10)
+                    assert not process.timeout_happened
+                    assert process.stdout == str(v)
+                    # dialog does not return expected value
 
 
 def check_open(backend, func):
@@ -69,19 +73,22 @@ def check_open(backend, func):
             # disp.waitgrab(timeout=TIMEOUT, autocrop=False,cb_imgcheck=imgcheck)
             disp.waitgrab(timeout=TIMEOUT)
 
+
 def check(backend, func):
     log.info("========= check backend:%s func:%s =========", backend, func)
     check_open(backend, func)
-    return # TODO
+    return  # TODO
 
-    if backend == "wxpython" and func != "message":  # wrong button taborder
-        return
-    if backend == "zenity":
-        if func in ["ask_ok_cancel", "ask_yes_no"]:
-            # tab is not working in xvfb and xephyr
-            return
-    if backend == "gmessage":  # active editbox
-        return
+    reverse_order = False
+    # if backend == "wxpython" and func != "message":  # wrong button taborder
+    #     return
+    if backend in ["zenity", "wxpython"]:
+        reverse_order = True
+    #     if func in ["ask_ok_cancel", "ask_yes_no"]:
+    #         # tab is not working in xvfb and xephyr
+    #         return
+    # if backend == "gmessage":  # active editbox
+    #     return
 
     cmd = [
         sys.executable,
@@ -92,22 +99,21 @@ def check(backend, func):
         "-m",
         "hi",
     ]
-    if func == "message":
+    if func in ["message", "warning", "error"]:
         expect = [None]
         check_buttons(cmd, expect)
-    if func == "ask_yes_no":
+    if func in ["ask_yes_no", "ask_ok_cancel"]:
         expect = [True, False]
+        if reverse_order:
+            expect = reversed(expect)
         check_buttons(cmd, expect)
-    if func == "ask_ok_cancel":
-        expect = [True, False]
-        check_buttons(cmd, expect)
+    # if func == "ask_ok_cancel":
+    #     expect = [True, False]
+    #     check_buttons(cmd, expect)
 
 
 def check_backend(backend):
     if not BackendLoader().is_console(backend):
         for func in psidialogs.FUNCTION_NAMES:
             check(backend, func)
-
-
-
 

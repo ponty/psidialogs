@@ -56,6 +56,7 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/x-rst",
     classifiers=classifiers,
     keywords="GUI common dialog",
     author="ponty",

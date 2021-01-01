@@ -114,6 +114,8 @@ Vagrant.configure(2) do |config|
 
   sudo apt-get install -y python-easygui
   sudo apt-get install -y python3-easygui
+  sudo pip2 install -U easygui
+  sudo pip3 install -U easygui
 
   #sudo apt-get install -y python3-pyside2 # no python3-pyside2 before disco (19.04)
   sudo pip3 install pyside2 --no-cache-dir
