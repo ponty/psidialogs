@@ -56,6 +56,28 @@ def select_childprocess(childprocess, backend_class):
 
     return childprocess
 
+def func_dispatch(obj, funcname, argdict):
+    if funcname == "message":
+        return obj.message(argdict)
+    elif funcname == "warning":
+        return obj.warning(argdict)
+    elif funcname == "error":
+        return obj.error(argdict)
+    elif funcname == "ask_ok_cancel":
+        return obj.ask_ok_cancel(argdict)
+    elif funcname == "ask_yes_no":
+        return obj.ask_yes_no(argdict)
+    elif funcname == "ask_string":
+        return obj.ask_string(argdict)
+    elif funcname == "ask_file":
+        return obj.ask_file(argdict)
+    elif funcname == "ask_folder":
+        return obj.ask_folder(argdict)
+    elif funcname == "choice":
+        return obj.choice(argdict)
+    elif funcname == "multi_choice":
+        return obj.multi_choice(argdict)
+
 
 def auto(funcname, argdict, childprocess):
     for backend_class in backends():
@@ -66,8 +88,7 @@ def auto(funcname, argdict, childprocess):
                 # TODO:im = childprocess_demo(backend_name, bbox)
             else:
                 obj = backend_class()
-                f = obj.__class__.__dict__.get(funcname)
-                return f(obj, argdict)
+                return func_dispatch(obj, funcname, argdict)
             break
         except Exception:
             msg = traceback.format_exc()
@@ -77,6 +98,7 @@ def auto(funcname, argdict, childprocess):
     raise FailedBackendError(msg)
 
 
+
 def force(backend_name, funcname, argdict, childprocess):
     backend_class = backend_dict[backend_name]
     if select_childprocess(childprocess, backend_class):
@@ -84,29 +106,7 @@ def force(backend_name, funcname, argdict, childprocess):
         # TODO:return childprocess_demo(backend_name, bbox)
     else:
         obj = backend_class()
-        f = obj.__class__.__dict__.get(funcname)
-        return f(obj, argdict)
-
-
-# def opendialog(funcname, argdict):
-#     for (k, v) in argdict.items():
-#         if v is None:
-#             argdict[k] = ""
-
-#     log.debug(funcname)
-#     log.debug(argdict)
-#     b = BackendLoader().selected()
-#     f = b.__class__.__dict__.get(funcname)
-#     if not f:
-#         log.debug("backend method not found, using mixin")
-
-#         class Backend(b.__class__, AllMixin):
-#             pass
-
-#         b = Backend()
-#         f = AllMixin.__dict__.get(funcname)
-
-#     return f(b, argdict)
+        return func_dispatch(obj, funcname, argdict)
 
 
 def opendialog(funcname, argdict, backend_name=None):
