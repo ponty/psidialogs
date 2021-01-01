@@ -64,7 +64,9 @@ class WxPythonWrapper(IPlugin):
     def ask_string(self, args):
         self.init()
         result = self.wx.lib.dialogs.textEntryDialog(
-            defaultText=args["default"], message=args["message"], title=args["title"]
+            # defaultText=args["default"],
+            message=args["message"],
+            title=args["title"],
         )
         if result and result.accepted:
             return result.text
@@ -73,11 +75,14 @@ class WxPythonWrapper(IPlugin):
         self.init()
         if args["save"]:
             result = self.wx.lib.dialogs.saveFileDialog(
-                filename=args["default"], title=args["title"]
+                # filename=args["default"],
+                title=args["title"],
             )
         else:
             result = self.wx.lib.dialogs.openFileDialog(
-                filename=args["default"], title=args["title"], style=self.wx.FD_OPEN
+                # filename=args["default"],
+                title=args["title"],
+                style=self.wx.FD_OPEN,
             )
         if result and result.accepted:
             if len(result.paths):
@@ -86,7 +91,7 @@ class WxPythonWrapper(IPlugin):
     def ask_folder(self, args):
         self.init()
         # no effect: message=args['message']
-        result = self.wx.lib.dialogs.directoryDialog(path=args["default"])
+        result = self.wx.lib.dialogs.directoryDialog()  # path=args["default"])
         if result and result.accepted:
             return result.path
 

@@ -62,12 +62,9 @@ def warning(message="Warning!", title="", backend=None):
 #     return opendialog("text", dict(text=text, message=message, title=title))
 
 
-def ask_string(message="Enter something.", default="", title="", backend=None):
+def ask_string(message="Enter something.", title="", backend=None):
     """
     Show a box in which a user can enter some text.
-
-    You may optionally specify some default text, which will appear in the
-    entry-box when it is displayed.
 
     Returns the text that the user entered, or None if he cancels the operation
 
@@ -75,20 +72,14 @@ def ask_string(message="Enter something.", default="", title="", backend=None):
 
     :param message: message to be displayed.
     :param title: window title
-    :param default: entry-box default string
     :rtype: None or string
     """
-    return opendialog(
-        "ask_string", dict(message=message, default=default, title=title), backend
-    )
+    return opendialog("ask_string", dict(message=message, title=title), backend)
 
 
-def ask_file(
-    message="Select file for open.", default="", title="", save=False, backend=None
-):
+def ask_file(message="Select file for open.", title="", save=False, backend=None):
     """
     A dialog to get a file name.
-    The "default" argument specifies a file path.
 
     save=False -> file for loading
     save=True -> file for saving
@@ -98,34 +89,26 @@ def ask_file(
     :param message: message to be displayed.
     :param save: bool 0 -> load , 1 -> save
     :param title: window title
-    :param default: default file path
     :rtype: None or string
     """
     return opendialog(
-        "ask_file",
-        dict(message=message, default=default, title=title, save=save),
-        backend,
+        "ask_file", dict(message=message, title=title, save=save), backend,
     )
 
 
-def ask_folder(message="Select folder.", default="", title="", backend=None):
+def ask_folder(message="Select folder.", title="", backend=None):
     """
     A dialog to get a directory name.
     Returns the name of a directory, or None if user chose to cancel.
-    If the "default" argument specifies a directory name, and that
-    directory exists, then the dialog box will start with that directory.
 
     :param message: message to be displayed.
     :param title: window title
-    :param default: default folder path
     :rtype: None or string
     """
-    return opendialog(
-        "ask_folder", dict(message=message, default=default, title=title), backend
-    )
+    return opendialog("ask_folder", dict(message=message, title=title), backend)
 
 
-def choice(choices=[], message="Pick something.", default=None, title="", backend=None):
+def choice(choices=[], message="Pick something.", title="", backend=None):
     """
     Present the user with a list of choices.
     return the choice that he selects.
@@ -136,7 +119,6 @@ def choice(choices=[], message="Pick something.", default=None, title="", backen
     :param choices: a list of the choices to be displayed
     :param message: message to be displayed.
     :param title: window title
-    :param default: default string of choice
     :rtype: None or string
     """
     if len(choices) == 0:
@@ -146,18 +128,12 @@ def choice(choices=[], message="Pick something.", default=None, title="", backen
         log.warning("choices has one element only")
         return choices[0]
     return opendialog(
-        "choice",
-        dict(choices=choices, message=message, default=default, title=title),
-        backend,
+        "choice", dict(choices=choices, message=message, title=title), backend,
     )
 
 
 def multi_choice(
-    choices=[],
-    message="Pick as many items as you like.",
-    default=None,
-    title="",
-    backend=None,
+    choices=[], message="Pick as many items as you like.", title="", backend=None,
 ):
     """
     Present the user with a list of choices.
@@ -170,20 +146,17 @@ def multi_choice(
     :param choices: a list of the choices to be displayed
     :param message: message to be displayed.
     :param title: window title
-    :param default: default list of strings
     :rtype: None or list of strings
     """
     if len(choices) == 0:
         log.warning("choices=[] returning None")
         return None
     return opendialog(
-        "multi_choice",
-        dict(choices=choices, message=message, default=default, title=title),
-        backend,
+        "multi_choice", dict(choices=choices, message=message, title=title), backend,
     )
 
 
-def ask_ok_cancel(message="", default=0, title="", backend=None):
+def ask_ok_cancel(message="", title="", backend=None):
     """
     Display a message with choices of OK and Cancel.
 
@@ -195,15 +168,12 @@ def ask_ok_cancel(message="", default=0, title="", backend=None):
 
     :param message: message to be displayed.
     :param title: window title
-    :param default: default button as boolean (OK=True, Cancel=False)
     :rtype: bool
     """
-    return opendialog(
-        "ask_ok_cancel", dict(message=message, default=default, title=title), backend
-    )
+    return opendialog("ask_ok_cancel", dict(message=message, title=title), backend)
 
 
-def ask_yes_no(message="", default=0, title="", backend=None):
+def ask_yes_no(message="", title="", backend=None):
     """
     Display a message with choices of Yes and No.
 
@@ -215,12 +185,9 @@ def ask_yes_no(message="", default=0, title="", backend=None):
 
     :param message: message to be displayed.
     :param title: window title
-    :param default: default button as boolean (YES=True, NO=False)
     :rtype: bool
     """
-    return opendialog(
-        "ask_yes_no", dict(message=message, default=default, title=title), backend
-    )
+    return opendialog("ask_yes_no", dict(message=message, title=title), backend)
 
 
 FUNCTIONS = [
@@ -256,11 +223,9 @@ def backend_version(backend):
     return childprocess_backend_version(backend)
 
 
-def dialog(
-    funcname, choices=[], message="", default=None, title="", backend=None, save=False
-):
+def dialog(funcname, choices=[], message="", title="", backend=None, save=False):
     return opendialog(
         funcname,
-        dict(choices=choices, message=message, default=default, title=title, save=save),
+        dict(choices=choices, message=message, title=title, save=save),
         backend,
     )

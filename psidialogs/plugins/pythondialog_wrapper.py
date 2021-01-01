@@ -25,13 +25,18 @@ class PythonDialogWrapper(IPlugin):
 
     def ask_string(self, args):
         (i, s) = self.dlg.inputbox(
-            init=args["default"], text=args["message"], title=args["title"]
+            # init=args["default"],
+            text=args["message"],
+            title=args["title"],
         )
         return s if i == "ok" else None
 
     def ask_file(self, args):
         (i, s) = self.dlg.fselect(
-            filepath=args["default"], title=args["title"], height=8, width=60
+            # filepath=args["default"],
+            title=args["title"],
+            height=8,
+            width=60,
         )
         return s if i == "ok" else None
 

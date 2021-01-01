@@ -28,7 +28,7 @@ class GmessageWrapper(IPlugin):
                     ls += [v]
             return ls
 
-        cmd = ["gmessage"] + [args["message"]] + dict2list(options)
+        cmd = ["gmessage", args["message"]] + dict2list(options)
         p = EasyProcess(cmd).call()
         if useReturnCode:
             return p.return_code
@@ -52,7 +52,7 @@ class GmessageWrapper(IPlugin):
     def _question(self, buttons, args):
         options = {}
         options["-buttons"] = buttons
-        options["-default"] = buttons.split(",")[not bool(args["default"])]
+        # options["-default"] = buttons.split(",")[not bool(args["default"])]
         return self._call(args, options, useReturnCode=1)
 
     def ask_ok_cancel(self, args):
@@ -70,10 +70,10 @@ class GmessageWrapper(IPlugin):
         options = {}
         # #        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
         # #        options['-default'] = 'GTK_STOCK_OK'
-        if args["default"]:
-            options["-entrytext"] = args["default"]
-        else:
-            options["-entry"] = None
+        # if args["default"]:
+        #     options["-entrytext"] = args["default"]
+        # else:
+        options["-entry"] = None
         return self._call(args, options)
 
     def ask_file(self, args):

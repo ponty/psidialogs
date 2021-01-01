@@ -1,9 +1,6 @@
-import tempfile
-
 from easyprocess import EasyProcess
 
 from psidialogs.iplugin import IPlugin
-from psidialogs.unicodeutil import uniencode
 
 
 class ZenityWrapper(IPlugin):
@@ -68,8 +65,8 @@ class ZenityWrapper(IPlugin):
         options["--text"] = args["message"]
         if pw:
             options["--hide-text"] = None
-        if args["default"]:
-            options["--entry-text"] = args["default"]
+        # if args["default"]:
+        #     options["--entry-text"] = args["default"]
         return self._call(args, options)
 
     def ask_string(self, args):
@@ -85,8 +82,8 @@ class ZenityWrapper(IPlugin):
             options["--separator"] = separator
         if folder:
             options["--directory"] = None
-        if args["default"]:
-            options["--filename"] = args["default"]
+        # if args["default"]:
+        #     options["--filename"] = args["default"]
         result = self._call(args, options)
         if result and multi:
             result = result.split(separator)

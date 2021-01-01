@@ -62,7 +62,7 @@ def _choice(obj, args):
     args["message"] += "\n" + "\n".join(lines)
     args["message"] += "\nSelect:"
     ##        self.text(args)
-    args["default"] = "%s" % args["default"]
+    # args["default"] = "%s" % args["default"]
     i = obj.ask_string(args)
     return i
 

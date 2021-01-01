@@ -56,6 +56,7 @@ def select_childprocess(childprocess, backend_class):
 
     return childprocess
 
+
 def func_dispatch(obj, funcname, argdict):
     if funcname == "message":
         return obj.message(argdict)
@@ -96,7 +97,6 @@ def auto(funcname, argdict, childprocess):
 
     msg = "All backends failed!"
     raise FailedBackendError(msg)
-
 
 
 def force(backend_name, funcname, argdict, childprocess):
