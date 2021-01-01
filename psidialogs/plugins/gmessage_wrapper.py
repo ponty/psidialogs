@@ -1,5 +1,6 @@
 from easyprocess import EasyProcess
 
+from psidialogs import mixins
 from psidialogs.iplugin import IPlugin
 
 
@@ -42,6 +43,12 @@ class GmessageWrapper(IPlugin):
         options["-default"] = "GTK_STOCK_OK"
         return self._call(args, options)
 
+    def error(self, args):
+        self.message(args)
+
+    def warning(self, args):
+        self.message(args)
+
     def _question(self, buttons, args):
         options = {}
         options["-buttons"] = buttons
@@ -68,3 +75,15 @@ class GmessageWrapper(IPlugin):
         else:
             options["-entry"] = None
         return self._call(args, options)
+
+    def ask_file(self, args):
+        return self.ask_string(args)
+
+    def ask_folder(self, args):
+        return self.ask_string(args)
+
+    def choice(self, args):
+        return mixins.choice(self, args)
+
+    def multi_choice(self, args):
+        return mixins.multi_choice(self, args)

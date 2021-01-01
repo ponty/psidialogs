@@ -2,7 +2,6 @@ import logging
 import traceback
 
 from psidialogs.err import FailedBackendError
-from psidialogs.mixins import AllMixin
 from psidialogs.plugins.console_wrapper import ConsoleWrapper
 from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
 from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
@@ -86,14 +85,6 @@ def force(backend_name, funcname, argdict, childprocess):
     else:
         obj = backend_class()
         f = obj.__class__.__dict__.get(funcname)
-        if not f:
-            log.debug("backend method not found, using mixin")
-
-            class Backend(obj.__class__, AllMixin):
-                pass
-
-            obj = Backend()
-            f = AllMixin.__dict__.get(funcname)
         return f(obj, argdict)
 
 

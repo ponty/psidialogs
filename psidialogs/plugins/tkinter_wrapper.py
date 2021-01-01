@@ -1,3 +1,4 @@
+from psidialogs import mixins
 from psidialogs.iplugin import IPlugin
 
 
@@ -68,3 +69,9 @@ class TkinterWrapper(IPlugin):
         if not x:
             x = None
         return x
+
+    def choice(self, args):
+        return mixins.choice(self, args)
+
+    def multi_choice(self, args):
+        return mixins.multi_choice(self, args)
