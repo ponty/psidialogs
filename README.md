@@ -92,57 +92,57 @@ Screenshots are created on Ubuntu 18.04 server with Xvfb.
 
  ## message(), warning(), error() 
 
-|      backend | message                                | warning                                | error                                |
-| -----------: | -------------------------------------- | -------------------------------------- | ------------------------------------ |
-|       zenity | ![](/doc/gen/zenity_message.png)       | ![](/doc/gen/zenity_warning.png)       | ![](/doc/gen/zenity_error.png)       |
-|     gmessage | ![](/doc/gen/gmessage_message.png)     | ![](/doc/gen/gmessage_warning.png)     | ![](/doc/gen/gmessage_error.png)     |
-|     wxpython | ![](/doc/gen/wxpython_message.png)     | ![](/doc/gen/wxpython_warning.png)     | ![](/doc/gen/wxpython_error.png)     |
-|      tkinter | ![](/doc/gen/tkinter_message.png)      | ![](/doc/gen/tkinter_warning.png)      | ![](/doc/gen/tkinter_error.png)      |
-|      easygui | ![](/doc/gen/easygui_message.png)      | ![](/doc/gen/easygui_warning.png)      | ![](/doc/gen/easygui_error.png)      |
-|        pyqt5 | ![](/doc/gen/pyqt5_message.png)        | ![](/doc/gen/pyqt5_warning.png)        | ![](/doc/gen/pyqt5_error.png)        |
-|      pyside2 | ![](/doc/gen/pyside2_message.png)      | ![](/doc/gen/pyside2_warning.png)      | ![](/doc/gen/pyside2_error.png)      |
-| pythondialog | ![](/doc/gen/pythondialog_message.png) | ![](/doc/gen/pythondialog_warning.png) | ![](/doc/gen/pythondialog_error.png) |
-|      console | ![](/doc/gen/console_message.png)      | ![](/doc/gen/console_warning.png)      | ![](/doc/gen/console_error.png)      |
+|      backend | message                               | warning                               | error                               |
+| -----------: | ------------------------------------- | ------------------------------------- | ----------------------------------- |
+|       zenity | ![](doc/gen/zenity_message.png)       | ![](doc/gen/zenity_warning.png)       | ![](doc/gen/zenity_error.png)       |
+|     gmessage | ![](doc/gen/gmessage_message.png)     | ![](doc/gen/gmessage_warning.png)     | ![](doc/gen/gmessage_error.png)     |
+|     wxpython | ![](doc/gen/wxpython_message.png)     | ![](doc/gen/wxpython_warning.png)     | ![](doc/gen/wxpython_error.png)     |
+|      tkinter | ![](doc/gen/tkinter_message.png)      | ![](doc/gen/tkinter_warning.png)      | ![](doc/gen/tkinter_error.png)      |
+|      easygui | ![](doc/gen/easygui_message.png)      | ![](doc/gen/easygui_warning.png)      | ![](doc/gen/easygui_error.png)      |
+|        pyqt5 | ![](doc/gen/pyqt5_message.png)        | ![](doc/gen/pyqt5_warning.png)        | ![](doc/gen/pyqt5_error.png)        |
+|      pyside2 | ![](doc/gen/pyside2_message.png)      | ![](doc/gen/pyside2_warning.png)      | ![](doc/gen/pyside2_error.png)      |
+| pythondialog | ![](doc/gen/pythondialog_message.png) | ![](doc/gen/pythondialog_warning.png) | ![](doc/gen/pythondialog_error.png) |
+|      console | ![](doc/gen/console_message.png)      | ![](doc/gen/console_warning.png)      | ![](doc/gen/console_error.png)      |
 
 ## ask_ok_cancel(), ask_yes_no(), ask_string()
 
-|      backend | ask_ok_cancel                                | ask_yes_no                                | ask_string                                |
-| -----------: | -------------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-|       zenity | ![](/doc/gen/zenity_ask_ok_cancel.png)       | ![](/doc/gen/zenity_ask_yes_no.png)       | ![](/doc/gen/zenity_ask_string.png)       |
-|     gmessage | ![](/doc/gen/gmessage_ask_ok_cancel.png)     | ![](/doc/gen/gmessage_ask_yes_no.png)     | ![](/doc/gen/gmessage_ask_string.png)     |
-|     wxpython | ![](/doc/gen/wxpython_ask_ok_cancel.png)     | ![](/doc/gen/wxpython_ask_yes_no.png)     | ![](/doc/gen/wxpython_ask_string.png)     |
-|      tkinter | ![](/doc/gen/tkinter_ask_ok_cancel.png)      | ![](/doc/gen/tkinter_ask_yes_no.png)      | ![](/doc/gen/tkinter_ask_string.png)      |
-|      easygui | ![](/doc/gen/easygui_ask_ok_cancel.png)      | ![](/doc/gen/easygui_ask_yes_no.png)      | ![](/doc/gen/easygui_ask_string.png)      |
-|        pyqt5 | ![](/doc/gen/pyqt5_ask_ok_cancel.png)        | ![](/doc/gen/pyqt5_ask_yes_no.png)        | ![](/doc/gen/pyqt5_ask_string.png)        |
-|      pyside2 | ![](/doc/gen/pyside2_ask_ok_cancel.png)      | ![](/doc/gen/pyside2_ask_yes_no.png)      | ![](/doc/gen/pyside2_ask_string.png)      |
-| pythondialog | ![](/doc/gen/pythondialog_ask_ok_cancel.png) | ![](/doc/gen/pythondialog_ask_yes_no.png) | ![](/doc/gen/pythondialog_ask_string.png) |
-|      console | ![](/doc/gen/console_ask_ok_cancel.png)      | ![](/doc/gen/console_ask_yes_no.png)      | ![](/doc/gen/console_ask_string.png)      |
+|      backend | ask_ok_cancel                               | ask_yes_no                               | ask_string                               |
+| -----------: | ------------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+|       zenity | ![](doc/gen/zenity_ask_ok_cancel.png)       | ![](doc/gen/zenity_ask_yes_no.png)       | ![](doc/gen/zenity_ask_string.png)       |
+|     gmessage | ![](doc/gen/gmessage_ask_ok_cancel.png)     | ![](doc/gen/gmessage_ask_yes_no.png)     | ![](doc/gen/gmessage_ask_string.png)     |
+|     wxpython | ![](doc/gen/wxpython_ask_ok_cancel.png)     | ![](doc/gen/wxpython_ask_yes_no.png)     | ![](doc/gen/wxpython_ask_string.png)     |
+|      tkinter | ![](doc/gen/tkinter_ask_ok_cancel.png)      | ![](doc/gen/tkinter_ask_yes_no.png)      | ![](doc/gen/tkinter_ask_string.png)      |
+|      easygui | ![](doc/gen/easygui_ask_ok_cancel.png)      | ![](doc/gen/easygui_ask_yes_no.png)      | ![](doc/gen/easygui_ask_string.png)      |
+|        pyqt5 | ![](doc/gen/pyqt5_ask_ok_cancel.png)        | ![](doc/gen/pyqt5_ask_yes_no.png)        | ![](doc/gen/pyqt5_ask_string.png)        |
+|      pyside2 | ![](doc/gen/pyside2_ask_ok_cancel.png)      | ![](doc/gen/pyside2_ask_yes_no.png)      | ![](doc/gen/pyside2_ask_string.png)      |
+| pythondialog | ![](doc/gen/pythondialog_ask_ok_cancel.png) | ![](doc/gen/pythondialog_ask_yes_no.png) | ![](doc/gen/pythondialog_ask_string.png) |
+|      console | ![](doc/gen/console_ask_ok_cancel.png)      | ![](doc/gen/console_ask_yes_no.png)      | ![](doc/gen/console_ask_string.png)      |
 
 ## ask_file(), ask_folder()
 
-|      backend | ask_file                                | ask_folder                                |
-| -----------: | --------------------------------------- | ----------------------------------------- |
-|       zenity | ![](/doc/gen/zenity_ask_file.png)       | ![](/doc/gen/zenity_ask_folder.png)       |
-|     gmessage | ![](/doc/gen/gmessage_ask_file.png)     | ![](/doc/gen/gmessage_ask_folder.png)     |
-|     wxpython | ![](/doc/gen/wxpython_ask_file.png)     | ![](/doc/gen/wxpython_ask_folder.png)     |
-|      tkinter | ![](/doc/gen/tkinter_ask_file.png)      | ![](/doc/gen/tkinter_ask_folder.png)      |
-|      easygui | ![](/doc/gen/easygui_ask_file.png)      | ![](/doc/gen/easygui_ask_folder.png)      |
-|        pyqt5 | ![](/doc/gen/pyqt5_ask_file.png)        | ![](/doc/gen/pyqt5_ask_folder.png)        |
-|      pyside2 | ![](/doc/gen/pyside2_ask_file.png)      | ![](/doc/gen/pyside2_ask_folder.png)      |
-| pythondialog | ![](/doc/gen/pythondialog_ask_file.png) | ![](/doc/gen/pythondialog_ask_folder.png) |
-|      console | ![](/doc/gen/console_ask_file.png)      | ![](/doc/gen/console_ask_folder.png)      |
+|      backend | ask_file                               | ask_folder                               |
+| -----------: | -------------------------------------- | ---------------------------------------- |
+|       zenity | ![](doc/gen/zenity_ask_file.png)       | ![](doc/gen/zenity_ask_folder.png)       |
+|     gmessage | ![](doc/gen/gmessage_ask_file.png)     | ![](doc/gen/gmessage_ask_folder.png)     |
+|     wxpython | ![](doc/gen/wxpython_ask_file.png)     | ![](doc/gen/wxpython_ask_folder.png)     |
+|      tkinter | ![](doc/gen/tkinter_ask_file.png)      | ![](doc/gen/tkinter_ask_folder.png)      |
+|      easygui | ![](doc/gen/easygui_ask_file.png)      | ![](doc/gen/easygui_ask_folder.png)      |
+|        pyqt5 | ![](doc/gen/pyqt5_ask_file.png)        | ![](doc/gen/pyqt5_ask_folder.png)        |
+|      pyside2 | ![](doc/gen/pyside2_ask_file.png)      | ![](doc/gen/pyside2_ask_folder.png)      |
+| pythondialog | ![](doc/gen/pythondialog_ask_file.png) | ![](doc/gen/pythondialog_ask_folder.png) |
+|      console | ![](doc/gen/console_ask_file.png)      | ![](doc/gen/console_ask_folder.png)      |
 
 ## choice()
 
-|      backend | choice                                |                              |
-| -----------: | ------------------------------------- | 
-|       zenity | ![](/doc/gen/zenity_choice.png)       |
-|     gmessage | ![](/doc/gen/gmessage_choice.png)     |
-|     wxpython | ![](/doc/gen/wxpython_choice.png)     |
-|      tkinter | ![](/doc/gen/tkinter_choice.png)      |
-|      easygui | ![](/doc/gen/easygui_choice.png)      |
-|        pyqt5 | ![](/doc/gen/pyqt5_choice.png)        |
-|      pyside2 | ![](/doc/gen/pyside2_choice.png)      |
-| pythondialog | ![](/doc/gen/pythondialog_choice.png) |
-|      console | ![](/doc/gen/console_choice.png)      |
+|      backend | choice                               |
+| -----------: | ------------------------------------ |
+|       zenity | ![](doc/gen/zenity_choice.png)       |
+|     gmessage | ![](doc/gen/gmessage_choice.png)     |
+|     wxpython | ![](doc/gen/wxpython_choice.png)     |
+|      tkinter | ![](doc/gen/tkinter_choice.png)      |
+|      easygui | ![](doc/gen/easygui_choice.png)      |
+|        pyqt5 | ![](doc/gen/pyqt5_choice.png)        |
+|      pyside2 | ![](doc/gen/pyside2_choice.png)      |
+| pythondialog | ![](doc/gen/pythondialog_choice.png) |
+|      console | ![](doc/gen/console_choice.png)      |
 

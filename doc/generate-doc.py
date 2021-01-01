@@ -1,6 +1,7 @@
 import glob
 import logging
 import os
+from pathlib import Path
 from time import sleep
 
 from discogui.imgutil import grab_no_blink
@@ -47,7 +48,7 @@ def empty_dir(dir):
 
 @entrypoint
 def main():
-    gendir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "gen")
+    gendir = Path(__file__).absolute().parent / "gen"
     logging.info("gendir: %s", gendir)
     os.makedirs(gendir, exist_ok=True)
     empty_dir(gendir)
@@ -80,7 +81,8 @@ def main():
                     img = disp.waitgrab(timeout=9)
                     logging.info("saving %s", png)
                     img.save(png)
-        for b in sorted(BackendLoader().all_names):
+
+        for b in sorted(psidialogs.backends()):
             for func in psidialogs.FUNCTION_NAMES:
                 cmd = [
                     "python3",
@@ -92,9 +94,9 @@ def main():
                     func,
                     # "--debug",
                 ]
-                if BackendLoader().is_console(b):
-                    # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
-                    cmd = ["xterm", "-e", " ".join(cmd)]
+                # if BackendLoader().is_console(b):
+                #     # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
+                #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
                     logging.info("======== cmd: %s", cmd)
                     with EasyProcess(cmd):
