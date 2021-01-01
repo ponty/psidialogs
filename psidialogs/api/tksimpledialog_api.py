@@ -1,5 +1,5 @@
-from psidialogs.api.ask_number import ask_float, ask_int
 import psidialogs
+from psidialogs.api.ask_number import ask_float, ask_int
 
 
 def askstring(title, prompt, **kw):

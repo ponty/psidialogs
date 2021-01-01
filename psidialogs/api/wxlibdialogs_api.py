@@ -1,5 +1,6 @@
-import psidialogs
 import wx
+
+import psidialogs
 
 
 def textEntryDialog(parent=None, message="", title="", defaultText="", style=20):

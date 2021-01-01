@@ -1,6 +1,5 @@
-from psidialogs.unicodeutil import ansi_dialog_eg as ansi_dialog
 from psidialogs.iplugin import IPlugin
-
+from psidialogs.unicodeutil import ansi_dialog_eg as ansi_dialog
 
 MAX_LINES = 4
 MAX_LINE_LENGTH = 100

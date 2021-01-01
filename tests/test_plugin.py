@@ -1,5 +1,6 @@
-from psidialogs.backendloader import BackendLoader
 from pyvirtualdisplay.display import Display
+
+from psidialogs.backendloader import BackendLoader
 
 
 def test_pref():

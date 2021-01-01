@@ -1,7 +1,9 @@
+import tempfile
+
 from easyprocess import EasyProcess
+
 from psidialogs.iplugin import IPlugin
 from psidialogs.unicodeutil import uniencode
-import tempfile
 
 
 class Backend(IPlugin):

@@ -1,16 +1,16 @@
-import logging
-import os, psidialogs
-from time import sleep
-from PIL import Image, ImageChops
-import os
 import glob
+import logging
+import os
+from time import sleep
 
+from discogui.imgutil import grab_no_blink
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from psidialogs.backendloader import BackendLoader
-
+from PIL import Image, ImageChops
 from pyvirtualdisplay.smartdisplay import SmartDisplay
-from discogui.imgutil import grab_no_blink, img_eq
+
+import psidialogs
+from psidialogs.backendloader import BackendLoader
 
 # (cmd,grab,background)
 commands = [

@@ -1,6 +1,5 @@
 from psidialogs.iplugin import IPlugin
 
-
 _app = None
 
 
@@ -10,10 +9,12 @@ class Backend(IPlugin):
 
     def __init__(self):
         from PyQt5 import QtWidgets
+
         self.QtWidgets = QtWidgets
 
     def backend_version(self):
         from PyQt5 import Qt
+
         return Qt.PYQT_VERSION_STR
 
     def init_qt(self):

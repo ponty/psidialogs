@@ -1,4 +1,3 @@
-import sys
 from psidialogs.util import py2
 
 # def uniencode(s):

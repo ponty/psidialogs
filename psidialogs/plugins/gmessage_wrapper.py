@@ -1,4 +1,5 @@
 from easyprocess import EasyProcess
+
 from psidialogs.iplugin import IPlugin
 
 

@@ -1,7 +1,6 @@
 from psidialogs.loader import PluginLoader
 from psidialogs.singl import singleton
 
-
 default_preference = """
 easygui
 zenity

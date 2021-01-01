@@ -1,10 +1,13 @@
+import logging
+import sys
+
 from discogui.buttons import discover_buttons
 from discogui.mouse import PyMouse
 from easyprocess import EasyProcess
-from psidialogs.backendloader import BackendLoader
 from pyvirtualdisplay.smartdisplay import SmartDisplay
-import psidialogs, sys
-import logging
+
+import psidialogs
+from psidialogs.backendloader import BackendLoader
 
 log = logging.getLogger(__name__)
 
@@ -116,4 +119,3 @@ def check_backend(backend):
     if not BackendLoader().is_console(backend):
         for func in psidialogs.FUNCTION_NAMES:
             check(backend, func)
-

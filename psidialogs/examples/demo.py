@@ -1,10 +1,10 @@
-from entrypoint2 import entrypoint
-from psidialogs.backendloader import BackendLoader
 import inspect
 import logging
-import os
+
+from entrypoint2 import entrypoint
+
 import psidialogs
-import sys
+from psidialogs.backendloader import BackendLoader
 
 log = logging.getLogger(__name__)
 

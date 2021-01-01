@@ -1,6 +1,7 @@
-from psidialogs.mixins import AllMixin
-from psidialogs.backendloader import BackendLoader
 import logging
+
+from psidialogs.backendloader import BackendLoader
+from psidialogs.mixins import AllMixin
 
 log = logging.getLogger(__name__)
 
