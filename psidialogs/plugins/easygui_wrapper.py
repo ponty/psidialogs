@@ -2,7 +2,6 @@ from psidialogs.iplugin import IPlugin
 
 
 class EasyguiWrapper(IPlugin):
-    backend = "EasyGui"
     name = "easygui"
 
     def __init__(self):

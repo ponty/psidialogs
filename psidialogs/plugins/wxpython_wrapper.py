@@ -2,7 +2,6 @@ from psidialogs.iplugin import IPlugin
 
 
 class WxPythonWrapper(IPlugin):
-    backend = "wxPython"
     app = None
     name = "wxpython"
 

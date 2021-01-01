@@ -4,7 +4,6 @@ _app = None
 
 
 class PyQt5Wrapper(IPlugin):
-    backend = "PyQt5"
     name = "pyqt5"
 
     def __init__(self):

@@ -4,7 +4,6 @@ from psidialogs.iplugin import IPlugin
 
 
 class GmessageWrapper(IPlugin):
-    backend = "gMessage"
     name = "gmessage"
     is_subprocess = True
 

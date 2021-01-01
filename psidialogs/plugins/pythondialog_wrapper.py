@@ -1,3 +1,7 @@
+"""
+url = 'http://pythondialog.sourceforge.net/'
+"""
+
 from psidialogs.iplugin import IPlugin
 
 MAX_LINES = 4
@@ -5,12 +9,6 @@ MAX_LINE_LENGTH = 100
 
 
 class PythonDialogWrapper(IPlugin):
-    """
-    ubuntu_package = 'python-dialog'
-    url = 'http://pythondialog.sourceforge.net/'
-    """
-
-    backend = "Python Dialog"
     console = True
     name = "pythondialog"
 

@@ -4,7 +4,6 @@ _app = None
 
 
 class PySide2Wrapper(IPlugin):
-    backend = "PySide2"
     name = "pyside2"
 
     def __init__(self):

@@ -2,7 +2,6 @@ from psidialogs.iplugin import IPlugin
 
 
 class TkinterWrapper(IPlugin):
-    backend = "TkInter"
     root = None
     name = "tkinter"
 

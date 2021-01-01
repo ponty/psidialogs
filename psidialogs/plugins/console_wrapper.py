@@ -3,7 +3,6 @@ from psidialogs.iplugin import IPlugin
 
 class ConsoleWrapper(IPlugin):
     console = True
-    backend = "console"
     name = "console"
 
     def message(self, args):
