@@ -3,7 +3,7 @@ from psidialogs.iplugin import IPlugin
 _app = None
 
 
-class Backend(IPlugin):
+class PySide2Wrapper(IPlugin):
     backend = "PySide2"
     name = "pyside2"
 

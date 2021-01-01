@@ -10,7 +10,7 @@ def text_input(msg):
         return input(msg)
 
 
-class Backend(IPlugin):
+class ConsoleWrapper(IPlugin):
     console = True
     backend = "console"
     name = "console"

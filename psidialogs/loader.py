@@ -1,8 +1,30 @@
-from psidialogs.iplugin import IPlugin
 import logging
-import psidialogs.plugins
+
+from psidialogs.iplugin import IPlugin
+from psidialogs.plugins.console_wrapper import ConsoleWrapper
+from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
+from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
+from psidialogs.plugins.pyqt5_wrapper import PyQt5Wrapper
+from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
+from psidialogs.plugins.pythondialog_wrapper import PythonDialogWrapper
+from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
+from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
+from psidialogs.plugins.zenity_wrapper import ZenityWrapper
 
 log = logging.getLogger(__name__)
+
+
+backend_dict = {
+    ConsoleWrapper.name: ConsoleWrapper,
+    EasyguiWrapper.name: EasyguiWrapper,
+    GmessageWrapper.name: GmessageWrapper,
+    PyQt5Wrapper.name: PyQt5Wrapper,
+    PySide2Wrapper.name: PySide2Wrapper,
+    PythonDialogWrapper.name: PythonDialogWrapper,
+    TkinterWrapper.name: TkinterWrapper,
+    WxPythonWrapper.name: WxPythonWrapper,
+    ZenityWrapper.name: ZenityWrapper,
+}
 
 
 class PluginLoaderError(Exception):

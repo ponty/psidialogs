@@ -3,7 +3,7 @@ from easyprocess import EasyProcess
 from psidialogs.iplugin import IPlugin
 
 
-class Backend(IPlugin):
+class GmessageWrapper(IPlugin):
     backend = "gMessage"
     name = "gmessage"
 

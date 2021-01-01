@@ -2,7 +2,7 @@ from psidialogs.iplugin import IPlugin
 from psidialogs.unicodeutil import ansi_dialog_eg as ansi_dialog
 
 
-class Backend(IPlugin):
+class EasyguiWrapper(IPlugin):
     backend = "EasyGui"
     name = "easygui"
 

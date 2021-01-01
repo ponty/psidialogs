@@ -3,7 +3,7 @@ from psidialogs.iplugin import IPlugin
 _app = None
 
 
-class Backend(IPlugin):
+class PyQt5Wrapper(IPlugin):
     backend = "PyQt5"
     name = "pyqt5"
 

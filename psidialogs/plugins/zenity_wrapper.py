@@ -6,7 +6,7 @@ from psidialogs.iplugin import IPlugin
 from psidialogs.unicodeutil import uniencode
 
 
-class Backend(IPlugin):
+class ZenityWrapper(IPlugin):
     backend = "Zenity"
     name = "zenity"
 

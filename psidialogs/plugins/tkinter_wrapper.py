@@ -2,7 +2,7 @@ from psidialogs.iplugin import IPlugin
 from psidialogs.util import py2
 
 
-class Backend(IPlugin):
+class TkinterWrapper(IPlugin):
     backend = "TkInter"
     root = None
     name = "tkinter"

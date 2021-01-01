@@ -5,7 +5,7 @@ MAX_LINES = 4
 MAX_LINE_LENGTH = 100
 
 
-class Backend(IPlugin):
+class PythonDialogWrapper(IPlugin):
     """
     ubuntu_package = 'python-dialog'
     url = 'http://pythondialog.sourceforge.net/'
