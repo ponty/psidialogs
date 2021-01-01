@@ -1,9 +1,9 @@
 import logging
 import sys
+from threading import Thread
 
 from discogui.buttons import discover_buttons
 from discogui.mouse import PyMouse
-from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 import psidialogs
@@ -11,7 +11,7 @@ import psidialogs
 log = logging.getLogger(__name__)
 
 VISIBLE = 0
-TIMEOUT = 15
+TIMEOUT = 10
 
 
 def check_buttons(cmd, expect):
@@ -50,30 +50,36 @@ def check_buttons(cmd, expect):
 
 
 def check_open(backend, func):
-    cmd = [
-        sys.executable,
-        "-m",
-        "psidialogs.examples.demo",
-        "-b",
-        backend,
-        "-f",
-        func,
-        "--debug",
-    ]
+    # cmd = [
+    #     sys.executable,
+    #     "-m",
+    #     "psidialogs.examples.demo",
+    #     "-b",
+    #     backend,
+    #     "-f",
+    #     func,
+    #     "--debug",
+    # ]
     # exception if nothing is displayed
     with SmartDisplay(visible=VISIBLE) as disp:
-        with EasyProcess(cmd) as proc:
-            # def imgcheck(im):
-            #     log.info(im)
-            #     im = disp.autocrop(im)
-            #     log.info(im)
-            #     if not proc.is_alive():
-            #         raise ValueError('Process crashed.')
-            #     if im:
-            #         return True
-            #     return False
-            # disp.waitgrab(timeout=TIMEOUT, autocrop=False,cb_imgcheck=imgcheck)
-            disp.waitgrab(timeout=TIMEOUT)
+        # with EasyProcess(cmd) as proc:
+        t = Thread(
+            target=lambda: psidialogs.dialog(func, backend=backend, choices=["a", "b"])
+        )
+        t.start()
+
+        # def imgcheck(im):
+        #     log.info(im)
+        #     im = disp.autocrop(im)
+        #     log.info(im)
+        #     if not proc.is_alive():
+        #         raise ValueError('Process crashed.')
+        #     if im:
+        #         return True
+        #     return False
+        # disp.waitgrab(timeout=TIMEOUT, autocrop=False,cb_imgcheck=imgcheck)
+        disp.waitgrab(timeout=TIMEOUT)
+    t.join()
 
 
 def check(backend, func):

@@ -2,7 +2,7 @@ import logging
 
 from psidialogs.about import __version__
 from psidialogs.childproc import childprocess_backend_version
-from psidialogs.loader import backend_dict, opendialog
+from psidialogs.loader import _opendialog, backend_dict
 
 log = logging.getLogger(__name__)
 log.debug("version=%s", __version__)
@@ -18,7 +18,7 @@ def message(message, title="", backend=None):
     :param title: window title
     :rtype: None
     """
-    return opendialog("message", dict(message=message, title=title), backend)
+    return dialog("message", message=message, title=title, backend=backend)
 
 
 def error(message="Error!", title="", backend=None):
@@ -31,7 +31,7 @@ def error(message="Error!", title="", backend=None):
     :param title: window title
     :rtype: None
     """
-    return opendialog("error", dict(message=message, title=title), backend)
+    return dialog("error", message=message, title=title, backend=backend)
 
 
 def warning(message="Warning!", title="", backend=None):
@@ -44,7 +44,7 @@ def warning(message="Warning!", title="", backend=None):
     :param title: window title
     :rtype: None
     """
-    return opendialog("warning", dict(message=message, title=title), backend)
+    return dialog("warning", message=message, title=title, backend=backend)
 
 
 # def text(text, message="", title=""):
@@ -74,7 +74,7 @@ def ask_string(message="Enter something.", title="", backend=None):
     :param title: window title
     :rtype: None or string
     """
-    return opendialog("ask_string", dict(message=message, title=title), backend)
+    return dialog("ask_string", message=message, title=title, backend=backend)
 
 
 def ask_file(message="Select file for open.", title="", backend=None):
@@ -87,7 +87,7 @@ def ask_file(message="Select file for open.", title="", backend=None):
     :param title: window title
     :rtype: None or string
     """
-    return opendialog("ask_file", dict(message=message, title=title), backend,)
+    return dialog("ask_file", message=message, title=title, backend=backend,)
 
 
 def ask_folder(message="Select folder.", title="", backend=None):
@@ -99,7 +99,7 @@ def ask_folder(message="Select folder.", title="", backend=None):
     :param title: window title
     :rtype: None or string
     """
-    return opendialog("ask_folder", dict(message=message, title=title), backend)
+    return dialog("ask_folder", message=message, title=title, backend=backend)
 
 
 def choice(choices=[], message="Pick something.", title="", backend=None):
@@ -115,14 +115,8 @@ def choice(choices=[], message="Pick something.", title="", backend=None):
     :param title: window title
     :rtype: None or string
     """
-    if len(choices) == 0:
-        log.warning("choices=[] returning None")
-        return None
-    if len(choices) == 1:
-        log.warning("choices has one element only")
-        return choices[0]
-    return opendialog(
-        "choice", dict(choices=choices, message=message, title=title), backend,
+    return dialog(
+        "choice", choices=choices, message=message, title=title, backend=backend,
     )
 
 
@@ -164,7 +158,7 @@ def ask_ok_cancel(message="", title="", backend=None):
     :param title: window title
     :rtype: bool
     """
-    return opendialog("ask_ok_cancel", dict(message=message, title=title), backend)
+    return dialog("ask_ok_cancel", message=message, title=title, backend=backend)
 
 
 def ask_yes_no(message="", title="", backend=None):
@@ -181,7 +175,7 @@ def ask_yes_no(message="", title="", backend=None):
     :param title: window title
     :rtype: bool
     """
-    return opendialog("ask_yes_no", dict(message=message, title=title), backend)
+    return dialog("ask_yes_no", message=message, title=title, backend=backend)
 
 
 FUNCTIONS = [
@@ -217,7 +211,17 @@ def backend_version(backend):
     return childprocess_backend_version(backend)
 
 
-def dialog(funcname, choices=[], message="", title="", backend=None):
-    return opendialog(
-        funcname, dict(choices=choices, message=message, title=title), backend,
+def dialog(funcname, choices=[], message="", title="", backend=None, childprocess=True):
+    if funcname == "choice":
+        if len(choices) == 0:
+            log.warning("choices=[] returning None")
+            return None
+        if len(choices) == 1:
+            log.warning("choices has one element only")
+            return choices[0]
+    return _opendialog(
+        funcname,
+        dict(choices=choices, message=message, title=title),
+        backend,
+        childprocess=childprocess,
     )

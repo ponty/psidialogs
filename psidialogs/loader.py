@@ -1,6 +1,7 @@
 import logging
 import traceback
 
+from psidialogs.childproc import childprocess_dialog
 from psidialogs.err import FailedBackendError
 from psidialogs.plugins.console_wrapper import ConsoleWrapper
 from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
@@ -48,8 +49,6 @@ def backends():
 
 
 def select_childprocess(childprocess, backend_class):
-    return False  # TODO: rm
-
     if backend_class.is_subprocess:
         # backend is always a subprocess -> nothing to do
         return False
@@ -83,10 +82,11 @@ def func_dispatch(obj, funcname, argdict):
 def auto(funcname, argdict, childprocess):
     for backend_class in backends():
         backend_name = backend_class.name
+        log.debug("next backend to try: %s", backend_name)
         try:
             if select_childprocess(childprocess, backend_class):
                 log.debug('running "%s" in child process', backend_name)
-                # TODO:im = childprocess_demo(backend_name, bbox)
+                return childprocess_dialog(funcname, backend_name, argdict)
             else:
                 obj = backend_class()
                 return func_dispatch(obj, funcname, argdict)
@@ -103,21 +103,24 @@ def force(backend_name, funcname, argdict, childprocess):
     backend_class = backend_dict[backend_name]
     if select_childprocess(childprocess, backend_class):
         log.debug('running "%s" in child process', backend_name)
-        # TODO:return childprocess_demo(backend_name, bbox)
+        return childprocess_dialog(funcname, backend_name, argdict)
     else:
         obj = backend_class()
         return func_dispatch(obj, funcname, argdict)
 
 
-def opendialog(funcname, argdict, backend_name=None):
+def _opendialog(funcname, argdict, backend_name=None, childprocess=True):
     # TODO: check
     for (k, v) in argdict.items():
         if v is None:
             argdict[k] = ""
-    log.debug(funcname)
-    log.debug(argdict)
-
-    childprocess = True  # TODO: param
+    log.debug(
+        "_opendialog funcname:%s argdict:%s backend:%s childprocess:%s",
+        funcname,
+        argdict,
+        backend_name,
+        childprocess,
+    )
 
     if backend_name:
         return force(backend_name, funcname, argdict, childprocess)

@@ -19,7 +19,7 @@ class ZenityWrapper(IPlugin):
             for k, v in d.items():
                 if k:
                     ls += [k]
-                if v:
+                if v is not None:
                     ls += [v]
             return ls
 

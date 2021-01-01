@@ -1,6 +1,4 @@
 import logging
-import os
-from tempfile import TemporaryDirectory
 
 from psidialogs.err import FailedBackendError
 from psidialogs.util import run_mod_as_subproc
@@ -17,18 +15,29 @@ def childprocess_backend_version(backend):
     return p.stdout
 
 
-def childprocess_demo(backend, bbox):
-    with TemporaryDirectory(prefix="psidialogs") as tmpdirname:
-        filename = os.path.join(tmpdirname, "screenshot.png")
-        cmd = ["--filename", filename]
-        if backend:
-            cmd += ["--backend", backend]
-        if log.isEnabledFor(logging.DEBUG):
-            cmd += ["--debug"]
+def childprocess_dialog(funcname, backend, argdict):
+    title = argdict["title"]
+    message = argdict["message"]
+    choices = argdict["choices"]
 
-        p = run_mod_as_subproc("psidialogs.examples.demo", cmd)
-        if p.return_code != 0:
-            # log.debug(p)
-            raise FailedBackendError(p)
+    # with TemporaryDirectory(prefix="psidialogs") as tmpdirname:
+    # filename = os.path.join(tmpdirname, "screenshot.png")
+    # cmd = ["--filename", filename]
+    cmd = [funcname]
+    if title:
+        cmd += ["--title", title]
+    if message:
+        cmd += ["--message", message]
+    if choices:
+        cmd += ["--choices", ",".join(choices)]
+    if backend:
+        cmd += ["--backend", backend]
+    if log.isEnabledFor(logging.DEBUG):
+        cmd += ["--debug"]
 
-        return data
+    p = run_mod_as_subproc("psidialogs.cli.dialog", cmd)
+    if p.return_code != 0:
+        # log.debug(p)
+        raise FailedBackendError(p)
+
+    return p.stdout

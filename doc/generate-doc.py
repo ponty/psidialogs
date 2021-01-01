@@ -2,6 +2,7 @@ import glob
 import logging
 import os
 from pathlib import Path
+from threading import Thread
 from time import sleep
 
 from discogui.imgutil import grab_no_blink
@@ -18,15 +19,15 @@ commands = [
 ]
 
 
-def screenshot(cmd, fname):
-    logging.info("%s %s", cmd, fname)
-    # fpath = "docs/_img/%s" % fname
-    # if os.path.exists(fpath):
-    #     os.remove(fpath)
-    with SmartDisplay() as disp:
-        with EasyProcess(cmd):
-            img = disp.waitgrab()
-            img.save(fname)
+# def screenshot(cmd, fname):
+#     logging.info("%s %s", cmd, fname)
+#     # fpath = "docs/_img/%s" % fname
+#     # if os.path.exists(fpath):
+#     #     os.remove(fpath)
+#     with SmartDisplay() as disp:
+#         with EasyProcess(cmd):
+#             img = disp.waitgrab()
+#             img.save(fname)
 
 
 def autocrop(im, bgcolor):
@@ -84,35 +85,38 @@ def main():
 
         for b in sorted(psidialogs.backends()):
             for func in psidialogs.FUNCTION_NAMES:
-                cmd = [
-                    "python3",
-                    "-m",
-                    "psidialogs.examples.demo",
-                    "-b",
-                    b,
-                    "-f",
-                    func,
-                    # "--debug",
-                ]
+                # cmd = [
+                #     "python3",
+                #     "-m",
+                #     "psidialogs.examples.demo",
+                #     "-b",
+                #     b,
+                #     "-f",
+                #     func,
+                #     # "--debug",
+                # ]
                 # if BackendLoader().is_console(b):
                 #     # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
+                    # with EasyProcess(cmd):
                     logging.info("======== cmd: %s", cmd)
-                    with EasyProcess(cmd):
-                        png = b + "_" + func + ".png"
-                        png = os.path.join(gendir, png)
-                        sleep(0.1)
-                        disp.waitgrab(timeout=9)
-                        img = grab_no_blink()
-                        logging.info("saving %s", png)
-                        if b == "console":
-                            img = autocrop(img, (255, 255, 255))
-                        if b == "pythondialog":
-                            img = autocrop(img, (255, 255, 255))
-                            img = autocrop(img, (0, 0, 238))
-                        img.save(png)
+                    t = Thread(target=lambda: psidialogs.dialog(func, backend=b))
+                    t.start()
 
+                    png = b + "_" + func + ".png"
+                    png = os.path.join(gendir, png)
+                    sleep(0.1)
+                    disp.waitgrab(timeout=9)
+                    img = grab_no_blink()
+                    logging.info("saving %s", png)
+                    if b == "console":
+                        img = autocrop(img, (255, 255, 255))
+                    if b == "pythondialog":
+                        img = autocrop(img, (255, 255, 255))
+                        img = autocrop(img, (0, 0, 238))
+                    img.save(png)
+                t.join()
     finally:
         os.chdir(cwd)
         for p in pls:
