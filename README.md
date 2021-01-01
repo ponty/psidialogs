@@ -58,24 +58,24 @@ $ sudo apt-get install gxmessage
 All backends and all functions can be tested with the demo:
 
 ```console
-$ python3 -m psidialogs.cli.demo
+$ python3 -m psidialogs.examples.demo
 ```
 
 The demo can be started with one backend:
 ```console
-$ python3 -m psidialogs.cli.demo --backend zenity
+$ python3 -m psidialogs.examples.demo --backend zenity
 ```
 
 The demo can be started with one backend and one function:
 ```console
-$ python3 -m psidialogs.cli.demo --backend zenity --function message
+$ python3 -m psidialogs.examples.demo --backend zenity --function message
 ```
 
 <!-- embedme doc/gen/python3_-m_psidialogs.cli.demo_--help.txt -->
 Demo full help:
 
 ```console
-$ python3 -m psidialogs.cli.demo --help
+$ python3 -m psidialogs.examples.demo --help
 usage: demo.py [-h] [-b BACKEND] [-f FUNCTION] [-t TITLE] [--debug]
 
 optional arguments:
@@ -120,7 +120,7 @@ Screenshots are created on Ubuntu 18.04 server with Xvfb.
 
 ## ask_file(), ask_folder()
 
-|      backend | ask_file                                | ask_folder                                | 
+|      backend | ask_file                                | ask_folder                                |
 | -----------: | --------------------------------------- | ----------------------------------------- |
 |       zenity | ![](/doc/gen/zenity_ask_file.png)       | ![](/doc/gen/zenity_ask_folder.png)       |
 |     gmessage | ![](/doc/gen/gmessage_ask_file.png)     | ![](/doc/gen/gmessage_ask_folder.png)     |

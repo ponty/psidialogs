@@ -29,13 +29,13 @@ backend_dict = {
 
 
 def backends():
-    yield EasyguiWrapper
-    yield ZenityWrapper
     yield PyQt5Wrapper
     yield PySide2Wrapper
     yield WxPythonWrapper
-    yield GmessageWrapper
+    yield EasyguiWrapper
+    yield ZenityWrapper
     yield TkinterWrapper
+    yield GmessageWrapper
     yield PythonDialogWrapper
 
     yield ConsoleWrapper

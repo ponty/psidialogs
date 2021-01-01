@@ -53,7 +53,7 @@ def check_open(backend, func):
     cmd = [
         sys.executable,
         "-m",
-        "psidialogs.cli.demo",
+        "psidialogs.examples.demo",
         "-b",
         backend,
         "-f",
@@ -95,11 +95,12 @@ def check(backend, func):
     cmd = [
         sys.executable,
         "-m",
-        "psidialogs.examples.opendialog",
-        backend,
+        "psidialogs.cli.dialog",
         func,
-        "-m",
+        "-message",
         "hi",
+        "--backend",
+        backend,
     ]
     if func in ["message", "warning", "error"]:
         expect = [None]

@@ -26,7 +26,7 @@ def childprocess_demo(backend, bbox):
         if log.isEnabledFor(logging.DEBUG):
             cmd += ["--debug"]
 
-        p = run_mod_as_subproc("psidialogs.cli.demo", cmd)
+        p = run_mod_as_subproc("psidialogs.examples.demo", cmd)
         if p.return_code != 0:
             # log.debug(p)
             raise FailedBackendError(p)

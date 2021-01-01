@@ -13,7 +13,7 @@ import psidialogs
 
 # (cmd,grab,background)
 commands = [
-    ("python3 -m psidialogs.cli.demo --help", False, False),
+    ("python3 -m psidialogs.examples.demo --help", False, False),
 ]
 
 
@@ -85,7 +85,7 @@ def main():
                 cmd = [
                     "python3",
                     "-m",
-                    "psidialogs.cli.demo",
+                    "psidialogs.examples.demo",
                     "-b",
                     b,
                     "-f",
