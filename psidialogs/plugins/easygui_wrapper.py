@@ -15,6 +15,12 @@ class EasyguiWrapper(IPlugin):
     def message(self, args):
         self.easygui.msgbox(msg=args["message"], title=args["title"])
 
+    def warning(self, args):
+        self.message(args)
+
+    def error(self, args):
+        self.message(args)
+
     def ask_string(self, args):
         return self.easygui.enterbox(
             # default=args["default"],
