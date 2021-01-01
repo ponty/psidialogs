@@ -1,4 +1,3 @@
-import inspect
 import logging
 
 from entrypoint2 import entrypoint
@@ -24,11 +23,8 @@ def opendialog(backend, func, title="", message="", choices="", text=""):
         if x.__name__ == func:
             f = x
     assert f
-    argnames, varargs, varkw, defaults = inspect.getargspec(f)
 
-    args = dict([(k, v) for (k, v) in args.items() if k in argnames])
     result = None
-    # exec "result = psidialogs.%s(**args)" % (func)
     result = psidialogs.__dict__[func](**args)
     log.debug("result:%s", result)
     print(result)
