@@ -1,2 +1,3 @@
+# from psidialogs.mixins import AllMixin
 class IPlugin(object):
-    pass
+    is_subprocess = False

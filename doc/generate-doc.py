@@ -10,11 +10,10 @@ from PIL import Image, ImageChops
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 import psidialogs
-from psidialogs.backendloader import BackendLoader
 
 # (cmd,grab,background)
 commands = [
-    ("python3 -m psidialogs.examples.demo --help", False, False),
+    ("python3 -m psidialogs.cli.demo --help", False, False),
 ]
 
 
@@ -86,7 +85,7 @@ def main():
                 cmd = [
                     "python3",
                     "-m",
-                    "psidialogs.examples.demo",
+                    "psidialogs.cli.demo",
                     "-b",
                     b,
                     "-f",

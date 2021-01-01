@@ -6,6 +6,7 @@ from psidialogs.iplugin import IPlugin
 class GmessageWrapper(IPlugin):
     backend = "gMessage"
     name = "gmessage"
+    is_subprocess = True
 
     def __init__(self):
         assert EasyProcess(["gmessage", "--version"]).call().return_code == 0

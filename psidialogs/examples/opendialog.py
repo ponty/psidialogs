@@ -4,14 +4,13 @@ import logging
 from entrypoint2 import entrypoint
 
 import psidialogs
-from psidialogs.backendloader import BackendLoader
 
 log = logging.getLogger(__name__)
 
 
 @entrypoint
 def opendialog(backend, func, title="", message="", choices="", text=""):
-    BackendLoader().force(backend)
+    # TODO:    BackendLoader().force(backend)
 
     args = dict(title=title, message=message, choices=choices.split(","), text=text,)
 

@@ -1,13 +1,14 @@
 import logging
 
-from psidialogs import backend_api
 from psidialogs.about import __version__
+from psidialogs.childproc import childprocess_backend_version
+from psidialogs.loader import backend_dict, opendialog
 
 log = logging.getLogger(__name__)
 log.debug("version=%s", __version__)
 
 
-def message(message, title=""):
+def message(message, title="", backend=None):
     """
     Display a message
 
@@ -17,10 +18,10 @@ def message(message, title=""):
     :param title: window title
     :rtype: None
     """
-    return backend_api.opendialog("message", dict(message=message, title=title))
+    return opendialog("message", dict(message=message, title=title), backend)
 
 
-def error(message="Error!", title=""):
+def error(message="Error!", title="", backend=None):
     """
     Display an error message
 
@@ -30,10 +31,10 @@ def error(message="Error!", title=""):
     :param title: window title
     :rtype: None
     """
-    return backend_api.opendialog("error", dict(message=message, title=title))
+    return opendialog("error", dict(message=message, title=title), backend)
 
 
-def warning(message="Warning!", title=""):
+def warning(message="Warning!", title="", backend=None):
     """
     Display a warning message
 
@@ -43,7 +44,7 @@ def warning(message="Warning!", title=""):
     :param title: window title
     :rtype: None
     """
-    return backend_api.opendialog("warning", dict(message=message, title=title))
+    return opendialog("warning", dict(message=message, title=title), backend)
 
 
 # def text(text, message="", title=""):
@@ -58,10 +59,10 @@ def warning(message="Warning!", title=""):
 #     :param title: window title
 #     :rtype: None
 #     """
-#     return backend_api.opendialog("text", dict(text=text, message=message, title=title))
+#     return opendialog("text", dict(text=text, message=message, title=title))
 
 
-def ask_string(message="Enter something.", default="", title=""):
+def ask_string(message="Enter something.", default="", title="", backend=None):
     """
     Show a box in which a user can enter some text.
 
@@ -77,12 +78,14 @@ def ask_string(message="Enter something.", default="", title=""):
     :param default: entry-box default string
     :rtype: None or string
     """
-    return backend_api.opendialog(
-        "ask_string", dict(message=message, default=default, title=title)
+    return opendialog(
+        "ask_string", dict(message=message, default=default, title=title), backend
     )
 
 
-def ask_file(message="Select file for open.", default="", title="", save=False):
+def ask_file(
+    message="Select file for open.", default="", title="", save=False, backend=None
+):
     """
     A dialog to get a file name.
     The "default" argument specifies a file path.
@@ -98,12 +101,14 @@ def ask_file(message="Select file for open.", default="", title="", save=False):
     :param default: default file path
     :rtype: None or string
     """
-    return backend_api.opendialog(
-        "ask_file", dict(message=message, default=default, title=title, save=save)
+    return opendialog(
+        "ask_file",
+        dict(message=message, default=default, title=title, save=save),
+        backend,
     )
 
 
-def ask_folder(message="Select folder.", default="", title=""):
+def ask_folder(message="Select folder.", default="", title="", backend=None):
     """
     A dialog to get a directory name.
     Returns the name of a directory, or None if user chose to cancel.
@@ -115,12 +120,12 @@ def ask_folder(message="Select folder.", default="", title=""):
     :param default: default folder path
     :rtype: None or string
     """
-    return backend_api.opendialog(
-        "ask_folder", dict(message=message, default=default, title=title)
+    return opendialog(
+        "ask_folder", dict(message=message, default=default, title=title), backend
     )
 
 
-def choice(choices=[], message="Pick something.", default=None, title=""):
+def choice(choices=[], message="Pick something.", default=None, title="", backend=None):
     """
     Present the user with a list of choices.
     return the choice that he selects.
@@ -140,13 +145,19 @@ def choice(choices=[], message="Pick something.", default=None, title=""):
     if len(choices) == 1:
         log.warning("choices has one element only")
         return choices[0]
-    return backend_api.opendialog(
-        "choice", dict(choices=choices, message=message, default=default, title=title)
+    return opendialog(
+        "choice",
+        dict(choices=choices, message=message, default=default, title=title),
+        backend,
     )
 
 
 def multi_choice(
-    choices=[], message="Pick as many items as you like.", default=None, title=""
+    choices=[],
+    message="Pick as many items as you like.",
+    default=None,
+    title="",
+    backend=None,
 ):
     """
     Present the user with a list of choices.
@@ -165,13 +176,14 @@ def multi_choice(
     if len(choices) == 0:
         log.warning("choices=[] returning None")
         return None
-    return backend_api.opendialog(
+    return opendialog(
         "multi_choice",
         dict(choices=choices, message=message, default=default, title=title),
+        backend,
     )
 
 
-def ask_ok_cancel(message="", default=0, title=""):
+def ask_ok_cancel(message="", default=0, title="", backend=None):
     """
     Display a message with choices of OK and Cancel.
 
@@ -186,12 +198,12 @@ def ask_ok_cancel(message="", default=0, title=""):
     :param default: default button as boolean (OK=True, Cancel=False)
     :rtype: bool
     """
-    return backend_api.opendialog(
-        "ask_ok_cancel", dict(message=message, default=default, title=title)
+    return opendialog(
+        "ask_ok_cancel", dict(message=message, default=default, title=title), backend
     )
 
 
-def ask_yes_no(message="", default=0, title=""):
+def ask_yes_no(message="", default=0, title="", backend=None):
     """
     Display a message with choices of Yes and No.
 
@@ -206,8 +218,8 @@ def ask_yes_no(message="", default=0, title=""):
     :param default: default button as boolean (YES=True, NO=False)
     :rtype: bool
     """
-    return backend_api.opendialog(
-        "ask_yes_no", dict(message=message, default=default, title=title)
+    return opendialog(
+        "ask_yes_no", dict(message=message, default=default, title=title), backend
     )
 
 
@@ -225,3 +237,30 @@ FUNCTIONS = [
 ]
 
 FUNCTION_NAMES = list(map(lambda x: x.__name__, FUNCTIONS))
+
+
+def backends():
+    """Back-end names as a list.
+
+    :return: back-ends as string list
+    """
+    return list(backend_dict.keys())
+
+
+def backend_version(backend):
+    """Back-end version.
+
+    :param backend: back-end (examples:scrot, wx,..)
+    :return: version as string
+    """
+    return childprocess_backend_version(backend)
+
+
+def dialog(
+    funcname, choices=[], message="", default=None, title="", backend=None, save=False
+):
+    return opendialog(
+        funcname,
+        dict(choices=choices, message=message, default=default, title=title, save=save),
+        backend,
+    )

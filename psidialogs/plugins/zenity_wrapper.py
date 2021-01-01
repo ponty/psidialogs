@@ -9,6 +9,7 @@ from psidialogs.unicodeutil import uniencode
 class ZenityWrapper(IPlugin):
     backend = "Zenity"
     name = "zenity"
+    is_subprocess = True
 
     def __init__(self):
         assert EasyProcess(["zenity", "--version"]).call().return_code == 0

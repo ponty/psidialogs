@@ -7,7 +7,6 @@ from easyprocess import EasyProcess
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 import psidialogs
-from psidialogs.backendloader import BackendLoader
 
 log = logging.getLogger(__name__)
 
@@ -54,7 +53,7 @@ def check_open(backend, func):
     cmd = [
         sys.executable,
         "-m",
-        "psidialogs.examples.demo",
+        "psidialogs.cli.demo",
         "-b",
         backend,
         "-f",
@@ -116,6 +115,6 @@ def check(backend, func):
 
 
 def check_backend(backend):
-    if not BackendLoader().is_console(backend):
-        for func in psidialogs.FUNCTION_NAMES:
-            check(backend, func)
+    # TODO:if not BackendLoader().is_console(backend):
+    for func in psidialogs.FUNCTION_NAMES:
+        check(backend, func)
