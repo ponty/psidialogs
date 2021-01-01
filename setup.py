@@ -38,7 +38,10 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
 ]
 
-install_requires = ["path.py", "argparse", "EasyProcess", "entrypoint2"]
+install_requires = [
+    "EasyProcess",
+    "entrypoint2",
+]
 
 setup(
     name=NAME,

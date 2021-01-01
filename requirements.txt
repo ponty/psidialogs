@@ -1,5 +1,3 @@
-path.py
-argparse
 EasyProcess
 entrypoint2
 
