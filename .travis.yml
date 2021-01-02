@@ -1,0 +1,60 @@
+language: python
+
+matrix:
+  include:
+    - name: "3.8_focal_with_system"
+      python: "3.8_with_system_site_packages"
+      dist: focal
+
+    - name: 3.9_focal
+      python: 3.9
+      dist: focal
+
+    - name: "Python 3.7 on macOS"
+      os: osx
+      osx_image: xcode11.2 # Python 3.7.4 running on macOS 10.14.4
+      language: shell # 'language: python' is an error on Travis CI macOS
+      env: PATH=/Users/travis/Library/Python/3.7/bin:$PATH PIPUSER=--user PIPINST="wxpython pyobjc-framework-Quartz pyobjc-framework-LaunchServices"
+
+    # - name: "Python 3.8 on Windows"
+    #   os: windows # Windows 10.0.17134 N/A Build 17134
+    #   language: shell # 'language: python' is an error on Travis CI Windows
+    #   before_install:
+    #     - choco install python --version 3.8
+    #     - python -m pip install --upgrade pip
+    #   env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+
+      # windows has no GUI
+
+addons:
+  apt:
+    packages:
+      - xvfb
+      - scrot
+      - x11-utils
+      - zenity
+      - gxmessage
+      - python3-wxgtk4.0
+      - python3-pyqt5
+      - python3-pyside2.qtwidgets
+      - python3-tk  
+      - python3-dialog  
+      - python3-easygui  
+  homebrew:
+    # update: true # https://travis-ci.community/t/macos-build-fails-because-of-homebrew-bundle-unknown-command/7296/10
+    packages:
+      - wxmac
+      - pyqt
+      - pyside
+
+install:
+  - PYTHON=python3
+  - if [ ${TRAVIS_OS_NAME} == "windows" ]; then PYTHON=python; fi
+  - if [ ${TRAVIS_OS_NAME} == "osx" ]; then PYTHON=/usr/local/opt/python/libexec/bin/python; fi
+  - $PYTHON -m pip install $PIPUSER --upgrade -r requirements-test.txt
+  - $PYTHON -m pip install $PIPUSER --upgrade . ${PIPINST}
+
+script:
+  - cd tests
+  - $PYTHON -m psidialogs.check.versions
+  - $PYTHON -m pytest -v .

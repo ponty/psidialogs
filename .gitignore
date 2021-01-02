@@ -15,18 +15,16 @@ pip-log.txt
 
 *.bak
 */build/*
-*/_build/*
-*/_build/latex/*
 
 *.class
 .version
-nosetests.xml
 
 .*
 !.gitignore
+!.travis.yml
+
 /distribute_setup.py
 
 
-sloccount.sc
 *.prefs
 *.log
