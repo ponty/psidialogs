@@ -91,7 +91,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y zenity
   sudo apt-get install -y gxmessage
   
-  sudo apt-get install -y python-gi
+  # sudo apt-get install -y python-gi
   sudo apt-get install -y python3-gi
   sudo apt-get install -y gir1.2-gtk-3.0
     
@@ -105,7 +105,7 @@ Vagrant.configure(2) do |config|
   sudo pip3 install -U easygui
 
   # no python3-pyside2 before disco (19.04)
-  sudo apt-get install -y python3-pyside2 
+  sudo apt-get install -y python3-pyside2.qtwidgets 
   #sudo pip3 install pyside2 --no-cache-dir
 
 # test dependencies
