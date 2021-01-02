@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 def main(backend):
     """Print psidialogs back-end version.
 
-    :param backend: back-end (example:scrot, wx,..)
+    :param backend: back-end (example:pyqt5, tkinter,..)
     """
     backend = backend if backend else None
 

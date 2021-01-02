@@ -21,12 +21,6 @@ back-ends:
  - [PythonDialog](https://pypi.org/project/pythondialog/)
  - console
 
-similar projects:
-* [easygui](http://easygui.sourceforge.net/): tk back-end
-* [PyZenity](http://pypi.python.org/pypi/PyZenity): Zenity back-end
-* [vsgui](http://pypi.python.org/pypi/vsgui): Zenity back-end
-* [dlg](http://pypi.python.org/pypi/dlg): dialog/Xdialog/gdialog  back-end
-
 Usage:
 ```pycon
 >>> from psidialogs import message
@@ -71,7 +65,7 @@ The demo can be started with one backend and one function:
 $ python3 -m psidialogs.examples.demo --backend zenity --function message
 ```
 
-<!-- embedme doc/gen/python3_-m_psidialogs.cli.demo_--help.txt -->
+<!-- embedme doc/gen/python3_-m_psidialogs.examples.demo_--help.txt -->
 Demo full help:
 
 ```console
@@ -88,7 +82,7 @@ optional arguments:
 
 # Screenshots
 
-Screenshots are created on Ubuntu 18.04 server with Xvfb.
+Screenshots are created on Ubuntu 20.04 server with Xvfb.
 
  ## message(), warning(), error() 
 

@@ -205,7 +205,7 @@ def backends():
 def backend_version(backend):
     """Back-end version.
 
-    :param backend: back-end (examples:scrot, wx,..)
+    :param backend: back-end (examples:pyqt5, tkinter,..)
     :return: version as string
     """
     return childprocess_backend_version(backend)

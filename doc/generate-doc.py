@@ -100,13 +100,21 @@ def main():
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
                     # with EasyProcess(cmd):
-                    logging.info("======== cmd: %s", cmd)
-                    t = Thread(target=lambda: psidialogs.dialog(func, backend=b))
+                    logging.info("======== func: %s backend: %s", func, b)
+                    t = Thread(
+                        target=lambda: psidialogs.dialog(
+                            func,
+                            backend=b,
+                            message="This is the message.",
+                            title="title \u20ac",
+                            choices=["one", "two", "three"],
+                        )
+                    )
                     t.start()
 
                     png = b + "_" + func + ".png"
                     png = os.path.join(gendir, png)
-                    sleep(0.1)
+                    # sleep(0.1)  # TODO: remove
                     disp.waitgrab(timeout=9)
                     img = grab_no_blink()
                     logging.info("saving %s", png)
