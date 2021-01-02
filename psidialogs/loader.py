@@ -18,13 +18,13 @@ log = logging.getLogger(__name__)
 
 backend_dict = {
     # TODO: ConsoleWrapper.name: ConsoleWrapper,
-    EasyguiWrapper.name: EasyguiWrapper,
-    GmessageWrapper.name: GmessageWrapper,
-    PyQt5Wrapper.name: PyQt5Wrapper,
+    # TODO: EasyguiWrapper.name: EasyguiWrapper,
+    # TODO: GmessageWrapper.name: GmessageWrapper,
+    # TODO: PyQt5Wrapper.name: PyQt5Wrapper,
     PySide2Wrapper.name: PySide2Wrapper,
     # TODO: PythonDialogWrapper.name: PythonDialogWrapper,
     TkinterWrapper.name: TkinterWrapper,
-    WxPythonWrapper.name: WxPythonWrapper,
+    # TODO: WxPythonWrapper.name: WxPythonWrapper,
     ZenityWrapper.name: ZenityWrapper,
 }
 
