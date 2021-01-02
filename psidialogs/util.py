@@ -47,7 +47,9 @@ def check_import(module):
 
 def prog_check(cmd):
     try:
-        if EasyProcess(cmd).call().return_code == 0:
+        p = EasyProcess(cmd).call()
+        if p.return_code == 0:
             return True
+        return not p.oserror
     except Exception:
         return False

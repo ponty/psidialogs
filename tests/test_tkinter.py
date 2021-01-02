@@ -3,7 +3,10 @@ import pytest
 import psidialogs
 from test_dialogs import check
 
+backend = "tkinter"
+if backend in psidialogs.backends():
+    if psidialogs.util.check_import(backend):
 
-@pytest.mark.parametrize("func", psidialogs.FUNCTION_NAMES)
-def test_tkinter(func):
-    check("tkinter", func)
+        @pytest.mark.parametrize("func", psidialogs.FUNCTION_NAMES)
+        def test_tkinter(func):
+            check(backend, func)

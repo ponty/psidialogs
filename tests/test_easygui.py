@@ -1,11 +1,12 @@
 import pytest
 
 import psidialogs
-from psidialogs.util import check_import
 from test_dialogs import check
 
-if check_import("easygui"):
+backend = "easygui"
+if backend in psidialogs.backends():
+    if psidialogs.util.check_import(backend):
 
-    @pytest.mark.parametrize("func", psidialogs.FUNCTION_NAMES)
-    def test_easygui(func):
-        check("easygui", func)
+        @pytest.mark.parametrize("func", psidialogs.FUNCTION_NAMES)
+        def test_easygui(func):
+            check(backend, func)
