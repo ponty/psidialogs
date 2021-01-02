@@ -39,5 +39,8 @@ def childprocess_dialog(funcname, backend, argdict):
     if p.return_code != 0:
         # log.debug(p)
         raise FailedBackendError(p)
-
+    if funcname in ["message", "warning", "error"]:
+        return None
+    if funcname in ["ask_ok_cancel", "ask_yes_no"]:
+        return p.stdout == "True"
     return p.stdout

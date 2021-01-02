@@ -1,5 +1,4 @@
 import logging
-import sys
 from threading import Thread
 
 from discogui.buttons import discover_buttons
@@ -14,70 +13,46 @@ VISIBLE = 0
 TIMEOUT = 10
 
 
-def check_buttons(cmd, expect):
+def check_buttons(backend, func, expect):
     expect = list(expect)
     with SmartDisplay(visible=VISIBLE) as disp:
-        with EasyProcess(cmd) as proc:
-            # def imgcheck(im):
-            #     log.info(im)
-            #     im = disp.autocrop(im)
-            #     log.info(im)
-            #     if not proc.is_alive():
-            #         raise ValueError('Process crashed.')
-            #     if im:
-            #         return True
+        t = Thread(target=lambda: psidialogs.dialog(func, backend=backend))
+        t.start()
 
-            # wait for displaying the window
+        # wait for displaying the window
+        disp.waitgrab(timeout=TIMEOUT)
+
+        buttons = discover_buttons()
+
+        assert len(buttons) == len(expect)
+    t.join()
+
+    with SmartDisplay(visible=VISIBLE) as disp:
+        mouse = PyMouse()
+        print("buttons: %s" % buttons)
+        for v, b in zip(expect, buttons):
+            ls = [None]
+
+            def fdlg(ls):
+                ls[0] = psidialogs.dialog(func, backend=backend)
+
+            t = Thread(target=fdlg, args=(ls,))
+            t.start()
             disp.waitgrab(timeout=TIMEOUT)
-            # disp.waitgrab(timeout=TIMEOUT, autocrop=False,cb_imgcheck=imgcheck)
-
-            buttons = discover_buttons()
-
-            assert len(buttons) == len(expect)
-            # msg="dialog does not have expected buttons %s!=%s" % (buttons, expect),
-
-            mouse = PyMouse()
-            print("buttons: %s" % buttons)
-            for v, b in zip(expect, buttons):
-                # process = EasyProcess(cmd).start().sleep(1)
-                with EasyProcess(cmd) as process:
-                    process.sleep(1)
-                    mouse.click(*b.center)
-                    process.wait(timeout=10)
-                    assert not process.timeout_happened
-                    assert process.stdout == str(v)
-                    # dialog does not return expected value
+            mouse.click(*b.center)
+            t.join()
+            result = ls[0]
+            log.debug("result=%r", result)
+            assert result == v
 
 
 def check_open(backend, func):
-    # cmd = [
-    #     sys.executable,
-    #     "-m",
-    #     "psidialogs.examples.demo",
-    #     "-b",
-    #     backend,
-    #     "-f",
-    #     func,
-    #     "--debug",
-    # ]
-    # exception if nothing is displayed
     with SmartDisplay(visible=VISIBLE) as disp:
-        # with EasyProcess(cmd) as proc:
         t = Thread(
             target=lambda: psidialogs.dialog(func, backend=backend, choices=["a", "b"])
         )
         t.start()
 
-        # def imgcheck(im):
-        #     log.info(im)
-        #     im = disp.autocrop(im)
-        #     log.info(im)
-        #     if not proc.is_alive():
-        #         raise ValueError('Process crashed.')
-        #     if im:
-        #         return True
-        #     return False
-        # disp.waitgrab(timeout=TIMEOUT, autocrop=False,cb_imgcheck=imgcheck)
         disp.waitgrab(timeout=TIMEOUT)
     t.join()
 
@@ -85,9 +60,8 @@ def check_open(backend, func):
 def check(backend, func):
     log.info("========= check backend:%s func:%s =========", backend, func)
     check_open(backend, func)
-    return  # TODO
-
     reverse_order = False
+
     # if backend == "wxpython" and func != "message":  # wrong button taborder
     #     return
     if backend in ["zenity", "wxpython"]:
@@ -98,27 +72,14 @@ def check(backend, func):
     # if backend == "gmessage":  # active editbox
     #     return
 
-    cmd = [
-        sys.executable,
-        "-m",
-        "psidialogs.cli.dialog",
-        func,
-        "-message",
-        "hi",
-        "--backend",
-        backend,
-    ]
     if func in ["message", "warning", "error"]:
         expect = [None]
-        check_buttons(cmd, expect)
+        check_buttons(backend, func, expect)
     if func in ["ask_yes_no", "ask_ok_cancel"]:
         expect = [True, False]
         if reverse_order:
             expect = reversed(expect)
-        check_buttons(cmd, expect)
-    # if func == "ask_ok_cancel":
-    #     expect = [True, False]
-    #     check_buttons(cmd, expect)
+        check_buttons(backend, func, expect)
 
 
 def check_backend(backend):

@@ -36,8 +36,8 @@ def dialog(backend, func, title="", **kwargs):
     result = None
 
     result = psidialogs.dialog(func, backend=backend, **args)
-    if result is not None:
-        psidialogs.message("Return value=%s (%r)" % (result, result))
+    # if result is not None:
+    psidialogs.message("Return value=%r" % (result))
 
 
 def selectfunc(backend, title="", function=None, **kwargs):
