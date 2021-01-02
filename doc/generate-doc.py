@@ -83,7 +83,7 @@ def main():
                     logging.info("saving %s", png)
                     img.save(png)
 
-        for b in sorted(psidialogs.backends()):
+        for backend in sorted(psidialogs.backends()):
             for func in psidialogs.FUNCTION_NAMES:
                 # cmd = [
                 #     "python3",
@@ -100,27 +100,26 @@ def main():
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
                     # with EasyProcess(cmd):
-                    logging.info("======== func: %s backend: %s", func, b)
+                    logging.info("======== func: %s backend: %s", func, backend)
                     t = Thread(
                         target=lambda: psidialogs.dialog(
                             func,
-                            backend=b,
-                            message="This is the message.",
-                            title="title \u20ac",
+                            backend=backend,
+                            message=u"This is the message. (%s,%s) \u20ac"
+                            % (backend, func),
                             choices=["one", "two", "three"],
                         )
                     )
                     t.start()
 
-                    png = b + "_" + func + ".png"
+                    png = backend + "_" + func + ".png"
                     png = os.path.join(gendir, png)
-                    # sleep(0.1)  # TODO: remove
                     disp.waitgrab(timeout=9)
                     img = grab_no_blink()
                     logging.info("saving %s", png)
-                    if b == "console":
+                    if backend == "console":
                         img = autocrop(img, (255, 255, 255))
-                    if b == "pythondialog":
+                    if backend == "pythondialog":
                         img = autocrop(img, (255, 255, 255))
                         img = autocrop(img, (0, 0, 238))
                     img.save(png)
