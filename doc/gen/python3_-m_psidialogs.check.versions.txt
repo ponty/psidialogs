@@ -1,0 +1,6 @@
+$ python3 -m psidialogs.check.versions
+python               3.8.5
+psidialogs           0.2.0
+pyside2              5.14.0
+tkinter              8.6
+zenity               3.32.0

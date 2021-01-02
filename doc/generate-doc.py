@@ -16,6 +16,7 @@ import psidialogs
 # (cmd,grab,background)
 commands = [
     ("python3 -m psidialogs.examples.demo --help", False, False),
+    ("python3 -m psidialogs.check.versions", False, False),
 ]
 
 

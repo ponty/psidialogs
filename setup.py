@@ -21,6 +21,7 @@ PACKAGES = [
     "psidialogs.plugins",
     "psidialogs.api",
     "psidialogs.cli",
+    "psidialogs.check",
     "psidialogs.examples",
 ]
 

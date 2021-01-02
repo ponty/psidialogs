@@ -1,14 +1,15 @@
 from easyprocess import EasyProcess
 
 from psidialogs.iplugin import IPlugin
+from psidialogs.util import extract_version
 
 
 class ZenityWrapper(IPlugin):
     name = "zenity"
     is_subprocess = True
 
-    def __init__(self):
-        assert EasyProcess(["zenity", "--version"]).call().return_code == 0
+    def backend_version(self):
+        return extract_version(EasyProcess(["zenity", "--version"]).call().stdout)
 
     def _call(self, args, options, useReturnCode=False, extraargs=[]):
         if args["title"]:

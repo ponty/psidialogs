@@ -2,17 +2,15 @@ from easyprocess import EasyProcess
 
 from psidialogs import mixins
 from psidialogs.iplugin import IPlugin
+from psidialogs.util import extract_version
 
 
 class GmessageWrapper(IPlugin):
     name = "gmessage"
     is_subprocess = True
 
-    def __init__(self):
-        assert EasyProcess(["gmessage", "--version"]).call().return_code == 0
-
-    def activate(self):
-        pass
+    def backend_version(self):
+        return extract_version(EasyProcess(["gmessage", "--version"]).call().stdout)
 
     def _call(self, args, options, useReturnCode=0):
         if args["title"]:

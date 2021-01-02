@@ -84,6 +84,18 @@ optional arguments:
 
 Screenshots are created on Ubuntu 20.04 server with Xvfb.
 
+Versions:
+<!-- embedme doc/gen/python3_-m_psidialogs.check.versions.txt -->
+
+```console
+$ python3 -m psidialogs.check.versions
+python               3.8.5
+psidialogs           0.2.0
+pyside2              5.14.0
+tkinter              8.6
+zenity               3.32.0
+```
+
  ## message(), warning(), error() 
 
 |      backend | message                               | warning                               | error                               |
