@@ -8,7 +8,7 @@ log = logging.getLogger(__name__)
 log.debug("version=%s", __version__)
 
 
-def message(message, title="", backend=None):
+def message(message, title=None, backend=None):
     """
     Display a message
 
@@ -21,7 +21,7 @@ def message(message, title="", backend=None):
     return dialog("message", message=message, title=title, backend=backend)
 
 
-def error(message="Error!", title="", backend=None):
+def error(message, title=None, backend=None):
     """
     Display an error message
 
@@ -34,7 +34,7 @@ def error(message="Error!", title="", backend=None):
     return dialog("error", message=message, title=title, backend=backend)
 
 
-def warning(message="Warning!", title="", backend=None):
+def warning(message, title=None, backend=None):
     """
     Display a warning message
 
@@ -47,7 +47,7 @@ def warning(message="Warning!", title="", backend=None):
     return dialog("warning", message=message, title=title, backend=backend)
 
 
-# def text(text, message="", title=""):
+# def text(text, message="", title=None):
 #     """
 #     This function is suitable for displaying general text, which can be longer
 #     than in :func:`message`
@@ -62,7 +62,7 @@ def warning(message="Warning!", title="", backend=None):
 #     return opendialog("text", dict(text=text, message=message, title=title))
 
 
-def ask_string(message="Enter something.", title="", backend=None):
+def ask_string(message="Enter something.", title=None, backend=None):
     """
     Show a box in which a user can enter some text.
 
@@ -77,7 +77,7 @@ def ask_string(message="Enter something.", title="", backend=None):
     return dialog("ask_string", message=message, title=title, backend=backend)
 
 
-def ask_file(message="Select file for open.", title="", backend=None):
+def ask_file(message="Select file for open.", title=None, backend=None):
     """
     A dialog to get a file name.
 
@@ -90,7 +90,7 @@ def ask_file(message="Select file for open.", title="", backend=None):
     return dialog("ask_file", message=message, title=title, backend=backend,)
 
 
-def ask_folder(message="Select folder.", title="", backend=None):
+def ask_folder(message="Select folder.", title=None, backend=None):
     """
     A dialog to get a directory name.
     Returns the name of a directory, or None if user chose to cancel.
@@ -102,7 +102,7 @@ def ask_folder(message="Select folder.", title="", backend=None):
     return dialog("ask_folder", message=message, title=title, backend=backend)
 
 
-def choice(choices=[], message="Pick something.", title="", backend=None):
+def choice(choices=[], message="Pick something.", title=None, backend=None):
     """
     Present the user with a list of choices.
     return the choice that he selects.
@@ -121,7 +121,7 @@ def choice(choices=[], message="Pick something.", title="", backend=None):
 
 
 # def multi_choice(
-#     choices=[], message="Pick as many items as you like.", title="", backend=None,
+#     choices=[], message="Pick as many items as you like.", title=None, backend=None,
 # ):
 #     """
 #     Present the user with a list of choices.
@@ -144,7 +144,7 @@ def choice(choices=[], message="Pick something.", title="", backend=None):
 #     )
 
 
-def ask_ok_cancel(message="", title="", backend=None):
+def ask_ok_cancel(message="", title=None, backend=None):
     """
     Display a message with choices of OK and Cancel.
 
@@ -161,7 +161,7 @@ def ask_ok_cancel(message="", title="", backend=None):
     return dialog("ask_ok_cancel", message=message, title=title, backend=backend)
 
 
-def ask_yes_no(message="", title="", backend=None):
+def ask_yes_no(message="", title=None, backend=None):
     """
     Display a message with choices of Yes and No.
 
@@ -219,7 +219,7 @@ def backend_version(backend):
     return childprocess_backend_version(backend)
 
 
-def dialog(dialogtype, choices=[], message="", title="", backend=None, childprocess=True):
+def dialog(dialogtype, choices=[], message="", title=None, backend=None, childprocess=True):
     if dialogtype == "choice":
         if len(choices) == 0:
             log.warning("choices=[] returning None")
