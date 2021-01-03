@@ -36,4 +36,5 @@ def dialog_cli(func, title="", message="", choices="", backend="", childprocess=
         childprocess=childprocess,
     )
     log.debug("result:%s", result)
-    print(result)
+    if result:
+        print(result)

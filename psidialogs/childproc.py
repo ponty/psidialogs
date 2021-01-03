@@ -43,4 +43,6 @@ def childprocess_dialog(funcname, backend, argdict):
         return None
     if funcname in ["ask_ok_cancel", "ask_yes_no"]:
         return p.stdout == "True"
+    if p.stdout == "":
+        return None
     return p.stdout
