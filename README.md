@@ -49,21 +49,29 @@ $ sudo apt-get install gxmessage
 
 # Demo
 
+<!-- embedme doc/gen/python3_-m_psidialogs.examples.demo.txt -->
 All backends and all functions can be tested with the demo:
-
 ```console
 $ python3 -m psidialogs.examples.demo
-```
 
+```
+![](doc/gen/python3_-m_psidialogs.examples.demo.png)  
+
+<!-- embedme doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity.txt -->
 The demo can be started with one backend:
 ```console
 $ python3 -m psidialogs.examples.demo --backend zenity
-```
 
+```
+![](doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity.png)  
+
+<!-- embedme doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity_--function_message.txt -->
 The demo can be started with one backend and one function:
 ```console
 $ python3 -m psidialogs.examples.demo --backend zenity --function message
+
 ```
+![](doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity_--function_message.png)  
 
 <!-- embedme doc/gen/python3_-m_psidialogs.examples.demo_--help.txt -->
 Demo full help:

@@ -17,6 +17,9 @@ import psidialogs
 commands = [
     ("python3 -m psidialogs.examples.demo --help", False, False),
     ("python3 -m psidialogs.check.versions", False, False),
+    ('python3 -m psidialogs.examples.demo',True,True),
+    ('python3 -m psidialogs.examples.demo --backend zenity',True,True),
+    ('python3 -m psidialogs.examples.demo --backend zenity --function message',True,True),
 ]
 
 
