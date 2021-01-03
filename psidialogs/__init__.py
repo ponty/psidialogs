@@ -178,7 +178,7 @@ def ask_yes_no(message="", title="", backend=None):
     return dialog("ask_yes_no", message=message, title=title, backend=backend)
 
 
-FUNCTIONS = [
+_DIALOG_FUNCTIONS = [
     message,
     warning,
     error,
@@ -191,7 +191,15 @@ FUNCTIONS = [
     # multi_choice,
 ]
 
-FUNCTION_NAMES = list(map(lambda x: x.__name__, FUNCTIONS))
+_DIALOG_TYPES = list(map(lambda x: x.__name__, _DIALOG_FUNCTIONS))
+
+
+def dialog_functions():
+    return _DIALOG_FUNCTIONS
+
+
+def dialog_types():
+    return _DIALOG_TYPES
 
 
 def backends():

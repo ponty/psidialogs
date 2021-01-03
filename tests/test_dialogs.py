@@ -84,5 +84,5 @@ def check(backend, func):
 
 def check_backend(backend):
     # TODO:if not BackendLoader().is_console(backend):
-    for func in psidialogs.FUNCTION_NAMES:
+    for func in psidialogs.dialog_types():
         check(backend, func)

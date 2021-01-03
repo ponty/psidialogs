@@ -20,7 +20,7 @@ commands = [
     ("python3 -m psidialogs.examples.demo", True, True),
     ("python3 -m psidialogs.examples.demo --backend zenity", True, True),
     (
-        "python3 -m psidialogs.examples.demo --backend zenity --function message",
+        "python3 -m psidialogs.examples.demo --backend zenity --dialogtype message",
         True,
         True,
     ),
@@ -85,7 +85,7 @@ def main():
                     p.stop()
 
         for backend in sorted(psidialogs.backends()):
-            for func in psidialogs.FUNCTION_NAMES:
+            for func in psidialogs.dialog_types():
                 # if BackendLoader().is_console(b):
                 #     # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
                 #     cmd = ["xterm", "-e", " ".join(cmd)]

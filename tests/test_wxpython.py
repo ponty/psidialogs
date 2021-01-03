@@ -8,6 +8,6 @@ if backend in psidialogs.backends():
 
     if psidialogs.util.check_import("wx"):
 
-        @pytest.mark.parametrize("func", psidialogs.FUNCTION_NAMES)
+        @pytest.mark.parametrize("func", psidialogs.dialog_types())
         def test_wxpython(func):
             check(backend, func)

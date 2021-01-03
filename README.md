@@ -50,7 +50,7 @@ $ sudo apt-get install gxmessage
 # Demo
 
 <!-- embedme doc/gen/python3_-m_psidialogs.examples.demo.txt -->
-All backends and all functions can be tested with the demo:
+All backends and all dialog types can be tested with the demo:
 ```console
 $ python3 -m psidialogs.examples.demo
 ```
@@ -63,24 +63,24 @@ $ python3 -m psidialogs.examples.demo --backend zenity
 ```
 ![](doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity.png)  
 
-<!-- embedme doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity_--function_message.txt -->
-The demo can be started with one backend and one function:
+<!-- embedme doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity_--dialogtype_message.txt -->
+The demo can be started with one backend and one dialog type:
 ```console
-$ python3 -m psidialogs.examples.demo --backend zenity --function message
+$ python3 -m psidialogs.examples.demo --backend zenity --dialogtype message
 ```
-![](doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity_--function_message.png)  
+![](doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity_--dialogtype_message.png)  
 
 <!-- embedme doc/gen/python3_-m_psidialogs.examples.demo_--help.txt -->
 Demo full help:
 
 ```console
 $ python3 -m psidialogs.examples.demo --help
-usage: demo.py [-h] [-b BACKEND] [-f FUNCTION] [-t TITLE] [--debug]
+usage: demo.py [-h] [-b BACKEND] [-d DIALOGTYPE] [-t TITLE] [--debug]
 
 optional arguments:
   -h, --help            show this help message and exit
   -b BACKEND, --backend BACKEND
-  -f FUNCTION, --function FUNCTION
+  -d DIALOGTYPE, --dialogtype DIALOGTYPE
   -t TITLE, --title TITLE
   --debug               set logging level to DEBUG
 ```
