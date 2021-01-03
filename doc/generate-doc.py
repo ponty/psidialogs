@@ -27,6 +27,21 @@ commands = [
 ]
 
 
+# from discogui import imgutil
+# def grab_no_blink(blink_time=1.2, crop=True):
+#     # find at least one frame with caret on and one with caret off
+
+#     # randomly fails without sleep: 20/100
+#     #    python3 -m pytest -v tests/test_blink.py::test_blink -n 10 --count 100
+#     sleep(1)
+
+#     lsim = [imgutil._grab_and_sleep(blink_time) for _ in range(4 * 3)]
+#     im = imgutil.img_list_min(lsim)
+#     if crop:
+#         im = imgutil.autocrop(im)
+#     return im
+
+
 def autocrop(im, bgcolor):
     if im.mode != "RGB":
         im = im.convert("RGB")
@@ -78,7 +93,8 @@ def main():
                         png = gendir / png
                         png = str(png)
                         sleep(1)
-                        img = disp.waitgrab(timeout=9)
+                        disp.waitgrab(timeout=9)
+                        img = grab_no_blink()
                         logging.info("saving %s", png)
                         img.save(png)
                 finally:

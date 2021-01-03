@@ -2,6 +2,5 @@ pytest
 pyvirtualdisplay
 discogui
 easyprocess
-pillow
-six
+pillow>=8.1.0
 #http://easygui.sourceforge.net/download/version_0.95/easygui_version_0.95.zip
