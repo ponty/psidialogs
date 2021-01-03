@@ -37,7 +37,10 @@ def button2(i):
         for backend in psidialogs.backends():
             bname = button_labels[dtype][i]
             ret = psidialogs.dialog(
-                dtype, title=TITLE, backend=backend, message=f"Press the {bname} button!"
+                dtype,
+                title=TITLE,
+                backend=backend,
+                message=f"Press the {bname} button!",
             )
             ok = ret == [False, True][i]
             print_result(ok, ret, dtype, backend)

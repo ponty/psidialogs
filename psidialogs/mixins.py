@@ -56,14 +56,14 @@ from itertools import count
 #         return self.ask_ok_cancel(args)
 
 
-def _choice(obj, args):
-    args = args.copy()
-    lines = ["[%s] %s" % x for x in zip(count(), args["choices"])]
-    args["message"] += "\n" + "\n".join(lines)
-    args["message"] += "\nSelect:"
+def _choice(obj, choices, message, title):
+    # args = args.copy()
+    lines = ["[%s] %s" % x for x in zip(count(), choices)]
+    message += "\n" + "\n".join(lines)
+    message += "\nSelect:"
     ##        self.text(args)
     # args["default"] = "%s" % args["default"]
-    i = obj.ask_string(args)
+    i = obj.ask_string(message, title)
     return i
 
 
@@ -77,12 +77,12 @@ def _choice(obj, args):
 #         pass
 
 
-def choice(obj, args):
-    i = _choice(obj, args)
+def choice(obj, choices, message, title):
+    i = _choice(obj, choices, message, title)
     if not i:
         return None
     i = int(i)
-    if i >= 0 and i < len(args["choices"]):
-        return args["choices"][i]
+    if i >= 0 and i < len(choices):
+        return choices[i]
     else:
         return None

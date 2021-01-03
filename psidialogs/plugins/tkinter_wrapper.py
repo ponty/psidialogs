@@ -55,52 +55,52 @@ class TkinterWrapper(IPlugin):
             self.root = self.Tk()
             self.root.withdraw()
 
-    def ask_string(self, args):
+    def ask_string(self, message, title):
         self.tk_init()
-        return self.simpledialog.askstring(prompt=args["message"], title=args["title"])
+        return self.simpledialog.askstring(prompt=message, title=title)
 
-    def message(self, args):
+    def message(self, message, title):
         self.tk_init()
-        self.messagebox.showinfo(message=args["message"], title=args["title"])
+        self.messagebox.showinfo(message=message, title=title)
 
-    def error(self, args):
+    def error(self, message, title):
         self.tk_init()
-        self.messagebox.showerror(message=args["message"], title=args["title"])
+        self.messagebox.showerror(message=message, title=title)
 
-    def warning(self, args):
+    def warning(self, message, title):
         self.tk_init()
-        self.messagebox.showwarning(message=args["message"], title=args["title"])
+        self.messagebox.showwarning(message=message, title=title)
 
-    def ask_ok_cancel(self, args):
+    def ask_ok_cancel(self, message, title):
         self.tk_init()
-        return self.messagebox.askokcancel(message=args["message"], title=args["title"])
+        return self.messagebox.askokcancel(message=message, title=title)
 
-    def ask_yes_no(self, args):
+    def ask_yes_no(self, message, title):
         self.tk_init()
-        return self.messagebox.askyesno(message=args["message"], title=args["title"])
+        return self.messagebox.askyesno(message=message, title=title)
 
-    def ask_file(self, args):
+    def ask_file(self, message, title):
         self.tk_init()
         # if args["save"]:
         #     x = self.tkFileDialog.asksaveasfilename()
         # else:
-        x = self.filedialog.askopenfilename(title=args["title"])
+        x = self.filedialog.askopenfilename(title=title)
         if not x:
             x = None
         return x
 
-    def ask_folder(self, args):
+    def ask_folder(self, message, title):
         self.tk_init()
-        x = self.filedialog.askdirectory(title=args["title"])
+        x = self.filedialog.askdirectory(title=title)
         if not x:
             x = None
         return x
 
-    def choice(self, args):
+    def choice(self, choices, message, title):
         gui = self.Tk()
         gui.resizable(False, False)
-        gui.title(args["title"])
-        app = Choices(self.tkinter, gui, args["choices"], args["message"])
+        gui.title(title)
+        app = Choices(self.tkinter, gui, choices, message)
         gui.mainloop()
         return app.choice
         # return mixins.choice(self, args)

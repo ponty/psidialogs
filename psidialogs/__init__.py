@@ -219,7 +219,9 @@ def backend_version(backend):
     return childprocess_backend_version(backend)
 
 
-def dialog(dialogtype, choices=[], message="", title=None, backend=None, childprocess=True):
+def dialog(
+    dialogtype, choices=[], message="", title=None, backend=None, childprocess=True
+):
     if dialogtype == "choice":
         if len(choices) == 0:
             log.warning("choices=[] returning None")

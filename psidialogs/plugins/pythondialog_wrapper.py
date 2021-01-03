@@ -20,59 +20,54 @@ class PythonDialogWrapper(IPlugin):
     def backend_version(self):
         return "not implemented"
 
-    def message(self, args):
-        self.dlg.msgbox(text=args["message"], title=args["title"])
+    def message(self, message, title):
+        self.dlg.msgbox(text=message, title=title)
 
-    def ask_string(self, args):
+    def ask_string(self, message, title):
         (i, s) = self.dlg.inputbox(
             # init=args["default"],
-            text=args["message"],
-            title=args["title"],
+            text=message,
+            title=title,
         )
         return s if i == "ok" else None
 
-    def ask_file(self, args):
+    def ask_file(self, message, title):
         (i, s) = self.dlg.fselect(
             # filepath=args["default"],
-            title=args["title"],
+            title=title,
             height=8,
             width=60,
         )
         return s if i == "ok" else None
 
-    def ask_folder(self, args):
-        return self.ask_file(args)
+    def ask_folder(self, message, title):
+        return self.ask_file(message, title)
 
-    def choice(self, args):
+    def choice(self, choices, message, title):
         # if not len(args.get("choices", [])):
         #     args["choices"] = [""]
-        choices = [(x, "") for x in args["choices"]]
-        (i, s) = self.dlg.menu(
-            text=args["message"], title=args["title"], choices=choices
-        )
+        choices = [(x, "") for x in choices]
+        (i, s) = self.dlg.menu(text=message, title=title, choices=choices)
         return s if i == "ok" else None
 
     # def multi_choice(self, args):
     #     choices = [(x, "", 0) for x in args["choices"]]
     #     (i, s) = self.dlg.checklist(
-    #         text=args["message"], title=args["title"], choices=choices
+    #         text=message, title=title, choices=choices
     #     )
     #     return s if i == "ok" else None
 
     # def text(self, args):
     #     # args['message'] = ''.join([x[:MAX_LINE_LENGTH] for x, _ in
     #     # zip(args['message'].splitlines(1) , range(MAX_LINES)) ])
-    #     self.dlg.scrollbox(text=args["text"], title=args["title"])
+    #     self.dlg.scrollbox(text=args["text"], title=title)
 
-    def ask_yes_no(self, args):
-        x = self.dlg.yesno(text=args["message"], title=args["title"],)
+    def ask_yes_no(self, message, title):
+        x = self.dlg.yesno(text=message, title=title,)
         return x == "ok"
 
-    def ask_ok_cancel(self, args):
+    def ask_ok_cancel(self, message, title):
         x = self.dlg.yesno(
-            text=args["message"],
-            title=args["title"],
-            yes_label="OK",
-            no_label="Cancel",
+            text=message, title=title, yes_label="OK", no_label="Cancel",
         )
         return x == "ok"

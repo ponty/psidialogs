@@ -57,24 +57,27 @@ def select_childprocess(childprocess, backend_class):
 
 
 def dlg_dispatch(obj, dialogtype, argdict):
+    message = argdict["message"]
+    title = argdict["title"]
     if dialogtype == "message":
-        return obj.message(argdict)
+        return obj.message(message, title)
     elif dialogtype == "warning":
-        return obj.warning(argdict)
+        return obj.warning(message, title)
     elif dialogtype == "error":
-        return obj.error(argdict)
+        return obj.error(message, title)
     elif dialogtype == "ask_ok_cancel":
-        return obj.ask_ok_cancel(argdict)
+        return obj.ask_ok_cancel(message, title)
     elif dialogtype == "ask_yes_no":
-        return obj.ask_yes_no(argdict)
+        return obj.ask_yes_no(message, title)
     elif dialogtype == "ask_string":
-        return obj.ask_string(argdict)
+        return obj.ask_string(message, title)
     elif dialogtype == "ask_file":
-        return obj.ask_file(argdict)
+        return obj.ask_file(message, title)
     elif dialogtype == "ask_folder":
-        return obj.ask_folder(argdict)
+        return obj.ask_folder(message, title)
     elif dialogtype == "choice":
-        return obj.choice(argdict)
+        choices = argdict["choices"]
+        return obj.choice(choices, message, title)
     # elif dialogtype == "multi_choice":
     #     return obj.multi_choice(argdict)
 

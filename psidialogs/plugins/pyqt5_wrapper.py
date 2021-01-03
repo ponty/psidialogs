@@ -21,67 +21,65 @@ class PyQt5Wrapper(IPlugin):
         if not _app:
             _app = self.QtWidgets.QApplication([])
 
-    def message(self, args):
+    def message(self, message, title):
         self.init_qt()
-        self.QtWidgets.QMessageBox.information(None, args["title"], args["message"])
+        self.QtWidgets.QMessageBox.information(None, title, message)
 
-    def warning(self, args):
+    def warning(self, message, title):
         self.init_qt()
-        self.QtWidgets.QMessageBox.warning(None, args["title"], args["message"])
+        self.QtWidgets.QMessageBox.warning(None, title, message)
 
-    def error(self, args):
+    def error(self, message, title):
         self.init_qt()
-        self.QtWidgets.QMessageBox.critical(None, args["title"], args["message"])
+        self.QtWidgets.QMessageBox.critical(None, title, message)
 
-    def ask_ok_cancel(self, args):
+    def ask_ok_cancel(self, message, title):
         self.init_qt()
         reply = self.QtWidgets.QMessageBox.question(
             None,
-            args["title"],
-            args["message"],
+            title,
+            message,
             self.QtWidgets.QMessageBox.Ok,
             self.QtWidgets.QMessageBox.Cancel,
         )
         return reply == self.QtWidgets.QMessageBox.Ok
 
-    def ask_yes_no(self, args):
+    def ask_yes_no(self, message, title):
         self.init_qt()
         reply = self.QtWidgets.QMessageBox.question(
             None,
-            args["title"],
-            args["message"],
+            title,
+            message,
             self.QtWidgets.QMessageBox.Yes,
             self.QtWidgets.QMessageBox.No,
         )
         return reply == self.QtWidgets.QMessageBox.Yes
 
-    def ask_folder(self, args):
+    def ask_folder(self, message, title):
         self.init_qt()
-        result = self.QtWidgets.QFileDialog.getExistingDirectory(None, args["title"],)
+        result = self.QtWidgets.QFileDialog.getExistingDirectory(None, title,)
         if result:
             return "%s" % result
 
-    def ask_file(self, args):
+    def ask_file(self, message, title):
         self.init_qt()
         # if args["save"]:
-        #     result = self.QtWidgets.QFileDialog.getSaveFileName(None, args["title"],)
+        #     result = self.QtWidgets.QFileDialog.getSaveFileName(None, title,)
         # else:
-        result = self.QtWidgets.QFileDialog.getOpenFileName(None, args["title"],)
+        result = self.QtWidgets.QFileDialog.getOpenFileName(None, title,)
         if result:
             return "%s" % result[0]
 
-    def ask_string(self, args):
+    def ask_string(self, message, title):
         self.init_qt()
-        (result, ok) = self.QtWidgets.QInputDialog.getText(
-            None, args["title"], args["message"],
-        )
+        (result, ok) = self.QtWidgets.QInputDialog.getText(None, title, message,)
         if ok:
             return "%s" % result
 
-    def choice(self, args):
+    def choice(self, choices, message, title):
         self.init_qt()
         (result, ok) = self.QtWidgets.QInputDialog.getItem(
-            None, args["title"], args["message"], args["choices"],
+            None, title, message, choices,
         )
         if ok:
             return "%s" % result

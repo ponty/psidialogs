@@ -33,7 +33,9 @@ def select_dialogtype(backend, title="", dialogtype=None, **kwargs):
     else:
         while 1:
             dialogtypes = psidialogs.dialog_types()
-            dialogtype = psidialogs.choice(dialogtypes, "Select dialog type!", title=title)
+            dialogtype = psidialogs.choice(
+                dialogtypes, "Select dialog type!", title=title
+            )
             if not dialogtype:
                 break
             dialog(backend, dialogtype, title, **kwargs)

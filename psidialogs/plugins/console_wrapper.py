@@ -5,16 +5,16 @@ class ConsoleWrapper(IPlugin):
     console = True
     name = "console"
 
-    def message(self, args):
-        msg = args["message"] + "[ENTER]"
+    def message(self, message, title):
+        msg = message + "[ENTER]"
         input(msg)
 
-    def ask_string(self, args):
-        answer = input(args["message"])
+    def ask_string(self, message, title):
+        answer = input(message)
         return answer
 
-    def ask_yes_no(self, args):
-        msg = args["message"]
+    def ask_yes_no(self, message, title):
+        msg = message
         msg += " [Yes/No] "
         answers_yes = "yes y".split()
         answers_no = "no n".split()
@@ -30,13 +30,13 @@ class ConsoleWrapper(IPlugin):
 
         return b
 
-    def ask_ok_cancel(self, args):
-        return self.ask_yes_no(args)
+    def ask_ok_cancel(self, message, title):
+        return self.ask_yes_no(message, title)
 
-    def warning(self, args):
-        args["message"] = "[WARNING] " + args["message"]
-        return self.message(args)
+    def warning(self, message, title):
+        message = "[WARNING] " + message
+        return self.message(message, title)
 
-    def error(self, args):
-        args["message"] = "[ERROR] " + args["message"]
-        return self.message(args)
+    def error(self, message, title):
+        message = "[ERROR] " + message
+        return self.message(message, title)

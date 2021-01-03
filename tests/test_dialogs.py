@@ -49,7 +49,9 @@ def check_buttons(backend, dialogtype, expect):
 def check_open(backend, dialogtype):
     with SmartDisplay(visible=VISIBLE) as disp:
         t = Thread(
-            target=lambda: psidialogs.dialog(dialogtype, backend=backend, choices=["a", "b"])
+            target=lambda: psidialogs.dialog(
+                dialogtype, backend=backend, choices=["a", "b"]
+            )
         )
         t.start()
 

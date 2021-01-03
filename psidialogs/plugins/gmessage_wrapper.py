@@ -12,9 +12,9 @@ class GmessageWrapper(IPlugin):
     def backend_version(self):
         return extract_version(EasyProcess(["gmessage", "--version"]).call().stdout)
 
-    def _call(self, args, options, useReturnCode=0):
-        if args["title"]:
-            options["-name"] = args["title"]
+    def _call(self, message, title, options, useReturnCode=0):
+        if title:
+            options["-name"] = title
         options["-center"] = None
 
         def dict2list(d):
@@ -26,7 +26,7 @@ class GmessageWrapper(IPlugin):
                     ls += [v]
             return ls
 
-        cmd = ["gmessage", args["message"]] + dict2list(options)
+        cmd = ["gmessage", message] + dict2list(options)
         p = EasyProcess(cmd).call()
         if useReturnCode:
             return p.return_code
@@ -35,36 +35,36 @@ class GmessageWrapper(IPlugin):
             result = None
         return result
 
-    def message(self, args):
+    def message(self, message, title):
         options = {}
         options["-buttons"] = "GTK_STOCK_OK:0"
         options["-default"] = "GTK_STOCK_OK"
-        return self._call(args, options)
+        return self._call(message, title, options)
 
-    def error(self, args):
-        self.message(args)
+    def error(self, message, title):
+        self.message(message, title)
 
-    def warning(self, args):
-        self.message(args)
+    def warning(self, message, title):
+        self.message(message, title)
 
-    def _question(self, buttons, args):
+    def _question(self, buttons, message, title):
         options = {}
         options["-buttons"] = buttons
         # options["-default"] = buttons.split(",")[not bool(args["default"])]
-        return self._call(args, options, useReturnCode=1)
+        return self._call(message, title, options, useReturnCode=1)
 
-    def ask_ok_cancel(self, args):
-        return bool(self._question("GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0", args))
+    def ask_ok_cancel(self, message, title):
+        return bool(self._question("GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0", message, title))
 
-    def ask_yes_no(self, args):
-        return bool(self._question("GTK_STOCK_YES:1,GTK_STOCK_NO:0", args))
+    def ask_yes_no(self, message, title):
+        return bool(self._question("GTK_STOCK_YES:1,GTK_STOCK_NO:0", message, title))
 
     #    def button_choice(self, args):
     #        buttons = ','.join([ '_%s:%d' % (x, i) for x, i in zip(args['choices'], count()) ])
     #        result = self._question(buttons, args)
     #        return args['choices'][result]
 
-    def ask_string(self, args):
+    def ask_string(self, message, title):
         options = {}
         # #        options['-buttons'] = 'GTK_STOCK_OK:1,GTK_STOCK_CANCEL:0'
         # #        options['-default'] = 'GTK_STOCK_OK'
@@ -72,16 +72,16 @@ class GmessageWrapper(IPlugin):
         #     options["-entrytext"] = args["default"]
         # else:
         options["-entry"] = None
-        return self._call(args, options)
+        return self._call(message, title, options)
 
-    def ask_file(self, args):
-        return self.ask_string(args)
+    def ask_file(self, message, title):
+        return self.ask_string(message, title)
 
-    def ask_folder(self, args):
-        return self.ask_string(args)
+    def ask_folder(self, message, title):
+        return self.ask_string(message, title)
 
-    def choice(self, args):
-        return mixins.choice(self, args)
+    def choice(self, choices, message, title):
+        return mixins.choice(self, choices, message, title)
 
-    # def multi_choice(self, args):
-    #     return mixins.multi_choice(self, args)
+    # def multi_choice(self, message, title):
+    #     return mixins.multi_choice(self, message, title)

@@ -8,7 +8,9 @@ log = logging.getLogger(__name__)
 
 
 @entrypoint
-def dialog_cli(dialogtype, title="", message="", choices="", backend="", childprocess=False):
+def dialog_cli(
+    dialogtype, title="", message="", choices="", backend="", childprocess=False
+):
     if not backend:
         backend = None
     choices = choices.split(",")

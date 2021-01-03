@@ -11,9 +11,9 @@ class ZenityWrapper(IPlugin):
     def backend_version(self):
         return extract_version(EasyProcess(["zenity", "--version"]).call().stdout)
 
-    def _call(self, args, options, useReturnCode=False, extraargs=[]):
-        if args["title"]:
-            options["--title"] = args["title"]
+    def _call(self, title, options, useReturnCode=False, extraargs=[]):
+        if title:
+            options["--title"] = title
 
         def dict2list(d):
             ls = []
@@ -34,11 +34,11 @@ class ZenityWrapper(IPlugin):
             result = None
         return result
 
-    def _message(self, args, kw):
+    def _message(self, message, title, kw):
         options = {}
         options["--%s" % kw] = None
-        options["--text"] = args["message"]
-        return self._call(args, options)
+        options["--text"] = message
+        return self._call(title, options)
 
     # def text(self, args):
     #     options = {}
@@ -51,33 +51,33 @@ class ZenityWrapper(IPlugin):
     #     f.close()
     #     return result
 
-    def message(self, args):
-        return self._message(args, "info")
+    def message(self, message, title):
+        return self._message(message, title, "info")
 
-    def warning(self, args):
-        return self._message(args, "warning")
+    def warning(self, message, title):
+        return self._message(message, title, "warning")
 
-    def error(self, args):
-        return self._message(args, "error")
+    def error(self, message, title):
+        return self._message(message, title, "error")
 
-    def _entry(self, args, pw):
+    def _entry(self, message, title, pw):
         options = {}
         options["--entry"] = None
-        options["--text"] = args["message"]
+        options["--text"] = message
         if pw:
             options["--hide-text"] = None
         # if args["default"]:
         #     options["--entry-text"] = args["default"]
-        return self._call(args, options)
+        return self._call(title, options)
 
-    def ask_string(self, args):
-        return self._entry(args, pw=0)
+    def ask_string(self, message, title):
+        return self._entry(message, title, pw=0)
 
-    def _file(self, args, multi, folder):
+    def _file(self, message, title, multi, folder):
         options = {}
         separator = "|"
         options["--file-selection"] = None
-        options["--text"] = args["message"]
+        options["--text"] = message
         if multi:
             options["--multiple"] = None
             options["--separator"] = separator
@@ -85,55 +85,55 @@ class ZenityWrapper(IPlugin):
             options["--directory"] = None
         # if args["default"]:
         #     options["--filename"] = args["default"]
-        result = self._call(args, options)
+        result = self._call(title, options)
         if result and multi:
             result = result.split(separator)
         return result
 
-    def _choice(self, args, multi):
+    def _choice(self, choices, message, title, multi):
         options = {}
         separator = "|"
         options["--list"] = None
-        options["--text"] = args["message"]
+        options["--text"] = message
         if multi:
             options["--multiple"] = None
             options["--checklist"] = None
             options["--separator"] = separator
 
             extraargs = ["--column", "Select", "--column", "Item"]
-            for x in args["choices"]:
+            for x in choices:
                 extraargs += ["FALSE", x]
         else:
-            extraargs = ["--column", "Item"] + args["choices"]
-        result = self._call(args, options, extraargs=extraargs)
+            extraargs = ["--column", "Item"] + choices
+        result = self._call(title, options, extraargs=extraargs)
         if result and multi:
             result = result.split(separator)
         return result
 
-    def ask_file(self, args):
-        return self._file(args, multi=0, folder=0)
+    def ask_file(self, message, title):
+        return self._file(message, title, multi=0, folder=0)
 
-    def ask_folder(self, args):
-        return self._file(args, multi=0, folder=1)
+    def ask_folder(self, message, title):
+        return self._file(message, title, multi=0, folder=1)
 
-    def _ask_question(self, args, ok, cancel):
+    def _ask_question(self, message, title, ok, cancel):
         options = {}
         options["--question"] = None
-        options["--text"] = args["message"]
+        options["--text"] = message
         options["--ok-label"] = ok
         options["--cancel-label"] = cancel
-        result = self._call(args, options, useReturnCode=1)
+        result = self._call(title, options, useReturnCode=1)
         result = not result
         return result
 
-    def ask_ok_cancel(self, args):
-        return self._ask_question(args, ok="OK", cancel="Cancel")
+    def ask_ok_cancel(self, message, title):
+        return self._ask_question(message, title, ok="OK", cancel="Cancel")
 
-    def ask_yes_no(self, args):
-        return self._ask_question(args, ok="Yes", cancel="No")
+    def ask_yes_no(self, message, title):
+        return self._ask_question(message, title, ok="Yes", cancel="No")
 
-    def choice(self, args):
-        return self._choice(args, multi=0)
+    def choice(self, choices, message, title):
+        return self._choice(choices, message, title, multi=0)
 
     # def multi_choice(self, args):
     #     return self._choice(args, multi=1)
