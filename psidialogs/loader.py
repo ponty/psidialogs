@@ -83,30 +83,29 @@ def dlg_dispatch(obj, dialogtype, argdict):
 
 
 def auto(dialogtype, argdict, childprocess):
-    for backend_class in backends():
-        backend_name = backend_class.name
-        log.debug("next backend to try: %s", backend_name)
-        try:
-            if select_childprocess(childprocess, backend_class):
-                log.debug('running "%s" in child process', backend_name)
-                return childprocess_dialog(dialogtype, backend_name, argdict)
-            else:
+    if childprocess:
+        log.debug('running "auto" in child process')
+        return childprocess_dialog(dialogtype, argdict)
+    else:
+        for backend_class in backends():
+            backend = backend_class.name
+            log.debug("next backend to try: %s", backend)
+            try:
                 obj = backend_class()
                 return dlg_dispatch(obj, dialogtype, argdict)
-            break
-        except Exception:
-            msg = traceback.format_exc()
-            log.debug(msg)
+            except Exception:
+                msg = traceback.format_exc()
+                log.debug(msg)
 
-    msg = "All backends failed!"
-    raise FailedBackendError(msg)
+        msg = "All backends failed!"
+        raise FailedBackendError(msg)
 
 
-def force(backend_name, dialogtype, argdict, childprocess):
-    backend_class = backend_dict[backend_name]
+def force(backend, dialogtype, argdict, childprocess):
+    backend_class = backend_dict[backend]
     if select_childprocess(childprocess, backend_class):
-        log.debug('running "%s" in child process', backend_name)
-        return childprocess_dialog(dialogtype, backend_name, argdict)
+        log.debug('running "%s" in child process', backend)
+        return childprocess_dialog(dialogtype, argdict, backend)
     else:
         obj = backend_class()
         return dlg_dispatch(obj, dialogtype, argdict)

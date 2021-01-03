@@ -15,7 +15,7 @@ def childprocess_backend_version(backend):
     return p.stdout
 
 
-def childprocess_dialog(dialogtype, backend, argdict):
+def childprocess_dialog(dialogtype, argdict, backend=None):
     title = argdict["title"]
     message = argdict["message"]
     choices = argdict["choices"]
