@@ -84,14 +84,14 @@ class TkinterWrapper(IPlugin):
         # if args["save"]:
         #     x = self.tkFileDialog.asksaveasfilename()
         # else:
-        x = self.filedialog.askopenfilename()
+        x = self.filedialog.askopenfilename(title=args["title"])
         if not x:
             x = None
         return x
 
     def ask_folder(self, args):
         self.tk_init()
-        x = self.filedialog.askdirectory()
+        x = self.filedialog.askdirectory(title=args["title"])
         if not x:
             x = None
         return x
