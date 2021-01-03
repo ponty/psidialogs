@@ -44,7 +44,6 @@ wxpython_wrapper -> wxPython -> wxWidgets;
 wxWidgets -> "GTK+";
 wxWidgets -> MacOS;
 wxWidgets -> Windows;
-wxWidgets -> "Palm OS";
 wxWidgets -> X11;
 
 application -> psidialogs;

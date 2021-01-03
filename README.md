@@ -157,3 +157,7 @@ zenity               3.32.0
 | pythondialog | ![](doc/gen/pythondialog_choice.png) |
 |      console | ![](doc/gen/console_choice.png)      |
 
+Hierarchy
+=========
+
+![Alt text](https://g.gravizo.com/source/svg?https%3A%2F%2Fraw.githubusercontent.com/ponty/psidialogs/master/doc/hierarchy.dot)
