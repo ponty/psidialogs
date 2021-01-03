@@ -219,6 +219,8 @@ def dialog(funcname, choices=[], message="", title="", backend=None, childproces
         if len(choices) == 1:
             log.warning("choices has one element only")
             return choices[0]
+    if not title:
+        title = "psidialogs"
     return _opendialog(
         funcname,
         dict(choices=choices, message=message, title=title),
