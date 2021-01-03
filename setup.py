@@ -19,7 +19,6 @@ LONG_DESCRIPTION += VERSION
 PACKAGES = [
     "psidialogs",
     "psidialogs.plugins",
-    "psidialogs.api",
     "psidialogs.cli",
     "psidialogs.check",
     "psidialogs.examples",
