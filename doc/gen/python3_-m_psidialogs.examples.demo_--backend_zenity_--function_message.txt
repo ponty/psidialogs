@@ -1,0 +1,1 @@
+$ python3 -m psidialogs.examples.demo --backend zenity --function message

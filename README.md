@@ -53,7 +53,6 @@ $ sudo apt-get install gxmessage
 All backends and all functions can be tested with the demo:
 ```console
 $ python3 -m psidialogs.examples.demo
-
 ```
 ![](doc/gen/python3_-m_psidialogs.examples.demo.png)  
 
@@ -61,7 +60,6 @@ $ python3 -m psidialogs.examples.demo
 The demo can be started with one backend:
 ```console
 $ python3 -m psidialogs.examples.demo --backend zenity
-
 ```
 ![](doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity.png)  
 
@@ -69,7 +67,6 @@ $ python3 -m psidialogs.examples.demo --backend zenity
 The demo can be started with one backend and one function:
 ```console
 $ python3 -m psidialogs.examples.demo --backend zenity --function message
-
 ```
 ![](doc/gen/python3_-m_psidialogs.examples.demo_--backend_zenity_--function_message.png)  
 

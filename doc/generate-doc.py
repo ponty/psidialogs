@@ -17,21 +17,14 @@ import psidialogs
 commands = [
     ("python3 -m psidialogs.examples.demo --help", False, False),
     ("python3 -m psidialogs.check.versions", False, False),
-    ('python3 -m psidialogs.examples.demo',True,True),
-    ('python3 -m psidialogs.examples.demo --backend zenity',True,True),
-    ('python3 -m psidialogs.examples.demo --backend zenity --function message',True,True),
+    ("python3 -m psidialogs.examples.demo", True, True),
+    ("python3 -m psidialogs.examples.demo --backend zenity", True, True),
+    (
+        "python3 -m psidialogs.examples.demo --backend zenity --function message",
+        True,
+        True,
+    ),
 ]
-
-
-# def screenshot(cmd, fname):
-#     logging.info("%s %s", cmd, fname)
-#     # fpath = "docs/_img/%s" % fname
-#     # if os.path.exists(fpath):
-#     #     os.remove(fpath)
-#     with SmartDisplay() as disp:
-#         with EasyProcess(cmd):
-#             img = disp.waitgrab()
-#             img.save(fname)
 
 
 def autocrop(im, bgcolor):
@@ -58,7 +51,6 @@ def main():
     os.makedirs(gendir, exist_ok=True)
     empty_dir(gendir)
     logging.info("commands: %s", commands)
-    pls = []
     try:
         cwd = os.getcwd()
         os.chdir("/bin")
@@ -67,43 +59,37 @@ def main():
                 logging.info("======== cmd: %s", cmd)
                 fname_base = cmd.replace(" ", "_")
                 fname = fname_base + ".txt"
-                fname = os.path.join(gendir, fname)
+                fname = gendir / fname
                 # logging.info("cmd: %s", cmd)
                 print("file name: %s" % fname)
-                with open(fname, "w") as f:
-                    f.write("$ " + cmd + "\n")
+                cons = "$ " + cmd
+                try:
                     if bg:
                         p = EasyProcess(cmd).start()
                     else:
                         p = EasyProcess(cmd).call()
-                        f.write(p.stdout)
-                        f.write(p.stderr)
-                    pls += [p]
-                if grab:
-                    png = fname_base + ".png"
-                    png = os.path.join(gendir, png)
-                    sleep(1)
-                    img = disp.waitgrab(timeout=9)
-                    logging.info("saving %s", png)
-                    img.save(png)
+                        if p.stdout:
+                            cons += "\n" + p.stdout
+                        if p.stderr:
+                            cons += "\n" + p.stderr
+                    fname.write_text(cons)
+                    if grab:
+                        png = fname_base + ".png"
+                        png = gendir / png
+                        png = str(png)
+                        sleep(1)
+                        img = disp.waitgrab(timeout=9)
+                        logging.info("saving %s", png)
+                        img.save(png)
+                finally:
+                    p.stop()
 
         for backend in sorted(psidialogs.backends()):
             for func in psidialogs.FUNCTION_NAMES:
-                # cmd = [
-                #     "python3",
-                #     "-m",
-                #     "psidialogs.examples.demo",
-                #     "-b",
-                #     b,
-                #     "-f",
-                #     func,
-                #     # "--debug",
-                # ]
                 # if BackendLoader().is_console(b):
                 #     # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
-                    # with EasyProcess(cmd):
                     logging.info("======== func: %s backend: %s", func, backend)
                     t = Thread(
                         target=lambda: psidialogs.dialog(
@@ -130,8 +116,9 @@ def main():
                 t.join()
     finally:
         os.chdir(cwd)
-        for p in pls:
-            p.stop()
+        # for p in pls:
+        #     p.stop()
+
     embedme = EasyProcess(["npx", "embedme", "../README.md"])
     embedme.call()
     print(embedme.stdout)
