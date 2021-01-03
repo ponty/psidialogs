@@ -12,74 +12,74 @@ log = logging.getLogger(__name__)
 TITLE = "manual test"
 
 
-def print_result(ok, ret, func, backend):
+def print_result(ok, ret, dtype, backend):
     print(
-        "test result: {}     returned: {:<10} func: {:<15}  backend: {}".format(
-            int(ok), repr(ret), func, backend
+        "test result: {}     returned: {:<10} dtype: {:<15}  backend: {}".format(
+            int(ok), repr(ret), dtype, backend
         )
     )
 
 
 def button1():
-    for func in ["message", "warning", "error"]:
+    for dtype in ["message", "warning", "error"]:
         for backend in psidialogs.backends():
             ret = psidialogs.dialog(
-                func, title=TITLE, backend=backend, message="Press the OK button!"
+                dtype, title=TITLE, backend=backend, message="Press the OK button!"
             )
             ok = ret == None
-            print_result(ok, ret, func, backend)
+            print_result(ok, ret, dtype, backend)
 
 
 def button2(i):
     button_labels = dict(ask_ok_cancel=("Cancel", "OK"), ask_yes_no=("No", "Yes"))
 
-    for func in ["ask_ok_cancel", "ask_yes_no"]:
+    for dtype in ["ask_ok_cancel", "ask_yes_no"]:
         for backend in psidialogs.backends():
-            bname = button_labels[func][i]
+            bname = button_labels[dtype][i]
             ret = psidialogs.dialog(
-                func, title=TITLE, backend=backend, message=f"Press the {bname} button!"
+                dtype, title=TITLE, backend=backend, message=f"Press the {bname} button!"
             )
             ok = ret == [False, True][i]
-            print_result(ok, ret, func, backend)
+            print_result(ok, ret, dtype, backend)
 
 
 def buttonAsk(i, text=""):
     button_labels = dict(ask_string=("Cancel", "OK"))
 
-    for func in ["ask_string"]:
+    for dtype in ["ask_string"]:
         for backend in psidialogs.backends():
-            bname = button_labels[func][i]
+            bname = button_labels[dtype][i]
             t = ""
             if text:
                 t = f"Type {text}! "
             ret = psidialogs.dialog(
-                func,
+                dtype,
                 title=TITLE,
                 backend=backend,
                 message=t + f"Press the {bname} button!",
             )
             ok = ret == [None, text][i]
-            print_result(ok, ret, func, backend)
+            print_result(ok, ret, dtype, backend)
 
 
 def buttonChoice(i, text=""):
     button_labels = dict(choice=("Cancel", "OK"))
 
-    for func in ["choice"]:
+    for dtype in ["choice"]:
         for backend in psidialogs.backends():
-            bname = button_labels[func][i]
+            bname = button_labels[dtype][i]
             t = ""
             if text:
                 t = f"Choose {text}! "
             ret = psidialogs.dialog(
-                func,
+                dtype,
                 title=TITLE,
                 backend=backend,
                 message=t + f"Press the {bname} button!",
                 choices=["1", "2", "3"],
             )
             ok = ret == [None, text][i]
-            print_result(ok, ret, func, backend)
+            print_result(ok, ret, dtype, backend)
 
 
 def buttonFile(i):
@@ -92,21 +92,21 @@ def buttonFile(i):
         text = str(workfile)
         button_labels = dict(ask_file=("Cancel", "OK"))
 
-        for func in ["ask_file"]:
+        for dtype in ["ask_file"]:
             for backend in psidialogs.backends():
-                bname = button_labels[func][i]
+                bname = button_labels[dtype][i]
                 t = ""
                 if i:
                     t = f"Choose {text}! "
                 ret = psidialogs.dialog(
-                    func,
+                    dtype,
                     # title=TITLE,
                     backend=backend,
                     title=t + f"Press the {bname} button!",
                     choices=["1", "2", "3"],
                 )
                 ok = ret == [None, text][i]
-                print_result(ok, ret, func, backend)
+                print_result(ok, ret, dtype, backend)
 
 
 def buttonDir(i):
@@ -119,21 +119,21 @@ def buttonDir(i):
         text = str(workdir)
         button_labels = dict(ask_folder=("Cancel", "OK"))
 
-        for func in ["ask_folder"]:
+        for dtype in ["ask_folder"]:
             for backend in psidialogs.backends():
-                bname = button_labels[func][i]
+                bname = button_labels[dtype][i]
                 t = ""
                 if i:
                     t = f"Choose {text}! "
                 ret = psidialogs.dialog(
-                    func,
+                    dtype,
                     # title=TITLE,
                     backend=backend,
                     title=t + f"Press the {bname} button!",
                     choices=["1", "2", "3"],
                 )
                 ok = ret == [None, text][i]
-                print_result(ok, ret, func, backend)
+                print_result(ok, ret, dtype, backend)
 
 
 @entrypoint

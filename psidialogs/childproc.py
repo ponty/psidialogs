@@ -15,7 +15,7 @@ def childprocess_backend_version(backend):
     return p.stdout
 
 
-def childprocess_dialog(funcname, backend, argdict):
+def childprocess_dialog(dialogtype, backend, argdict):
     title = argdict["title"]
     message = argdict["message"]
     choices = argdict["choices"]
@@ -23,7 +23,7 @@ def childprocess_dialog(funcname, backend, argdict):
     # with TemporaryDirectory(prefix="psidialogs") as tmpdirname:
     # filename = os.path.join(tmpdirname, "screenshot.png")
     # cmd = ["--filename", filename]
-    cmd = [funcname]
+    cmd = [dialogtype]
     if title:
         cmd += ["--title", title]
     if message:
@@ -39,9 +39,9 @@ def childprocess_dialog(funcname, backend, argdict):
     if p.return_code != 0:
         # log.debug(p)
         raise FailedBackendError(p)
-    if funcname in ["message", "warning", "error"]:
+    if dialogtype in ["message", "warning", "error"]:
         return None
-    if funcname in ["ask_ok_cancel", "ask_yes_no"]:
+    if dialogtype in ["ask_ok_cancel", "ask_yes_no"]:
         return p.stdout == "True"
     if p.stdout == "":
         return None

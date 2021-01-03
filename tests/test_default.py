@@ -7,12 +7,12 @@ VISIBLE = 0
 TIMEOUT = 5
 
 
-def check_open(func):
+def check_open(dialogtype):
     cmd = [
         sys.executable,
         "-c",
-        "import psidialogs,logging;logging.basicConfig(level=logging.DEBUG);psidialogs.{func}".format(
-            func=func
+        "import psidialogs,logging;logging.basicConfig(level=logging.DEBUG);psidialogs.{dialogtype}".format(
+            dialogtype=dialogtype
         ),
     ]
     # exception if nothing is displayed

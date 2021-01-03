@@ -7,6 +7,6 @@ backend = "gmessage"
 if backend in psidialogs.backends():
     if psidialogs.util.prog_check(["gmessage", "-h"]):
 
-        @pytest.mark.parametrize("func", psidialogs.dialog_types())
-        def test_gmessage(func):
-            check(backend, func)
+        @pytest.mark.parametrize("dialogtype", psidialogs.dialog_types())
+        def test_gmessage(dialogtype):
+            check(backend, dialogtype)

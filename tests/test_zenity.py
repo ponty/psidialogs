@@ -8,6 +8,6 @@ if backend in psidialogs.backends():
 
     if psidialogs.util.prog_check(["zenity", "--help"]):
 
-        @pytest.mark.parametrize("func", psidialogs.dialog_types())
-        def test_zenity(func):
-            check(backend, func)
+        @pytest.mark.parametrize("dialogtype", psidialogs.dialog_types())
+        def test_zenity(dialogtype):
+            check(backend, dialogtype)

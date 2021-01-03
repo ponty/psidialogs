@@ -219,8 +219,8 @@ def backend_version(backend):
     return childprocess_backend_version(backend)
 
 
-def dialog(funcname, choices=[], message="", title="", backend=None, childprocess=True):
-    if funcname == "choice":
+def dialog(dialogtype, choices=[], message="", title="", backend=None, childprocess=True):
+    if dialogtype == "choice":
         if len(choices) == 0:
             log.warning("choices=[] returning None")
             return None
@@ -230,7 +230,7 @@ def dialog(funcname, choices=[], message="", title="", backend=None, childproces
     if not title:
         title = "psidialogs"
     return _opendialog(
-        funcname,
+        dialogtype,
         dict(choices=choices, message=message, title=title),
         backend,
         childprocess=childprocess,

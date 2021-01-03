@@ -56,40 +56,40 @@ def select_childprocess(childprocess, backend_class):
     return childprocess
 
 
-def func_dispatch(obj, funcname, argdict):
-    if funcname == "message":
+def dlg_dispatch(obj, dialogtype, argdict):
+    if dialogtype == "message":
         return obj.message(argdict)
-    elif funcname == "warning":
+    elif dialogtype == "warning":
         return obj.warning(argdict)
-    elif funcname == "error":
+    elif dialogtype == "error":
         return obj.error(argdict)
-    elif funcname == "ask_ok_cancel":
+    elif dialogtype == "ask_ok_cancel":
         return obj.ask_ok_cancel(argdict)
-    elif funcname == "ask_yes_no":
+    elif dialogtype == "ask_yes_no":
         return obj.ask_yes_no(argdict)
-    elif funcname == "ask_string":
+    elif dialogtype == "ask_string":
         return obj.ask_string(argdict)
-    elif funcname == "ask_file":
+    elif dialogtype == "ask_file":
         return obj.ask_file(argdict)
-    elif funcname == "ask_folder":
+    elif dialogtype == "ask_folder":
         return obj.ask_folder(argdict)
-    elif funcname == "choice":
+    elif dialogtype == "choice":
         return obj.choice(argdict)
-    # elif funcname == "multi_choice":
+    # elif dialogtype == "multi_choice":
     #     return obj.multi_choice(argdict)
 
 
-def auto(funcname, argdict, childprocess):
+def auto(dialogtype, argdict, childprocess):
     for backend_class in backends():
         backend_name = backend_class.name
         log.debug("next backend to try: %s", backend_name)
         try:
             if select_childprocess(childprocess, backend_class):
                 log.debug('running "%s" in child process', backend_name)
-                return childprocess_dialog(funcname, backend_name, argdict)
+                return childprocess_dialog(dialogtype, backend_name, argdict)
             else:
                 obj = backend_class()
-                return func_dispatch(obj, funcname, argdict)
+                return dlg_dispatch(obj, dialogtype, argdict)
             break
         except Exception:
             msg = traceback.format_exc()
@@ -99,33 +99,33 @@ def auto(funcname, argdict, childprocess):
     raise FailedBackendError(msg)
 
 
-def force(backend_name, funcname, argdict, childprocess):
+def force(backend_name, dialogtype, argdict, childprocess):
     backend_class = backend_dict[backend_name]
     if select_childprocess(childprocess, backend_class):
         log.debug('running "%s" in child process', backend_name)
-        return childprocess_dialog(funcname, backend_name, argdict)
+        return childprocess_dialog(dialogtype, backend_name, argdict)
     else:
         obj = backend_class()
-        return func_dispatch(obj, funcname, argdict)
+        return dlg_dispatch(obj, dialogtype, argdict)
 
 
-def _opendialog(funcname, argdict, backend_name=None, childprocess=True):
+def _opendialog(dialogtype, argdict, backend_name=None, childprocess=True):
     # TODO: check
     for (k, v) in argdict.items():
         if v is None:
             argdict[k] = ""
     log.debug(
-        "_opendialog funcname:%s argdict:%s backend:%s childprocess:%s",
-        funcname,
+        "_opendialog dialogtype:%s argdict:%s backend:%s childprocess:%s",
+        dialogtype,
         argdict,
         backend_name,
         childprocess,
     )
 
     if backend_name:
-        return force(backend_name, funcname, argdict, childprocess)
+        return force(backend_name, dialogtype, argdict, childprocess)
     else:
-        return auto(funcname, argdict, childprocess)
+        return auto(dialogtype, argdict, childprocess)
 
 
 def backend_version2(backend_name):

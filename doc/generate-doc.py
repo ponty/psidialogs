@@ -85,24 +85,24 @@ def main():
                     p.stop()
 
         for backend in sorted(psidialogs.backends()):
-            for func in psidialogs.dialog_types():
+            for dtype in psidialogs.dialog_types():
                 # if BackendLoader().is_console(b):
                 #     # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
-                    logging.info("======== func: %s backend: %s", func, backend)
+                    logging.info("======== dtype: %s backend: %s", dtype, backend)
                     t = Thread(
                         target=lambda: psidialogs.dialog(
-                            func,
+                            dtype,
                             backend=backend,
                             message=u"This is the message. (%s,%s) \u20ac"
-                            % (backend, func),
+                            % (backend, dtype),
                             choices=["one", "two", "three"],
                         )
                     )
                     t.start()
 
-                    png = backend + "_" + func + ".png"
+                    png = backend + "_" + dtype + ".png"
                     png = os.path.join(gendir, png)
                     disp.waitgrab(timeout=9)
                     img = grab_no_blink()
