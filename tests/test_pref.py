@@ -2,24 +2,6 @@ import logging
 
 import psidialogs
 
-# from  psidialogs import loader
-
-
-def test_force_backend():
-    assert psidialogs.loader._force_backend is None
-
-    psidialogs.force_backend("missing")
-    assert psidialogs.loader._force_backend is None
-
-    psidialogs.force_backend("tkinter")
-    assert psidialogs.loader._force_backend == "tkinter"
-
-    psidialogs.force_backend("missing")
-    assert psidialogs.loader._force_backend == "tkinter"
-
-    psidialogs.force_backend(None)
-    assert psidialogs.loader._force_backend is None
-
 
 def test_set_backend_preference():
     ls = psidialogs.backends()

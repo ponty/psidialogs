@@ -118,7 +118,7 @@ def main():
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
                     logging.info("======== dtype: %s backend: %s", dtype, backend)
-                    psidialogs.force_backend(backend)
+                    psidialogs._force_backend(backend)
                     t = Thread(
                         target=lambda: psidialogs.dialog(
                             dtype,

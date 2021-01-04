@@ -61,7 +61,7 @@ def check(backend, dialogtype):
             "========= check backend:%s dialogtype:%s =========", backend, dialogtype
         )
         if backend:
-            psidialogs.force_backend(backend)
+            psidialogs._force_backend(backend)
         check_open(backend, dialogtype)
         reverse_order = False
 
@@ -84,7 +84,7 @@ def check(backend, dialogtype):
                 expect = reversed(expect)
             check_buttons(dialogtype, expect)
     finally:
-        psidialogs.force_backend(None)
+        psidialogs._force_backend(None)
 
 
 # def check_backend(backend):

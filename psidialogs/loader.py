@@ -44,29 +44,6 @@ def set_backend_preference(preference):
 _force_backend = None
 
 
-def force_backend(b):
-    log.debug("force_backend %s", b)
-    global _force_backend
-    if b is None:
-        _force_backend = b
-    elif b in backend_dict.keys():
-        _force_backend = b
-    else:
-        log.error("unknown backend: %s", b)
-
-
-# def backends():
-#     yield PyQt5Wrapper
-#     yield PySide2Wrapper
-#     yield WxPythonWrapper
-#     yield EasyguiWrapper
-#     yield ZenityWrapper
-#     yield TkinterWrapper
-#     yield GmessageWrapper
-#     yield PythonDialogWrapper
-#     yield ConsoleWrapper
-
-
 def select_childprocess(childprocess, backend_class):
     if backend_class.is_subprocess:
         # backend is always a subprocess -> nothing to do

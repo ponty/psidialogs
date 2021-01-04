@@ -248,5 +248,5 @@ def set_backend_preference(preference):
     loader.set_backend_preference(preference)
 
 
-def force_backend(backend):
-    loader.force_backend(backend)
+def _force_backend(backend):
+    loader._force_backend = backend
