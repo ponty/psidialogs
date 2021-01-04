@@ -27,6 +27,7 @@ _preference = [b.name for b in backend_class_list]
 
 
 def set_backend_preference(preference):
+    log.debug("set_backend_preference: %s", preference)
     global _preference
     _preference = []
     keys = list(backend_dict.keys())
@@ -36,7 +37,7 @@ def set_backend_preference(preference):
             continue
         _preference.append(b)
         keys.remove(b)
-    _preference.append(keys)
+    _preference.extend(keys)
 
 
 _force_backend = None
@@ -45,7 +46,9 @@ _force_backend = None
 def force_backend(b):
     log.debug("force_backend %s", b)
     global _force_backend
-    if b in backend_dict.keys():
+    if b is None:
+        _force_backend = b
+    elif b in backend_dict.keys():
         _force_backend = b
     else:
         log.error("unknown backend: %s", b)
