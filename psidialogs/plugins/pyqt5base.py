@@ -69,7 +69,7 @@ class PyQt5Base(IPlugin):
     def choice(self, choices, message, title):
         self.init_qt()
         (result, ok) = self.QtWidgets.QInputDialog.getItem(
-            None, title, message, choices
+            None, title, message, choices, 0, False
         )
         if ok:
             return "%s" % result
