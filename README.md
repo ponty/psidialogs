@@ -21,14 +21,7 @@ back-ends:
  - [PythonDialog](https://pypi.org/project/pythondialog/)
  - console
 
-Usage:
-```pycon
->>> from psidialogs import message
->>> message('Hello!')
-```
-
-
-Installation:
+# Installation
 
 ```console
 $ python3 -m pip install psidialogs
@@ -46,6 +39,110 @@ $ sudo apt-get install python3-wxgtk4.0
 $ sudo apt-get install zenity
 $ sudo apt-get install gxmessage
 ```
+
+# Usage
+
+```py
+# psidialogs/examples/message.py
+
+import psidialogs
+
+psidialogs.message("Hello!")
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.message.png)  
+
+```py
+# psidialogs/examples/warning.py
+
+import psidialogs
+
+psidialogs.warning("Warning text.")
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.warning.png)  
+
+```py
+# psidialogs/examples/error.py
+
+import psidialogs
+
+psidialogs.error("Error text.")
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.error.png)  
+
+```py
+# psidialogs/examples/ask_ok_cancel.py
+
+import psidialogs
+
+ok = psidialogs.ask_ok_cancel("Do you want to continue?")
+if ok:
+    print("continue")
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.ask_ok_cancel.png)  
+
+```py
+# psidialogs/examples/ask_yes_no.py
+
+import psidialogs
+
+yes = psidialogs.ask_yes_no("Yes or no?")
+if yes:
+    print("yes!")
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.ask_yes_no.png)  
+
+```py
+# psidialogs/examples/ask_string.py
+
+import psidialogs
+
+name = psidialogs.ask_string("What is your name?")
+if name is not None:
+    print(name)
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.ask_string.png)  
+
+```py
+# psidialogs/examples/ask_file.py
+
+import psidialogs
+
+f = psidialogs.ask_file("Select a file!")
+print(f)
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.ask_file.png)  
+
+```py
+# psidialogs/examples/ask_folder.py
+
+import psidialogs
+
+f = psidialogs.ask_folder("Select a folder!")
+print(f)
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.ask_folder.png)  
+
+```py
+# psidialogs/examples/choice.py
+
+import psidialogs
+
+s = psidialogs.choice(["1", "2", "3"], "Choose a number!")
+if s is not None:
+    print(s)
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.choice.png)  
+
+
 
 # Demo
 

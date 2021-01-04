@@ -15,6 +15,15 @@ import psidialogs
 
 # (cmd,grab,background)
 commands = [
+    ("python3 -m psidialogs.examples.message", True, True),
+    ("python3 -m psidialogs.examples.warning", True, True),
+    ("python3 -m psidialogs.examples.error", True, True),
+    ("python3 -m psidialogs.examples.ask_ok_cancel", True, True),
+    ("python3 -m psidialogs.examples.ask_yes_no", True, True),
+    ("python3 -m psidialogs.examples.ask_string", True, True),
+    ("python3 -m psidialogs.examples.ask_file", True, True),
+    ("python3 -m psidialogs.examples.ask_folder", True, True),
+    ("python3 -m psidialogs.examples.choice", True, True),
     ("python3 -m psidialogs.examples.demo --help", False, False),
     ("python3 -m psidialogs.check.versions", False, False),
     ("python3 -m psidialogs.examples.demo", True, True),
