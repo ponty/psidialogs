@@ -12,7 +12,7 @@ g_backend = ""
 def testdata(title, dialogtype):
     return dict(
         message=u"This is the 'message'! (%s,%s) \u20ac" % (g_backend, dialogtype),
-        choices=[u"1 \u20ac", "Two", "Three"],
+        choices=[u"1 \u20ac", "Two", "Three,\"'  "],
         # text=u"\u20ac\n%s" % text,
         title=title if title else u"title \u20ac",
     )

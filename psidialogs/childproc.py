@@ -29,7 +29,8 @@ def childprocess_dialog(dialogtype, argdict, backend=None, preference=None):
     if message:
         cmd += ["--message", message]
     if choices:
-        cmd += ["--choices", ",".join(choices)]
+        for c in choices:
+            cmd += ["--choices", c]
     if backend:
         cmd += ["--backend", backend]
     if preference:
