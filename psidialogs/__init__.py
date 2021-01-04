@@ -3,7 +3,7 @@ import logging
 from psidialogs import loader
 from psidialogs.about import __version__
 from psidialogs.childproc import childprocess_backend_version
-from psidialogs.loader import _opendialog, backend_dict
+from psidialogs.loader import _opendialog
 
 log = logging.getLogger(__name__)
 log.debug("version=%s", __version__)
@@ -206,7 +206,7 @@ def backends():
 
     :return: back-ends as string list
     """
-    return list(backend_dict.keys())
+    return loader._preference
 
 
 def backend_version(backend):

@@ -1,5 +1,6 @@
 import logging
 import traceback
+from collections import OrderedDict
 
 from psidialogs.childproc import childprocess_dialog
 from psidialogs.err import FailedBackendError
@@ -21,9 +22,9 @@ backend_class_list = [
     # TODO:  PythonDialogWrapper,
     # TODO:  ConsoleWrapper,
 ]
-backend_dict = dict([(b.name, b) for b in backend_class_list])
+backend_dict = OrderedDict([(b.name, b) for b in backend_class_list])
 
-_preference = [b.name for b in backend_class_list]
+_preference = list(backend_dict.keys())
 
 
 def set_backend_preference(preference):
@@ -105,8 +106,8 @@ def auto(dialogtype, argdict, childprocess):
         log.debug('running "auto" in child process')
         return childprocess_dialog(dialogtype, argdict, preference=_preference)
     else:
-        for backend_class in backend_class_list:
-            backend = backend_class.name
+        for backend in _preference:
+            backend_class = backend_dict[backend]
             log.debug("next backend to try: %s", backend)
             try:
                 obj = backend_class()

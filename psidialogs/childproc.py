@@ -33,7 +33,8 @@ def childprocess_dialog(dialogtype, argdict, backend=None, preference=None):
     if backend:
         cmd += ["--backend", backend]
     if preference:
-        cmd += ["--preference", ",".join(preference)]
+        for p in preference:
+            cmd += ["--preference", p]
     if log.isEnabledFor(logging.DEBUG):
         cmd += ["--debug"]
 
