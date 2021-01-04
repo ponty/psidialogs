@@ -1,4 +1,5 @@
 import psidialogs
 
 f = psidialogs.ask_file("Select a file!")
-print(f)
+if f is not None:
+    print(f)
