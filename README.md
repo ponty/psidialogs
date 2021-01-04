@@ -114,7 +114,8 @@ if name is not None:
 import psidialogs
 
 f = psidialogs.ask_file("Select a file!")
-print(f)
+if f is not None:
+    print(f)
 
 ```
 ![](doc/gen/python3_-m_psidialogs.examples.ask_file.png)  
@@ -125,7 +126,8 @@ print(f)
 import psidialogs
 
 f = psidialogs.ask_folder("Select a folder!")
-print(f)
+if f is not None:
+    print(f)
 
 ```
 ![](doc/gen/python3_-m_psidialogs.examples.ask_folder.png)  
@@ -150,12 +152,15 @@ The implemented backends can be listed, the order is the preference, which can b
 import psidialogs
 
 print(psidialogs.backends())
+psidialogs.set_backend_preference(["tkinter", "zenity"])
+print(psidialogs.backends())
 
 ```
 <!-- embedme doc/gen/python3_-m_psidialogs.examples.backends.txt -->
 ```console
 $ python3 -m psidialogs.examples.backends
 ['pyside2', 'tkinter', 'zenity']
+['tkinter', 'zenity', 'pyside2']
 ```
 
 
