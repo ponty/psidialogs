@@ -19,9 +19,9 @@ class ZenityWrapper(IPlugin):
             ls = []
             for k, v in d.items():
                 if k:
-                    ls += [k]
+                    ls.append(k)
                 if v is not None:
-                    ls += [v]
+                    ls.append(v)
             return ls
 
         # print ['zenity']  , dict2list(options) , extraargs
@@ -102,7 +102,8 @@ class ZenityWrapper(IPlugin):
 
             extraargs = ["--column", "Select", "--column", "Item"]
             for x in choices:
-                extraargs += ["FALSE", x]
+                extraargs.append("FALSE")
+                extraargs.append(x)
         else:
             extraargs = ["--column", "Item"] + choices
         result = self._call(title, options, extraargs=extraargs)

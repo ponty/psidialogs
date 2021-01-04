@@ -21,9 +21,9 @@ class GmessageWrapper(IPlugin):
             ls = []
             for k, v in d.items():
                 if k:
-                    ls += [k]
+                    ls.append(k)
                 if v:
-                    ls += [v]
+                    ls.append(v)
             return ls
 
         cmd = ["gmessage", message] + dict2list(options)

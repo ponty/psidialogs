@@ -25,19 +25,24 @@ def childprocess_dialog(dialogtype, argdict, backend=None, preference=None):
     # cmd = ["--filename", filename]
     cmd = [dialogtype]
     if title:
-        cmd += ["--title", title]
+        cmd.append("--title")
+        cmd.append(title)
     if message:
-        cmd += ["--message", message]
+        cmd.append("--message")
+        cmd.append(message)
     if choices:
         for c in choices:
-            cmd += ["--choices", c]
+            cmd.append("--choices")
+            cmd.append(c)
     if backend:
-        cmd += ["--backend", backend]
+        cmd.append("--backend")
+        cmd.append(backend)
     if preference:
         for p in preference:
-            cmd += ["--preference", p]
+            cmd.append("--preference")
+            cmd.append(p)
     if log.isEnabledFor(logging.DEBUG):
-        cmd += ["--debug"]
+        cmd.append("--debug")
 
     p = run_mod_as_subproc("psidialogs.cli.dialog", cmd)
     if p.return_code != 0:
