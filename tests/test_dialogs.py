@@ -13,8 +13,7 @@ VISIBLE = 0
 TIMEOUT = 10
 
 
-def check_buttons(backend, dialogtype, expect):
-    psidialogs.force_backend(backend)
+def check_buttons(dialogtype, expect):
     expect = list(expect)
     with SmartDisplay(visible=VISIBLE) as disp:
         t = Thread(target=lambda: psidialogs.dialog(dialogtype))
@@ -48,7 +47,6 @@ def check_buttons(backend, dialogtype, expect):
 
 
 def check_open(backend, dialogtype):
-    psidialogs.force_backend(backend)
     with SmartDisplay(visible=VISIBLE) as disp:
         t = Thread(target=lambda: psidialogs.dialog(dialogtype, choices=["a", "b"]))
         t.start()
@@ -59,6 +57,8 @@ def check_open(backend, dialogtype):
 
 def check(backend, dialogtype):
     log.info("========= check backend:%s dialogtype:%s =========", backend, dialogtype)
+    if backend:
+        psidialogs.force_backend(backend)
     check_open(backend, dialogtype)
     reverse_order = False
 
@@ -74,15 +74,15 @@ def check(backend, dialogtype):
 
     if dialogtype in ["message", "warning", "error"]:
         expect = [None]
-        check_buttons(backend, dialogtype, expect)
+        check_buttons(dialogtype, expect)
     if dialogtype in ["ask_yes_no", "ask_ok_cancel"]:
         expect = [True, False]
         if reverse_order:
             expect = reversed(expect)
-        check_buttons(backend, dialogtype, expect)
+        check_buttons(dialogtype, expect)
 
 
-def check_backend(backend):
-    # TODO:if not BackendLoader().is_console(backend):
-    for dtype in psidialogs.dialog_types():
-        check(backend, dtype)
+# def check_backend(backend):
+#     # TODO:if not BackendLoader().is_console(backend):
+#     for dtype in psidialogs.dialog_types():
+#         check(backend, dtype)
