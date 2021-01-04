@@ -98,6 +98,10 @@ class TkinterWrapper(IPlugin):
 
     def choice(self, choices, message, title):
         gui = self.Tk()
+        w, h = gui.winfo_screenwidth(), gui.winfo_screenheight()
+        x, y = int((w / 2) - 200), int((h / 2) - 200)
+        gui.geometry("+{}+{}".format(x, y))
+
         gui.resizable(False, False)
         gui.title(title)
         app = Choices(self.tkinter, gui, choices, message)
