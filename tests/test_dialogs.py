@@ -56,30 +56,35 @@ def check_open(backend, dialogtype):
 
 
 def check(backend, dialogtype):
-    log.info("========= check backend:%s dialogtype:%s =========", backend, dialogtype)
-    if backend:
-        psidialogs.force_backend(backend)
-    check_open(backend, dialogtype)
-    reverse_order = False
+    try:
+        log.info(
+            "========= check backend:%s dialogtype:%s =========", backend, dialogtype
+        )
+        if backend:
+            psidialogs.force_backend(backend)
+        check_open(backend, dialogtype)
+        reverse_order = False
 
-    # if backend == "wxpython" and dialogtype != "message":  # wrong button taborder
-    #     return
-    if backend in ["zenity", "wxpython"]:
-        reverse_order = True
-    #     if dialogtype in ["ask_ok_cancel", "ask_yes_no"]:
-    #         # tab is not working in xvfb and xephyr
-    #         return
-    # if backend == "gmessage":  # active editbox
-    #     return
+        # if backend == "wxpython" and dialogtype != "message":  # wrong button taborder
+        #     return
+        if backend in ["zenity", "wxpython"]:
+            reverse_order = True
+        #     if dialogtype in ["ask_ok_cancel", "ask_yes_no"]:
+        #         # tab is not working in xvfb and xephyr
+        #         return
+        # if backend == "gmessage":  # active editbox
+        #     return
 
-    if dialogtype in ["message", "warning", "error"]:
-        expect = [None]
-        check_buttons(dialogtype, expect)
-    if dialogtype in ["ask_yes_no", "ask_ok_cancel"]:
-        expect = [True, False]
-        if reverse_order:
-            expect = reversed(expect)
-        check_buttons(dialogtype, expect)
+        if dialogtype in ["message", "warning", "error"]:
+            expect = [None]
+            check_buttons(dialogtype, expect)
+        if dialogtype in ["ask_yes_no", "ask_ok_cancel"]:
+            expect = [True, False]
+            if reverse_order:
+                expect = reversed(expect)
+            check_buttons(dialogtype, expect)
+    finally:
+        psidialogs.force_backend(None)
 
 
 # def check_backend(backend):

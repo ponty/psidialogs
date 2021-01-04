@@ -1,4 +1,6 @@
-import psidialogs,logging
+import logging
+
+import psidialogs
 
 # from  psidialogs import loader
 
@@ -15,16 +17,20 @@ def test_force_backend():
     psidialogs.force_backend("missing")
     assert psidialogs.loader._force_backend == "tkinter"
 
+    psidialogs.force_backend(None)
+    assert psidialogs.loader._force_backend is None
+
 
 def test_set_backend_preference():
     ls = psidialogs.backends()
+
     def pref():
-        p= psidialogs.loader._preference
-        logging.info('pref: %s',p)
+        p = psidialogs.loader._preference
+        logging.info("pref: %s", p)
         return p
 
     assert pref() == ls
-    
+
     psidialogs.set_backend_preference([])
     assert pref() == ls
 
@@ -35,12 +41,23 @@ def test_set_backend_preference():
     assert pref()[0] == "tkinter"
     assert len(pref()) == len(ls)
 
-    psidialogs.set_backend_preference(["missing","missing","missing","missing","missing","missing","missing","tkinter"])
+    psidialogs.set_backend_preference(
+        [
+            "missing",
+            "missing",
+            "missing",
+            "missing",
+            "missing",
+            "missing",
+            "missing",
+            "tkinter",
+        ]
+    )
     assert pref()[0] == "tkinter"
     assert len(pref()) == len(ls)
 
-    psidialogs.set_backend_preference(["tkinter","missing","missing","missing","missing"])
+    psidialogs.set_backend_preference(
+        ["tkinter", "missing", "missing", "missing", "missing"]
+    )
     assert pref()[0] == "tkinter"
     assert len(pref()) == len(ls)
-
-
