@@ -143,6 +143,34 @@ if s is not None:
 ![](doc/gen/python3_-m_psidialogs.examples.choice.png)  
 
 
+The implemented backends can be listed, the order is the preference, which can be changed:
+```py
+# psidialogs/examples/backends.py
+
+import psidialogs
+
+print(psidialogs.backends())
+
+```
+<!-- embedme doc/gen/python3_-m_psidialogs.examples.backends.txt -->
+```console
+$ python3 -m psidialogs.examples.backends
+['pyside2', 'tkinter', 'zenity']
+```
+
+
+Changing the backend preference:
+```py
+# psidialogs/examples/set_backend_preference.py
+
+import psidialogs
+
+psidialogs.set_backend_preference(["tkinter", "zenity"])
+psidialogs.message("Hello!")
+
+```
+![](doc/gen/python3_-m_psidialogs.examples.set_backend_preference.png)  
+
 
 # Demo
 

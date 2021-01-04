@@ -15,6 +15,8 @@ import psidialogs
 
 # (cmd,grab,background)
 commands = [
+    ("python3 -m psidialogs.examples.backends", False, False),
+    ("python3 -m psidialogs.examples.set_backend_preference", True, True),
     ("python3 -m psidialogs.examples.message", True, True),
     ("python3 -m psidialogs.examples.warning", True, True),
     ("python3 -m psidialogs.examples.error", True, True),
