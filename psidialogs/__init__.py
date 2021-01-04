@@ -1,5 +1,6 @@
 import logging
 
+from psidialogs import loader
 from psidialogs.about import __version__
 from psidialogs.childproc import childprocess_backend_version
 from psidialogs.loader import _opendialog, backend_dict
@@ -8,7 +9,7 @@ log = logging.getLogger(__name__)
 log.debug("version=%s", __version__)
 
 
-def message(message, title=None, backend=None):
+def message(message, title=None):
     """
     Display a message
 
@@ -18,10 +19,10 @@ def message(message, title=None, backend=None):
     :param title: window title
     :rtype: None
     """
-    return dialog("message", message=message, title=title, backend=backend)
+    return dialog("message", message=message, title=title)
 
 
-def error(message, title=None, backend=None):
+def error(message, title=None):
     """
     Display an error message
 
@@ -31,10 +32,10 @@ def error(message, title=None, backend=None):
     :param title: window title
     :rtype: None
     """
-    return dialog("error", message=message, title=title, backend=backend)
+    return dialog("error", message=message, title=title)
 
 
-def warning(message, title=None, backend=None):
+def warning(message, title=None):
     """
     Display a warning message
 
@@ -44,7 +45,7 @@ def warning(message, title=None, backend=None):
     :param title: window title
     :rtype: None
     """
-    return dialog("warning", message=message, title=title, backend=backend)
+    return dialog("warning", message=message, title=title)
 
 
 # def text(text, message="", title=None):
@@ -62,7 +63,7 @@ def warning(message, title=None, backend=None):
 #     return opendialog("text", dict(text=text, message=message, title=title))
 
 
-def ask_string(message="Enter something.", title=None, backend=None):
+def ask_string(message="Enter something.", title=None):
     """
     Show a box in which a user can enter some text.
 
@@ -74,10 +75,10 @@ def ask_string(message="Enter something.", title=None, backend=None):
     :param title: window title
     :rtype: None or string
     """
-    return dialog("ask_string", message=message, title=title, backend=backend)
+    return dialog("ask_string", message=message, title=title)
 
 
-def ask_file(message="Select file for open.", title=None, backend=None):
+def ask_file(message="Select file for open.", title=None):
     """
     A dialog to get a file name.
 
@@ -87,10 +88,10 @@ def ask_file(message="Select file for open.", title=None, backend=None):
     :param title: window title
     :rtype: None or string
     """
-    return dialog("ask_file", message=message, title=title, backend=backend,)
+    return dialog("ask_file", message=message, title=title)
 
 
-def ask_folder(message="Select folder.", title=None, backend=None):
+def ask_folder(message="Select folder.", title=None):
     """
     A dialog to get a directory name.
     Returns the name of a directory, or None if user chose to cancel.
@@ -99,10 +100,10 @@ def ask_folder(message="Select folder.", title=None, backend=None):
     :param title: window title
     :rtype: None or string
     """
-    return dialog("ask_folder", message=message, title=title, backend=backend)
+    return dialog("ask_folder", message=message, title=title)
 
 
-def choice(choices=[], message="Pick something.", title=None, backend=None):
+def choice(choices=[], message="Pick something.", title=None):
     """
     Present the user with a list of choices.
     return the choice that he selects.
@@ -115,9 +116,7 @@ def choice(choices=[], message="Pick something.", title=None, backend=None):
     :param title: window title
     :rtype: None or string
     """
-    return dialog(
-        "choice", choices=choices, message=message, title=title, backend=backend,
-    )
+    return dialog("choice", choices=choices, message=message, title=title,)
 
 
 # def multi_choice(
@@ -144,7 +143,7 @@ def choice(choices=[], message="Pick something.", title=None, backend=None):
 #     )
 
 
-def ask_ok_cancel(message="", title=None, backend=None):
+def ask_ok_cancel(message="", title=None):
     """
     Display a message with choices of OK and Cancel.
 
@@ -158,10 +157,10 @@ def ask_ok_cancel(message="", title=None, backend=None):
     :param title: window title
     :rtype: bool
     """
-    return dialog("ask_ok_cancel", message=message, title=title, backend=backend)
+    return dialog("ask_ok_cancel", message=message, title=title)
 
 
-def ask_yes_no(message="", title=None, backend=None):
+def ask_yes_no(message="", title=None):
     """
     Display a message with choices of Yes and No.
 
@@ -175,7 +174,7 @@ def ask_yes_no(message="", title=None, backend=None):
     :param title: window title
     :rtype: bool
     """
-    return dialog("ask_yes_no", message=message, title=title, backend=backend)
+    return dialog("ask_yes_no", message=message, title=title)
 
 
 _DIALOG_FUNCTIONS = [
@@ -220,7 +219,13 @@ def backend_version(backend):
 
 
 def dialog(
-    dialogtype, choices=[], message="", title=None, backend=None, childprocess=True
+    dialogtype,
+    choices=[],
+    message="",
+    title=None,
+    # backend=None,
+    # preference=None,
+    childprocess=True,
 ):
     if dialogtype == "choice":
         if len(choices) == 0:
@@ -234,6 +239,14 @@ def dialog(
     return _opendialog(
         dialogtype,
         dict(choices=choices, message=message, title=title),
-        backend,
+        # backend,
         childprocess=childprocess,
     )
+
+
+def set_backend_preference(preference):
+    loader.set_backend_preference(preference)
+
+
+def force_backend(backend):
+    loader.force_backend(backend)

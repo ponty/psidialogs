@@ -15,7 +15,7 @@ def childprocess_backend_version(backend):
     return p.stdout
 
 
-def childprocess_dialog(dialogtype, argdict, backend=None):
+def childprocess_dialog(dialogtype, argdict, backend=None, preference=None):
     title = argdict["title"]
     message = argdict["message"]
     choices = argdict["choices"]
@@ -32,6 +32,8 @@ def childprocess_dialog(dialogtype, argdict, backend=None):
         cmd += ["--choices", ",".join(choices)]
     if backend:
         cmd += ["--backend", backend]
+    if preference:
+        cmd += ["--preference", ",".join(preference)]
     if log.isEnabledFor(logging.DEBUG):
         cmd += ["--debug"]
 

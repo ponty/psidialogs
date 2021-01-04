@@ -6,30 +6,32 @@ import psidialogs
 
 log = logging.getLogger(__name__)
 
+g_backend = ""
 
-def testdata(title, backend, dialogtype):
+
+def testdata(title, dialogtype):
     # f = open(__file__)
     # text = f.read()
     # f.close()
     # text = "long text"
 
     return dict(
-        message=u"This is the 'message'! (%s,%s) \u20ac" % (backend, dialogtype),
+        message=u"This is the 'message'! (%s,%s) \u20ac" % (g_backend, dialogtype),
         choices=[u"1 \u20ac", "Two", "Three"],
         # text=u"\u20ac\n%s" % text,
         title=title if title else u"title \u20ac",
     )
 
 
-def dialog(backend, dialogtype, title="", **kwargs):
-    args = testdata(title, backend, dialogtype)
-    result = psidialogs.dialog(dialogtype, backend=backend, **args)
+def dialog(dialogtype, title="", **kwargs):
+    args = testdata(title, dialogtype)
+    result = psidialogs.dialog(dialogtype, **args)
     psidialogs.message("Return value=%r" % (result))
 
 
-def select_dialogtype(backend, title="", dialogtype=None, **kwargs):
+def select_dialogtype(title="", dialogtype=None, **kwargs):
     if dialogtype:
-        dialog(backend, dialogtype, title, **kwargs)
+        dialog(dialogtype, title, **kwargs)
     else:
         while 1:
             dialogtypes = psidialogs.dialog_types()
@@ -38,12 +40,15 @@ def select_dialogtype(backend, title="", dialogtype=None, **kwargs):
             )
             if not dialogtype:
                 break
-            dialog(backend, dialogtype, title, **kwargs)
+            dialog(dialogtype, title, **kwargs)
 
 
 def select_backend(backend=None, title="", **kwargs):
+    global g_backend
     if backend:
-        select_dialogtype(backend, title, **kwargs)
+        g_backend = backend
+        psidialogs.force_backend(backend)
+        select_dialogtype(title, **kwargs)
     else:
         while 1:
             names = sorted(psidialogs.backends())
@@ -51,7 +56,9 @@ def select_backend(backend=None, title="", **kwargs):
             b = psidialogs.choice(names, "Select backend!", title=title)
             if not b:
                 break
-            select_dialogtype(b, title, **kwargs)
+            g_backend = b
+            psidialogs.force_backend(b)
+            select_dialogtype(title, **kwargs)
 
 
 @entrypoint

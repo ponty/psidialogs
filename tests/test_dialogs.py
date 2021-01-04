@@ -14,9 +14,10 @@ TIMEOUT = 10
 
 
 def check_buttons(backend, dialogtype, expect):
+    psidialogs.force_backend(backend)
     expect = list(expect)
     with SmartDisplay(visible=VISIBLE) as disp:
-        t = Thread(target=lambda: psidialogs.dialog(dialogtype, backend=backend))
+        t = Thread(target=lambda: psidialogs.dialog(dialogtype))
         t.start()
 
         # wait for displaying the window
@@ -34,7 +35,7 @@ def check_buttons(backend, dialogtype, expect):
             ls = [None]
 
             def fdlg(ls):
-                ls[0] = psidialogs.dialog(dialogtype, backend=backend)
+                ls[0] = psidialogs.dialog(dialogtype)
 
             t = Thread(target=fdlg, args=(ls,))
             t.start()
@@ -47,12 +48,9 @@ def check_buttons(backend, dialogtype, expect):
 
 
 def check_open(backend, dialogtype):
+    psidialogs.force_backend(backend)
     with SmartDisplay(visible=VISIBLE) as disp:
-        t = Thread(
-            target=lambda: psidialogs.dialog(
-                dialogtype, backend=backend, choices=["a", "b"]
-            )
-        )
+        t = Thread(target=lambda: psidialogs.dialog(dialogtype, choices=["a", "b"]))
         t.start()
 
         disp.waitgrab(timeout=TIMEOUT)

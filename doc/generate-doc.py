@@ -107,10 +107,10 @@ def main():
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
                     logging.info("======== dtype: %s backend: %s", dtype, backend)
+                    psidialogs.force_backend(backend)
                     t = Thread(
                         target=lambda: psidialogs.dialog(
                             dtype,
-                            backend=backend,
                             message=u"This is the message. (%s,%s) \u20ac"
                             % (backend, dtype),
                             choices=["one", "two", "three"],

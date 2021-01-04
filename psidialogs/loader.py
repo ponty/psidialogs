@@ -3,49 +3,64 @@ import traceback
 
 from psidialogs.childproc import childprocess_dialog
 from psidialogs.err import FailedBackendError
-from psidialogs.plugins.console_wrapper import ConsoleWrapper
-from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
-from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
-from psidialogs.plugins.pyqt5_wrapper import PyQt5Wrapper
 from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
-from psidialogs.plugins.pythondialog_wrapper import PythonDialogWrapper
 from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
-from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
 
 log = logging.getLogger(__name__)
 
+# default preference order
+backend_class_list = [
+    # TODO:  PyQt5Wrapper,
+    PySide2Wrapper,
+    # TODO:  WxPythonWrapper,
+    # TODO:  EasyguiWrapper,
+    TkinterWrapper,
+    ZenityWrapper,
+    # TODO:  GmessageWrapper,
+    # TODO:  PythonDialogWrapper,
+    # TODO:  ConsoleWrapper,
+]
+backend_dict = dict([(b.name, b) for b in backend_class_list])
 
-backend_dict = {
-    # TODO: ConsoleWrapper.name: ConsoleWrapper,
-    # TODO: EasyguiWrapper.name: EasyguiWrapper,
-    # TODO: GmessageWrapper.name: GmessageWrapper,
-    # TODO: PyQt5Wrapper.name: PyQt5Wrapper,
-    PySide2Wrapper.name: PySide2Wrapper,
-    # TODO: PythonDialogWrapper.name: PythonDialogWrapper,
-    TkinterWrapper.name: TkinterWrapper,
-    # TODO: WxPythonWrapper.name: WxPythonWrapper,
-    ZenityWrapper.name: ZenityWrapper,
-}
+_preference = [b.name for b in backend_class_list]
 
 
-def backends():
-    yield PyQt5Wrapper
-    yield PySide2Wrapper
-    yield WxPythonWrapper
-    yield EasyguiWrapper
-    yield ZenityWrapper
-    yield TkinterWrapper
-    yield GmessageWrapper
-    yield PythonDialogWrapper
+def set_backend_preference(preference):
+    global _preference
+    _preference = []
+    keys = list(backend_dict.keys())
+    for b in preference:
+        if b not in keys:
+            log.error("unknown backend: %s", b)
+            continue
+        _preference.append(b)
+        keys.remove(b)
+    _preference.append(keys)
 
-    yield ConsoleWrapper
 
-    # TODO: optimize order for platform
-    # if platform_is_linux():
-    # elif platform_is_osx():
-    # elif platform_is_win():
-    # else:
+_force_backend = None
+
+
+def force_backend(b):
+    log.debug("force_backend %s", b)
+    global _force_backend
+    if b in backend_dict.keys():
+        _force_backend = b
+    else:
+        log.error("unknown backend: %s", b)
+
+
+# def backends():
+#     yield PyQt5Wrapper
+#     yield PySide2Wrapper
+#     yield WxPythonWrapper
+#     yield EasyguiWrapper
+#     yield ZenityWrapper
+#     yield TkinterWrapper
+#     yield GmessageWrapper
+#     yield PythonDialogWrapper
+#     yield ConsoleWrapper
 
 
 def select_childprocess(childprocess, backend_class):
@@ -85,9 +100,9 @@ def dlg_dispatch(obj, dialogtype, argdict):
 def auto(dialogtype, argdict, childprocess):
     if childprocess:
         log.debug('running "auto" in child process')
-        return childprocess_dialog(dialogtype, argdict)
+        return childprocess_dialog(dialogtype, argdict, preference=_preference)
     else:
-        for backend_class in backends():
+        for backend_class in backend_class_list:
             backend = backend_class.name
             log.debug("next backend to try: %s", backend)
             try:
@@ -105,27 +120,26 @@ def force(backend, dialogtype, argdict, childprocess):
     backend_class = backend_dict[backend]
     if select_childprocess(childprocess, backend_class):
         log.debug('running "%s" in child process', backend)
-        return childprocess_dialog(dialogtype, argdict, backend)
+        return childprocess_dialog(dialogtype, argdict, backend=backend)
     else:
         obj = backend_class()
         return dlg_dispatch(obj, dialogtype, argdict)
 
 
-def _opendialog(dialogtype, argdict, backend_name=None, childprocess=True):
+def _opendialog(dialogtype, argdict, childprocess=True):
     # TODO: check
     for (k, v) in argdict.items():
         if v is None:
             argdict[k] = ""
     log.debug(
-        "_opendialog dialogtype:%s argdict:%s backend:%s childprocess:%s",
+        "_opendialog dialogtype:%s argdict:%s childprocess:%s",
         dialogtype,
         argdict,
-        backend_name,
         childprocess,
     )
 
-    if backend_name:
-        return force(backend_name, dialogtype, argdict, childprocess)
+    if _force_backend:
+        return force(_force_backend, dialogtype, argdict, childprocess)
     else:
         return auto(dialogtype, argdict, childprocess)
 

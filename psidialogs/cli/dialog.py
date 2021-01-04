@@ -9,7 +9,13 @@ log = logging.getLogger(__name__)
 
 @entrypoint
 def dialog_cli(
-    dialogtype, title="", message="", choices="", backend="", childprocess=False
+    dialogtype,
+    title="",
+    message="",
+    choices="",
+    backend="",
+    childprocess=False,
+    preference=[],
 ):
     if not backend:
         backend = None
@@ -28,13 +34,20 @@ def dialog_cli(
     #         f = x
     # assert f
 
+    if len(preference):
+        psidialogs.set_backend_preference(preference)
+
+    if backend:
+        psidialogs.force_backend(backend)
+
     result = None
     result = psidialogs.dialog(
         dialogtype,
         choices=choices,
         message=message,
         title=title,
-        backend=backend,
+        # backend=backend,
+        # preference=preference,
         childprocess=childprocess,
     )
     log.debug("result:%s", result)
