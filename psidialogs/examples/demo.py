@@ -10,11 +10,6 @@ g_backend = ""
 
 
 def testdata(title, dialogtype):
-    # f = open(__file__)
-    # text = f.read()
-    # f.close()
-    # text = "long text"
-
     return dict(
         message=u"This is the 'message'! (%s,%s) \u20ac" % (g_backend, dialogtype),
         choices=[u"1 \u20ac", "Two", "Three"],
@@ -47,7 +42,7 @@ def select_backend(backend=None, title="", **kwargs):
     global g_backend
     if backend:
         g_backend = backend
-        psidialogs.force_backend(backend)
+        psidialogs.set_backend_preference([backend])
         select_dialogtype(title, **kwargs)
     else:
         while 1:
@@ -57,7 +52,7 @@ def select_backend(backend=None, title="", **kwargs):
             if not b:
                 break
             g_backend = b
-            psidialogs.force_backend(b)
+            psidialogs.set_backend_preference([b])
             select_dialogtype(title, **kwargs)
 
 
