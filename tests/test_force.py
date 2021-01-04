@@ -25,7 +25,7 @@ def test_set_backend_preference():
     ls = psidialogs.backends()
 
     def pref():
-        p = psidialogs.loader._preference
+        p = psidialogs.backends()
         logging.info("pref: %s", p)
         return p
 
