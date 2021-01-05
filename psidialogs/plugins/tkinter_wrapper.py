@@ -32,8 +32,10 @@ class Choices:
         self.parent.quit()
 
 
+root = None
+
+
 class TkinterWrapper(IPlugin):
-    root = None
     name = "tkinter"
 
     def __init__(self):
@@ -51,9 +53,9 @@ class TkinterWrapper(IPlugin):
         return str(self.tkinter.TkVersion)
 
     def tk_init(self):
-        if not self.root:
-            self.root = self.Tk()
-            self.root.withdraw()
+        global root
+        if not root:
+            root = self.Tk()
 
     def ask_string(self, message, title):
         self.tk_init()
@@ -97,17 +99,20 @@ class TkinterWrapper(IPlugin):
         return x
 
     def choice(self, choices, message, title):
-        gui = self.Tk()
-        w, h = gui.winfo_screenwidth(), gui.winfo_screenheight()
-        x, y = int((w / 2) - 200), int((h / 2) - 200)
-        gui.geometry("+{}+{}".format(x, y))
+        self.tk_init()
+        root.update()
+        root.deiconify()
+        w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+        x, y = int((w / 2) - 100), int((h / 2) - 100)
+        root.geometry("+{}+{}".format(x, y))
 
-        gui.resizable(False, False)
-        gui.title(title)
-        app = Choices(self.tkinter, gui, choices, message)
-        gui.mainloop()
+        root.resizable(False, False)
+        root.title(title)
+        app = Choices(self.tkinter, root, choices, message)
+        root.mainloop()
+        root.withdraw()
+
         return app.choice
-        # return mixins.choice(self, args)
 
     # def multi_choice(self, args):
     #     return mixins.multi_choice(self, args)
