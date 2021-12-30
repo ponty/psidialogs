@@ -56,6 +56,8 @@ class TkinterWrapper(IPlugin):
         global root
         if not root:
             root = self.Tk()
+            # root.overrideredirect(1)
+            root.withdraw()
 
     def ask_string(self, message, title):
         self.tk_init()
