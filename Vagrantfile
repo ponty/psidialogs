@@ -73,7 +73,8 @@ Vagrant.configure(2) do |config|
   
   $script = "
   export DEBIAN_FRONTEND=noninteractive
-  echo 'export export LC_ALL=C' >> /home/vagrant/.profile
+  sudo update-locale LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
+# echo 'export LC_ALL=en_US.UTF-8' >> /home/vagrant/.profile
     
 # install python versions
   sudo add-apt-repository --yes  ppa:deadsnakes/ppa

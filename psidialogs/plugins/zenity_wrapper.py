@@ -3,6 +3,10 @@ from easyprocess import EasyProcess
 from psidialogs.iplugin import IPlugin
 from psidialogs.util import extract_version
 
+# xvfb-run zenity --info --text '☠'
+#   This option is not available. Please see --help for all possible usages.
+#   https://stackoverflow.com/questions/43817451/zenity-wont-render-unicode-characters
+#     solution: sudo update-locale LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
 
 class ZenityWrapper(IPlugin):
     name = "zenity"
