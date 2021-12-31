@@ -79,7 +79,7 @@ def main():
     logging.info("commands: %s", commands)
     try:
         cwd = os.getcwd()
-        os.chdir("/bin")
+        os.chdir("/sbin")
         for cmd, grab, bg in commands:
             with SmartDisplay() as disp:
                 logging.info("======== cmd: %s", cmd)
