@@ -8,7 +8,7 @@ Links:
  * home: https://github.com/ponty/psidialogs
  * PYPI: https://pypi.python.org/pypi/psidialogs
 
-[![Build Status](https://travis-ci.org/ponty/psidialogs.svg?branch=master)](https://travis-ci.org/ponty/psidialogs)
+![workflow](https://github.com/ponty/psidialogs/actions/workflows/main.yml/badge.svg)
 
 back-ends:
  - [Zenity](https://en.wikipedia.org/wiki/Zenity)

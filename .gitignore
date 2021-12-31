@@ -20,8 +20,8 @@ pip-log.txt
 .version
 
 .*
-!.gitignore
-!.travis.yml
+!.git*
+!.travis*
 
 /distribute_setup.py
 

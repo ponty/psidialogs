@@ -2,4 +2,5 @@ pytest
 pyvirtualdisplay
 discogui
 easyprocess
-pillow>=8.1.0
+pillow>=7.1
+#pillow>=8.1.0
