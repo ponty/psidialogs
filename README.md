@@ -224,7 +224,7 @@ Versions:
 
 ```console
 $ python3 -m psidialogs.check.versions
-python               3.8.5
+python               3.8.10
 psidialogs           0.2.0
 pyside2              5.14.0
 tkinter              8.6
