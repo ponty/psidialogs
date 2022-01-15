@@ -6,7 +6,7 @@ class WxPythonWrapper(IPlugin):
     name = "wxpython"
 
     def __init__(self):
-        import wx.lib.dialogs
+        import wx.lib.dialogs  # type: ignore
 
         self.wx = wx
 

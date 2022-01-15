@@ -8,6 +8,7 @@ from psidialogs.util import extract_version
 #   https://stackoverflow.com/questions/43817451/zenity-wont-render-unicode-characters
 #     solution: sudo update-locale LANG=en_US.UTF-8 LANGUAGE=en.UTF-8
 
+
 class ZenityWrapper(IPlugin):
     name = "zenity"
     is_subprocess = True

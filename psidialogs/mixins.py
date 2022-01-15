@@ -61,7 +61,7 @@ def _choice(obj, choices, message, title):
     lines = ["[%s] %s" % x for x in zip(count(), choices)]
     message += "\n" + "\n".join(lines)
     message += "\nSelect:"
-    ##        self.text(args)
+    #        self.text(args)
     # args["default"] = "%s" % args["default"]
     i = obj.ask_string(message, title)
     return i

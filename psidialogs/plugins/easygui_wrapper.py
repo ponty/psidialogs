@@ -5,7 +5,7 @@ class EasyguiWrapper(IPlugin):
     name = "easygui"
 
     def __init__(self):
-        import easygui
+        import easygui  # type: ignore
 
         self.easygui = easygui
 

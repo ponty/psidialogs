@@ -5,7 +5,7 @@ class PyQt5Wrapper(PyQt5Base):
     name = "pyqt5"
 
     def __init__(self):
-        from PyQt5 import QtWidgets
+        from PyQt5 import QtWidgets  # type: ignore
 
         self.QtWidgets = QtWidgets
 

@@ -5,7 +5,7 @@ class PySide2Wrapper(PyQt5Base):
     name = "pyside2"
 
     def __init__(self):
-        from PySide2 import QtWidgets
+        from PySide2 import QtWidgets  # type: ignore
 
         self.QtWidgets = QtWidgets
 

@@ -26,7 +26,7 @@ def button1():
             ret = psidialogs.dialog(
                 dtype, title=TITLE, backend=backend, message="Press the OK button!"
             )
-            ok = ret == None
+            ok = ret is None
             print_result(ok, ret, dtype, backend)
 
 

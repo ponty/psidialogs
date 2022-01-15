@@ -13,7 +13,7 @@ class PythonDialogWrapper(IPlugin):
     name = "pythondialog"
 
     def __init__(self):
-        import dialog
+        import dialog  # type: ignore
 
         self.dlg = dialog.Dialog()
 
