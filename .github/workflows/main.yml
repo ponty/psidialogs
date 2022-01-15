@@ -77,17 +77,9 @@ jobs:
     - name: pip install
       run: |
         python3 --version
-        python3 -m pip install flake8 pytest
         python3 -m pip install pillow -U
         python3 -m pip install .
         python3 -m pip install -r requirements-test.txt
-    - name: Lint with flake8
-      if: startsWith(matrix.python-version, '3')
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: print versions
       run: |
         python3 -m psidialogs.check.versions
@@ -95,3 +87,7 @@ jobs:
       run: |
         cd tests
         python3 -m pytest -v .
+    - name: Lint
+      if: matrix.os == 'ubuntu-20.04'
+      run: |
+        ./lint.sh

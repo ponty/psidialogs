@@ -58,4 +58,7 @@ setup(
     license="BSD",
     packages=PACKAGES,
     install_requires=install_requires,
+    package_data={
+        NAME: ["py.typed"],
+    },
 )
