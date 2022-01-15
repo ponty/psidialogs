@@ -116,7 +116,12 @@ def choice(choices=[], message="Pick something.", title=None):
     :param title: window title
     :rtype: None or string
     """
-    return dialog("choice", choices=choices, message=message, title=title,)
+    return dialog(
+        "choice",
+        choices=choices,
+        message=message,
+        title=title,
+    )
 
 
 # def multi_choice(

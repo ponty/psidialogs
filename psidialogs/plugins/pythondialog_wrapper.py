@@ -63,11 +63,17 @@ class PythonDialogWrapper(IPlugin):
     #     self.dlg.scrollbox(text=args["text"], title=title)
 
     def ask_yes_no(self, message, title):
-        x = self.dlg.yesno(text=message, title=title,)
+        x = self.dlg.yesno(
+            text=message,
+            title=title,
+        )
         return x == "ok"
 
     def ask_ok_cancel(self, message, title):
         x = self.dlg.yesno(
-            text=message, title=title, yes_label="OK", no_label="Cancel",
+            text=message,
+            title=title,
+            yes_label="OK",
+            no_label="Cancel",
         )
         return x == "ok"

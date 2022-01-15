@@ -39,9 +39,8 @@ class TkinterWrapper(IPlugin):
     name = "tkinter"
 
     def __init__(self):
-        from tkinter import Tk
         import tkinter
-        from tkinter import messagebox, filedialog, simpledialog
+        from tkinter import Tk, filedialog, messagebox, simpledialog
 
         self.Tk = Tk
         self.tkinter = tkinter

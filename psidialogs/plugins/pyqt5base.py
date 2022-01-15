@@ -47,7 +47,10 @@ class PyQt5Base(IPlugin):
 
     def ask_folder(self, message, title):
         self.init_qt()
-        result = self.QtWidgets.QFileDialog.getExistingDirectory(None, title,)
+        result = self.QtWidgets.QFileDialog.getExistingDirectory(
+            None,
+            title,
+        )
         if result:
             return "%s" % result
 
@@ -56,13 +59,20 @@ class PyQt5Base(IPlugin):
         # if args["save"]:
         #     result = self.QtWidgets.QFileDialog.getSaveFileName(None, args["title"],)
         # else:
-        result = self.QtWidgets.QFileDialog.getOpenFileName(None, title,)
+        result = self.QtWidgets.QFileDialog.getOpenFileName(
+            None,
+            title,
+        )
         if result:
             return "%s" % result[0]
 
     def ask_string(self, message, title):
         self.init_qt()
-        (result, ok) = self.QtWidgets.QInputDialog.getText(None, title, message,)
+        (result, ok) = self.QtWidgets.QInputDialog.getText(
+            None,
+            title,
+            message,
+        )
         if ok:
             return "%s" % result
 

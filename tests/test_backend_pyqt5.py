@@ -1,7 +1,7 @@
 import pytest
+from test_dialogs import check
 
 import psidialogs
-from test_dialogs import check
 
 backend = "pyqt5"
 if backend in psidialogs.backends():

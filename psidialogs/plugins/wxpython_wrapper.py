@@ -20,7 +20,9 @@ class WxPythonWrapper(IPlugin):
     def message(self, message, title):
         self.init()
         self.wx.lib.dialogs.messageDialog(
-            message=message, title=title, aStyle=self.wx.OK | self.wx.CENTRE,
+            message=message,
+            title=title,
+            aStyle=self.wx.OK | self.wx.CENTRE,
         )
 
     def warning(self, message, title):
