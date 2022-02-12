@@ -14,9 +14,9 @@ def dialog_cli(
     message="",
     choices=[],
     backend="",
-    childprocess=False,
     preference=[],
 ):
+    psidialogs._ENABLE_CHILDPROCESS = False
     if not backend:
         backend = None
 
@@ -32,9 +32,6 @@ def dialog_cli(
         choices=choices,
         message=message,
         title=title,
-        # backend=backend,
-        # preference=preference,
-        childprocess=childprocess,
     )
     log.debug("result:%s", result)
     if result:

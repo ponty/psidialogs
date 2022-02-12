@@ -2,23 +2,28 @@ import logging
 import traceback
 from collections import OrderedDict
 
+import psidialogs
 from psidialogs.childproc import childprocess_dialog
 from psidialogs.err import FailedBackendError
+from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
+from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
+from psidialogs.plugins.pyqt5_wrapper import PyQt5Wrapper
 from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
 from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
+from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
 
 log = logging.getLogger(__name__)
 
 # default preference order
 backend_class_list = [
-    # TODO:  PyQt5Wrapper,
-    PySide2Wrapper,
-    # TODO:  WxPythonWrapper,
-    # TODO:  EasyguiWrapper,
+    WxPythonWrapper,
+    EasyguiWrapper,
     TkinterWrapper,
+    PyQt5Wrapper,
+    PySide2Wrapper,
     ZenityWrapper,
-    # TODO:  GmessageWrapper,
+    GmessageWrapper,
     # TODO:  PythonDialogWrapper,
     # TODO:  ConsoleWrapper,
 ]
@@ -44,12 +49,13 @@ def set_backend_preference(preference):
 _force_backend = None
 
 
-def select_childprocess(childprocess, backend_class):
+def select_childprocess(backend_class):
+    if not psidialogs._ENABLE_CHILDPROCESS:
+        return False
     if backend_class.is_subprocess:
         # backend is always a subprocess -> nothing to do
         return False
-
-    return childprocess
+    return backend_class.need_subprocess
 
 
 def dlg_dispatch(obj, dialogtype, argdict):
@@ -78,28 +84,29 @@ def dlg_dispatch(obj, dialogtype, argdict):
     #     return obj.multi_choice(argdict)
 
 
-def auto(dialogtype, argdict, childprocess):
-    if childprocess:
-        log.debug('running "auto" in child process')
-        return childprocess_dialog(dialogtype, argdict, preference=_preference)
-    else:
-        for backend in _preference:
-            backend_class = backend_dict[backend]
-            log.debug("next backend to try: %s", backend)
-            try:
-                obj = backend_class()
-                return dlg_dispatch(obj, dialogtype, argdict)
-            except Exception:
-                msg = traceback.format_exc()
-                log.debug(msg)
+def auto(dialogtype, argdict):
+    # if childprocess:
+    #     log.debug('running "auto" in child process')
+    #     return childprocess_dialog(dialogtype, argdict, preference=_preference)
+    # else:
+    for backend in _preference:
+        # backend_class = backend_dict[backend]
+        log.debug("next backend to try: %s", backend)
+        try:
+            # obj = backend_class()
+            # return dlg_dispatch(obj, dialogtype, argdict)
+            return force(backend, dialogtype, argdict)
+        except Exception:
+            msg = traceback.format_exc()
+            log.debug(msg)
 
-        msg = "All backends failed!"
-        raise FailedBackendError(msg)
+    msg = "All backends failed!"
+    raise FailedBackendError(msg)
 
 
-def force(backend, dialogtype, argdict, childprocess):
+def force(backend, dialogtype, argdict):
     backend_class = backend_dict[backend]
-    if select_childprocess(childprocess, backend_class):
+    if select_childprocess(backend_class):
         log.debug('running "%s" in child process', backend)
         return childprocess_dialog(dialogtype, argdict, backend=backend)
     else:
@@ -107,22 +114,21 @@ def force(backend, dialogtype, argdict, childprocess):
         return dlg_dispatch(obj, dialogtype, argdict)
 
 
-def _opendialog(dialogtype, argdict, childprocess=True):
+def _opendialog(dialogtype, argdict):
     # TODO: check
     for (k, v) in argdict.items():
         if v is None:
             argdict[k] = ""
     log.debug(
-        "_opendialog dialogtype:%s argdict:%s childprocess:%s",
+        "_opendialog dialogtype:%s argdict:%s",
         dialogtype,
         argdict,
-        childprocess,
     )
 
     if _force_backend:
-        return force(_force_backend, dialogtype, argdict, childprocess)
+        return force(_force_backend, dialogtype, argdict)
     else:
-        return auto(dialogtype, argdict, childprocess)
+        return auto(dialogtype, argdict)
 
 
 def backend_version2(backend_name):

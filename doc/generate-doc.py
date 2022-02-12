@@ -1,8 +1,8 @@
 import glob
 import logging
+import multiprocessing
 import os
 from pathlib import Path
-from threading import Thread
 from time import sleep
 
 from discogui.imgutil import grab_no_blink
@@ -119,10 +119,10 @@ def main():
                 with SmartDisplay() as disp:
                     logging.info("======== dtype: %s backend: %s", dtype, backend)
                     psidialogs._force_backend(backend)
-                    t = Thread(
+                    t = multiprocessing.Process(
                         target=lambda: psidialogs.dialog(
                             dtype,
-                            message=u"This is the message. (%s,%s) \u20ac"
+                            message="This is the message. (%s,%s) \u20ac"
                             % (backend, dtype),
                             choices=["one", "two", "three"],
                         )

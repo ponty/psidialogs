@@ -1,5 +1,5 @@
 import logging
-from threading import Thread
+import multiprocessing
 
 from discogui.buttons import discover_buttons
 from discogui.mouse import PyMouse
@@ -16,7 +16,7 @@ TIMEOUT = 10
 def check_buttons(dialogtype, expect):
     expect = list(expect)
     with SmartDisplay(visible=VISIBLE) as disp:
-        t = Thread(target=lambda: psidialogs.dialog(dialogtype))
+        t = multiprocessing.Process(target=lambda: psidialogs.dialog(dialogtype))
         t.start()
 
         # wait for displaying the window
@@ -31,24 +31,27 @@ def check_buttons(dialogtype, expect):
         mouse = PyMouse()
         print("buttons: %s" % buttons)
         for v, b in zip(expect, buttons):
-            ls = [None]
+            q = multiprocessing.Queue()
 
-            def fdlg(ls):
-                ls[0] = psidialogs.dialog(dialogtype)
+            def fdlg(q):
+                ret = psidialogs.dialog(dialogtype)
+                q.put(ret)
 
-            t = Thread(target=fdlg, args=(ls,))
+            t = multiprocessing.Process(target=fdlg, args=(q,))
             t.start()
             disp.waitgrab(timeout=TIMEOUT)
             mouse.click(*b.center)
+            result = q.get()
             t.join()
-            result = ls[0]
             log.debug("result=%r", result)
             assert result == v
 
 
 def check_open(backend, dialogtype):
     with SmartDisplay(visible=VISIBLE) as disp:
-        t = Thread(target=lambda: psidialogs.dialog(dialogtype, choices=["a", "b"]))
+        t = multiprocessing.Process(
+            target=lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
+        )
         t.start()
 
         disp.waitgrab(timeout=TIMEOUT)
@@ -67,8 +70,10 @@ def check(backend, dialogtype):
 
         # if backend == "wxpython" and dialogtype != "message":  # wrong button taborder
         #     return
-        if backend in ["zenity", "wxpython"]:
+
+        if backend in ["zenity", "wxpython", "pyside2", "pyqt5"]:
             reverse_order = True
+
         #     if dialogtype in ["ask_ok_cancel", "ask_yes_no"]:
         #         # tab is not working in xvfb and xephyr
         #         return

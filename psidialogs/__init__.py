@@ -8,6 +8,8 @@ from psidialogs.loader import _opendialog
 log = logging.getLogger(__name__)
 log.debug("version=%s", __version__)
 
+_ENABLE_CHILDPROCESS = True
+
 
 def message(message, title=None):
     """
@@ -228,9 +230,6 @@ def dialog(
     choices=[],
     message="",
     title=None,
-    # backend=None,
-    # preference=None,
-    childprocess=True,
 ):
     if dialogtype == "choice":
         if len(choices) == 0:
@@ -244,14 +243,14 @@ def dialog(
     return _opendialog(
         dialogtype,
         dict(choices=choices, message=message, title=title),
-        # backend,
-        childprocess=childprocess,
     )
 
 
 def set_backend_preference(preference):
+    log.debug("set_backend_preference: %s", preference)
     loader.set_backend_preference(preference)
 
 
 def _force_backend(backend):
+    # print("======_force_backend")
     loader._force_backend = backend
