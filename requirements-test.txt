@@ -1,4 +1,6 @@
 pytest
+pytest-xdist
+pytest-timeout
 pyvirtualdisplay
 discogui
 easyprocess
