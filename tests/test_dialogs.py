@@ -1,7 +1,8 @@
 import logging
 import multiprocessing
 
-from discogui.hover import active_rectangles
+# from discogui.hover import active_rectangles
+from hover import active_rectangles
 from discogui.mouse import PyMouse
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
@@ -52,9 +53,15 @@ def check_buttons(backend, dialogtype, expect):
         assert result_set == set(expect)
 
 
+def target_func(dialogtype):
+    return psidialogs.dialog(dialogtype, choices=["a", "b"])
+
+
 def check_open_novirt(backend, dialogtype):
     t = multiprocessing.Process(
-        target=lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
+        target=target_func,
+        args=(dialogtype,)
+        # lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
     )
     t.start()
     time.sleep(3)
