@@ -49,10 +49,6 @@ jobs:
         sudo apt-get install -y python3-setuptools
         sudo apt-get install -y xvfb scrot x11-utils python3-wxgtk4.0 python3-pyqt5
         sudo apt-get install -y python3-tk python3-dialog python3-easygui zenity 
-    - name: Install ubuntu-18.04 dependencies
-      if: matrix.os == 'ubuntu-18.04'
-      run: |
-        sudo apt-get install -y python3-pyqt4 python3-pyside
     - name: Install ubuntu-20.04 dependencies
       if: matrix.os == 'ubuntu-20.04'
       run: |
@@ -67,11 +63,9 @@ jobs:
     - name: Install Win dependencies
       if: startsWith(matrix.os, 'win')
       run: |
-        # choco install fsviewer -y
         choco install imagemagick -y
         choco install wxpython -y 
         choco install gtk-runtime -y
-        choco install pyqt4 -y
         choco install pyqt5 -y
     - name: pip install
       run: |

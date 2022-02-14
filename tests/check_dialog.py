@@ -3,8 +3,6 @@ import logging
 import psidialogs
 from psidialogs.util import platform_is_osx, platform_is_win
 
-
-
 log = logging.getLogger(__name__)
 
 
