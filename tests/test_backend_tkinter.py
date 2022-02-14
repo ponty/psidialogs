@@ -1,5 +1,5 @@
 import pytest
-from test_dialogs import check
+from check_dialog import check_dialog
 
 import psidialogs
 
@@ -10,4 +10,4 @@ if backend in psidialogs.backends():
         @pytest.mark.parametrize("dialogtype", psidialogs.dialog_types())
         @pytest.mark.timeout(600)
         def test_tkinter(dialogtype):
-            check(backend, dialogtype)
+            check_dialog(backend, dialogtype)

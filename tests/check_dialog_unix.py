@@ -1,15 +1,16 @@
 import logging
 import multiprocessing
 
+from discogui.mouse import PyMouse
+
 # from discogui.hover import active_rectangles
 from hover import active_rectangles
-from discogui.mouse import PyMouse
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 import psidialogs
-from psidialogs.util import platform_is_osx, platform_is_win
 
 log = logging.getLogger(__name__)
+
 
 VISIBLE = 0
 TIMEOUT = 300
@@ -57,19 +58,6 @@ def target_func(dialogtype):
     return psidialogs.dialog(dialogtype, choices=["a", "b"])
 
 
-def check_open_novirt(backend, dialogtype):
-    t = multiprocessing.Process(
-        target=target_func,
-        args=(dialogtype,)
-        # lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
-    )
-    t.start()
-    time.sleep(3)
-    assert t.is_alive()
-    t.terminate()
-    # t.join()
-
-
 def check_open(backend, dialogtype):
     with SmartDisplay(visible=VISIBLE) as disp:
         t = multiprocessing.Process(
@@ -81,34 +69,17 @@ def check_open(backend, dialogtype):
     t.join()
 
 
-def check(backend, dialogtype):
-    try:
-        log.info(
-            "========= check backend:%s dialogtype:%s =========", backend, dialogtype
-        )
-        if backend:
-            psidialogs._force_backend(backend)
-        if platform_is_osx() or platform_is_win():
-            check_open_novirt(backend, dialogtype)
-        else:
-            check_open(backend, dialogtype)
-            # if backend in ["zenity", "wxpython", "pyside2", "pyqt5"]:
-            #    reverse_order = True
-            # if backend == "gmessage":  # active editbox
-            #     return
-            if dialogtype in ["message", "warning", "error"]:
-                expect = set([None])
-                check_buttons(backend, dialogtype, expect)
-            if dialogtype in ["ask_yes_no", "ask_ok_cancel"]:
-                expect = set([True, False])
-                # if reverse_order:
-                #     expect = reversed(expect)
-                check_buttons(backend, dialogtype, expect)
-    finally:
-        psidialogs._force_backend(None)
-
-
-# def check_backend(backend):
-#     # TODO:if not BackendLoader().is_console(backend):
-#     for dtype in psidialogs.dialog_types():
-#         check(backend, dtype)
+def check_unix(backend, dialogtype):
+    check_open(backend, dialogtype)
+    # if backend in ["zenity", "wxpython", "pyside2", "pyqt5"]:
+    #    reverse_order = True
+    # if backend == "gmessage":  # active editbox
+    #     return
+    if dialogtype in ["message", "warning", "error"]:
+        expect = set([None])
+        check_buttons(backend, dialogtype, expect)
+    if dialogtype in ["ask_yes_no", "ask_ok_cancel"]:
+        expect = set([True, False])
+        # if reverse_order:
+        #     expect = reversed(expect)
+        check_buttons(backend, dialogtype, expect)

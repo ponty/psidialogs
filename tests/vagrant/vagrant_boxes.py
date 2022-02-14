@@ -4,9 +4,8 @@ from pathlib import Path
 from time import sleep
 
 import fabric
-from entrypoint2 import entrypoint
-
 import vagrant
+from entrypoint2 import entrypoint
 
 # pip3 install fabric vncdotool python-vagrant entrypoint2
 
