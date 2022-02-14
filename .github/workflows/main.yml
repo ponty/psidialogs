@@ -84,3 +84,10 @@ jobs:
     #   if: matrix.os == 'ubuntu-20.04'
     #   run: |
     #     ./lint.sh
+    - name: Archive production artifacts
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: testout-${{ matrix.os }}-${{ matrix.python-version }}
+        path: |
+          tests/testout
