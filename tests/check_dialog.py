@@ -13,7 +13,7 @@ def check_dialog(backend, dialogtype):
         )
 
         if backend:
-            psidialogs._force_backend(backend)
+            psidialogs.set_backend_preference([backend], disable_others=True)
         if platform_is_osx() or platform_is_win():
             from check_dialog_winmacos import check_winmacos
 
@@ -23,4 +23,4 @@ def check_dialog(backend, dialogtype):
 
             check_unix(backend, dialogtype)
     finally:
-        psidialogs._force_backend(None)
+        psidialogs.set_backend_preference()
