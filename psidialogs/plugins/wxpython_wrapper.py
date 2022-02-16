@@ -1,5 +1,6 @@
 from psidialogs.iplugin import IPlugin
 
+# macos:  brew install wxpython
 
 class WxPythonWrapper(IPlugin):
     app = None

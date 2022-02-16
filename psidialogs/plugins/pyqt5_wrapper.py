@@ -1,6 +1,6 @@
 from psidialogs.plugins.pyqt5base import PyQt5Base
 
-
+# macos:  brew install pyqt@5
 class PyQt5Wrapper(PyQt5Base):
     name = "pyqt5"
     # qt crashes after wx

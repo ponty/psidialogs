@@ -46,9 +46,10 @@ jobs:
       if: startsWith(matrix.os, 'ubuntu')
       run: |
         sudo apt-get update
-        sudo apt-get install -y python3-setuptools
-        sudo apt-get install -y xvfb scrot x11-utils python3-wxgtk4.0 python3-pyqt5
-        sudo apt-get install -y python3-tk python3-dialog python3-easygui zenity 
+        #sudo apt-get install -y python3-setuptools
+        sudo apt-get install -y xvfb
+        sudo apt-get install -y python3-wxgtk4.0 python3-pyqt5
+        sudo apt-get install -y python3-tk python3-dialog python3-easygui zenity gmessage
     - name: Install ubuntu-20.04 dependencies
       if: matrix.os == 'ubuntu-20.04'
       run: |
@@ -57,9 +58,9 @@ jobs:
       if: startsWith(matrix.os, 'macos')
       run: |
         #brew install --cask xquartz
-        brew install wxmac pyqt pyside 
-        brew install imagemagick pqiv
-        pip3 install wxpython pyobjc-framework-Quartz pyobjc-framework-LaunchServices
+        brew install wxpython pyqt@5 pyside@2 
+        #brew install imagemagick pqiv
+        #pip3 install wxpython pyobjc-framework-Quartz pyobjc-framework-LaunchServices
     - name: Install Win dependencies
       if: startsWith(matrix.os, 'win')
       run: |

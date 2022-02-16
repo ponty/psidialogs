@@ -1,5 +1,6 @@
 from psidialogs.iplugin import IPlugin
 
+# macos:  brew install python-tk
 
 class Choices:
     def __init__(self, tkinter, parent, choicelist, message):
