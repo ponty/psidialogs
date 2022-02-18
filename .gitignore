@@ -33,3 +33,4 @@ package.json
 package-lock.json
 tmp/*
 Vagrantfile.osx*.rb
+Vagrantfile.win*.rb

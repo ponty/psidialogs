@@ -1,22 +1,22 @@
 from psidialogs.iplugin import IPlugin
 
 # macos:  brew install wxpython
-
+# ubuntu 20.04: crash in qt after wx if app is destroyed
+app=None
 class WxPythonWrapper(IPlugin):
-    app = None
     name = "wxpython"
 
     def __init__(self):
         import wx.lib.dialogs  # type: ignore
-
         self.wx = wx
 
     def backend_version(self):
         return self.wx.__version__
 
     def init(self):
-        if not self.app:
-            self.app = self.wx.App()
+        global app
+        if not app:
+            app = self.wx.App()
 
     def message(self, message, title):
         self.init()

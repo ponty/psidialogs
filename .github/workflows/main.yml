@@ -64,10 +64,10 @@ jobs:
     - name: Install Win dependencies
       if: startsWith(matrix.os, 'win')
       run: |
-        choco install imagemagick -y
-        choco install wxpython -y 
-        choco install gtk-runtime -y
-        choco install pyqt5 -y
+        #choco install qt5-default -y
+        #choco install visualstudio2017buildtools -y
+        #choco install gtk-runtime -y
+        pip install pyqt5 pyside2 wxpython easygui
     - name: pip install
       run: |
         python3 --version
