@@ -71,6 +71,7 @@ jobs:
     - name: pip install
       run: |
         python3 --version
+        python3 -m pip install setuptools -U
         python3 -m pip install pillow -U
         python3 -m pip install .
         python3 -m pip install -r requirements-test.txt
