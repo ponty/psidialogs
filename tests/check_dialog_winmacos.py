@@ -13,7 +13,7 @@ import psidialogs
 log = logging.getLogger(__name__)
 
 
-def target_func(dialogtype):
+def target_func(backend,dialogtype):
     if backend:
         psidialogs.force_backend(backend)
     return psidialogs.dialog(
