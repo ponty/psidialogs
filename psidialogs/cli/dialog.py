@@ -24,7 +24,7 @@ def dialog_cli(
         psidialogs.set_backend_preference(preference)
 
     if backend:
-        psidialogs.set_backend_preference([backend], disable_others=True)
+        psidialogs.force_backend(backend)
 
     result = None
     result = psidialogs.dialog(

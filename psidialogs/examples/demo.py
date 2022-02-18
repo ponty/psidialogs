@@ -43,7 +43,7 @@ def select_backend(backend=None, title="", **kwargs):
     global g_backend
     if backend:
         g_backend = backend
-        psidialogs.set_backend_preference([backend], disable_others=True)
+        psidialogs.force_backend(backend)
         select_dialogtype(title, **kwargs)
     else:
         while 1:
@@ -53,7 +53,7 @@ def select_backend(backend=None, title="", **kwargs):
             if not b:
                 break
             g_backend = b
-            psidialogs.set_backend_preference([b], disable_others=True)
+            psidialogs.force_backend(b)
             try:
                 select_dialogtype(title, **kwargs)
             except FailedBackendError:

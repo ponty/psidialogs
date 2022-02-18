@@ -70,6 +70,8 @@ def check_open(backend, dialogtype):
 
 
 def check_unix(backend, dialogtype):
+    if backend:
+        psidialogs.force_backend(backend)
     check_open(backend, dialogtype)
     # if backend in ["zenity", "wxpython", "pyside2", "pyqt5"]:
     #    reverse_order = True

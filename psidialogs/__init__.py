@@ -258,6 +258,5 @@ def set_backend_preference(preference=None, disable_others=False):
     loader.set_backend_preference(preference, disable_others)
 
 
-# def _force_backend(backend):
-#     log.debug("_force_backend: %s", backend)
-#     loader._force_backend = backend
+def force_backend(backend):
+    set_backend_preference([backend], disable_others=True)

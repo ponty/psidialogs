@@ -14,13 +14,20 @@ log = logging.getLogger(__name__)
 
 
 def target_func(dialogtype):
-    return psidialogs.dialog(dialogtype, choices=["a", "b"])
+    if backend:
+        psidialogs.force_backend(backend)
+    return psidialogs.dialog(
+        dialogtype, message=backend, title=backend, choices=["a", "b"]
+    )
 
 
 def check_open_novirt(backend, dialogtype):
     t = multiprocessing.Process(
         target=target_func,
-        args=(dialogtype,)
+        args=(
+            backend,
+            dialogtype,
+        )
         # lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
     )
     t.start()

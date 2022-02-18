@@ -118,7 +118,7 @@ def main():
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
                     logging.info("======== dtype: %s backend: %s", dtype, backend)
-                    psidialogs.set_backend_preference([backend], disable_others=True)
+                    psidialogs.force_backend(backend)
                     t = multiprocessing.Process(
                         target=lambda: psidialogs.dialog(
                             dtype,
