@@ -1,3 +1,4 @@
+import multiprocessing
 import logging
 import traceback
 from collections import OrderedDict
@@ -13,21 +14,36 @@ from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
 from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
 from threading import Thread, Lock
+from psidialogs.util import platform_is_osx, platform_is_win, platform_is_linux
 
 log = logging.getLogger(__name__)
 
 # default preference order
-backend_class_list = [
-    WxPythonWrapper,
-    EasyguiWrapper,
-    TkinterWrapper,
-    PyQt5Wrapper,
-    PySide2Wrapper,
-    ZenityWrapper,
-    GmessageWrapper,
-    # TODO:  PythonDialogWrapper,
-    # TODO:  ConsoleWrapper,
-]
+# TODO:  PythonDialogWrapper,
+# TODO:  ConsoleWrapper,
+if platform_is_osx():
+    backend_class_list = [
+        WxPythonWrapper,
+        PyQt5Wrapper,
+        PySide2Wrapper,
+        EasyguiWrapper,
+        TkinterWrapper,
+    ]
+else:
+    # win+linux
+    backend_class_list = [
+        WxPythonWrapper,
+        PyQt5Wrapper,
+        PySide2Wrapper,
+        EasyguiWrapper,
+        TkinterWrapper,
+    ]
+    if platform_is_linux():
+        backend_class_list += [
+            ZenityWrapper,
+            GmessageWrapper,
+        ]
+
 backend_dict = OrderedDict([(b.name, b) for b in backend_class_list])
 
 _preference = list(backend_dict.keys())
@@ -35,8 +51,11 @@ _preference = list(backend_dict.keys())
 
 mutex = Lock()
 
+
 def backend_preference():
- return _preference
+    return _preference
+
+
 def set_backend_preference(preference, disable_others):
     mutex.acquire()
     try:
@@ -120,11 +139,28 @@ def auto(dialogtype, argdict):
     raise FailedBackendError(msg)
 
 
+def ff(q, backend, dialogtype, argdict):
+    backend_class = backend_dict[backend]
+    obj = backend_class()
+    ret = dlg_dispatch(obj, dialogtype, argdict)
+    q.put(ret)
+
+
 def force(backend, dialogtype, argdict):
     backend_class = backend_dict[backend]
     if select_childprocess(backend_class):
         log.debug('running "%s" in child process', backend)
-        return childprocess_dialog(dialogtype, argdict, backend=backend)
+        # return childprocess_dialog(dialogtype, argdict, backend=backend)
+        q = multiprocessing.Queue()
+        t = multiprocessing.Process(
+            target=ff,
+            args=(q, backend, dialogtype, argdict)
+            # lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
+        )
+        t.start()
+        result = q.get()
+        t.join()
+        return result
     else:
         obj = backend_class()
         return dlg_dispatch(obj, dialogtype, argdict)
