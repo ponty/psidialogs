@@ -40,7 +40,7 @@ else:
     if platform_is_linux():
         backend_class_list += [
             ZenityWrapper,
-            GmessageWrapper,
+            # GmessageWrapper,
         ]
 
 backend_dict = OrderedDict([(b.name, b) for b in backend_class_list])

@@ -6,7 +6,6 @@ import sys
 import time
 from pathlib import Path
 
-import pygetwindow as gw
 
 # from discogui.imgutil import grab_no_blink
 from easyprocess import EasyProcess
@@ -14,13 +13,19 @@ from entrypoint2 import entrypoint
 from PIL import ImageGrab
 
 import psidialogs
-from psidialogs.util import platform_is_osx, platform_is_win
+from psidialogs.util import platform_is_osx, platform_is_win, platform_is_linux
 
 if platform_is_osx():
     import Quartz
+if platform_is_win():
+    import pygetwindow as gw
+if platform_is_linux():
+    import distro
+    from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 
 TITLE = "psidialogs"
+python = sys.executable
 
 
 def empty_dir(dir):
@@ -130,24 +135,28 @@ def func1(backend, dtype):
     )
 
 
+def distro_name():
+    if platform_is_linux():
+        return "_".join(distro.linux_distribution())
+    else:
+        return "_".join([platform.system(), platform.release()])
+
+
 @entrypoint
 def main():
-    gendir = (
-        Path(__file__).absolute().parent
-        / "gen"
-        / "screenshots"
-        / (platform.system() + platform.release())
-    )
+    gendir = Path(__file__).absolute().parent / "gen" / "screenshots" / distro_name()
     logging.info("gendir: %s", gendir)
     os.makedirs(gendir, exist_ok=True)
     empty_dir(gendir)
     try:
         cwd = os.getcwd()
+        if platform_is_win():
+            os.chdir("c:\\")
+        else:
+            os.chdir("/sbin")
         for backend in sorted(psidialogs.backends()):
             for dialogtype in psidialogs.dialog_types():
                 logging.info("======== dialogtype: %s backend: %s", dialogtype, backend)
-                psidialogs.force_backend(backend)
-                python = sys.executable
                 cmd = [
                     python,
                     "-m",
@@ -167,15 +176,18 @@ def main():
                     "--choices",
                     "Three,\"'  ",
                 ]
-                png = backend + "_" + dialogtype + ".png"
-                png = os.path.join(gendir, png)
-                allid = getAllWindowsID()
-                with EasyProcess(cmd):
-                    # time.sleep(3)
-                    # wait(im0)
-                    img = grab(allid)
-                    logging.info("saving %s", png)
-                    img.save(png)
-            # return  # XXX
+                png = gendir / (backend + "_" + dialogtype + ".png")
+                if platform_is_linux():
+                    with SmartDisplay() as disp:
+                        with EasyProcess(cmd, env=os.environ) as proc:
+                            time.sleep(1)
+                            assert proc.is_alive()
+                            img = disp.waitgrab()
+                else:
+                    allid = getAllWindowsID()
+                    with EasyProcess(cmd):
+                        img = grab(allid)
+                logging.info("saving %s", png)
+                img.save(png)
     finally:
         os.chdir(cwd)
