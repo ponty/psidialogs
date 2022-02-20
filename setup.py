@@ -42,6 +42,7 @@ classifiers = [
 install_requires = [
     "EasyProcess",
     "entrypoint2",
+    "pywin32 ; platform_system == 'Windows'",
 ]
 
 setup(
