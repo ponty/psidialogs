@@ -74,6 +74,7 @@ jobs:
         python3 -m pip install pillow
         python3 -m pip install .
         python3 -m pip install -r requirements-test.txt
+        python3 -m pip install -r requirements-doc.txt
     - name: print versions
       run: |
         python3 -m psidialogs.check.versions
