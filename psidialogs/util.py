@@ -36,8 +36,8 @@ def check_import(module):
     # except ImportError:
     #     pass
 
-    import importlib
-
+    import importlib.util
+    
     try:
         spam_spec = importlib.util.find_spec(module)
     except ModuleNotFoundError:
