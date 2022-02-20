@@ -1,19 +1,16 @@
 import logging
 import multiprocessing
-import os
 import time
 
-# from discogui.hover import active_rectangles
-from pathlib import Path
-
-from PIL.ImageGrab import grab
-
 import psidialogs
+
+# from discogui.hover import active_rectangles
+
 
 log = logging.getLogger(__name__)
 
 
-def target_func(backend,dialogtype):
+def target_func(backend, dialogtype):
     if backend:
         psidialogs.force_backend(backend)
     return psidialogs.dialog(

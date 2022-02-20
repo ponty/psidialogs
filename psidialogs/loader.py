@@ -1,10 +1,10 @@
-import multiprocessing
 import logging
+import multiprocessing
 import traceback
 from collections import OrderedDict
+from threading import Lock
 
 import psidialogs
-from psidialogs.childproc import childprocess_dialog
 from psidialogs.err import FailedBackendError
 from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
 from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
@@ -13,8 +13,7 @@ from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
 from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
 from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
-from threading import Thread, Lock
-from psidialogs.util import platform_is_osx, platform_is_win, platform_is_linux
+from psidialogs.util import platform_is_linux, platform_is_osx
 
 log = logging.getLogger(__name__)
 

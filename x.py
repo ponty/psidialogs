@@ -1,5 +1,3 @@
-import time
-
 app = None
 
 
@@ -12,14 +10,15 @@ def wx1():
     wx.lib.dialogs.messageDialog(
         message="message",
         title="title",
-        aStyle=wx.OK | wx.CENTRE| wx.ICON_ERROR,
+        aStyle=wx.OK | wx.CENTRE | wx.ICON_ERROR,
     )
     # app.Destroy()
 
     # app = None
 
+
 def tk1():
-    from tkinter import Tk, Label
+    from tkinter import Label, Tk
 
     root = Tk()
     label = Label(root, text="hello")
@@ -31,7 +30,7 @@ def tk1():
 def qt1():
     from PyQt5 import QtWidgets
 
-    q_app = QtWidgets.QApplication([])
+    QtWidgets.QApplication([])
 
     # (result, ok) = QtWidgets.QInputDialog.getItem(
     #     None, " title", "message", ["choices"], 0, False

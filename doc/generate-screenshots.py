@@ -1,28 +1,20 @@
+import glob
+import logging
 import os
 import platform
-import subprocess
 import sys
 import time
-from typing import Union, List
-from psidialogs.util import platform_is_osx, platform_is_win, platform_is_linux
-
+from pathlib import Path
 
 import pygetwindow as gw
-import glob, sys
-import logging
-import multiprocessing
-import os, time
-from pathlib import Path
-from time import sleep
 
 # from discogui.imgutil import grab_no_blink
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from PIL import Image, ImageChops
 from PIL import ImageGrab
 
-
 import psidialogs
+from psidialogs.util import platform_is_osx, platform_is_win
 
 if platform_is_osx():
     import Quartz
@@ -35,7 +27,6 @@ def empty_dir(dir):
     files = glob.glob(os.path.join(dir, "*"))
     for f in files:
         os.remove(f)
-
 
 
 def _getAllWindows(excludeDesktop: bool = True, screenOnly: bool = True):
@@ -128,7 +119,6 @@ def grab(allid):
             logging.debug("im: %s", im)
             logging.debug("bbox: %s", bbox)
             return im
-
 
 
 def func1(backend, dtype):

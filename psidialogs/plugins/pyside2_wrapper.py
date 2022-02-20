@@ -1,5 +1,6 @@
 from psidialogs.plugins.pyqt5base import PyQt5Base
 
+
 # macos: brew install pyside@2
 class PySide2Wrapper(PyQt5Base):
     name = "pyside2"

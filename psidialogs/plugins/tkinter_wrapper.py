@@ -1,7 +1,8 @@
-from psidialogs.util import platform_is_osx, platform_is_win, platform_is_linux
 from psidialogs.iplugin import IPlugin
+from psidialogs.util import platform_is_osx
 
 # macos:  brew install python-tk
+
 
 class Choices:
     def __init__(self, tkinter, parent, choicelist, message):

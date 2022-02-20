@@ -1,9 +1,9 @@
-from psidialogs.err import FailedBackendError
 import logging
 
 from entrypoint2 import entrypoint
 
 import psidialogs
+from psidialogs.err import FailedBackendError
 
 log = logging.getLogger(__name__)
 

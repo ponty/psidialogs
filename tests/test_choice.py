@@ -1,4 +1,4 @@
-import psidialogs
+# import psidialogs
 
 
 # def test_empty_choices():
