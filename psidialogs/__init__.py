@@ -194,7 +194,6 @@ _DIALOG_FUNCTIONS = [
     ask_file,
     ask_folder,
     choice,
-    # multi_choice,
 ]
 
 _DIALOG_TYPES = list(map(lambda x: x.__name__, _DIALOG_FUNCTIONS))
@@ -235,10 +234,10 @@ def dialog(
     if dialogtype == "choice":
         if len(choices) == 0:
             log.warning("choices=[] returning None")
-            return None
+            # return None
         if len(choices) == 1:
             log.warning("choices has one element only")
-            return choices[0]
+            # return choices[0]
     if not title:
         title = "psidialogs"
     return _opendialog(

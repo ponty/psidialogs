@@ -8,3 +8,4 @@ pillow>=7.1
 #pillow>=8.1.0
 mypy
 flake8
+# pygetwindow

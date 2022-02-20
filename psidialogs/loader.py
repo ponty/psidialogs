@@ -26,7 +26,7 @@ if platform_is_osx():
         WxPythonWrapper,
         PyQt5Wrapper,
         PySide2Wrapper,
-        EasyguiWrapper,
+        # EasyguiWrapper,
         TkinterWrapper,
     ]
 else:
