@@ -33,10 +33,10 @@ def check_open_novirt(backend, dialogtype):
     t.start()
     time.sleep(3)
 
-    d = Path(__file__).absolute().parent / "testout"
-    os.makedirs(d, exist_ok=True)
-    im = grab()
-    im.save(d / f"{backend}_{dialogtype}.png")
+    # d = Path(__file__).absolute().parent / "testout"
+    # os.makedirs(d, exist_ok=True)
+    # im = grab()
+    # im.save(d / f"{backend}_{dialogtype}.png")
 
     assert t.is_alive()
     t.terminate()

@@ -85,10 +85,13 @@ jobs:
     #   if: matrix.os == 'ubuntu-20.04'
     #   run: |
     #     ./lint.sh
+    - name: screenshots
+      run: |
+        python3 doc/generate-screenshots.py  --debug 
     - name: Archive production artifacts
       if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with:
-        name: testout-${{ matrix.os }}-${{ matrix.python-version }}
+        name: screenshots-${{ matrix.os }}-${{ matrix.python-version }}
         path: |
-          tests/testout
+          doc/gen/screenshots
