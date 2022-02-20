@@ -1,6 +1,7 @@
 import sys
 
 from easyprocess import EasyProcess
+import psidialogs
 
 
 def py_minor():
@@ -53,6 +54,24 @@ def prog_check(cmd):
         return not p.oserror
     except Exception:
         return False
+
+
+def backend_available(backend):
+    if backend in psidialogs.backends():
+        if backend == "tkinter":
+            return check_import(backend)
+        if backend == "easygui":
+            return check_import(backend)
+        if backend == "wxpython":
+            return check_import("wx")
+        if backend == "pyqt5":
+            return check_import("PyQt5")
+        if backend == "pyside2":
+            return check_import("PySide2.QtWidgets")
+        if backend == "gmessage":
+            return prog_check(["gmessage", "-h"])
+        if backend == "zenity":
+            return prog_check(["zenity", "--help"])
 
 
 def extract_version(txt):

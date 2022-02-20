@@ -112,6 +112,8 @@ def main():
                     p.stop()
 
         for backend in sorted(psidialogs.backends()):
+            if not psidialogs.util.backend_available(backend):
+                continue
             for dtype in psidialogs.dialog_types():
                 # if BackendLoader().is_console(b):
                 #     # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
