@@ -24,7 +24,7 @@ if platform_is_osx():
     backend_class_list = [
         WxPythonWrapper,
         PyQt5Wrapper,
-        PySide2Wrapper,
+        # PySide2Wrapper,
         # EasyguiWrapper,
         TkinterWrapper,
     ]
@@ -33,8 +33,8 @@ else:
     backend_class_list = [
         WxPythonWrapper,
         PyQt5Wrapper,
-        PySide2Wrapper,
-        EasyguiWrapper,
+        # PySide2Wrapper,
+        # EasyguiWrapper,
         TkinterWrapper,
     ]
     if platform_is_linux():
