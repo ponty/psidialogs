@@ -1,7 +1,8 @@
 from psidialogs.iplugin import IPlugin
 from psidialogs.util import platform_is_osx
 import logging
-
+import os
+import distutils.sysconfig
 import ctypes
 
 log = logging.getLogger(__name__)
@@ -46,9 +47,8 @@ class Pywin32Wrapper(IPlugin):
         self.dialog = dialog
 
     def backend_version(self):
-        build_no = (
-            open(os.path.join(site_packages, "pywin32.version.txt")).read().strip()
-        )
+        pth = distutils.sysconfig.get_python_lib(plat_specific=1)
+        build_no = open(os.path.join(pth, "pywin32.version.txt")).read().strip()
         return build_no
 
     def ask_string(self, message, title):
