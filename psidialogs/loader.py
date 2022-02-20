@@ -11,9 +11,10 @@ from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
 from psidialogs.plugins.pyqt5_wrapper import PyQt5Wrapper
 from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
 from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
+from psidialogs.plugins.pywin32_wrapper import Pywin32Wrapper
 from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
-from psidialogs.util import platform_is_linux, platform_is_osx
+from psidialogs.util import platform_is_linux, platform_is_osx,platform_is_win
 
 log = logging.getLogger(__name__)
 
@@ -28,20 +29,25 @@ if platform_is_osx():
         # EasyguiWrapper,
         TkinterWrapper,
     ]
-else:
-    # win+linux
+elif platform_is_win():
     backend_class_list = [
+        Pywin32Wrapper,
         WxPythonWrapper,
         PyQt5Wrapper,
         # PySide2Wrapper,
         # EasyguiWrapper,
         TkinterWrapper,
     ]
-    if platform_is_linux():
-        backend_class_list += [
-            ZenityWrapper,
-            # GmessageWrapper,
-        ]
+else:
+    backend_class_list = [
+        WxPythonWrapper,
+        PyQt5Wrapper,
+        # PySide2Wrapper,
+        # EasyguiWrapper,
+        TkinterWrapper,
+        ZenityWrapper,
+        # GmessageWrapper,
+    ]
 
 backend_dict = OrderedDict([(b.name, b) for b in backend_class_list])
 
