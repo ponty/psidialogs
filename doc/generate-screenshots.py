@@ -155,6 +155,8 @@ def main():
         else:
             os.chdir("/sbin")
         for backend in sorted(psidialogs.backends()):
+            if not psidialogs.util.backend_available(backend):
+                continue
             for dialogtype in psidialogs.dialog_types():
                 logging.info("======== dialogtype: %s backend: %s", dialogtype, backend)
                 cmd = [
