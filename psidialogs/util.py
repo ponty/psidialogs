@@ -37,7 +37,7 @@ def check_import(module):
     #     pass
 
     import importlib.util
-    
+
     try:
         spam_spec = importlib.util.find_spec(module)
     except ModuleNotFoundError:
@@ -66,6 +66,8 @@ def backend_available(backend):
             return check_import("wx")
         if backend == "pyqt5":
             return check_import("PyQt5")
+        if backend == "pywin32":
+            return check_import("win32gui")
         if backend == "pyside2":
             return check_import("PySide2.QtWidgets")
         if backend == "gmessage":

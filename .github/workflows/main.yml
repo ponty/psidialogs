@@ -67,11 +67,11 @@ jobs:
         #choco install qt5-default -y
         #choco install visualstudio2017buildtools -y
         #choco install gtk-runtime -y
-        pip install pyqt5 pyside2 wxpython easygui
+        pip install pyqt5 pyside2 wxpython easygui pywin32
     - name: pip install
       run: |
         python3 --version
-        python3 -m pip install pillow
+        # python3 -m pip install pillow
         python3 -m pip install .
         python3 -m pip install -r requirements-test.txt
         python3 -m pip install -r requirements-doc.txt
