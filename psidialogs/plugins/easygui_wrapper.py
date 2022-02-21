@@ -1,8 +1,10 @@
 from psidialogs.iplugin import IPlugin
+from psidialogs.util import platform_is_osx
 
 
 class EasyguiWrapper(IPlugin):
     name = "easygui"
+    need_subprocess = platform_is_osx()
 
     def __init__(self):
         import easygui  # type: ignore

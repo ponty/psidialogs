@@ -1,4 +1,7 @@
 from psidialogs.iplugin import IPlugin
+from psidialogs.util import platform_is_osx
+
+# macos:  brew install python-tk
 
 
 class Choices:
@@ -37,6 +40,7 @@ root = None
 
 class TkinterWrapper(IPlugin):
     name = "tkinter"
+    need_subprocess = platform_is_osx()
 
     def __init__(self):
         import tkinter
