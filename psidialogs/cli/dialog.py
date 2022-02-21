@@ -9,7 +9,7 @@ log = logging.getLogger(__name__)
 
 @entrypoint
 def dialog_cli(
-    dialogtype,
+    dialogtype="message",
     title="",
     message="",
     choices=[],
@@ -20,11 +20,14 @@ def dialog_cli(
     if not backend:
         backend = None
 
+    if not title:
+        title = "psidialogs"
+
     if len(preference):
         psidialogs.set_backend_preference(preference)
 
     if backend:
-        psidialogs._force_backend(backend)
+        psidialogs.force_backend(backend)
 
     result = None
     result = psidialogs.dialog(

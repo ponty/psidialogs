@@ -3,6 +3,7 @@ import logging
 from entrypoint2 import entrypoint
 
 import psidialogs
+from psidialogs.err import FailedBackendError
 
 log = logging.getLogger(__name__)
 
@@ -42,7 +43,7 @@ def select_backend(backend=None, title="", **kwargs):
     global g_backend
     if backend:
         g_backend = backend
-        psidialogs.set_backend_preference([backend])
+        psidialogs.force_backend(backend)
         select_dialogtype(title, **kwargs)
     else:
         while 1:
@@ -52,8 +53,14 @@ def select_backend(backend=None, title="", **kwargs):
             if not b:
                 break
             g_backend = b
-            psidialogs.set_backend_preference([b])
-            select_dialogtype(title, **kwargs)
+            psidialogs.force_backend(b)
+            try:
+                select_dialogtype(title, **kwargs)
+            except FailedBackendError:
+                g_backend = None
+                psidialogs.set_backend_preference()
+                psidialogs.error("Backend error: " + b, title=title)
+            psidialogs.set_backend_preference()
 
 
 @entrypoint

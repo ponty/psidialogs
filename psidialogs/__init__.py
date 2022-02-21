@@ -194,7 +194,6 @@ _DIALOG_FUNCTIONS = [
     ask_file,
     ask_folder,
     choice,
-    # multi_choice,
 ]
 
 _DIALOG_TYPES = list(map(lambda x: x.__name__, _DIALOG_FUNCTIONS))
@@ -213,7 +212,8 @@ def backends():
 
     :return: back-ends as string list
     """
-    return loader._preference
+    return list(loader.backend_dict.keys())
+    # return loader._preference
 
 
 def backend_version(backend):
@@ -246,11 +246,16 @@ def dialog(
     )
 
 
-def set_backend_preference(preference):
-    log.debug("set_backend_preference: %s", preference)
-    loader.set_backend_preference(preference)
+def backend_preference():
+    return loader.backend_preference()
 
 
-def _force_backend(backend):
-    # print("======_force_backend")
-    loader._force_backend = backend
+def set_backend_preference(preference=None, disable_others=False):
+    log.debug(
+        "set_backend_preference: %s disable_others: %s", preference, disable_others
+    )
+    loader.set_backend_preference(preference, disable_others)
+
+
+def force_backend(backend):
+    set_backend_preference([backend], disable_others=True)

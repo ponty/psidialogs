@@ -2,6 +2,7 @@ import logging
 import multiprocessing
 import traceback
 from collections import OrderedDict
+from threading import Lock
 
 import psidialogs
 from psidialogs.err import FailedBackendError
@@ -32,21 +33,39 @@ backend_dict = OrderedDict([(b.name, b) for b in backend_class_list])
 _preference = list(backend_dict.keys())
 
 
-def set_backend_preference(preference):
-    log.debug("set_backend_preference: %s", preference)
-    global _preference
-    _preference = []
-    keys = list(backend_dict.keys())
-    for b in preference:
-        if b not in keys:
-            log.error("unknown backend: %s", b)
-            continue
-        _preference.append(b)
-        keys.remove(b)
-    _preference.extend(keys)
+mutex = Lock()
 
 
-_force_backend = None
+def backend_preference():
+    return _preference
+
+
+def set_backend_preference(preference, disable_others):
+    mutex.acquire()
+    try:
+        # log.debug("set_backend_preference: %s", preference)
+        global _preference
+        _preference = []
+        keys = list(backend_dict.keys())
+        if preference is None or preference == []:
+            if disable_others:
+                _preference = []
+            else:
+                _preference = keys
+            return
+        for b in preference:
+            if b not in keys:
+                log.error("unknown backend: %s", b)
+                continue
+            _preference.append(b)
+            keys.remove(b)
+        if not disable_others:
+            _preference.extend(keys)
+    finally:
+        mutex.release()
+
+
+# _force_backend = None
 
 
 def select_childprocess(backend_class):
@@ -100,7 +119,7 @@ def auto(dialogtype, argdict):
             msg = traceback.format_exc()
             log.debug(msg)
 
-    msg = "All backends failed!"
+    msg = "All backends in preference failed!" + str(_preference)
     raise FailedBackendError(msg)
 
 
@@ -142,10 +161,10 @@ def _opendialog(dialogtype, argdict):
         argdict,
     )
 
-    if _force_backend:
-        return force(_force_backend, dialogtype, argdict)
-    else:
-        return auto(dialogtype, argdict)
+    # if _force_backend:
+    #     return force(_force_backend, dialogtype, argdict)
+    # else:
+    return auto(dialogtype, argdict)
 
 
 def backend_version2(backend_name):
