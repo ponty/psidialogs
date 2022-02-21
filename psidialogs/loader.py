@@ -1,9 +1,9 @@
 import logging
+import multiprocessing
 import traceback
 from collections import OrderedDict
 
 import psidialogs
-from psidialogs.childproc import childprocess_dialog
 from psidialogs.err import FailedBackendError
 from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
 from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
@@ -104,11 +104,28 @@ def auto(dialogtype, argdict):
     raise FailedBackendError(msg)
 
 
+def ff(q, backend, dialogtype, argdict):
+    backend_class = backend_dict[backend]
+    obj = backend_class()
+    ret = dlg_dispatch(obj, dialogtype, argdict)
+    q.put(ret)
+
+
 def force(backend, dialogtype, argdict):
     backend_class = backend_dict[backend]
     if select_childprocess(backend_class):
         log.debug('running "%s" in child process', backend)
-        return childprocess_dialog(dialogtype, argdict, backend=backend)
+        # return childprocess_dialog(dialogtype, argdict, backend=backend)
+        q = multiprocessing.Queue()
+        t = multiprocessing.Process(
+            target=ff,
+            args=(q, backend, dialogtype, argdict)
+            # lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
+        )
+        t.start()
+        result = q.get()
+        t.join()
+        return result
     else:
         obj = backend_class()
         return dlg_dispatch(obj, dialogtype, argdict)
