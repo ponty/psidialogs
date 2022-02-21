@@ -13,21 +13,40 @@ from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
 from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
 from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
+from psidialogs.util import platform_is_linux, platform_is_osx,platform_is_win
 
 log = logging.getLogger(__name__)
 
 # default preference order
-backend_class_list = [
-    WxPythonWrapper,
-    EasyguiWrapper,
-    TkinterWrapper,
-    PyQt5Wrapper,
-    PySide2Wrapper,
-    ZenityWrapper,
-    GmessageWrapper,
-    # TODO:  PythonDialogWrapper,
-    # TODO:  ConsoleWrapper,
-]
+# TODO:  PythonDialogWrapper,
+# TODO:  ConsoleWrapper,
+if platform_is_osx():
+    backend_class_list = [
+        WxPythonWrapper,
+        PyQt5Wrapper,
+        # PySide2Wrapper,
+        # EasyguiWrapper,
+        TkinterWrapper,
+    ]
+elif platform_is_win():
+    backend_class_list = [
+        WxPythonWrapper,
+        PyQt5Wrapper,
+        # PySide2Wrapper,
+        # EasyguiWrapper,
+        TkinterWrapper,
+    ]
+else:
+    backend_class_list = [
+        WxPythonWrapper,
+        PyQt5Wrapper,
+        # PySide2Wrapper,
+        # EasyguiWrapper,
+        TkinterWrapper,
+        ZenityWrapper,
+        # GmessageWrapper,
+    ]
+
 backend_dict = OrderedDict([(b.name, b) for b in backend_class_list])
 
 _preference = list(backend_dict.keys())
