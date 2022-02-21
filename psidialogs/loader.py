@@ -11,6 +11,7 @@ from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
 from psidialogs.plugins.pyqt5_wrapper import PyQt5Wrapper
 from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
 from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
+from psidialogs.plugins.pywin32_wrapper import Pywin32Wrapper
 from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
 from psidialogs.util import platform_is_linux, platform_is_osx,platform_is_win
@@ -35,6 +36,7 @@ elif platform_is_win():
         # PySide2Wrapper,
         # EasyguiWrapper,
         TkinterWrapper,
+        Pywin32Wrapper,
     ]
 else:
     backend_class_list = [
