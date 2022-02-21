@@ -112,13 +112,15 @@ def main():
                     p.stop()
 
         for backend in sorted(psidialogs.backends()):
+            if not psidialogs.util.backend_available(backend):
+                continue
             for dtype in psidialogs.dialog_types():
                 # if BackendLoader().is_console(b):
                 #     # xterm -e python3 -m psidialogs.examples.demo -b zenity -f ask_yes_no
                 #     cmd = ["xterm", "-e", " ".join(cmd)]
                 with SmartDisplay() as disp:
                     logging.info("======== dtype: %s backend: %s", dtype, backend)
-                    psidialogs._force_backend(backend)
+                    psidialogs.force_backend(backend)
                     t = multiprocessing.Process(
                         target=lambda: psidialogs.dialog(
                             dtype,

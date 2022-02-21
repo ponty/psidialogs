@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         os: 
-          - "ubuntu-18.04"
+          # - "ubuntu-18.04"
           - "ubuntu-20.04"
           # - "macos-10.15"
           - "macos-11"
@@ -46,13 +46,10 @@ jobs:
       if: startsWith(matrix.os, 'ubuntu')
       run: |
         sudo apt-get update
-        sudo apt-get install -y python3-setuptools
-        sudo apt-get install -y xvfb scrot x11-utils python3-wxgtk4.0 python3-pyqt5
-        sudo apt-get install -y python3-tk python3-dialog python3-easygui zenity 
-    - name: Install ubuntu-18.04 dependencies
-      if: matrix.os == 'ubuntu-18.04'
-      run: |
-        sudo apt-get install -y python3-pyqt4 python3-pyside
+        #sudo apt-get install -y python3-setuptools
+        sudo apt-get install -y xvfb
+        sudo apt-get install -y python3-wxgtk4.0 python3-pyqt5
+        sudo apt-get install -y python3-tk python3-dialog python3-easygui zenity gmessage
     - name: Install ubuntu-20.04 dependencies
       if: matrix.os == 'ubuntu-20.04'
       run: |
@@ -61,24 +58,23 @@ jobs:
       if: startsWith(matrix.os, 'macos')
       run: |
         #brew install --cask xquartz
-        brew install wxmac pyqt pyside 
-        brew install imagemagick pqiv
-        pip3 install wxpython pyobjc-framework-Quartz pyobjc-framework-LaunchServices
+        brew install wxpython pyqt@5 pyside@2 python-tk
+        #brew install imagemagick pqiv
+        #pip3 install wxpython pyobjc-framework-Quartz pyobjc-framework-LaunchServices
     - name: Install Win dependencies
       if: startsWith(matrix.os, 'win')
       run: |
-        # choco install fsviewer -y
-        choco install imagemagick -y
-        choco install wxpython -y 
-        choco install gtk-runtime -y
-        choco install pyqt4 -y
-        choco install pyqt5 -y
+        #choco install qt5-default -y
+        #choco install visualstudio2017buildtools -y
+        #choco install gtk-runtime -y
+        pip install pyqt5 pyside2 wxpython easygui pywin32
     - name: pip install
       run: |
         python3 --version
-        python3 -m pip install pillow -U
+        # python3 -m pip install pillow
         python3 -m pip install .
         python3 -m pip install -r requirements-test.txt
+        python3 -m pip install -r requirements-doc.txt
     - name: print versions
       run: |
         python3 -m psidialogs.check.versions
@@ -86,7 +82,18 @@ jobs:
       run: |
         cd tests
         python3 -m pytest -v .
+    # TODO:
     # - name: Lint
     #   if: matrix.os == 'ubuntu-20.04'
     #   run: |
     #     ./lint.sh
+    - name: screenshots
+      run: |
+        python3 doc/generate-screenshots.py  --debug 
+    - name: Archive production artifacts
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: screenshots-${{ matrix.os }}-${{ matrix.python-version }}
+        path: |
+          doc/gen/screenshots
