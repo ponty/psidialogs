@@ -28,9 +28,7 @@ sudo apt-get install -y python3-gi
 sudo apt-get install -y gir1.2-gtk-3.0
 
 sudo apt-get install -y python3-wxgtk4.0
-# sudo apt-get install -y python3-pyqt4
 sudo apt-get install -y python3-pyqt5
-# sudo apt-get install -y python3-pyside
 sudo apt-get install -y python3-dialog
 sudo apt-get install -y python3-easygui
 sudo pip3 install -U easygui
