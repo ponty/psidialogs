@@ -16,6 +16,7 @@ def main(backend):
     backend = backend if backend else None
 
     try:
+        exit(0)
         v = backend_version2(backend)
     except Exception as e:
         log.warning(e)
