@@ -24,7 +24,7 @@ jobs:
           - "windows-2022"
         python-version: 
           # - "3.12"
-          - "system"
+          - "3.x"
         include:
           - python-version: "3.11"
             os: ubuntu-22.04
