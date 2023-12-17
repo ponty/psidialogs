@@ -111,14 +111,6 @@ class WxPythonWrapper(IPlugin):
         if result and result.accepted:
             return result.selection
 
-    # def multi_choice(self, args):
-    #     self.init()
-    #     result = self.wx.lib.dialogs.multipleChoiceDialog(
-    #         message=message, title=title, lst=args["choices"]
-    #     )
-    #     if result and result.accepted:
-    #         return list(result.selection)
-
     # def text(self, args):
     #     self.init()
     #     self.wx.lib.dialogs.scrolledMessageDialog(

@@ -83,5 +83,3 @@ class GmessageWrapper(IPlugin):
     def choice(self, choices, message, title):
         return mixins.choice(self, choices, message, title)
 
-    # def multi_choice(self, message, title):
-    #     return mixins.multi_choice(self, message, title)

@@ -1,15 +1,6 @@
 from itertools import count
 
 # class AllMixin:
-#     def multi_choice(self, args):
-#         s = self._choice(args)
-#         if not s:
-#             return None
-#         try:
-#             return [args["choices"][int(x)] for x in s.split(",")]
-#         except Exception:
-#             pass
-
 #     def text(self, args):
 #         args = args.copy()
 #         args["message"] = args["message"] + "\n" + args["text"]
@@ -65,16 +56,6 @@ def _choice(obj, choices, message, title):
     # args["default"] = "%s" % args["default"]
     i = obj.ask_string(message, title)
     return i
-
-
-# def multi_choice(obj, args):
-#     s = _choice(obj, args)
-#     if not s:
-#         return None
-#     try:
-#         return [args["choices"][int(x)] for x in s.split(",")]
-#     except Exception:
-#         pass
 
 
 def choice(obj, choices, message, title):

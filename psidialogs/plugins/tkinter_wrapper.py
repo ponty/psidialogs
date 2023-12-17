@@ -118,6 +118,3 @@ class TkinterWrapper(IPlugin):
         root.withdraw()
 
         return app.choice
-
-    # def multi_choice(self, args):
-    #     return mixins.multi_choice(self, args)

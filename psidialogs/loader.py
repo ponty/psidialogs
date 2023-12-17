@@ -117,8 +117,6 @@ def dlg_dispatch(obj, dialogtype, argdict):
     elif dialogtype == "choice":
         choices = argdict["choices"]
         return obj.choice(choices, message, title)
-    # elif dialogtype == "multi_choice":
-    #     return obj.multi_choice(argdict)
 
 
 def auto(dialogtype, argdict):

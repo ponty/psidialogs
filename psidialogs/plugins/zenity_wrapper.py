@@ -140,6 +140,3 @@ class ZenityWrapper(IPlugin):
 
     def choice(self, choices, message, title):
         return self._choice(choices, message, title, multi=0)
-
-    # def multi_choice(self, args):
-    #     return self._choice(args, multi=1)

@@ -50,13 +50,6 @@ class PythonDialogWrapper(IPlugin):
         (i, s) = self.dlg.menu(text=message, title=title, choices=choices)
         return s if i == "ok" else None
 
-    # def multi_choice(self, args):
-    #     choices = [(x, "", 0) for x in args["choices"]]
-    #     (i, s) = self.dlg.checklist(
-    #         text=message, title=title, choices=choices
-    #     )
-    #     return s if i == "ok" else None
-
     # def text(self, args):
     #     # args['message'] = ''.join([x[:MAX_LINE_LENGTH] for x, _ in
     #     # zip(args['message'].splitlines(1) , range(MAX_LINES)) ])

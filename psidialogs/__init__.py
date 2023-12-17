@@ -126,30 +126,6 @@ def choice(choices=[], message="Pick something.", title=None):
     )
 
 
-# def multi_choice(
-#     choices=[], message="Pick as many items as you like.", title=None, backend=None,
-# ):
-#     """
-#     Present the user with a list of choices.
-#     allow him to select multiple items and return them in a list.
-#     if the user doesn't choose anything from the list, return the empty list.
-#     return None if he cancelled selection.
-
-#     :ref:`screenshots<multi_choice>`
-
-#     :param choices: a list of the choices to be displayed
-#     :param message: message to be displayed.
-#     :param title: window title
-#     :rtype: None or list of strings
-#     """
-#     if len(choices) == 0:
-#         log.warning("choices=[] returning None")
-#         return None
-#     return opendialog(
-#         "multi_choice", dict(choices=choices, message=message, title=title), backend,
-#     )
-
-
 def ask_ok_cancel(message="", title=None):
     """
     Display a message with choices of OK and Cancel.
