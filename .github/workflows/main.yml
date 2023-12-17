@@ -65,6 +65,7 @@ jobs:
         pip install pyqt5 wxpython easygui pywin32
     - name: pip install
       run: |
+        python3 -m psidialogs.cli.print_backend_version wxpython  --debug
         python3 --version
         # python3 -m pip install pillow
         python3 -m pip install .
