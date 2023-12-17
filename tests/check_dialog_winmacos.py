@@ -4,8 +4,6 @@ import time
 
 import psidialogs
 
-# from discogui.hover import active_rectangles
-
 
 log = logging.getLogger(__name__)
 
@@ -25,7 +23,6 @@ def check_open_novirt(backend, dialogtype):
             backend,
             dialogtype,
         )
-        # lambda: psidialogs.dialog(dialogtype, choices=["a", "b"])
     )
     t.start()
     time.sleep(3)

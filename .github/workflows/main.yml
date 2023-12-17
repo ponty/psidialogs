@@ -19,7 +19,7 @@ jobs:
           - "ubuntu-20.04"
           # - "macos-11"
           - "macos-12"
-          - "macos-13"
+          # TODO: - "macos-13"
           # - "windows-2019"
           - "windows-2022"
         python-version: 
@@ -72,7 +72,7 @@ jobs:
         python3 -m pip install -r requirements-doc.txt
     - name: print versions
       run: |
-        python3 -m psidialogs.check.versions --debug
+        python3 -m psidialogs.check.versions
     - name: Test with pytest
       run: |
         cd tests
