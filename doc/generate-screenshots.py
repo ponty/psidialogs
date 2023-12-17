@@ -13,6 +13,7 @@ from PIL import ImageGrab
 
 import psidialogs
 from psidialogs.util import platform_is_linux, platform_is_osx, platform_is_win
+from psidialogs.util import backend_available
 
 if platform_is_osx():
     import Quartz
@@ -153,7 +154,7 @@ def main():
         else:
             os.chdir("/sbin")
         for backend in sorted(psidialogs.backends()):
-            if not psidialogs.util.backend_available(backend):
+            if not backend_available(backend):
                 continue
             for dialogtype in psidialogs.dialog_types():
                 logging.info("======== dialogtype: %s backend: %s", dialogtype, backend)

@@ -12,6 +12,7 @@ from PIL import Image, ImageChops
 from pyvirtualdisplay.smartdisplay import SmartDisplay
 
 import psidialogs
+from psidialogs.util import backend_available
 
 # (cmd,grab,background)
 commands = [
@@ -112,7 +113,7 @@ def main():
                     p.stop()
 
         for backend in sorted(psidialogs.backends()):
-            if not psidialogs.util.backend_available(backend):
+            if not backend_available(backend):
                 continue
             for dtype in psidialogs.dialog_types():
                 # if BackendLoader().is_console(b):
