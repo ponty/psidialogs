@@ -8,9 +8,10 @@ log = logging.getLogger(__name__)
 
 def childprocess_backend_version(backend):
     p = run_mod_as_subproc("psidialogs.cli.print_backend_version", [backend])
-    if p.return_code != 0:
-        log.warning(p)
-        raise FailedBackendError(p)
+    # TODO: non zero only on Windows for wx?
+    # if p.return_code != 0:
+    #     log.warning(p)
+    #     raise FailedBackendError(p)
 
     return p.stdout
 

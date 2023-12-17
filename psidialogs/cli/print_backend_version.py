@@ -17,9 +17,7 @@ def main(backend):
 
     try:
         v = backend_version2(backend)
-        exit(0)
     except Exception as e:
         log.warning(e)
         v = ""
     print(v)
-    exit(0)
