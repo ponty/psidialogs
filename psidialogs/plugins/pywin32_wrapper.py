@@ -1,9 +1,9 @@
-from psidialogs.iplugin import IPlugin
-from psidialogs.util import platform_is_osx
+import ctypes
+import distutils.sysconfig
 import logging
 import os
-import distutils.sysconfig
-import ctypes
+
+from psidialogs.iplugin import IPlugin
 
 log = logging.getLogger(__name__)
 
@@ -31,12 +31,12 @@ class Pywin32Wrapper(IPlugin):
 
     def __init__(self):
         import pywin.dialogs.list
-        import win32gui
         import pywintypes
-        from win32com.shell import shell
-        import win32ui
         import win32con
+        import win32gui
+        import win32ui
         from pywin.mfc import dialog
+        from win32com.shell import shell
 
         self.list = pywin.dialogs.list
         self.win32gui = win32gui

@@ -6,15 +6,12 @@ from threading import Lock
 
 import psidialogs
 from psidialogs.err import FailedBackendError
-from psidialogs.plugins.easygui_wrapper import EasyguiWrapper
-from psidialogs.plugins.gmessage_wrapper import GmessageWrapper
 from psidialogs.plugins.pyqt5_wrapper import PyQt5Wrapper
-from psidialogs.plugins.pyside2_wrapper import PySide2Wrapper
-from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
 from psidialogs.plugins.pywin32_wrapper import Pywin32Wrapper
+from psidialogs.plugins.tkinter_wrapper import TkinterWrapper
 from psidialogs.plugins.wxpython_wrapper import WxPythonWrapper
 from psidialogs.plugins.zenity_wrapper import ZenityWrapper
-from psidialogs.util import platform_is_linux, platform_is_osx,platform_is_win
+from psidialogs.util import platform_is_osx, platform_is_win
 
 log = logging.getLogger(__name__)
 
@@ -173,7 +170,7 @@ def force(backend, dialogtype, argdict):
 
 def _opendialog(dialogtype, argdict):
     # TODO: check
-    for (k, v) in argdict.items():
+    for k, v in argdict.items():
         if v is None:
             argdict[k] = ""
     log.debug(

@@ -13,11 +13,10 @@ It can be slow if grid is small or the window is large.
 import logging
 from time import sleep
 
-from PIL import ImageChops
-
 from discogui.imglog import img_log, img_log_rects
 from discogui.imgutil import focus_wnd, getbbox, grab
 from discogui.mouse import PyMouse
+from PIL import ImageChops
 
 log = logging.getLogger(__name__)
 

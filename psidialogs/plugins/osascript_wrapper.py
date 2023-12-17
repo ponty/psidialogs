@@ -1,9 +1,6 @@
-from psidialogs.iplugin import IPlugin
-from psidialogs.util import platform_is_osx
 import logging
-import os
-import distutils.sysconfig
-import ctypes
+
+from psidialogs.iplugin import IPlugin
 
 log = logging.getLogger(__name__)
 
@@ -42,8 +39,8 @@ class OsascriptWrapper(IPlugin):
 
     def message(self, message, title):
         # osascript -e 'display dialog "Hello from osxdaily.com" with title "Hello"'
-        cmd = ["osascript",'-e', message] + dict2list(options)
-        p = EasyProcess(cmd).call()
+        cmd = ["osascript", "-e", message] + dict2list(options)
+        EasyProcess(cmd).call()
 
         # options = {}
         # options["--%s" % kw] = None

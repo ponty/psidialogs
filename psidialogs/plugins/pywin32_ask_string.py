@@ -1,6 +1,5 @@
-import win32ui
-
 import win32con
+import win32ui
 from pywin.mfc import dialog
 
 

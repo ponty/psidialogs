@@ -6,14 +6,13 @@ import sys
 import time
 from pathlib import Path
 
-
 # from discogui.imgutil import grab_no_blink
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from PIL import ImageGrab
 
 import psidialogs
-from psidialogs.util import platform_is_osx, platform_is_win, platform_is_linux
+from psidialogs.util import platform_is_linux, platform_is_osx, platform_is_win
 
 if platform_is_osx():
     import Quartz
@@ -76,7 +75,6 @@ def getAllWindowsID():
 def getBBox(wnd):
     # logging.warning("*** wnd: %s", wnd)
     if platform_is_osx():
-
         bounds = wnd[Quartz.kCGWindowBounds]
         x = bounds["X"]
         y = bounds["Y"]
