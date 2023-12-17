@@ -41,7 +41,6 @@ classifiers = [
 install_requires = [
     "EasyProcess",
     "entrypoint2",
-    "distutils",
 ]
 
 setup(

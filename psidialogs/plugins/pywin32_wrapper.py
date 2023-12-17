@@ -1,5 +1,5 @@
 import ctypes
-import distutils.sysconfig
+import sysconfig
 import logging
 import os
 
@@ -47,8 +47,8 @@ class Pywin32Wrapper(IPlugin):
         self.dialog = dialog
 
     def backend_version(self):
-        pth = distutils.sysconfig.get_python_lib(plat_specific=1)
-        # TODO: fix warning: pth = sysconfig.get_path("platlib")
+        # pth = distutils.sysconfig.get_python_lib(plat_specific=1)
+        pth = sysconfig.get_path("platlib")
         build_no = open(os.path.join(pth, "pywin32.version.txt")).read().strip()
         return build_no
 
