@@ -21,3 +21,4 @@ def main(backend):
         log.warning(e)
         v = ""
     print(v)
+    exit(0)

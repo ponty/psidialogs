@@ -70,9 +70,11 @@ jobs:
         python3 -m pip install .
         python3 -m pip install -r requirements-test.txt
         python3 -m pip install -r requirements-doc.txt
-    - name: print versions
+    - name: tmp
       run: |
         python3 -m psidialogs.cli.print_backend_version wxpython  --debug
+    - name: print versions
+      run: |
         python3 -m psidialogs.check.versions --debug
     - name: Test with pytest
       run: |
