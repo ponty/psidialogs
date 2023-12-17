@@ -27,7 +27,7 @@ back-ends:
 $ python3 -m pip install psidialogs
 ```
 
-Install all back-ends on Ubuntu 20.04:
+Install all back-ends on Ubuntu 22.04:
 
 ```console
 $ sudo apt-get install python3-tk
@@ -217,7 +217,7 @@ optional arguments:
 
 # Screenshots
 
-Screenshots are created on Ubuntu 20.04 server with Xvfb.
+Screenshots are created on Ubuntu 22.04 server with Xvfb.
 
 Versions:
 <!-- embedme doc/gen/python3_-m_psidialogs.check.versions.txt -->

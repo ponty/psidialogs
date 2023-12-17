@@ -78,23 +78,22 @@ def run_box(options, vagrantfile, cmds):
 
 
 config = {
-    "ubuntu2004": (
-        "Vagrantfile.ubuntu2004.rb",
-        ["tox -e py38,py39,py310,py3-sitepackages"],
-    ),
+    # "ubuntu2004": (
+    #     "Vagrantfile.ubuntu2004.rb",
+    #     ["tox -e py3-sitepackages"],
+    # ),
     "ubuntu2204": (
         "Vagrantfile.ubuntu2204.rb",
         ["tox"],
     ),
     # "debian10": (
     #     "Vagrantfile.debian10.rb",
-    #     # ["tox -e py37,py3-sitepackages"],
     #     ["tox -e py3-sitepackages"],
     # ),
-    "debian11": (
-        "Vagrantfile.debian11.rb",
-        ["tox -e py39,py3-sitepackages"],
-    ),
+    # "debian11": (
+    #     "Vagrantfile.debian11.rb",
+    #     ["tox -e py3-sitepackages"],
+    # ),
 }
 
 
