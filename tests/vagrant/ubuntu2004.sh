@@ -51,5 +51,4 @@ sudo python3 -m pip install tox
 
 # doc dependencies      https://www.npmjs.com/package/embedme
 sudo apt-get install -y npm xterm
-#sudo npm install -g npx
-sudo npm i embedme
+sudo npm install --global embedme
