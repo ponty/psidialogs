@@ -48,6 +48,7 @@ class Pywin32Wrapper(IPlugin):
 
     def backend_version(self):
         pth = distutils.sysconfig.get_python_lib(plat_specific=1)
+        # TODO: fix warning: pth = sysconfig.get_path("platlib")
         build_no = open(os.path.join(pth, "pywin32.version.txt")).read().strip()
         return build_no
 
