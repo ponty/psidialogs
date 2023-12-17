@@ -43,7 +43,6 @@ else:
         # EasyguiWrapper,
         TkinterWrapper,
         ZenityWrapper,
-        # GmessageWrapper,
     ]
 
 backend_dict = OrderedDict([(b.name, b) for b in backend_class_list])

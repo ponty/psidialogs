@@ -73,8 +73,6 @@ def check_unix(backend, dialogtype):
     if backend:
         psidialogs.force_backend(backend)
     check_open(backend, dialogtype)
-    # if backend == "gmessage":  # active editbox
-    #     return
     if dialogtype in ["message", "warning", "error"]:
         expect = set([None])
         check_buttons(backend, dialogtype, expect)

@@ -13,7 +13,6 @@ Links:
 back-ends:
  - [Zenity](https://en.wikipedia.org/wiki/Zenity)
  - [easygui](http://easygui.sourceforge.net/)
- - gMessage
  - [PyQt5](https://pypi.org/project/PyQt5/)
  - [PySide2](https://pypi.org/project/PySide2/)
  - [TkInter](https://docs.python.org/3/library/tkinter.html)
@@ -37,7 +36,6 @@ $ sudo apt-get install python3-dialog
 $ sudo apt-get install python3-easygui
 $ sudo apt-get install python3-wxgtk4.0
 $ sudo apt-get install zenity
-$ sudo apt-get install gxmessage
 ```
 
 # Usage
@@ -236,7 +234,6 @@ zenity               3.32.0
 |      backend | message                               | warning                               | error                               |
 | -----------: | ------------------------------------- | ------------------------------------- | ----------------------------------- |
 |       zenity | ![](doc/gen/zenity_message.png)       | ![](doc/gen/zenity_warning.png)       | ![](doc/gen/zenity_error.png)       |
-|     gmessage | ![](doc/gen/gmessage_message.png)     | ![](doc/gen/gmessage_warning.png)     | ![](doc/gen/gmessage_error.png)     |
 |     wxpython | ![](doc/gen/wxpython_message.png)     | ![](doc/gen/wxpython_warning.png)     | ![](doc/gen/wxpython_error.png)     |
 |      tkinter | ![](doc/gen/tkinter_message.png)      | ![](doc/gen/tkinter_warning.png)      | ![](doc/gen/tkinter_error.png)      |
 |      easygui | ![](doc/gen/easygui_message.png)      | ![](doc/gen/easygui_warning.png)      | ![](doc/gen/easygui_error.png)      |
@@ -250,7 +247,6 @@ zenity               3.32.0
 |      backend | ask_ok_cancel                               | ask_yes_no                               | ask_string                               |
 | -----------: | ------------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 |       zenity | ![](doc/gen/zenity_ask_ok_cancel.png)       | ![](doc/gen/zenity_ask_yes_no.png)       | ![](doc/gen/zenity_ask_string.png)       |
-|     gmessage | ![](doc/gen/gmessage_ask_ok_cancel.png)     | ![](doc/gen/gmessage_ask_yes_no.png)     | ![](doc/gen/gmessage_ask_string.png)     |
 |     wxpython | ![](doc/gen/wxpython_ask_ok_cancel.png)     | ![](doc/gen/wxpython_ask_yes_no.png)     | ![](doc/gen/wxpython_ask_string.png)     |
 |      tkinter | ![](doc/gen/tkinter_ask_ok_cancel.png)      | ![](doc/gen/tkinter_ask_yes_no.png)      | ![](doc/gen/tkinter_ask_string.png)      |
 |      easygui | ![](doc/gen/easygui_ask_ok_cancel.png)      | ![](doc/gen/easygui_ask_yes_no.png)      | ![](doc/gen/easygui_ask_string.png)      |
@@ -264,7 +260,6 @@ zenity               3.32.0
 |      backend | ask_file                               | ask_folder                               |
 | -----------: | -------------------------------------- | ---------------------------------------- |
 |       zenity | ![](doc/gen/zenity_ask_file.png)       | ![](doc/gen/zenity_ask_folder.png)       |
-|     gmessage | ![](doc/gen/gmessage_ask_file.png)     | ![](doc/gen/gmessage_ask_folder.png)     |
 |     wxpython | ![](doc/gen/wxpython_ask_file.png)     | ![](doc/gen/wxpython_ask_folder.png)     |
 |      tkinter | ![](doc/gen/tkinter_ask_file.png)      | ![](doc/gen/tkinter_ask_folder.png)      |
 |      easygui | ![](doc/gen/easygui_ask_file.png)      | ![](doc/gen/easygui_ask_folder.png)      |
@@ -278,7 +273,6 @@ zenity               3.32.0
 |      backend | choice                               |
 | -----------: | ------------------------------------ |
 |       zenity | ![](doc/gen/zenity_choice.png)       |
-|     gmessage | ![](doc/gen/gmessage_choice.png)     |
 |     wxpython | ![](doc/gen/wxpython_choice.png)     |
 |      tkinter | ![](doc/gen/tkinter_choice.png)      |
 |      easygui | ![](doc/gen/easygui_choice.png)      |

@@ -71,8 +71,6 @@ def backend_available(backend):
             return check_import("win32gui")
         if backend == "pyside2":
             return check_import("PySide2.QtWidgets")
-        if backend == "gmessage":
-            return prog_check(["gmessage", "-h"])
         if backend == "zenity":
             return prog_check(["zenity", "--help"])
 

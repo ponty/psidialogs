@@ -13,7 +13,7 @@ sudo apt-get install -y python3-pip
 
 # project dependencies
 sudo apt-get install -y zenity
-sudo apt-get install -y gxmessage
+# sudo apt-get install -y gxmessage
 
 # sudo apt-get install -y python-gi
 sudo apt-get install -y python3-gi

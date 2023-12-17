@@ -40,7 +40,7 @@ def is_point_active(img_orig, point, mouse=None):
     log.debug("point:" + str(point))
 
     mouse.move(point[0], point[1])
-    # this should be enough time for any change, (gmessage: 0.1 is too low)
+    # this should be enough time for any change,
     # but not too much because of tooltips. (gtk ~500ms)
     # Disabling tooltip can help.
 
