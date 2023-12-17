@@ -73,8 +73,6 @@ def check_unix(backend, dialogtype):
     if backend:
         psidialogs.force_backend(backend)
     check_open(backend, dialogtype)
-    # if backend in ["zenity", "wxpython", "pyside2", "pyqt5"]:
-    #    reverse_order = True
     # if backend == "gmessage":  # active editbox
     #     return
     if dialogtype in ["message", "warning", "error"]:
@@ -82,6 +80,4 @@ def check_unix(backend, dialogtype):
         check_buttons(backend, dialogtype, expect)
     if dialogtype in ["ask_yes_no", "ask_ok_cancel"]:
         expect = set([True, False])
-        # if reverse_order:
-        #     expect = reversed(expect)
         check_buttons(backend, dialogtype, expect)
